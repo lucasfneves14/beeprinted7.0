@@ -3,6 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+
+gem 'carrierwave', '1.3.1'
+gem 'mini_magick', '4.9.3'
+gem 'simple_form', '4.1.0'
+gem 'bootstrap-sass', '3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record

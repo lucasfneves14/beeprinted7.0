@@ -1,0 +1,324 @@
+<style>
+		body{
+			background-color:white !important;
+		}
+        .portfolio .toolbar {
+            margin-bottom: 50px
+        }
+        
+        .sections {
+            padding-top: 30px;
+            padding-bottom: 60px
+        }
+        
+        .sections.footer {
+            padding-bottom: 80px
+        }
+        
+        .main_feature .single_feature:hover .single_feature_icon {
+            border-color: #009fab;
+            transform: rotate(45deg)
+        }
+        
+        .main_feature .single_feature:hover .single_feature_icon i {
+            transform: rotate(-45deg)
+        }
+        
+        .main_feature .single_feature:hover h3 {
+            color: #009fab
+        }
+        
+        .main_feature .single_feature .single_feature_icon {
+            border: 2px solid #ddd;
+            width: 70px;
+            height: 70px;
+            font-size: 18px;
+            line-height: 70px;
+            margin: 20px auto;
+            transition: all .6s
+        }
+        
+        .main_feature .single_feature i {
+            margin-bottom: 30px;
+            color: #009fab;
+            transition: all .6s
+        }
+        
+        .main_feature .single_feature h3 {
+            transition: all .6s
+        }
+        
+        .main_feature .single_feature p {
+            font-size: 14px;
+        }
+        
+        .separator3 {
+            height: 2px;
+            width: 40px;
+            margin: 20px auto;
+            background: #888
+        }
+        
+        .head_title {
+            margin-bottom: 20px
+        }
+        
+        .head_title h3 {
+            color: #413d4b
+        }
+        
+        .head_title .subtitle {
+            margin-top: 10px;
+            margin-bottom: 60px;
+            font-size:20px;
+        }
+        
+        .main_history .single_history_content .head_title h2 {
+            border-left: 6px solid #009fab;
+            padding-left: 30px
+        }
+        
+        .main_service .head_title {
+            padding: 100px 0 40px;
+            margin-bottom: 0
+        }
+        
+        .main_service .head_title h2 {
+            margin-right: 12%;
+            border-right: 6px solid #009fab;
+            color: #fff;
+            padding-right: 5%
+        }
+        
+        section .subtitle h5 {
+            margin-top: 10px;
+            font-size: 1.3rem
+        }
+        
+        .separator {
+            width: 10px;
+            height: 10px;
+            margin: 20px auto;
+            background: #009fab;
+            position: relative;
+            display: inline-block;
+            border-radius: 50%
+        }
+        
+        .separator:after,
+        .separator:before {
+            position: absolute;
+            bottom: 4px;
+            height: 1px;
+            width: 80px;
+            content: "";
+            display: inline-block;
+            background: #eee
+        }
+        
+        .separator:after {
+            left: 5%;
+            margin-left: 20px
+        }
+        
+        .separator:before {
+            right: 5%;
+            margin-right: 20px
+        }
+        
+        .separator_escuro:after,
+        .separator_escuro:before {
+            background: #aaa
+        }
+        
+        button.btn-md {
+            letter-spacing: 1px
+        }
+        
+        .btn-md {
+            background: #999;
+            padding: 1rem 2rem;
+            border: 1px solid transparent
+        }
+        
+        .btn-md.active,
+        .btn-md:active {
+            background-image: none;
+            outline: 0;
+            -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, .125);
+            box-shadow: inset 0 0 0 rgba(0, 0, 0, .125)
+        }
+        
+        button.btn-md:focus {
+            outline: 0;
+            color: #009fab
+        }
+        
+        button.btn-md {
+            text-align: center;
+            color: #444;
+            margin: 0;
+            font-size: .8125rem;
+            border-radius: 0;
+            background-color: transparent;
+            transition: .5s;
+            border: 0 solid #009fab;
+            font-family: montserratregular
+        }
+        
+        button.btn-md:hover {
+            background-color: transparent;
+            color: #009fab;
+            text-decoration: none;
+            border: 0 solid #f4720a
+        }
+        
+        .pricing_business .btn-md,
+        .pricing_business .pricing_head {
+            background: #009fab
+        }
+        
+        .single_portfolio {
+            position: relative
+        }
+        
+        .single_portfolio:hover .grid_item_overlay {
+            opacity: 1
+        }
+        
+        .single_portfolio img {
+            -webkit-transform: initial;
+            position: initial;
+        }
+        
+        .grid_item_overlay {
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            width: 80%;
+            height: 80%;
+            background: rgba(0, 159, 171, .6);
+            color: #fff;
+            padding: 35% 20px 20px;
+            opacity: 0;
+            transition: .6s;
+            z-index: 99
+        }
+        
+        .grid_item_overlay a i {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #fff;
+            color: #fff;
+            display: inline-block;
+            background: 0 0
+        }
+        
+        .grid_item_overlay a:hover i {
+            color: #009fab;
+            background: #fff
+        }
+        
+        .separator4 {
+            height: 2px;
+            width: 30px;
+            margin: 20px 0;
+            background: #3F315D
+        }
+        
+        .tile {
+            display: none
+        }
+        
+        .scale-anm {
+            margin-bottom: -6px;
+            width: 100%
+        }
+        
+        .scale-anm:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+        }
+        
+        .tile img {
+            height: auto;
+            display: inline-block;
+            width: 100%;
+            vertical-align: middle;
+            border: 0;
+            margin-bottom: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+        
+        #portfoliowork {
+            margin: 1rem 0;
+            -webkit-column-count: 5;
+            -moz-column-count: 5;
+            column-count: 5;
+            -webkit-column-gap: 0;
+            -moz-column-gap: 0;
+            column-gap: 0;
+            -webkit-column-width: 33.33333333333333%;
+            -moz-column-width: 33.33333333333333%;
+            column-width: 33.33333333333333%
+        }
+        @media (max-width:1400px) {
+            #portfoliowork {
+                margin: 1rem 0;
+                -webkit-column-count: 4;
+                -moz-column-count: 4;
+                column-count: 4
+            }
+        }
+        
+        @media (max-width:1199px) {
+            #portfoliowork {
+                margin: 1rem 0;
+                -webkit-column-count: 3;
+                -moz-column-count: 3;
+                column-count: 3
+            }
+        }
+</style>
+
+
+<section id="portfolio" class="portfolio sections" style='margin-top:100px; margin-left:100px;margin-right:100px;'>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="main_portfolio">
+                    <div class="col-sm-12">
+                        <div class="head_title">
+                            <h2 style='color:#009fab'>NOSSOS PROJETOS</h2>
+                            <div class="subtitle"> Conheça um pouco dos trabalhos já realizados pelos makers cadastrados em nossa plataforma. </div>
+                        </div>
+                    </div>
+                    <div class="work_menu text-center">
+                        <div id="filters" class="toolbar mb2 mt2">
+                            <button class="btn-md fil-cat filter active" data-filter="all">TODOS</button>/
+                            <button class="btn-md fil-cat filter" data-rel="proto" data-filter=".proto">PROTOTIPAGEM</button>/
+                            <button class="btn-md fil-cat filter" data-rel="corpo" data-filter=".corpo">CORPORATIVO</button>/
+                            <button class="btn-md fil-cat filter" data-rel="recor" data-filter=".recor">RECORDAÇOES</button>/
+                            <button class="btn-md fil-cat filter" data-rel="beeloja" data-filter=".beeloja">BEELOJA</button>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div id="portfoliowork">
+                        <% @posts.each do |post|%>
+                            <div class="single_portfolio tile scale-anm web grid-item-width2 beeloja"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=post.images.first.attachment.url%> alt=
+                                <%=post.caption%>> <a href=<%=post_path(post.id)%> class="portfolio-img" title="<%=post.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=post.caption%></h3> <p>Beeloja</p></div></a> </div>
+                            <%end%>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%= content_for(:javascript_async) do %>, "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery.mixitup.min.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/portfolio.js"<%end%>

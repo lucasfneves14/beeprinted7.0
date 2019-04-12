@@ -11,7 +11,7 @@ default: &default
 
 development:
   adapter: postgresql
-  database: my_database_development
+  database: my_database_revisao
   pool: 5
   host: localhost
   username: beeprinted

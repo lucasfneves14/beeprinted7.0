@@ -1,15 +1,118 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RevisaoBee70</title>
+    <title>Impressão 3D e Prototipagem | BEEPRINTED</title>
+    <meta charset=utf-8>
+    <meta name="msvalidate.01" content="C2730C7A271697BA8A0F86E1ED368E39" />
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name=title content="Impressão 3D e Prototipagem | BEEPRINTED" />
+    <meta name=robots content="index, follow">
+    <meta name=description content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão 3D, modelagem e prototipagem de Brasília.">
+    <meta name=keywords content="impressão 3D, prototipagem, modelos 3D, tecnologia, imprima 3D, impressora 3D, imprimir 3D, Brasília, DF, Distrito Federal" />
+    <meta name=author content=BEEPRINTED.COM.BR>
+    <meta name=viewport content="width=device-width, initial-scale=1" />
+    <meta content="ie=edge, chrome=1" http-equiv=x-ua-compatible/>
+    <meta name=google-site-verification content=oJ2PyR9oaNsdWXxDUnY615E3gLjjO2Q2ZQEySMCC4IY/>
+    <meta property="og:title" content="Impressão 3D e Prototipagem | BEEPRINTED" />
+    <meta property="og:description" content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão e modelagem 3D de Brasília. Faça parte da comunidade Bee, imprima e poste modelos 3D!" />
+    <meta property="og:image" content="https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content="https://beeprinted.com.br" />
+    <meta property="og:site_name" content="BEEPRINTED" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name=twitter:card content=summary/>
+    <meta name=twitter:title content="Impressão 3D e Prototipagem | BEEPRINTED">
+    <meta name=twitter:description content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão e modelagem 3D de Brasília. Faça parte da comunidade Bee, imprima e poste modelos 3D!">
+    <meta name=twitter:image content=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png>
+    <meta name=twitter:site content=https://beeprinted.com.br>
+    <meta name=twitter:url content=https://beeprinted.com.br>
+    <meta name=twitter:locale content=pt_BR>
+    <link rel=canonical href=https://beeprinted.com.br/>
+    <link rel=shortlink href=https://beeprinted.com.br/>
+    <link rel=revision href=https://beeprinted.com.br/>
+    <link rel="shortcut icon" href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png sizes=32x32 type="image/png" />
+    <link rel=apple-touch-icon-precomposed href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=72x72 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=120x120 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=152x152 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script>
+        var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lazy.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>];
+        var stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
+    </script>
+
+    <link rel="stylesheet" href="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/css/bee4.css">
+    <%= yield(:css) %>
+
   </head>
 
-  <body>
+  <body style='background-color:#f2f2f2'>
+    <div id=main-nav class="navchange navbar navbar-inverse navbar-fixed-top" role=navigation style='padding:5px 0'>
+      <div class=container-nav>
+        <div class='' style='width:100%'>
+          <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse>
+            <span class=icon-bar></span>
+            <span class=icon-bar></span>
+            <span class=icon-bar></span>
+          </button>
+          <a class=navbar-brand href=<%=root_path%> title=BEEPRINTED>
+            <img id=navlogo class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/Marca-baixares.png" data-src='https://ds76otpcq42vd.cloudfront.net/uploads/diversas/MARCA-fundoEscuro.png ' alt=beeprinted-impressão-3d height=45>
+          </a>
+          <div class="collapse navbar-collapse" id=bee1 style='width:100%'>
+            <ul class="nav navbar-nav navbar-left text-center collapse navbar-collapse" style='padding-left:10px'>
+              <li><a href='' class=external title=Galeria>Loja</a></li>
+              <li><a href='' class=external title=Blog>Blog</a></li>
+              <li><a href=<%=root_path%>#contact title=Contato>Contato</a></li>
+              <li class=dropdown> 
+                <a style='padding:0px' href='' class=external title='Postar'>
+                  <button class="btn btn-default dropdown-toggle font-bold" title=Postar>Postar</button>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-center"> 
+              <li><a href='' class=external title=Entrar>Entrar</a></li>
+              <li class=dropdown style='padding-top:10px'> 
+                <button onclick='location.href=""' type=button class="btn btn-default dropdown-toggle font-bold" data-toggle=dropdown title=Registrar style='background-color: transparent;border:solid #009fab;'>Registrar</button>
+              </li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
     <%= yield %>
+
+
+    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js"></script>
+    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/modernizr-custom-min.js"></script>
+    <script defer>
+        function loadStyleSheet(src) {
+            if (document.createStyleSheet) {
+                document.createStyleSheet(src);
+            } else {
+                $('head').append($('<link rel="stylesheet" href="' + src + '" type="text/css" media="screen">'));
+            }
+        }
+        $(function() {
+            if (stylesheets.length) {
+                for (var i = 0; i < stylesheets.length; i++) {
+                    loadStyleSheet(stylesheets[i]);
+                }
+            }
+        });
+        Modernizr.load({
+            load: scripts,
+            complete: function() {
+                $.holdReady(false);
+            }
+        });
+    </script>
+    <%= yield(:javascript) %>
   </body>
+  <style>
+
+    </style>
 </html>
