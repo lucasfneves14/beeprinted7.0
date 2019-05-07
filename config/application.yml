@@ -14,3 +14,4 @@ zoho_password: 'Saculf14/'
 AWS_ACCESS_KEY: "AKIAJBIYNZESPT4ED2BQ"
 AWS_SECRET_KEY: "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"
 AWS_BUCKET: "beeprinted-stls"
+host_url: '18.231.117.205'

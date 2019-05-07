@@ -98,7 +98,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.zoho.com",
     :port                 => 465,
-    :domain               => "beeprinted.com.br",
+    :domain               => ENV['host_url'],
     :user_name            => ENV['zoho_username'],
     :password             => ENV['zoho_password'],
     :authentication       => "login",
