@@ -5,4 +5,5 @@ class OrcamentoMailer < ApplicationMailer
 		@user = user
 		@orcamento = orcamento
 		mail(to: @user.email, subject: "Pedido de Orçamento (#{orcamento.id}) - BEEPRINTED")
+	end
 end
