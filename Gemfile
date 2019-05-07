@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+
+gem 'fog-aws', '3.5.0'
+gem 'figaro'
 gem 'delayed_job_active_record', '4.1.3'
 gem 'ckeditor', '4.2.4'
 gem 'devise', '4.6.2'
