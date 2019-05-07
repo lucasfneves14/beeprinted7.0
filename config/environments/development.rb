@@ -60,4 +60,20 @@ Rails.application.configure do
   #config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+# SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.zoho.com",
+    :port                 => 465,
+    :domain               => "localhost:3000",
+    :user_name            => 'contato@beeprinted.com.br',
+    :password             => 'Saculf14/',
+    :authentication       => "login",
+    :enable_starttls_auto => true,
+    :ssl                  => true,
+    :tls                  => true
+  }
 end
