@@ -39,7 +39,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script>
         var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lazy.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>];
         var stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
@@ -50,40 +50,50 @@
 
   </head>
 
-  <body style='background-color:#f2f2f2'>
-    <div id=main-nav class="navchange navbar navbar-inverse navbar-fixed-top" role=navigation style='padding:5px 0'>
-      <div class=container-nav>
-        <div class='' style='width:100%'>
-          <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse>
-            <span class=icon-bar></span>
-            <span class=icon-bar></span>
-            <span class=icon-bar></span>
-          </button>
-          <a class=navbar-brand href=<%=root_path%> title=BEEPRINTED>
-            <img id=navlogo class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/Marca-baixares.png" data-src='https://ds76otpcq42vd.cloudfront.net/uploads/diversas/MARCA-fundoEscuro.png ' alt=beeprinted-impressão-3d height=45>
-          </a>
-          <div class="collapse navbar-collapse" id=bee1 style='width:100%'>
-            <ul class="nav navbar-nav navbar-left text-center collapse navbar-collapse" style='padding-left:10px'>
-              <li><a href='' class=external title=Galeria>Loja</a></li>
-              <li><a href='' class=external title=Blog>Blog</a></li>
-              <li><a href=<%=root_path%>#contact title=Contato>Contato</a></li>
-              <li class=dropdown> 
-                <a style='padding:0px' href='' class=external title='Postar'>
-                  <button class="btn btn-default dropdown-toggle font-bold" title=Postar>Postar</button>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right text-center"> 
-              <li><a href='' class=external title=Entrar>Entrar</a></li>
-              <li class=dropdown style='padding-top:10px'> 
-                <button onclick='location.href=""' type=button class="btn btn-default dropdown-toggle font-bold" data-toggle=dropdown title=Registrar style='background-color: transparent;border:solid #009fab;'>Registrar</button>
-              </li>
-            </ul> 
-          </div>
-        </div>
-      </div>
-    </div>
+  <body style='background-color:#f2f2f2;' onload='var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){var a=document.createElement("script"),b=document.getElementsByTagName("script")[0];a.async=true;a.src="https://embed.tawk.to/5a9edc42d7591465c708508b/default";a.charset="UTF-8";a.setAttribute("crossorigin","*");b.parentNode.insertBefore(a,b)})(); if(navigator.userAgent.indexOf("Speed Insights")==-1){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-109193035-1");gtag("config", "AW-820518839");}gtag("event", "page_view",{"send_to": "AW-820518839"<% if user_signed_in? %>, "dynx_itemid": "<%=current_user.id%>", "dynx_pagetype": "<%=current_user.id%>", "user_id": "<%=current_user.id%>" <%end%>});'>
+    <%= render 'layouts/navbar' %>
+    <section style='padding-top:65px;'>
+    </section>
     <%= yield %>
+
+
+
+    <footer id=main-footer class="dark-bg light-typo">
+        <div class='w3-center'>
+            <p>Impressão 3D e Prototipagem | BEEPRINTED</p>
+        </div>
+        <br>
+        <br>
+        <div class=container>
+            <div class=row>
+                <div class=w3-center>
+                    <div class="col-md-4 col-sm-4 news">
+                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Categorias</p><a href='' style=color:white title=Decoração><p style=margin-bottom:0px>Decoração</p></a><a href='' style=color:white title='Cultura Pop'><p style=margin-bottom:0px>Cultura Pop</p></a><a href='' style=color:white title=Utilidades><p style=margin-bottom:0px>Utilidades</p></a><a href='' style=color:white title=Diversão><p style=margin-bottom:0px>Diversão</p></a></div>
+                    <div class="col-md-4 col-sm-4 d2">
+                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Conteúdo</p><a href='' style=color:white title='Política de Envio, Trocas e Devoluções'><p style=margin-bottom:0px>Política de Envio, Trocas e Devoluções</p></a><a href='' style=color:white title='Política de Privacidade'><p style=margin-bottom:0px>Política de Privacidade</p></a>
+                        <a href=#contact style=color:white title=Contato>
+                            <p style=margin-bottom:0px>Fale Conosco</p>
+                        </a><a href='' style=color:white title=Blog><p style=margin-bottom:0px>Blog</p></a></div>
+                    <div class="col-md-4 col-sm-4 d2">
+                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Social</p>
+                        <div class='social-links text-center'>
+                            <li><a href=https://www.instagram.com/beeprinted/ title=Instagram-Beeprinted><i class="fa fa-instagram bee15"></i></a></li>
+                            <li><a href=https://www.facebook.com/beeprinted title=Facebook-Beeprinted><i class="fa fa-facebook bee15"></i></a></li>
+                            <li><a href=#contact title=Contato><i class="fa fa-phone"></i></a></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <p class="pull-left copyright" style='margin-bottom:0px; font-size:16px'>Copyright © Beeprinted 2018.</p>
+        </div>
+        <div itemscope itemtype=http://data-vocabulary.org/Organization class=beehide>
+            <h3 itemprop=name>Beeprinted – Impressão 3D de Ideias</h3>
+            <p itemprop=tel>61 9 9996-0874</p>
+            <p itemprop=address itemscope itemtype=http://data-vocabulary.org/Address><span itemprop=street-address>EQN 406/407 Prédio Salim Bitar, sala 125</span>,<span itemprop=locality>Asa Norte, Brasília</span>,<span itemprop=region>DF</span>.</p>
+        </div>
+    </footer>
 
 
     <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js"></script>
@@ -112,7 +122,12 @@
     </script>
     <%= yield(:javascript) %>
   </body>
-  <style>
 
-    </style>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=187082005107883&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>

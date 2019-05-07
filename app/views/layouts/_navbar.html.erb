@@ -1,0 +1,43 @@
+<div id=main-nav class="navchange navbar navbar-inverse navbar-fixed-top" role=navigation style='padding:5px 0;box-shadow: 0 0 15px 1px rgba(0,0,0,0.5);'>
+      <div class=container-nav>
+        <div class='' style='width:100%'>
+          <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse>
+            <span class=icon-bar></span>
+            <span class=icon-bar></span>
+            <span class=icon-bar></span>
+          </button>
+          <a class=navbar-brand href=<%=root_path%> title=BEEPRINTED>
+            <img id=navlogo class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/Marca-baixares.png" data-src='https://ds76otpcq42vd.cloudfront.net/uploads/diversas/MARCA-fundoEscuro.png ' alt=beeprinted-impressão-3d height=45>
+          </a>
+          <div class="collapse navbar-collapse" id=bee1 style='width:100%'>
+            <ul class="nav navbar-nav navbar-left text-center collapse navbar-collapse" style='padding-left:10px'>
+              <li><a href=<%=posts_path%> class=external title=Galeria>Portfolio</a></li>
+              <li><a href=<%=blogs_path%> class=external title=Blog>Blog</a></li>
+              <li><a href=<%=root_path%>#contact title=Contato>Contato</a></li>
+              <li class=dropdown> 
+                <a style='padding:0px' href=<%=new_orcamento_path%> class=external title='Postar'>
+                  <button class="btn btn-default dropdown-toggle font-bold" title=Postar>Peça seu Orçamento</button>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-center">
+              <%if user_signed_in?%>
+                 <li><%=link_to "Sair", destroy_user_session_path, class: "external"%></li>
+              <%else%>
+                <li><a href=<%=new_user_session_path%> class=external title=Entrar>Entrar</a></li>
+                <li class=dropdown style='padding-top:10px'> 
+                <button onclick='location.href="<%=new_user_registration_path%>"' type=button class="btn btn-default dropdown-toggle font-bold" data-toggle=dropdown title=Registrar style='background-color: transparent;border:solid #009fab;'>Registrar</button>
+                </li>
+              <%end%>
+            </ul> 
+          </div>
+        </div>
+      </div>
+      <div id=main-nav class="navbar-fixed-top" role=navigation style='top:110px'>
+        <div class='container text-center'>
+        <%flash.each do |name, msg|%>
+            <%=content_tag :div, msg, class: [:alert, alert_for(name)]%>
+        <%end%>
+        </div>
+       </div>
+    </div>

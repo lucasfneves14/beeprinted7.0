@@ -1,0 +1,157 @@
+<%= content_for(:css) do %>
+<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Blogs/blog.css">
+
+<%end%>
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div id="hot-post" class="row hot-post">
+        <div class="col-md-8 hot-post-left">
+          <!-- post -->
+          <div class="post post-thumb">
+            <a class="post-img" href=<%=blog_path(@blog1[0].url)%>><img src=<%=@blog1[0].attachment.url(:first_index)%> alt=""></a>
+            <div class="post-body">
+              <div class="post-category">
+                <%@blog1[0].categorium.each do |categoria|%>
+                  <a href="category.html"><%=categoria.name%></a>
+                <%end%>
+              </div>
+              <h3 class="post-title title-lg"><a href="blog-post.html"><%=@blog1[0].title%></a></h3>
+              <ul class="post-meta">
+                <li><a href="author.html"><%=@blog1[0].user.name%> <%=@blog1[0].user.sobrenome%></a></li>
+                <li><%=@blog1[0].created_at.strftime("%d %B %Y")%></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <div class="col-md-4 hot-post-right">
+          <!-- post -->
+          <div class="post post-thumb">
+            <a class="post-img" href=<%=blog_path(@blog1[1].url)%>><img src=<%=@blog1[1].attachment.url(:relacionados)%> alt=""></a>
+            <div class="post-body">
+              <div class="post-category">
+                <%@blog1[1].categorium.each do |categoria|%>
+                <a href="category.html"><%=categoria.name%></a>
+                <%end%>
+              </div>
+              <h3 class="post-title"><a href="blog-post.html"><%=@blog1[1].title%></a></h3>
+              <ul class="post-meta">
+                <li><a href="author.html"><%=@blog1[1].user.name%> <%=@blog1[1].user.sobrenome%></a></li>
+                <li><%=@blog1[1].created_at.strftime("%d %B %Y")%></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+
+          <!-- post -->
+          <div class="post post-thumb">
+            <a class="post-img" href=<%=blog_path(@blog1[2].url)%>><img src=<%=@blog1[2].attachment.url(:relacionados)%> alt=""></a>
+            <div class="post-body">
+              <div class="post-category">
+                <%@blog1[2].categorium.each do |categoria|%>
+                <a href="category.html"><%=categoria.name%></a>
+                <%end%>
+              </div>
+              <h3 class="post-title"><a href="blog-post.html"><%=@blog1[2].title%></a></h3>
+              <ul class="post-meta">
+                <li><a href="author.html"><%=@blog1[2].user.name%> <%=@blog1[2].user.sobrenome%></a></li>
+                <li><%=@blog1[2].created_at.strftime("%d %B %Y")%></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-8">
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2 class="title">Artigos recentes</h2>
+              </div>
+            </div>
+            <!-- post -->
+            <%@blogs.each do |blog|%>
+            <div class="col-md-6">
+              <div class="post">
+                <a class="post-img" href=<%=blog_path(blog.url)%>><img src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
+                <div class="post-body">
+                  <div class="post-category">
+                    <a href="category.html"></a>
+                  </div>
+                  <h3 class="post-title"><a href="blog-post.html"><%=blog.title%></a></h3>
+                  <ul class="post-meta">
+                    <li><a href="author.html"><%=blog.user.name%> <%=blog.user.sobrenome%></a></li>
+                    <li><%=blog.created_at.strftime("%d %B %Y")%></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <%end%>
+            <!-- /post -->
+          </div>
+          <!-- /row -->
+
+          <!-- row -->
+        </div>
+        <div class="col-md-4">
+          <!-- ad widget-->
+          <div class="aside-widget text-center">
+            <a href="#" style="display: inline-block;margin: auto;">
+              <img class="img-responsive" src="./img/ad-3.jpg" alt="">
+            </a>
+          </div>
+          <!-- /ad widget -->
+
+          <!-- social widget -->
+        <%=render 'coluna', popular: @popular%>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- ad -->
+        <div class="col-md-12 section-row text-center">
+          <a href="#" style="display: inline-block;margin: auto;">
+            <img class="img-responsive" src="./img/ad-2.jpg" alt="">
+          </a>
+        </div>
+        <!-- /ad -->
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+
+
+  <!-- jQuery Plugins
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/main.js"></script>-->
+

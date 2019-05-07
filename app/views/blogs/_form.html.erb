@@ -1,0 +1,37 @@
+<%= simple_form_for @blog do |f| %>
+
+  <div class="form-group">
+    <%= f.input :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :summary, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.input :attachment, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :seo_title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :seo_meta, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+  </div>
+  <p>Categorias (Escolha no mínimo uma)</p>
+  <%= f.collection_check_boxes :categorium_ids, Categorium.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,241 @@
+<%= content_for(:css) do %>
+<style>
+  .categoria:after{
+    content: ",";
+  }
+  .categoria:last-child:after{
+    display:none;
+  }
+  .head_title .subtitle {
+    margin-top: 10px;
+    font-size:20px;
+    color:#f1f1f1;
+  }
+  body{
+  	background-color: white !important;
+  }
+
+  .pswp__bg{
+    opacity: 0.8 !important;
+  }
+.separator {
+            width: 10px;
+            height: 10px;
+            margin: 20px auto;
+            background: #009fab;
+            position: relative;
+            display: inline-block;
+            border-radius: 50%
+}
+
+
+  .separator:after,
+  .separator:before {
+    position: absolute;
+    bottom: 4px;
+    height: 1px;
+    width: 80px;
+    content: "";
+    display: inline-block;
+    background: #eee
+  }
+      
+  .separator:after {
+    left: 5%;
+    margin-left: 20px
+  }
+        
+  .separator:before {
+    right: 5%;
+    margin-right: 20px
+  }
+        
+  .separator_escuro:after,
+  .separator_escuro:before {
+    background: #aaa
+  }
+</style>
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Posts/Show/photoswipe.css">
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Posts/Show/default-skin.css">
+
+<%end%>
+
+<section id="portfolio" class="portfolio sections" style='padding-top:100px; padding-left:100px;padding-right:80px; padding-bottom:90px;background:#009fab url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center; opacity:1;box-shadow: 0 0 10px 3px rgba(0,0,0,0.3) ;'>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="main_portfolio">
+                    <div class="col-sm-12">
+                        <div class="head_title text-center">
+                            <h1 style='color:white'><%=@post.caption%></h1>
+                            <div class="subtitle"> Conheça um pouco dos trabalhos já realizados pelos makers cadastrados em nossa plataforma. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+</section>
+<div id="main" class="" style='padding-top:100px; padding-bottom:90px;'>
+    <div class="container">
+        <div class="">
+            <div id="content" class="content" role="main" style='width:100%'>
+                <article id="" style="position:relative">
+                    <div class="project-wide-col left-side project-slider" style='padding-right:50px; margin-bottom:45px; display:inline-block;vertical-align:top;width:66%;box-sizing:border-box;'>
+                        <div class="images-container">
+                            <div class="my-gallery" style='overflow:hidden; max-width:100%;y'>
+                                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a href=<%=@image.attachment.url%> style='width:40%;border-bottom:none; max-width:100%; float: left; border-right:2px solid transparent; box-sizing: border-box; line-height:0; word-spacing:normal; position:relative;display:block;text-decoration: none' title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@image.attachment.url(:port_first)%> class="lazyload" width="600" height="600" alt="" title="" style='will-change:auto; height:auto;width:100%; max-width:100%;line-height:0; vertical-align:baseline; line-height:1.5'/></a>
+                                </figure>
+                                
+                                <%@images.each do |image|%>
+                                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a href=<%=image.attachment.url%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 2px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=image.attachment.url(:port_other)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
+                                </figure>
+                                <%end%>
+                            </div>
+                        </div>
+                    </div>
+                    <div style='transform:translateY(0px); margin-bottom:55px; display: inline-block; vertical-align:top; width:33.3333%; position:relative; transition: transform .3s ease-out; box-sizing: border-box; word-spacing:normal'>
+                        <%= @post.description.html_safe %>
+                    </div>
+                    <div style='display:flex; align-items: center; flex-flow:column wrap; margin-bottom:40px;margin-top:15px'>
+                        <div style='padding:0;margin-bottom:10px;font-size:13px;line-height:23px;overflow:hidden'><span style='color:#b4b5bb; position:relative; display:inline-block;text-decoration: none; margin:0 6px 0 0; padding: 0 9px 0 0'>Categoria:&nbsp;<%@post.services.each do |service|%><a class='categoria'> <%=service.name%></a><%end%></span><a style='color:#b4b5bb; position:relative; display:inline-block; text-decoration: none; margin: 0 6px 0 0; padding: 0 9px 0 0;' href=<%=root_path%> title="Ver todas as postagens de <%=@post.user.name%> <%=@post.user.sobrenome%>" rel="author">Por <span class="fn"><%=@post.user.name%> <%=@post.user.sobrenome%></span></a>
+                            <a href="javascript:void(0);" title="2:43 pm" style='color:#b4b5bb; position:relative; display:inline-block; text-decoration: none; margin: 0 6px 0 0; padding: 0 9px 0 0;' rel="bookmark">
+                                <time class="entry-date updated" datetime="2019-03-18T14:43:50+00:00"><%=@post.created_at.strftime("%d-%m-%Y")%></time>
+                            </a>
+                        </div>
+                        <% if user_signed_in?%>
+                            <%if @post.user.id == current_user.id%>
+                                <%=link_to "Editar Projeto", edit_post_path(@post), style:'color:green'%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </article>
+                <hr class='hrbee' style='margin-top:100px'>
+                <div class="head_title text-center">
+                    <h3>Veja Também</h3>
+                
+                <div class=row style="padding-left:200px;padding-right:200px">
+                <%@recomendados.each do |recomendado|%>
+                    <a href=<%=post_path(recomendado)%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=recomendado.images.first.attachment.url(:port_first)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
+                <%end%>
+                </div>
+                </div>
+                <hr class='hrbee'>
+            </div>
+        </div>
+    </div>
+</div>
+<section id=contact class="padding-top-bottom" style='background:#009fab url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center;box-shadow: 0 0 15px 1px rgba(0,0,0,0.5) ;'>
+        <div class=container>
+            <div class="col-sm-12">
+                <div class="head_title text-center">
+                    <h2 style='color:white'>E aí? O que achou?</h2>
+                    <div class="subtitle">
+                        <p>Gostou ou teve alguma ideia de   um projeto novo? Faça um orçamento com a gente ;)</p>
+                    </div>
+                    <div class="separator separator_escuro"></div>
+                </div>
+            </div>
+             <%= simple_form_for @contato, html: { multipart: true, id:'contact-form' } do |f| %>
+                <div class=row>
+                    <div class="col-xs-12 col-sm-12 col-md-4 contact-info cta-message" style='color: white'><address><strong>BEEPRINTED</strong><br>EQN 406/407, Asa Norte<br>Edifício Salim Bittar*, Sl. 125<br>Brasília-DF 70847-400<br>contato@beeprinted.com.br<br>(61) 9 9996-0874<br>(61) 9 8235-1095<br><div style=font-size:16px>*Edifício da Smart Fit</div></address></div>
+                    <div class="col-xs-12 col-sm-12 col-md-8 d1">
+                        <div class=form-group>
+                                        <label class=control-label for=contact-name>Nome</label>
+                                        <div class=controls>
+                                            <input id=contact-name name=contato[name] placeholder=Nome class="form-control input-lg requiredField" type=text>
+                                        </div>
+                        </div>
+                        <div class=form-group>
+                            <label class=control-label for=contact-mail>Email</label>
+                            <div class=controls>
+                                <input id=contact-mail name=contato[email] placeholder=Email class="form-control input-lg requiredField" type=email>
+                            </div>
+                        </div>
+                        <div class=form-group>
+                            <label class=control-label for=contact-message>Mensagem</label>
+                            <div class=controls>
+                                <textarea id=contact-message name=contato[mensagem] placeholder=Mensagem class="form-control input-lg requiredField" rows=5></textarea>
+                            </div>
+                        </div>
+                        <p>
+                            <button name=submit type=submit class="btn btn-store btn-block" style='background-color:#3F315D'>Enviar Mensagem</button>
+                        </p>
+                        <input type=hidden name=commit id=contato_submit value="Enviar Mensagem">
+                    </div>
+                </div>
+            <%end%>
+        </div>
+    </section>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<%= content_for(:javascript_async) do %>,"https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/Posts/Show/photoswipe-ui-default.min.js","https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/Posts/Show/photoswipe.min.js","https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Posts/Show/photoswipe-resto.js"<%end%>

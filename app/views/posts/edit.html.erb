@@ -1,0 +1,235 @@
+<div class="container" style='margin-top:100px'>
+	<div class="header">
+        <h2 class="text-muted">EDITE O SEU PROJETO</h2>
+
+    </div> 
+	<%= form_for(@image, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
+	      <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
+	      <p><span><strong>Selecione ou arraste e solte as imagens do projeto aqui</strong></span></p></div>
+
+	      <div class="fallback">
+	        <%= f.file_field :attachment, accept: '.jpeg, .jpg, .JPG, .png' %><br>
+	        <%= f.submit "Upload" %>
+	      </div>
+	  <% end %>
+	  <%if @post.images.any?%>
+	    <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
+	    <%@post.images.each do |image| %>
+	      <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=image.id%>">
+	        <div class="dz-image">
+	          <img data-dz-thumbnail src=<%=image.attachment.url(:thumb)%> style='width:100%'>
+	        </div>
+	        <div class="dz-details">
+	          <div class="dz-size">
+	            <span data-dz-size="">
+	              <strong><%='%.1f' % (image.attachment.file.size/1000).round(1)%></strong> KB
+	            </span>
+	          </div>
+	          <div class="dz-filename">
+	            <span data-dz-name=""><%=File.basename(image.attachment.path)%></span>
+	          </div>  
+	        </div>
+	        <div class="dz-progress">
+	          <span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span>
+	        </div>
+	        <div class="dz-error-message">
+	          <span data-dz-errormessage=""></span>
+	        </div>  
+	        <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=image.id%>">Remover arquivo</a></div>
+	    <%end%>
+	    </div>
+	  <%end%>
+
+
+	  <%= simple_form_for @post, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+      <%= f.error_notification%>
+      <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %></div>
+      <div id='antesdoupload'>
+        <br>
+        <div class=row>
+        	<div class='col-md-6'>
+            <h4>Título</h4>
+            <div class="form-group text-center" id="formgroup2">
+              <%= f.input :caption, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' %>
+            </div>
+            <h4>Categorias</h4>
+            <div class="form-group" id="formgroup2">
+              <%= f.collection_check_boxes :service_ids, Service.all, :id, :name do |b| %>
+                <div class="collection-check-box">
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+              <%end%>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <h4>Descrição</h4>
+            <div class="form-group text-center">
+              <%= f.input :description,label:false, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class='hrbee'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <h4>O que acontece depois de enviar o(s) Modelo(s)?</h4>
+            <div class='row'>
+              <div class='col-md-3'>
+                <h2><span class='etapas'>1</span></h2>
+                <p style='font-size:14px'><strong>Enviando seus modelos:</strong></p>
+                <p style='font-size:14px'>Seus modelos são enviados e todos os parâmetros são calculados, inclusive peso e preço de impressão.</p>
+              </div>
+              <div class='col-md-3'>
+                <h2><span class='etapas'>2</span></h2>
+                <p style='font-size:14px'><strong>Possibilidade de Impressão:</strong></p>
+                <p style='font-size:14px'>Usaremos um software para checar se a impressão dos modelos é viável.</p>
+              </div>
+              <div class='col-md-3'>
+                <h2><span class='etapas'>3</span></h2>
+                <p style='font-size:14px'><strong>Análise dos parâmetros:</strong></p>
+                <p style='font-size:14px'>Os parâmetros passados por você e os que foram calculados serão analisados pela nossa equipe.</p>
+              </div>
+              <div class='col-md-3'>
+                <h2><span class='etapas'>4</span></h2>
+                <p style='font-size:14px'><strong>Publicação na galeria:</strong></p>
+                <p style='font-size:14px'>Seus modelos, após os testes, serão postados em um post único na nossa galeria.</p>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <h4>Por que postar na BEEPRINTED?</h4>
+            <p style='text-align:left;font-size:16px'><img src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/beepequena.png' style='width:18px;margin-right:20px'> Nós fornecemos apenas o serviço de impressao 3D. Não disponibilizaremos o seu arquivo para Download, por isso você não precisa se preocupar com pessoas usando seu arquivo sem seu consentimento.</p>
+            <p style='text-align:left;font-size:16px'><img src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/beepequena.png' style='width:18px;margin-right:20px'> Você poderá ganhar comissão por impressão 3D feita do seu modelo. Para isso, entre em contato conosco para mais informações.</p>
+            <p style='text-align:left;font-size:16px'><img src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/beepequena.png' style='width:18px;margin-right:20px'> Crie o seu portfólio 3D conosco! Podendo postar vários modelos na nossa plataforma!</p>
+          </div>
+        </div>
+        <hr class='hrbee'>
+        <%=f.submit "Salvar Projeto", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento' %>
+        <div class='row' style='margin-top:40px'>
+          <%= link_to "Excluir Projeto", post_path(@post), method: :delete, data: { confirm: "Você tem certeza que quer excluir esse projeto?" }%> |
+          <%= link_to "Cancelar", posts_path%>
+        </div>
+      </div>
+      <br>
+  <%end%>
+</div>
+
+
+
+
+<%= content_for(:css) do %>
+<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/dropzone.min.css">
+<%end%>
+
+
+
+
+
+<%= content_for(:javascript) do %>
+<script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>
+<script>
+$(document).ready(function(){
+  val = $('#post_array').val();
+  Dropzone.autoDiscover = false;
+  var ids = [];
+  <%if @post.images.any?%>
+    <%@post.images.each do |image| %>
+      ids.push(<%=image.id%>);
+    <%end%>
+  <%end%>
+  $('#post_array').val(ids);
+
+  console.log("ASNAKD");
+  console.log($('#post_array').val());
+
+  $('.deletar-fora').click(function(){ 
+
+    var iddeletar = parseInt($(this).attr('id'));
+
+     $.ajax({
+        type: 'DELETE',
+        url: '/image/' + iddeletar,
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data){
+          deletarID = 'deletar-' + iddeletar;
+          $('#'+deletarID).hide();
+          ids.splice( $.inArray(iddeletar,ids) ,1 );
+          $('#post_array').val(ids);
+        }
+      });
+  });
+  Dropzone.options.filedrop = {
+      init: function () {
+        this.on("queuecomplete", function (file) {
+            alert("All files have uploaded ");
+        });
+      }
+  };
+  // grap our upload form by its id
+  $("#new_image").dropzone({
+    // restrict image size to a maximum 1MB
+    maxFilesize: 60,
+    timeout: 0,
+    acceptedFiles: ".jpeg, .jpg, .JPG, .png, .PNG",
+    // changed the passed param to one accepted by
+    // our rails app
+    paramName: "image[attachment]",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    // show remove links on each image upload
+    addRemoveLinks: true,
+    init: function () {
+
+        this.on("queuecomplete", function (file) {
+            $('#button-orcamento').show();
+            console.log("Feito upload!");
+        });
+        this.on("addedfile", function (file) {
+            $('#button-orcamento').hide();
+            $('#antesdoupload').fadeIn();
+            console.log("Adicionado");
+        });
+      },
+    // if the upload was successful
+    success: function(file, response){
+      // find the remove button link of the uploaded file and give it an id
+      // based of the fileID response from the server
+      $(file.previewTemplate).find('.dz-remove').attr('id', response.fileID);
+      deletarId = 'deletar-' + response.fileID;
+      $(file.previewTemplate).find('.dz-image').parent().attr('id', deletarId);
+      ids.push(response.fileID);
+      $('#post_array').val(ids);
+      console.log($('#post_array').val());
+      // add the dz-success class (the green tick sign)
+      $(file.previewElement).addClass("dz-success");
+    },
+    //when the remove button is clicked
+    removedfile: function(file){
+      // grap the id of the uploaded file we set earlier
+      var id = parseInt($(file.previewTemplate).find('.dz-remove').attr('id'));
+      // make a DELETE ajax request to delete the file
+      $.ajax({
+      	headers: {
+        	'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    	},
+        type: 'DELETE',
+        url: '/image/' + id,
+        success: function(data){
+          console.log(data.message);
+          deletarID = 'deletar-' + id;
+          $('#'+deletarID).hide();
+          console.log(ids);
+          console.log(id);
+          ids.splice( $.inArray(id,ids) ,1 );
+          $('#post_array').val(ids);
+        }
+      });
+    }
+  }); 
+});
+</script>
+<%end%>

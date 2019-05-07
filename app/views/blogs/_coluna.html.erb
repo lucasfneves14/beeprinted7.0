@@ -1,0 +1,81 @@
+<div class="aside-widget">
+            <div class="section-title">
+              <h2 class="title">Mídia Social</h2>
+            </div>
+            <div class="social-widget">
+              <ul>
+                <li>
+                  <a href="#" class="social-facebook">
+                    <i class="fa fa-facebook"></i>
+                    <span>483<br>Seguidores</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-twitter">
+                    <i class="fa fa-twitter"></i>
+                    <span>65<br>Seguidores</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-google-plus" style='background-color:#7232bd !important'>
+                    <i class="fa fa-instagram"></i>
+                    <span>4.5K<br>Seguidores</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /social widget -->
+
+          <!-- category widget -->
+          <div class="aside-widget">
+            <div class="section-title">
+              <h2 class="title">Categorias</h2>
+            </div>
+            <div class="category-widget">
+              <ul>
+                <%Categorium.all.each do |categoria|%>
+                <li><a href="#"><%=categoria.name%><span><%=categoria.blogs.count%></span></a></li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+          <!-- /category widget -->
+
+          <!-- newsletter widget -->
+          <div class="aside-widget">
+            <div class="section-title">
+              <h2 class="title">Nossa Newsletter</h2>
+            </div>
+            <div class="newsletter-widget">
+              <%= simple_form_for Newsletter.new, html: { multipart: true, id:'contact-form' } do |f| %>
+                <p>Quer ficar sempre por dentro das novidades da impressão 3D?</p>
+                <input class="input" name="newsletter[email]" placeholder="Seu Email">
+                <button class="primary-button">Cadastre-se</button>
+              <%end%>
+            </div>
+          </div>
+          <!-- /newsletter widget -->
+
+          <!-- post widget -->
+          <div class="aside-widget">
+            <div class="section-title">
+              <h2 class="title">Artigos Populares</h2>
+            </div>
+            <!-- post -->
+            <%@popular.each do |popular|%>
+            <div class="post post-widget">
+              <a class="post-img" href=<%=blog_path(popular.url)%>><img src=<%=popular.attachment.url(:thumb)%> alt=""></a>
+              <div class="post-body">
+                <div class="post-category">
+                <%popular.categorium.each do |categoria|%>
+                  <a href="category.html"><%=categoria.name%></a>
+                <%end%>
+                </div>
+                <h3 class="post-title"><a href=<%=blog_path(popular.url)%>><%=popular.title%></a></h3>
+              </div>
+            </div>
+            <%end%>
+            <!-- /post -->
+
+          </div>

@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 
+gem 'ckeditor', '4.2.4'
+gem 'devise', '4.6.2'
 gem 'carrierwave', '1.3.1'
 gem 'mini_magick', '4.9.3'
 gem 'simple_form', '4.1.0'

@@ -38,6 +38,8 @@
     <link rel=apple-touch-icon-precomposed sizes=120x120 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <link rel=apple-touch-icon-precomposed sizes=152x152 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <!--[if lt IE 9]><script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script><script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script><![endif]-->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <script>
         var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lib-menos-jquery.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/resto-do-resto3.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lazy.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery.mixitup.min.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/portfolio.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"];
         var stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
@@ -738,63 +740,9 @@
 <body id=home onload='var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){var a=document.createElement("script"),b=document.getElementsByTagName("script")[0];a.async=true;a.src="https://embed.tawk.to/5a9edc42d7591465c708508b/default";a.charset="UTF-8";a.setAttribute("crossorigin","*");b.parentNode.insertBefore(a,b)})(); if(navigator.userAgent.indexOf("Speed Insights")==-1){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","UA-109193035-1");gtag("config", "AW-820518839");}gtag("event", "page_view",{"send_to": "AW-820518839"<% if user_signed_in? %>, "dynx_itemid": "<%=current_user.id%>", "dynx_pagetype": "<%=current_user.id%>", "user_id": "<%=current_user.id%>" <%end%>});'>
 
     <div id=fb-root></div>
-    <!--<div class=loader><div class=loader-bee><%=image_tag 'LoadGIF.gif', id:'item-1', style:'margin-left:auto;margin-right:auto;width:100px', alt:'loader-beeprinted-impressão-3D' %></div></div>-->
-    <div id=main-nav class="navchange navbar navbar-inverse navbar-fixed-top" role=navigation style='padding:20px 0;background-color:transparent'>
-        <div class=container-nav>
-            <div class='' style='width:100%'>
-                <button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse> <span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span> </button> <a class=navbar-brand href=<%=root_path%> title=BEEPRINTED> <img id=navlogo class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/Marca-baixares.png" data-src='https://ds76otpcq42vd.cloudfront.net/uploads/diversas/MARCA-fundoEscuro.png ' alt=beeprinted-impressão-3d height=45> </a>
-                <div class="collapse navbar-collapse" id=bee1 style='width:100%'>
-                    <ul class="nav navbar-nav navbar-left text-center collapse navbar-collapse" style='padding-left:10px'>
-                        <li><a href=<%=galeria_path%> class=external title=Galeria>Loja</a></li>
-                        <li><a href=<%=buttercms_blog_path%> class=external title=Blog>Blog</a></li>
-                        <li><a href=<%=root_path%>#contact title=Contato>Contato</a></li>
-                        <li class=dropdown> <a style='padding:0px' href=<%=new_post_path%> class=external title='Postar'> <button class="btn btn-default dropdown-toggle font-bold" title=Postar>Postar</button></a> </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right text-center">
-                        <li class=w3-center>
-                            <div class=books-search id=bee2 style='width:350px; padding-top:12px'>
-                                <%=form_tag search_path, method: :get, style: 'padding-right:10px; border-right:2px solid' do %>
-                                    <div class=form-group3 id=bee3>
-                                        <table id=bee4 style='width:100%'>
-                                            <tr id=bee5>
-                                                <th>
-                                                    <%=text_field_tag :query, params[:query], id:'bee6', class: 'form-control ', autocomplete: "off", placeholder: "Projetos e Designers", style:'width:100%' %>
-                                                </th>
-                                                <th>
-                                                    <%=button_tag(type: "submit", class: "btn btn-primary pull-right ", id:'bee7', style:'width:100%') do %> <i class="fa fa-search" aria-hidden=true></i>
-                                                        <% end %>
-                                                </th>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <% end %>
-                            </div>
-                        </li>
-                        <% if user_signed_in? %>
-                            <li>
-                                <%=render 'notifications/notification_dropdown' %>
-                            </li>
-                            <li id=quant_order>
-                                <% if current_user.carrinhos.find_by(status: 'criado') %> <a href=<%=carrinho_path(current_user.user_name)%> title=Carrinho class=external> <%=current_user.carrinhos.find_by(status: 'criado').orders.count%> <span class='fa fa-shopping-cart'></span> </a>
-                                    <%end%>
-                            </li>
-                            <li class=dropdown>
-                                <button onclick='location.href="<%=profile_path(current_user.user_name)%>"' type=button class="btn btn-default dropdown-toggle font-bold" data-toggle=dropdown title=Perfil>Perfil</button>
-                            </li>
-                            <li>
-                                <%=render 'configurations/configuration_dropdown' %>
-                            </li>
-                            <%else%>
-                                <li><a href=<%=new_user_session_path%> class=external title=Entrar>Entrar</a></li>
-                                <li class=dropdown style='padding-top:10px'>
-                                    <button onclick='location.href="<%=new_user_registration_path%>"' type=button class="btn btn-default dropdown-toggle font-bold" data-toggle=dropdown title=Registrar style='background-color: transparent;border:solid #009fab;'>Registrar</button>
-                                </li>
-                                <%end%>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <%= render 'layouts/navbar' %>
+
     <header class="masthead video light-typo full-height" style=height:74vh;min-height:0>
         <div class=overlay-bg></div>
         <div class=overlay-bg id="particles-js" style='background-color:transparent; opacity: 1'></div>
@@ -803,7 +751,8 @@
                 <div class="col-12 my-auto text-center text-white">
                     <h1 class=title-beeprinted style="font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial sans-serif;font-weight: 900;text-transform: uppercase;">Impressão 3D e Prototipagem</h1>
                     <hr class="colored" style='margin:auto;max-width: 100px;height: 2px;border-top: 1px solid white;border-bottom: 1px solid white; border-color: #009FAB;'>
-                    <h2 class="masthead-subtitle" style='font-size:1.5rem;margin:10px 0;'>Desenvolva projetos com a Beeprinted ou imprima em 3D modelos da nossa loja</h2> <a title="Nossa Loja" class="btn btn-store cta-button smooth-scroll font-bold" href=<%=galeria_path%>>Nossa Loja</a> <a title="Pedido Personalizado" class="btn btn-store cta-button smooth-scroll font-bold" href=#contact style='background-color: #3F315D; margin-left:1rem'>Pedido Personalizado</a> </div>
+                    <h2 class="masthead-subtitle" style='font-size:1.5rem;margin:10px 0;'>Desenvolva projetos com a Beeprinted ou envie seu modelos para impressão 3D</h2>
+                    <a title="Nossa Loja" class="btn btn-store smooth-scroll font-bold degrade" href=<%=new_orcamento_path%> style='margin-top:20px; font-size:18px; padding:12px 40px'>PEÇA O SEU ORÇAMENTO</a></div>
             </div>
         </div>
     </header>
@@ -869,17 +818,17 @@
                     <div class="work_menu text-center">
                         <div id="filters" class="toolbar mb2 mt2">
                             <button class="btn-md fil-cat filter active" data-filter="all">TODOS</button>/
-                            <button class="btn-md fil-cat filter" data-rel="proto" data-filter=".proto">PROTOTIPAGEM</button>/
-                            <button class="btn-md fil-cat filter" data-rel="corpo" data-filter=".corpo">CORPORATIVO</button>/
-                            <button class="btn-md fil-cat filter" data-rel="recor" data-filter=".recor">RECORDAÇOES</button>/
-                            <button class="btn-md fil-cat filter" data-rel="beeloja" data-filter=".beeloja">BEELOJA</button>
+                            <button class="btn-md fil-cat filter" data-rel="proto" data-filter=".Prototipagem">PROTOTIPAGEM</button>/
+                            <button class="btn-md fil-cat filter" data-rel="corpo" data-filter=".Corporativo">CORPORATIVO</button>/
+                            <button class="btn-md fil-cat filter" data-rel="recor" data-filter=".Recordações">RECORDAÇÕES</button>/
+                            <button class="btn-md fil-cat filter" data-rel="beeloja" data-filter=".BeeLoja">BEELOJA</button>
                         </div>
                     </div>
                     <div style="clear:both;"></div>
                     <div id="portfoliowork">
                         <% @portfolio.each do |portfolio|%>
-                            <div class="single_portfolio tile scale-anm web grid-item-width2 beeloja"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=portfolio.image.url(:menor)%> alt=
-                                <%=portfolio.caption%>> <a href=<%=portfolio.image.url(:menor)%> class="portfolio-img" title="<%=portfolio.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=portfolio.caption%></h3> <p>Beeloja</p></div></a> </div>
+                            <div class="single_portfolio tile scale-anm web grid-item-width2 <%portfolio.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
+                                <%=portfolio.caption%>> <a href=<%=post_path(portfolio)%> class="portfolio-img" title="<%=portfolio.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=portfolio.caption%></h3> <p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></div></a> </div>
                             <%end%>
                     </div>
                     <div style="clear:both;"></div>
@@ -894,14 +843,14 @@
                     <div class="head_title text-center">
                         <p style='margin-bottom:0px; font-size:30px'>Veja mais Modelos</p>
                         <div class="separator"></div>
-                        <br><a href=<%=galeria_path%> class="btn btn-store smooth-scroll font-bold degrade" title=Galeria>Portfolio</a> </div>
+                        <br><a href=<%=posts_path%> class="btn btn-store smooth-scroll font-bold degrade" title=Galeria>Portfolio</a> </div>
                 </div>
             </div>
         </div>
     </div>
     <br>
     <br>
-    <section class="padding-top-bottom light-typo color-bg" style='padding-bottom:100px'>
+    <section class="padding-top-bottom light-typo color-bg" style='padding-bottom:100px;background: #009fab url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center;box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);'>
         <div class=container>
             <div class="col-sm-12">
                 <div class="head_title text-center">
@@ -1052,7 +1001,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 no-padding">
                                         <div class="single_blog_img">
-                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[0].attachment.url%> alt='
+                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[0].attachment.url(:index)%> alt='
                                                 <%=@blog[0].title%>'>
                                                     <div style='padding-bottom:66.6%'></div>
                                             </div>
@@ -1061,7 +1010,7 @@
                                     <div class="col-sm-6 no-padding" style='max-height:417px'>
                                         <div class="single_blog_text s_b_left">
                                             <p>
-                                                <%=@blog[0].user.completo%>
+                                                <%=@blog[0].user.name%>
                                             </p>
                                             <h3><%=@blog[0].title%></h3>
                                             <div class="separator2"></div>
@@ -1077,7 +1026,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 no-padding">
                                         <div class="single_blog_img">
-                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[1].attachment.url%> alt='
+                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[1].attachment.url(:index)%> alt='
                                                 <%=@blog[1].title%>'>
                                                     <div style='padding-bottom:66.6%'></div>
                                             </div>
@@ -1086,7 +1035,7 @@
                                     <div class="col-sm-6 no-padding" style='max-height:417px'>
                                         <div class="single_blog_text s_b_left" style='background-color: #3F315D'>
                                             <p>
-                                                <%=@blog[1].user.completo%>
+                                                <%=@blog[1].user.name%>
                                             </p>
                                             <h3><%=@blog[1].title%></h3>
                                             <div class="separator2"></div>
@@ -1102,7 +1051,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-sm-push-6 no-padding">
                                         <div class="single_blog_img">
-                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[2].attachment.url%> alt='
+                                            <div class="imgcontainer"> <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[2].attachment.url(:index)%> alt='
                                                 <%=@blog[2].title%>'>
                                                     <div style='padding-bottom:66.6%'></div>
                                             </div>
@@ -1111,7 +1060,7 @@
                                     <div class="col-sm-6 col-sm-pull-6 no-padding" style='max-height:417px'>
                                         <div class="single_blog_text s_b_right" style='background-color: #3F315D'>
                                             <p>
-                                                <%=@blog[2].user.completo%>
+                                                <%=@blog[2].user.name%>
                                             </p>
                                             <h3><%=@blog[2].title%></h3>
                                             <div class="separator2"></div>
@@ -1127,7 +1076,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-sm-push-6 no-padding">
                                         <div class="single_blog_img">
-                                            <div class="imgcontainer" data-large=<%=@blog[3].attachment.url%> > <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[3].attachment.url%> alt='
+                                            <div class="imgcontainer" data-large=<%=@blog[3].attachment.url%> > <img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@blog[3].attachment.url(:index)%> alt='
                                                 <%=@blog[3].title%>'>
                                                     <div style='padding-bottom:66.6%'></div>
                                             </div>
@@ -1136,7 +1085,7 @@
                                     <div class="col-sm-6 col-sm-pull-6 no-padding" style='max-height:417px'>
                                         <div class="single_blog_text s_b_right">
                                             <p>
-                                                <%=@blog[3].user.completo%>
+                                                <%=@blog[3].user.name%>
                                             </p>
                                             <h3><%=@blog[3].title%></h3>
                                             <div class="separator2"></div>
@@ -1217,14 +1166,11 @@
                     <div class="separator separator_escuro"></div>
                 </div>
             </div>
-            <form action=<%=contatos_path%> method=post novalidate id=contact-form onsubmit="alert(&#39;Obrigado pelo contato. Entraremos em contato por email em breve!&#39;)">
+            <%= simple_form_for @contato, html: { multipart: true, id:'contact-form' } do |f| %>
                 <div class=row>
-                    <div class="col-xs-12 col-sm-12 col-md-4 contact-info cta-message anima fade-right"><address><strong>BEEPRINTED</strong><br>EQN 406/407, Asa Norte<br>Edifício Salim Bittar*, Sl. 125<br>Brasília-DF 70847-400<br>contato@beeprinted.com.br<br>(61) 9 9996-0874<br>(61) 9 8235-1095<br><div style=font-size:16px>*Edifício da Smart Fit</div></address></div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 anima fade-up d1">
+                    <div class="col-xs-12 col-sm-12 col-md-4 contact-info cta-message"><address><strong>BEEPRINTED</strong><br>EQN 406/407, Asa Norte<br>Edifício Salim Bittar*, Sl. 125<br>Brasília-DF 70847-400<br>contato@beeprinted.com.br<br>(61) 9 9996-0874<br>(61) 9 8235-1095<br><div style=font-size:16px>*Edifício da Smart Fit</div></address></div>
+                    <div class="col-xs-12 col-sm-12 col-md-8 d1">
                         <div class=form-group>
-                            <% flash.each do |key, value| %>
-                                <%=content_tag :div, value, class: "flash #{key}", class:"beered" %>
-                                    <% end %>
                                         <label class=control-label for=contact-name>Nome</label>
                                         <div class=controls>
                                             <input id=contact-name name=contato[name] placeholder=Nome class="form-control input-lg requiredField" type=text>
@@ -1248,7 +1194,7 @@
                         <input type=hidden name=commit id=contato_submit value="Enviar Mensagem">
                     </div>
                 </div>
-            </form>
+            <%end%>
         </div>
     </section>
     <footer id=main-footer class="dark-bg light-typo">
@@ -1261,12 +1207,12 @@
             <div class=row>
                 <div class=w3-center>
                     <div class="col-md-4 col-sm-4 news anima fade-up">
-                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Categorias</p><a href=<%=galeria_decoracao_path%> style=color:white title=Decoração><p style=margin-bottom:0px>Decoração</p></a><a href=<%=galeria_cultura_path%> style=color:white title='Cultura Pop'><p style=margin-bottom:0px>Cultura Pop</p></a><a href=<%=galeria_utensilios_path%> style=color:white title=Utilidades><p style=margin-bottom:0px>Utilidades</p></a><a href=<%=galeria_jogos_path%> style=color:white title=Diversão><p style=margin-bottom:0px>Diversão</p></a></div>
+                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Categorias</p><a href='' style=color:white title=Decoração><p style=margin-bottom:0px>Decoração</p></a><a href='' style=color:white title='Cultura Pop'><p style=margin-bottom:0px>Cultura Pop</p></a><a href='' style=color:white title=Utilidades><p style=margin-bottom:0px>Utilidades</p></a><a href='' style=color:white title=Diversão><p style=margin-bottom:0px>Diversão</p></a></div>
                     <div class="col-md-4 col-sm-4 anima fade-up d2">
-                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Conteúdo</p><a href=<%=politica_devolucao_path%> style=color:white title='Política de Envio, Trocas e Devoluções'><p style=margin-bottom:0px>Política de Envio, Trocas e Devoluções</p></a><a href=<%=politica_privacidade_path%> style=color:white title='Política de Privacidade'><p style=margin-bottom:0px>Política de Privacidade</p></a>
+                        <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Conteúdo</p><a href='' style=color:white title='Política de Envio, Trocas e Devoluções'><p style=margin-bottom:0px>Política de Envio, Trocas e Devoluções</p></a><a href='' style=color:white title='Política de Privacidade'><p style=margin-bottom:0px>Política de Privacidade</p></a>
                         <a href=#contact style=color:white title=Contato>
                             <p style=margin-bottom:0px>Fale Conosco</p>
-                        </a><a href=<%=buttercms_blog_path%> style=color:white title=Blog><p style=margin-bottom:0px>Blog</p></a></div>
+                        </a><a href='' style=color:white title=Blog><p style=margin-bottom:0px>Blog</p></a></div>
                     <div class="col-md-4 col-sm-4 anima fade-up d2">
                         <p class=font-bold style=margin-top:10px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;font-size:24px>Social</p>
                         <div class='social-links text-center'>
@@ -1281,23 +1227,12 @@
             <br>
             <p class="pull-left copyright" style='margin-bottom:0px; font-size:16px'>Copyright © Beeprinted 2018.</p>
         </div>
-        <div class=beehide>
-            <% flash.each do |key, value| %>
-                <%=content_tag :div, value, class: "flash #{key}" %>
-                    <% end %>
-        </div>
         <div itemscope itemtype=http://data-vocabulary.org/Organization class=beehide>
             <h3 itemprop=name>Beeprinted – Impressão 3D de Ideias</h3>
             <p itemprop=tel>61 9 9996-0874</p>
             <p itemprop=address itemscope itemtype=http://data-vocabulary.org/Address><span itemprop=street-address>EQN 406/407 Prédio Salim Bitar, sala 125</span>,<span itemprop=locality>Asa Norte, Brasília</span>,<span itemprop=region>DF</span>.</p>
         </div>
     </footer>
-    <div style='display:none'>
-        <% flash.each do |key, value| %>
-            <%=content_tag :div, value, class: "flash #{key}" %>
-                <% end %>
-    </div>
-    <noscript id=deferred-styles></noscript>
     <!--<script type=text/javascript src='https://s3.amazonaws.com/beeprinted-stls/assets/indexnew10.js'></script> <script defer src="https://s3.amazonaws.com/beeprinted-stls/assets/Nova/assets/js/jquery.mixitup.min.js"></script>-->
     <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js"></script>
     <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/modernizr-custom-min.js"></script>

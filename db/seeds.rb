@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Categorium.create(name: "Prototipagem")
+#Categorium.create(name: "Corporativo")
+#Categorium.create(name: "Tecnologia")
+#Categorium.create(name: "Recordações")
+#Categorium.create(name: "Curiosidades")
+Service.create(name: "Prototipagem")
+Service.create(name: "Corporativo")
+Service.create(name: "Recordações")
+Service.create(name: "BeeLoja")

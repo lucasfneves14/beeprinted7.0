@@ -35,26 +35,43 @@
 	        <div class="dz-error-message">
 	          <span data-dz-errormessage=""></span>
 	        </div>  
-	        <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=peca.id%>">Remover arquivo</a></div>
+	        <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=image.id%>">Remover arquivo</a></div>
 	    <%end%>
 	    </div>
 	  <%end%>
 
 
-	  <%= simple_form_for @post, html: { multipart: true, class:'w3-center' },style:'color:#616161' do |f| %>
+	  <%= simple_form_for @post, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
       <%= f.error_notification%>
       <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %></div>
-      <div id='antesdoupload' style='display:none'>
+      <div id='antesdoupload' style=''>
         <br>
         <div class=row>
-        	<h4>Título</h4>
+          <div class='col-md-6'>
+        	  <h4>Título</h4>
             <div class="form-group text-center" id="formgroup2">
               <%= f.input :caption, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' %>
             </div>
+            <h4>Categorias</h4>
+            <div class="form-group" id="formgroup2">
+              <%= f.collection_check_boxes :service_ids, Service.all, :id, :name do |b| %>
+                <div class="collection-check-box">
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+              <%end%>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <h4>Descrição</h4>
+            <div class="form-group text-center">
+              <%= f.input :description,label:false, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+            </div>
+          </div>
         </div>
       </div>
       <hr class='hrbee'>
-        <div class='row'>
+        <div class='row w3-center'>
           <div class='col-md-6'>
             <h4>O que acontece depois de enviar o(s) Modelo(s)?</h4>
             <div class='row'>
@@ -88,11 +105,7 @@
           </div>
         </div>
         <hr class='hrbee'>
-        <%=f.submit "Enviar Modelo 3D", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento', onclick:"$('#loader-imprimir-beebox').show(); $('#button-orcamento').hide();" %>
-        <div id="loader-imprimir-beebox" class="w3-center loader_imprimir" style="display:none">
-            <img id="logo" src="../images/loading/LoadGIF.gif" alt="Loading" height="42" width="40">
-            <h3 style="color:#009FAB"><strong>Enviando as Imagens...</strong></h3>
-        </div>
+        <%=f.submit "Enviar Projeto", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento' %>
       </div>
       <br>
   <%end%>
@@ -132,7 +145,7 @@ $(document).ready(function(){
 
      $.ajax({
         type: 'DELETE',
-        url: '/enviar/' + iddeletar,
+        url: '/image/' + iddeletar,
         success: function(data){
           deletarID = 'deletar-' + iddeletar;
           $('#'+deletarID).hide();
