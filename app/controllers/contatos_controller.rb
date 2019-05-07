@@ -2,6 +2,7 @@ class ContatosController < ApplicationController
 	def create
 		@contato = Contato.create(contato_params)
 		if @contato.save
+			ContatoMailer.contato_email(@contato).deliver
 			flash[:success] = "Seu pedido de contato foi enviado! Em breve, entraremos em contato por email."
 			redirect_back fallback_location: root_path
 		else

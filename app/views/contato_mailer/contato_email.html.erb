@@ -5,24 +5,17 @@
   <br>
   <br>
   <br>
-	<h2 class="w3-center" style='text-align:center;'>Olá Lucas</h2>
-	<h3 class="w3-center" style='text-align:center;'>Recebemos mais um pedido de orçamento pelo site!</h3>
+	<h2 class="w3-center" style='text-align:center;'>Olá Thiago</h2>
+	<h3 class="w3-center" style='text-align:center;'>Recebemos mais um contato pelo site!</h3>
 	<div class="image-upload w3-center" style='text-align:center;'>
 		 <%= image_tag "https://beeprinted.com.br/images/LOGO-claro.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
 	</div>
 
 	<h3 style='text-align:center;'>A mensagem enviada foi: </h3>
-	<h3 style='text-align:center;'><i>"<%=@orcamento.description%>"</i></h3>
+	<h3 style='text-align:center;'><i>"<%=@contato.mensagem%>"</i></h3>
 
-	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@user.name%> <%=@user.sobrenome%></i></h3>
-	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@user.email%></i></h3>
-
-	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
-	<%@orcamento.arquivos.each_with_index do |arquivo, index|%>
-	    <p>Link: <%=arquivo.attachment.url%></p>
-
-	<%end%>
-
+	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@contato.name%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@contato.email%></i></h3>
 
 	<h3 style='text-align:center;'>Por favor, responda o mais rápido possível pelo seu email institucional.</h3>
 	<h3 style='text-align:center;'>Muito Obrigado!</h3>

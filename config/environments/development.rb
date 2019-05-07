@@ -59,6 +59,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   #config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.active_job.queue_adapter = :delayed_job
+
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp

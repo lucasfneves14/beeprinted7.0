@@ -37,7 +37,7 @@ class OrcamentosController < ApplicationController
     end
     @user = current_user
     if @orcamento.save
-      OrcamentoMailer.orcamento_email(@user, @orcamento).deliver
+      SendEmailJob.set(wait: 20.seconds).perform_later(@user, @orcamento)
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to root_path
     else
