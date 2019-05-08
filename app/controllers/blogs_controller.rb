@@ -5,9 +5,10 @@ class BlogsController < ApplicationController
 
   # Index action to render all posts
   def index
-    @blogs = Blog.all.order('created_at DESC')
-    @blog1 = @blogs.limit(3)
-    @popular = @blogs.limit(4)
+    blogs = Blog.all.order('created_at DESC')
+    @blog1 = blogs.limit(3)
+    @popular = blogs.limit(4)
+    @blogs = blogs - @blog1
   end
 
   # New action for creating post
