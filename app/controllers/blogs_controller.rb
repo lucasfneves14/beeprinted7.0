@@ -18,6 +18,18 @@ class BlogsController < ApplicationController
   # Create action saves the post into database
   def create
     @blog = current_user.blogs.build(blog_params)
+    string = @blog.body
+    string1 = "src=\""
+    string2 = "\""
+    stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    while stringsrc do
+      string[/#{string1}(.*?)#{string2}/m,1]
+      string_rep = "#{string1}#{stringsrc}#{string2}"
+      string.sub! "#{string_rep}", "class=lazyload data-src=#{stringsrc}"
+      stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    end
+    @blog.body = string
+
     if @blog.save
       flash[:notice] = "O Artigo foi criado com sucesso! Boa #{current_user.name} ;)"
       redirect_to blog_path(@blog.url)
@@ -29,11 +41,33 @@ class BlogsController < ApplicationController
 
   # Edit action retrives the post and renders the edit page
   def edit
+    string = @blog.body
+    string1 = "class=lazyload data-src="
+    string2 = " "
+    stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    while stringsrc do
+      string[/#{string1}(.*?)#{string2}/m,1]
+      string_rep = "#{string1}#{stringsrc}#{string2}"
+      string.sub! "#{string_rep}", "src=\"#{stringsrc}\""
+      stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    end
+    @blog.body = string
   end
 
   # Update action updates the post with the new information
   def update
     @blog = Blog.find(params[:id])
+    string = @blog.body
+    string1 = "src=\""
+    string2 = "\""
+    stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    while stringsrc do
+      string[/#{string1}(.*?)#{string2}/m,1]
+      string_rep = "#{string1}#{stringsrc}#{string2}"
+      string.sub! "#{string_rep}", "class=lazyload data-src=#{stringsrc}"
+      stringsrc= string[/#{string1}(.*?)#{string2}/m,1]
+    end
+    @blog.body = string
     if @blog.update_attributes(blog_params)
       flash[:notice] = "O artigo foi editado com sucesso!"
       redirect_to blog_path(@blog.url)

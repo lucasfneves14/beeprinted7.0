@@ -5,7 +5,6 @@ class Blog < ApplicationRecord
 
 	validates :title, presence: true
 	validates :summary, presence: true
-	validates :attachment, presence: true
 	validates :url, presence: true
 	validates :seo_title, presence: true
 	validates :seo_meta, presence: true
