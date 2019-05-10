@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   delete 'image/:id', to: 'images#destroy', as: :image
   delete 'arquivo/:id', to: 'arquivos#destroy', as: :arquivo
   get "test_exception_notifier" => "application#test_exception_notifier"
+
+
+  match "/404", :to => "not_found#not_found", :via => :all
+  match "/500", :to => "not_found#internal_server_error", :via => :all
 end
