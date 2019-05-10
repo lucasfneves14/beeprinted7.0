@@ -79,14 +79,14 @@
 						<div class="post-nav">
 							<%if @previous%>
 							<div class="prev-post">
-								<a class="post-img" href=<%=blog_path(@previous.url)%>><img src=<%=@previous.attachment.url(:thumb)%> alt=""></a>
+								<a class="post-img" href=<%=blog_path(@previous.url)%>><img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@previous.attachment.url(:thumb)%> alt=""></a>
 								<h3 class="post-title"><a href="#"><%=@previous.title%></a></h3>
 								<span>Artigo anterior</span>
 							</div>
 							<%end%>
 							<%if @next%>
 							<div class="next-post">
-								<a class="post-img" href=<%=blog_path(@next.url)%>><img src=<%=@next.attachment.url(:thumb)%> alt=""></a>
+								<a class="post-img" href=<%=blog_path(@next.url)%>><img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@next.attachment.url(:thumb)%> alt=""></a>
 								<h3 class="post-title"><a href="#"><%=@next.title%></a></h3>
 								<span>Próximo artigo</span>
 							</div>
@@ -129,7 +129,7 @@
 							<%@relacionados.each do |relacionado|%>
 							<div class="col-md-4" style='border:10px'>
 								<div class="post post-sm">
-									<a class="post-img" href=<%=blog_path(relacionado.url)%>><img src=<%=relacionado.attachment.url(:relacionados)%> alt=""></a>
+									<a class="post-img" href=<%=blog_path(relacionado.url)%>><img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=relacionado.attachment.url(:relacionados)%> alt=""></a>
 									<div class="post-body">
 										<div class="post-category">
 											<%relacionado.categorium.each do |categoria|%>
