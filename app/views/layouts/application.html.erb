@@ -39,7 +39,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script>
         var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lib-menos-jquery.js", "https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lazy.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>];
         var stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
