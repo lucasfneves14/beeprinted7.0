@@ -46,10 +46,10 @@
 					<!-- post share -->
 					<div class="section-row">
 						<div class="post-share">
-							<a href="https://www.facebook.com/sharer/sharer.php?u=<%=blog_path(@blog.url)%>" class="social-facebook"><i class="fa fa-facebook"></i><span>Share</span></a>
-							<a href="#" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
-							<a href="#" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
-							<a href="#" ><i class="fa fa-envelope"></i><span>Email</span></a>
+							<a href="https://www.facebook.com/sharer/sharer.php?u=https://beeprinted.com.br<%=blog_path(@blog.url)%>" class="social-facebook"><i class="fa fa-facebook"></i><span>Share</span></a>
+							<a href="https://twitter.com/intent/tweet?text=https://beeprinted.com.br<%=blog_path(@blog.url)%>" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+							<a href="https://www.linkedin.com/shareArticle?mini=true&url=https://beeprinted.com.br<%=blog_path(@blog.url)%>" class="social-pinterest" style='background: #127bb6 !important'><i class="fa fa-linkedin"></i><span>Linkedin</span></a>
+							<a href="#" class="social-pinterest"><i class="fa fa-google-plus"></i><span>Plus</span></a>
 						</div>
 					</div>
 					<!-- /post share -->
@@ -155,11 +155,6 @@
 				</div>
 				<div class="col-md-4">
 					<!-- ad widget -->
-					<div class="aside-widget text-center">
-						<a href="#" style="display: inline-block;margin: auto;">
-							<img class="img-responsive" src="./img/ad-3.jpg" alt="">
-						</a>
-					</div>
 					<%=render 'coluna', popular: @popular%>
 				</div>
 			</div>

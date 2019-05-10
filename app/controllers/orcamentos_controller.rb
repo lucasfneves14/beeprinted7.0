@@ -1,5 +1,6 @@
 class OrcamentosController < ApplicationController
   before_action :set_orcamento, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, raise: false, only:[:new, :create,:edit,:update]
 
   # GET /orcamentos
   # GET /orcamentos.json
@@ -26,7 +27,7 @@ class OrcamentosController < ApplicationController
   # POST /orcamentos
   # POST /orcamentos.json
   def create
-    @orcamento = Orcamento.create(orcamento_params)
+    @orcamento = current_user.orcamentos.build(orcamento_params)
     array = @orcamento.array.split(",")
     array.each do |file|
       puts file
@@ -35,7 +36,7 @@ class OrcamentosController < ApplicationController
         @orcamento.arquivos << arquivo
       end
     end
-    @user = current_user
+    @user = @orcamento.user
     if @orcamento.save
       OrcamentoMailer.orcamento_email(@user, @orcamento).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."

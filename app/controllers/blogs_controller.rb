@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
 
   # Index action to render all posts
   def index
-    blogs = Blog.all.order('created_at DESC')
+    blogs = Blog.all.includes(:categorium, :user).order('created_at DESC')
     @blog1 = blogs.limit(3)
     @popular = blogs.limit(4)
     @blogs = blogs - @blog1
@@ -80,7 +80,7 @@ class BlogsController < ApplicationController
 
   # The show action renders the individual post after retrieving the the id
   def show
-    @blogs = Blog.all.where.not(id: @blog.id).order('created_at DESC')
+    @blogs = Blog.all.includes(:categorium, :user).where.not(id: @blog.id).order('created_at DESC')
     @previous = @blogs.where("id < ?", @blog.id).last
     @next = @blogs.where("id > ?", @blog.id).first
     @relacionados = @blogs.limit(3)
@@ -104,6 +104,6 @@ class BlogsController < ApplicationController
   end
 
   def find_blog
-    @blog = Blog.find_by(url: params[:id])
+    @blog = Blog.includes(:categorium, :user).find_by(url: params[:id])
   end
 end

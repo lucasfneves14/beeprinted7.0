@@ -4,6 +4,9 @@
 .post .post-title{
   min-height: 38px;
 }
+li::after{
+  content:'' !important;
+}
 </style>
 
 <%end%>
@@ -20,12 +23,12 @@
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[0].categorium.each do |categoria|%>
-                  <a href="category.html"><%=categoria.name%></a>
+                  <a href=""><%=categoria.name%></a>
                 <%end%>
               </div>
-              <h3 class="post-title title-lg"><a href="blog-post.html"><%=@blog1[0].title%></a></h3>
+              <h3 class="post-title title-lg"><a href=<%=blog_path(@blog1[0].url)%>><%=@blog1[0].title%></a></h3>
               <ul class="post-meta">
-                <li><a href="author.html"><%=@blog1[0].user.name%> <%=@blog1[0].user.sobrenome%></a></li>
+                <li><%=@blog1[0].user.name%> <%=@blog1[0].user.sobrenome%></li>
                 <li><%=@blog1[0].created_at.strftime("%d %B %Y")%></li>
               </ul>
             </div>
@@ -39,12 +42,12 @@
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[1].categorium.each do |categoria|%>
-                <a href="category.html"><%=categoria.name%></a>
+                <a href=""><%=categoria.name%></a>
                 <%end%>
               </div>
-              <h3 class="post-title"><a href="blog-post.html"><%=@blog1[1].title%></a></h3>
+              <h3 class="post-title"><a href=<%=blog_path(@blog1[1].url)%>><%=@blog1[1].title%></a></h3>
               <ul class="post-meta">
-                <li><a href="author.html"><%=@blog1[1].user.name%> <%=@blog1[1].user.sobrenome%></a></li>
+                <li><%=@blog1[1].user.name%> <%=@blog1[1].user.sobrenome%></li>
                 <li><%=@blog1[1].created_at.strftime("%d %B %Y")%></li>
               </ul>
             </div>
@@ -57,12 +60,12 @@
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[2].categorium.each do |categoria|%>
-                <a href="category.html"><%=categoria.name%></a>
+                <a href=""><%=categoria.name%></a>
                 <%end%>
               </div>
-              <h3 class="post-title"><a href="blog-post.html"><%=@blog1[2].title%></a></h3>
+              <h3 class="post-title"><a href=<%=blog_path(@blog1[2].url)%>><%=@blog1[2].title%></a></h3>
               <ul class="post-meta">
-                <li><a href="author.html"><%=@blog1[2].user.name%> <%=@blog1[2].user.sobrenome%></a></li>
+                <li><%=@blog1[2].user.name%> <%=@blog1[2].user.sobrenome%></li>
                 <li><%=@blog1[2].created_at.strftime("%d %B %Y")%></li>
               </ul>
             </div>
@@ -97,11 +100,11 @@
                 <a class="post-img" href=<%=blog_path(blog.url)%>><img src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
                 <div class="post-body">
                   <div class="post-category">
-                    <a href="category.html"></a>
+                    <a href=""></a>
                   </div>
-                  <h3 class="post-title"><a href="blog-post.html"><%=blog.title%></a></h3>
+                  <h3 class="post-title"><a href=<%=blog_path(blog.url)%>><%=blog.title%></a></h3>
                   <ul class="post-meta">
-                    <li><a href="author.html"><%=blog.user.name%> <%=blog.user.sobrenome%></a></li>
+                    <li class='font-bold'><%=blog.user.name%> <%=blog.user.sobrenome%></li>
                     <li><%=blog.created_at.strftime("%d %B %Y")%></li>
                   </ul>
                 </div>
@@ -116,36 +119,11 @@
         </div>
         <div class="col-md-4">
           <!-- ad widget-->
-          <div class="aside-widget text-center">
-            <a href="#" style="display: inline-block;margin: auto;">
-              <img class="img-responsive" src="./img/ad-3.jpg" alt="">
-            </a>
-          </div>
           <!-- /ad widget -->
 
           <!-- social widget -->
         <%=render 'coluna', popular: @popular%>
         </div>
-      </div>
-      <!-- /row -->
-    </div>
-    <!-- /container -->
-  </div>
-  <!-- /SECTION -->
-
-  <!-- SECTION -->
-  <div class="section">
-    <!-- container -->
-    <div class="container">
-      <!-- row -->
-      <div class="row">
-        <!-- ad -->
-        <div class="col-md-12 section-row text-center">
-          <a href="#" style="display: inline-block;margin: auto;">
-            <img class="img-responsive" src="./img/ad-2.jpg" alt="">
-          </a>
-        </div>
-        <!-- /ad -->
       </div>
       <!-- /row -->
     </div>

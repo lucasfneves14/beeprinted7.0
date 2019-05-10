@@ -5,19 +5,19 @@
             <div class="social-widget">
               <ul>
                 <li>
-                  <a href="#" class="social-facebook">
+                  <a href="https://www.facebook.com/beeprinted/" class="social-facebook">
                     <i class="fa fa-facebook"></i>
                     <span>483<br>Seguidores</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="social-twitter">
+                  <a href="https://twitter.com/beeprinted" class="social-twitter">
                     <i class="fa fa-twitter"></i>
                     <span>65<br>Seguidores</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="social-google-plus" style='background-color:#7232bd !important'>
+                  <a href="https://www.instagram.com/beeprinted/" class="social-google-plus" style='background-color:#7232bd !important'>
                     <i class="fa fa-instagram"></i>
                     <span>4.5K<br>Seguidores</span>
                   </a>
@@ -35,7 +35,7 @@
             <div class="category-widget">
               <ul>
                 <%Categorium.all.each do |categoria|%>
-                <li><a href="#"><%=categoria.name%><span><%=categoria.blogs.count%></span></a></li>
+                <li><a href=""><%=categoria.name%><span><%=categoria.blogs.count%></span></a></li>
                 <%end%>
               </ul>
             </div>
@@ -69,7 +69,7 @@
               <div class="post-body">
                 <div class="post-category">
                 <%popular.categorium.each do |categoria|%>
-                  <a href="category.html"><%=categoria.name%></a>
+                  <a href=""><%=categoria.name%></a>
                 <%end%>
                 </div>
                 <h3 class="post-title"><a href=<%=blog_path(popular.url)%>><%=popular.title%></a></h3>

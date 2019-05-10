@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   has_many :blogs, dependent: :destroy
+  has_many :orcamentos, dependent: :destroy
 
   validates :sobrenome, presence: true
   validates :name, presence: true

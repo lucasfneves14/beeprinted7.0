@@ -1,10 +1,10 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class ArquivoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :fog
+  #storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -29,57 +29,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :optimize
-  version :thumb do
-     #process resize_to_fit: [300, nil]
-     process resize_and_crop: 368
-     process :optimize
-  end
-  version :port_first do
-    process resize_and_crop: 280
-    process :optimize
-  end
-  version :port_other do
-    process resize_and_crop: 140
-    process :optimize
-  end
+  # version :thumb do
+  #   process resize_to_fit: [50, 50]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_whitelist
-     %w(pdf doc docx)
-   end
-
-
-
-  private
-
-  def resize_and_crop(size)  
-    manipulate! do |image|                 
-      if image[:width] < image[:height]
-        remove = ((image[:height] - image[:width])/2).round 
-        image.shave("0x#{remove}") 
-      elsif image[:width] > image[:height] 
-        remove = ((image[:width] - image[:height])/2).round
-        image.shave("#{remove}x0")
-      end
-      image.resize("#{size}x#{size}")
-      image
-    end
-  end
-
-  def optimize
-  manipulate! do |img|
-      return img unless img.mime_type.match /image\/jpeg/
-      img.strip
-      img.combine_options do |c|
-          c.quality "80"
-          c.depth "8"
-          c.interlace "plane"
-      end
-      img
-  end
-end
+  # def extension_whitelist
+  #   %w(jpg jpeg gif png)
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

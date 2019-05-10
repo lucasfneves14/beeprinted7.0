@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 
+
+gem 'exception_notification', '4.3.0'
 gem 'fog-aws', '3.5.0'
 gem 'figaro'
 gem 'delayed_job_active_record', '4.1.3'

@@ -4,7 +4,7 @@ class ArquivosController < ApplicationController
   	if @arquivo.save
   		render json: { message: "success", fileID: @arquivo.id, filename: File.basename(@arquivo.attachment.path)}, :status => 200
     else
-    	render json: { error: @arquivo.errors.full_messages.join(',')}, :status => 400
+    	render json: { error: "Um ERRO ocorreu! Por favor, entre em contato em contato@beeprinted.com.br"}, :status => 400
     end
 
   end
