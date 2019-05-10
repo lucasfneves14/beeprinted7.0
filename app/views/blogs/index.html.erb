@@ -1,5 +1,5 @@
 <%= content_for(:css) do %>
-<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Blogs/blog.css">
+<link rel="stylesheet" href="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/Blogs/blog.css">
 <style>
 .post .post-title{
   min-height: 38px;
@@ -19,7 +19,7 @@ li::after{
         <div class="col-md-8 hot-post-left">
           <!-- post -->
           <div class="post post-thumb">
-            <a class="post-img" href=<%=blog_path(@blog1[0].url)%>><img src=<%=@blog1[0].attachment.url(:first_index)%> alt=""></a>
+            <a class="post-img" href=<%=blog_path(@blog1[0].url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" class='lazyload' data-src=<%=@blog1[0].attachment.url(:first_index)%> alt=""></a>
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[0].categorium.each do |categoria|%>
@@ -38,7 +38,7 @@ li::after{
         <div class="col-md-4 hot-post-right">
           <!-- post -->
           <div class="post post-thumb">
-            <a class="post-img" href=<%=blog_path(@blog1[1].url)%>><img src=<%=@blog1[1].attachment.url(:relacionados)%> alt=""></a>
+            <a class="post-img" href=<%=blog_path(@blog1[1].url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" class='lazyload' data-src=<%=@blog1[1].attachment.url(:relacionados)%> alt=""></a>
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[1].categorium.each do |categoria|%>
@@ -56,7 +56,7 @@ li::after{
 
           <!-- post -->
           <div class="post post-thumb">
-            <a class="post-img" href=<%=blog_path(@blog1[2].url)%>><img src=<%=@blog1[2].attachment.url(:relacionados)%> alt=""></a>
+            <a class="post-img" href=<%=blog_path(@blog1[2].url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog1[2].attachment.url(:relacionados)%> class='lazyload' alt=""></a>
             <div class="post-body">
               <div class="post-category">
                 <%@blog1[2].categorium.each do |categoria|%>
@@ -97,7 +97,7 @@ li::after{
             <%@blogs.each do |blog|%>
             <div class="col-md-6">
               <div class="post">
-                <a class="post-img" href=<%=blog_path(blog.url)%>><img src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
+                <a class="post-img" href=<%=blog_path(blog.url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" class='lazyload' data-src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
                 <div class="post-body">
                   <div class="post-category">
                     <a href=""></a>

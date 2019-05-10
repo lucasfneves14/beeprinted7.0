@@ -290,13 +290,14 @@
 </style>
 <%end%>
 
-<section id="portfolio" class="portfolio sections" style='padding-top:100px; padding-left:100px;padding-right:100px;background:#fff url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center'>
+<section id="portfolio" class="portfolio sections" style='background:#fff url(https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/poly-min.png) repeat center center'>
         <div class="container-fluid">
             <div class="row">
                 <div class="main_portfolio">
                     <div class="col-sm-12">
-                        <div class="head_title">
+                        <div class="head_title w3-center">
                             <h2 style='color:#009fab'>NOSSOS PROJETOS</h2>
+                            <div class="separator"></div>
                             <div class="subtitle"> Conheça um pouco dos trabalhos já realizados pelos makers cadastrados em nossa plataforma. </div>
                         </div>
                     </div>
@@ -312,7 +313,7 @@
                     <div style="clear:both;"></div>
                     <div id="portfoliowork">
                         <% @posts.each do |post|%>
-                            <div class="single_portfolio tile scale-anm web grid-item-width2 <%post.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=post.images.first.attachment.url(:thumb)%> alt=
+                            <div class="single_portfolio tile scale-anm web grid-item-width2 <%post.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=post.images.first.attachment.url(:thumb)%> alt=
                                 <%=post.caption%>> <a href=<%=post_path(post.id)%> class="portfolio-img" title="<%=post.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=post.caption%></h3> <p><%post.services.each do |service|%><%=service.name%> <%end%></p></div></a> </div>
                             <%end%>
                     </div>

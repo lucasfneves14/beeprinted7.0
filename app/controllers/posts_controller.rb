@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!, raise: false
   skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :owned_post, only: [:edit, :update, :destroy]
   def index
   	@posts = Post.all
@@ -77,6 +78,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless current_user == @post.user
       flash[:alert] = "Esse projeto não pertence a você!"
+      redirect_to posts_path
+    end
+  end
+
+
+  def admin
+    unless current_user.admin
+      flash[:alert] = "Acesso negado!"
       redirect_to posts_path
     end
   end

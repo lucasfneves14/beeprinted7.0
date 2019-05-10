@@ -56,13 +56,13 @@
   }
 </style>
 
-<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Posts/Show/photoswipe.css">
+<link rel="stylesheet" href="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/Posts/Show/photoswipe.css">
 
-<link rel="stylesheet" href="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/CSS/Posts/Show/default-skin.css">
+<link rel="stylesheet" href="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/Posts/Show/default-skin.css">
 
 <%end%>
 
-<section id="portfolio" class="portfolio sections" style='padding-top:100px; padding-left:100px;padding-right:80px; padding-bottom:90px;background:#009fab url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center; opacity:1;box-shadow: 0 0 10px 3px rgba(0,0,0,0.3) ;'>
+<section id="portfolio" class="portfolio sections" style='padding-top:100px; padding-left:100px;padding-right:80px; padding-bottom:90px;background:#009fab url(https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/poly-min.png) repeat center center; opacity:1;box-shadow: 0 0 10px 3px rgba(0,0,0,0.3) ;'>
         <div class="container-fluid">
             <div class="row">
                 <div class="main_portfolio">
@@ -87,12 +87,12 @@
                         <div class="images-container">
                             <div class="my-gallery" style='overflow:hidden; max-width:100%;y'>
                                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                    <a href=<%=@image.attachment.url%> style='width:40%;border-bottom:none; max-width:100%; float: left; border-right:2px solid transparent; box-sizing: border-box; line-height:0; word-spacing:normal; position:relative;display:block;text-decoration: none' title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=@image.attachment.url(:port_first)%> class="lazyload" width="600" height="600" alt="" title="" style='will-change:auto; height:auto;width:100%; max-width:100%;line-height:0; vertical-align:baseline; line-height:1.5'/></a>
+                                    <a href=<%=@image.attachment.url%> style='width:40%;border-bottom:none; max-width:100%; float: left; border-right:2px solid transparent; box-sizing: border-box; line-height:0; word-spacing:normal; position:relative;display:block;text-decoration: none' title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@image.attachment.url(:port_first)%> class="lazyload" width="600" height="600" alt="" title="" style='will-change:auto; height:auto;width:100%; max-width:100%;line-height:0; vertical-align:baseline; line-height:1.5'/></a>
                                 </figure>
                                 
                                 <%@images.each do |image|%>
                                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                    <a href=<%=image.attachment.url%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 2px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=image.attachment.url(:port_other)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
+                                    <a href=<%=image.attachment.url%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 2px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=image.attachment.url(:port_other)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
                                 </figure>
                                 <%end%>
                             </div>
@@ -120,7 +120,7 @@
                 
                 <div class=row style="padding-left:200px;padding-right:200px">
                 <%@recomendados.each do |recomendado|%>
-                    <a href=<%=post_path(recomendado)%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/imagens/loading-azul.gif" data-src=<%=recomendado.images.first.attachment.url(:port_first)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
+                    <a href=<%=post_path(recomendado)%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=recomendado.images.first.attachment.url(:port_first)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
                 <%end%>
                 </div>
                 </div>
@@ -129,7 +129,7 @@
         </div>
     </div>
 </div>
-<section id=contact class="padding-top-bottom" style='background:#009fab url(https://www.produtecalab.com.br/wp-content/themes/dt-the7/images/backgrounds/patterns/full/poly.png) repeat center center;box-shadow: 0 0 15px 1px rgba(0,0,0,0.5) ;'>
+<section id=contact class="padding-top-bottom" style='background:#009fab url(https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/poly-min.png) repeat center center;box-shadow: 0 0 15px 1px rgba(0,0,0,0.5) ;'>
         <div class=container>
             <div class="col-sm-12">
                 <div class="head_title text-center">

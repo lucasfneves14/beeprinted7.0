@@ -1,4 +1,4 @@
-<div class="container" style='margin-top:100px'>
+<div class="container" style='margin-top:80px'>
 	<div class="header">
         <h2 class="text-muted">FAÇA O SEU PEDIDO DE ORÇAMENTO</h2>
 
@@ -49,11 +49,14 @@
         <div class=row>
         	  <h4>Observaçoes</h4>
             <div class="form-group text-center" id="formgroup2">
-              <%= f.input :description, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' %>
+              <%= f.input :description, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' , :input_html =>{:rows => "5"}%>
             </div>
         </div>
       </div>
       <hr class='hrbee'>
+      <div class='container' style='text-align:right; margin-bottom: 15px'>
+          <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
+        </div>
         <div class='row w3-center'>
           <div class='col-md-6'>
             <h4>O que acontece depois de enviar o(s) Modelo(s)?</h4>
@@ -88,7 +91,6 @@
           </div>
         </div>
         <hr class='hrbee'>
-        <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento' %>
       </div>
       <br>
   <%end%>

@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
 	before_action :authenticate_user!, raise: false
-    skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy]
 	before_action :find_blog, only: [:edit, :update, :show, :delete]
 
   # Index action to render all posts
@@ -106,4 +107,11 @@ class BlogsController < ApplicationController
   def find_blog
     @blog = Blog.includes(:categorium, :user).find_by(url: params[:id])
   end
+
+  def admin
+    unless current_user.admin
+      redirect_to blogs_path
+    end
+  end
+
 end
