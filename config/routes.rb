@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   post 'contatos', to: 'contatos#create', as: :contatos
   delete 'image/:id', to: 'images#destroy', as: :image
   delete 'arquivo/:id', to: 'arquivos#destroy', as: :arquivo
+  get "test_exception_notifier" => "application#test_exception_notifier"
 end
