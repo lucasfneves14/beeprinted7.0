@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :blogs
   resources :newsletters
+  resources :profiles
   resources :posts,:path => "projeto", :controller=>"posts"
   post 'images', to: 'images#create', as: :images
   post 'arquivos', to: 'arquivos#create', as: :arquivos

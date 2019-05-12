@@ -1,0 +1,19 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>EDITE SEU PERFIL</h1>
+
+
+<%= simple_form_for @user, :url=> profile_path(@user), html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+	<%= f.error_notification%>
+	<div class="form-group text-center" id="formgroup2">
+       <%= f.input :avatar, label: false, placeholder: 'Imagem sua' %>
+    </div>
+    <div class="form-group text-center" id="formgroup2">
+      <%= f.input :description, label: false, placeholder: 'Adicione uma descricao sua' %>
+    </div>
+    <%=f.submit "Editar Perfil", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento' %>
+
+<%end%>

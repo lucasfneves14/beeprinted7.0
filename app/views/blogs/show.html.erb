@@ -12,7 +12,7 @@
 
 		<!-- PAGE HEADER -->
 		<div id="post-header" class="page-header">
-			<div class="page-header-bg" style="background-image: url('<%=@blog.attachment.url(:capa)%>');background-repeat: no-repeat; background-size: cover;" data-stellar-background-ratio="0.5"></div>
+			<div class="page-header-bg lazyload" data-src=<%=@blog.attachment.url(:capa)%> style="background-repeat: no-repeat; background-size: cover;" data-stellar-background-ratio="0.5"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-10">
@@ -103,11 +103,11 @@
 						<div class="author media">
 							<div class="media-left">
 								<a href="author.html">
-									<img class="author-img media-object" src="./img/avatar-1.jpg" alt="">
+									<img class="lazyload author-img media-object" data-src=<%=@blog.user.avatar.url(:thumb)%> alt="">
 								</a>
 							</div>
 							<div class="media-body">
-								<p>Falando aqui sobre o autor e tal... Tenho que falar com a Maria para ela escrever algo sobre ela.</p>
+								<p><%=@blog.user.description%></p>
 								<ul class="author-social">
 									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
