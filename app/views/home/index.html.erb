@@ -828,7 +828,7 @@
                     <div id="portfoliowork">
                         <% @portfolio.each do |portfolio|%>
                             <div class="single_portfolio tile scale-anm web grid-item-width2 <%portfolio.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
-                                <%=portfolio.caption%>> <a href=<%=post_path(portfolio)%> class="portfolio-img" title="<%=portfolio.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=portfolio.caption%></h3> <p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></div></a> </div>
+                                <%=portfolio.caption%>> <a href=<%=post_path(portfolio.url)%> class="portfolio-img" title="<%=portfolio.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=portfolio.caption%></h3> <p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></div></a> </div>
                             <%end%>
                     </div>
                     <div style="clear:both;"></div>

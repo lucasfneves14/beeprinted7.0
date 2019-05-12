@@ -42,15 +42,13 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @image = Image.new
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:success] = "Projeto Editado!"
-      redirect_to(post_path(@post))
+      redirect_to(post_path(@post.url))
     else
       flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
       render :edit
@@ -58,7 +56,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "Projeto excluído!"
       redirect_to posts_path
@@ -71,11 +68,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:caption, :array, :description, service_ids:[])
+    params.require(:post).permit(:caption,:url, :array, :description, service_ids:[])
   end
 
   def owned_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(url: params[:id])
     unless current_user == @post.user
       flash[:alert] = "Esse projeto não pertence a você!"
       redirect_to posts_path

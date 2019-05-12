@@ -53,6 +53,10 @@
             <div class="form-group text-center" id="formgroup2">
               <%= f.input :caption, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' %>
             </div>
+            <h4>URL - IMPORTANTÍSSIMO</h4>
+            <div class="form-group text-center" id="formgroup2">
+              <%= f.input :url, label: false, placeholder: 'Adicione aqui o URL do Post' %>
+            </div>
             <h4>Categorias</h4>
             <div class="form-group" id="formgroup2">
               <%= f.collection_check_boxes :service_ids, Service.all, :id, :name do |b| %>
