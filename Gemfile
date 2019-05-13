@@ -5,7 +5,6 @@ ruby '2.6.0'
 
 
 
-gem 'seed_dump'
 gem 'exception_notification', '4.3.0'
 gem 'fog-aws', '3.5.0'
 gem 'figaro'
