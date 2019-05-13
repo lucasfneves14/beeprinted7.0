@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(url: params[:id])
     @image = @post.images.first
     @images = @post.images.all[1..-1]
     @recomendados = Post.all.where.not(id: params[:id]).sample(5)
