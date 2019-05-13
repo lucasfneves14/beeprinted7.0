@@ -78,6 +78,9 @@
 .recomendado{
     padding-left:200px;padding-right:200px
 }
+.link-recomendado{
+    max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%
+}
 
 @media (max-width:991px) {
    .project-wide-col{
@@ -89,6 +92,10 @@
    }
    .recomendado{
     padding:0px;
+   }
+   .link-recomendado{
+    border-right:0px;
+    border-left:0px;
    }
 
 }
@@ -160,7 +167,7 @@
                 
                 <div class="row recomendado">
                 <%@recomendados.each do |recomendado|%>
-                    <a href=<%=post_path(recomendado.url)%> style='max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%' class="" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=recomendado.images.first.attachment.url(:port_first)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
+                    <a href=<%=post_path(recomendado.url)%> class="link-recomendado" title="" data-size="1000x667"><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=recomendado.images.first.attachment.url(:port_first)%> class="lazyload" width="300" height="300" alt="" title="" style='will-change:auto;transition: transform .3s ease-out,opacity .35s; height:auto; max-width:100%;width:300px; vertical-align: baseline;line-height:1.5' /></a>
                 <%end%>
                 </div>
                 </div>
