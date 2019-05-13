@@ -111,7 +111,7 @@
         <hr class='hrbee'>
         <%=f.submit "Salvar Projeto", style:"font-weight:bold; font-size:16px; padding:15px", class:"filtro-btn-azul", id:'button-orcamento' %>
         <div class='row' style='margin-top:40px'>
-          <%= link_to "Excluir Projeto", post_path(@post), method: :delete, data: { confirm: "Você tem certeza que quer excluir esse projeto?" }%> |
+          <%= link_to "Excluir Projeto", post_path(@post.url), method: :delete, data: { confirm: "Você tem certeza que quer excluir esse projeto?" }%> |
           <%= link_to "Cancelar", posts_path%>
         </div>
       </div>
