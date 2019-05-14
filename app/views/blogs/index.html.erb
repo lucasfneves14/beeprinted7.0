@@ -95,7 +95,7 @@ li::after{
             </div>
             <!-- post -->
             <%@blogs.each do |blog|%>
-            <div class="col-md-6">
+            <div class="col-md-6" style='min-height:350px;'>
               <div class="post">
                 <a class="post-img" href=<%=blog_path(blog.url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" class='lazyload' data-src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
                 <div class="post-body">
