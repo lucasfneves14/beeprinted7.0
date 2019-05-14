@@ -62,7 +62,7 @@ body{
           <!-- post -->
           <div class="post post-thumb">
             <a class="post-img" href=<%=blog_path(@blog1[2].url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog1[2].attachment.url(:relacionados)%> class='lazyload' alt=""></a>
-            <div class="post-body" style='box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);'>
+            <div class="post-body">
               <div class="post-category">
                 <%@blog1[2].categorium.each do |categoria|%>
                 <a href=""><%=categoria.name%></a>
@@ -103,7 +103,7 @@ body{
             <div class="col-md-6" style='min-height:350px;'>
               <div class="post">
                 <a class="post-img" href=<%=blog_path(blog.url)%>><img src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" class='lazyload' data-src=<%=blog.attachment.url(:relacionados)%> alt=""></a>
-                <div class="post-body">
+                <div class="post-body" style='box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);'>
                   <div class="post-category">
                     <a href=""></a>
                   </div>
