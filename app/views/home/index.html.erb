@@ -804,10 +804,10 @@
         </div>
     </section>
     <hr style='max-width:inherit;' />
-    <bla id="portfolio" class="portfolio sections">
-        <bla class="container-fluid">
-            <bla class="row">
-                <bla class="main_portfolio">
+    <section id="portfolio" class="portfolio sections">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="main_portfolio">
                     <div class="col-sm-12">
                         <div class="head_title text-center">
                             <h2>NOSSOS PROJETOS</h2>
@@ -824,18 +824,18 @@
                             <button class="btn-md fil-cat filter" data-rel="beeloja" data-filter=".BeeLoja">BEELOJA</button>
                         </div>
                     </div>
-                    <bla style="clear:both;"></bla>
-                    <bla id="portfoliowork">
+                    <div style="clear:both;"></div>
+                    <div id="portfoliowork">
                         <% @portfolio.each do |portfolio|%>
-                            <bla class="single_portfolio tile scale-anm web grid-item-width2 <%portfolio.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
-                                <%=portfolio.caption%>> <a href=<%=post_path(portfolio.url)%> class="portfolio-img" title="<%=portfolio.caption%>"> <bla class="grid_item_overlay"> <bla class="separator4"></bla><h3><%=portfolio.caption%></h3> <p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></bla></a> </bla>
+                            <div class="single_portfolio tile scale-anm web grid-item-width2 <%portfolio.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
+                                <%=portfolio.caption%>> <a href=<%=post_path(portfolio.url)%> class="portfolio-img" title="<%=portfolio.caption%>"> <div class="grid_item_overlay"> <div class="separator4"></div><h3><%=portfolio.caption%></h3> <p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></div></a> </div>
                             <%end%>
-                    </bla>
-                    <bla style="clear:both;"></bla>
-                </bla>
-            </bla>
-        </bla>
-    </bla>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="container-fluid">
         <div class="row">
             <div class="main_portfolio">
