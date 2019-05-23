@@ -1,3 +1,10 @@
+<style>
+.form-control::placeholder {
+  color: #323232;  
+}
+
+</style>
+
 <div class="container" style='margin-top:80px'>
 	<div class="header">
         <h2 class="text-muted">FAÇA O SEU PEDIDO DE ORÇAMENTO</h2>
@@ -7,7 +14,7 @@
 	      <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
 	      <p><span><strong>Selecione ou arraste e solte arquivos de referência para o seu projeto aqui</strong></span></p></div>
 
-	      <div class="fallback">
+	      <div class="fallback", style='display:none'>
 	        <%= f.file_field :attachment %><br>
 	        <%= f.submit "Upload" %>
 	      </div>
@@ -47,9 +54,9 @@
       <div id='antesdoupload' style=''>
         <br>
         <div class=row>
-        	  <h4>Observaçoes</h4>
+        	  <h4>Observações (Descreva um pouco o seu projeto)</h4>
             <div class="form-group text-center" id="formgroup2">
-              <%= f.input :description, label: false, placeholder: 'Adicione o Nome do seu Modelo 3D' , :input_html =>{:rows => "5"}%>
+              <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
             </div>
         </div>
       </div>
@@ -57,7 +64,8 @@
       <div class='container' style='text-align:right; margin-bottom: 15px'>
           <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
         </div>
-        <div class='row w3-center'>
+
+        <!--<div class='row w3-center'>
           <div class='col-md-6'>
             <h4>O que acontece depois de enviar o(s) Modelo(s)?</h4>
             <div class='row'>
@@ -90,8 +98,15 @@
             <p style='text-align:left;font-size:16px'><img src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/beepequena.png' style='width:18px;margin-right:20px'> Crie o seu portfólio 3D conosco! Podendo postar vários modelos na nossa plataforma!</p>
           </div>
         </div>
-        <hr class='hrbee'>
+        <hr class='hrbee'>-->
+
+
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <br>
   <%end%>
 </div>
