@@ -42,10 +42,27 @@
 
     <script>
         var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lib-menos-jquery.js", "https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/JS/lazy-teste.min.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>];
-        var stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
+         var stylesheets = ["https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/bee-certo-mesmo.min.css","https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/apagar-gif.css","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
     </script>
+    <style>
+        .loader {
+            position: fixed;
+            display: table;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: no-repeat #f9f9f9
+        }
+        
+        .loader-bee {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center
+        }
+    </style>
 
-    <link rel="stylesheet" href="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/bee-certo-mesmo.min.css">
     <style>
     .contato{
         color:white;
@@ -64,7 +81,9 @@
     </section>
     <%= yield %>
 
-
+     <div class=loader>
+    <div class=loader-bee><%=image_tag 'https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/LoadGIF.gif', id:'item-1', style:'margin-left:auto;margin-right:auto;width:100px', alt:'loader-beeprinted-impressão-3D' %></div>
+    </div>
 
     <%= render 'layouts/footer' %>
 
