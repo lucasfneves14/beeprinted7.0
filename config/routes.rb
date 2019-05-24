@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete 'image/:id', to: 'images#destroy', as: :image
   delete 'arquivo/:id', to: 'arquivos#destroy', as: :arquivo
   get "test_exception_notifier" => "application#test_exception_notifier"
+  get 'politica-de-privacidade', to: 'politicas#privacidade', as: :politica_privacidade
+  get 'politica-de-envio-trocas-e-devolucoes', to: 'politicas#devolucao', as: :politica_devolucao
 
 
   match "/404", :to => "not_found#not_found", :via => :all
