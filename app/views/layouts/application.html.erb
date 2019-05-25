@@ -69,7 +69,7 @@
 
 
     <script>
-        var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lib-menos-jquery.js", "https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/JS/lazy-teste.min.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>];
+        var scripts = ["https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/lib-menos-jquery.js", "https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/JS/lazy-teste.min.js", "https://www.googletagmanager.com/gtag/js?id=UA-109193035-1"<%= yield(:javascript_async) %>,"https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.3&appId=187082005107883&autoLogAppEvents=1"];
          var stylesheets = ["https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/bee-certo-mesmo.min.css",<%= yield(:css_async) %>"https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/apagar-gif.css","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
     </script>
     <style>
@@ -121,12 +121,4 @@
     <script src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/JS/load_assets.js" defer></script>s
     <%= yield(:javascript) %>
   </body>
-
-  <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=187082005107883&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 </html>
