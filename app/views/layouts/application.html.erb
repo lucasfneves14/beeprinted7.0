@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Impressão 3D e Prototipagem | BEEPRINTED</title>
+    <%if @title%>
+        <title><%=@title%></title>
+    <%else%>
+        <title>Impressão 3D e Prototipagem | BEEPRINTED</title>
+    <%end%>
     <meta charset=utf-8>
     <meta name="msvalidate.01" content="C2730C7A271697BA8A0F86E1ED368E39" />
     <meta http-equiv="Content-Language" content="pt-br">
-    <meta name=title content="Impressão 3D e Prototipagem | BEEPRINTED" />
+    <%if @title%>
+        <meta name=title content="<%=@title%>" />
+    <%else%>
+        <meta name=title content="Impressão 3D e Prototipagem | BEEPRINTED" />
+    <%end%>
     <meta name=robots content="index, follow">
-    <meta name=description content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão 3D, modelagem e prototipagem de Brasília.">
+    <%if @meta%>
+        <meta name=description content="<%=@meta%>">
+    <%else%>
+        <meta name=description content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão 3D, modelagem e prototipagem de Brasília.">
+    <%end%>
     <meta name=keywords content="impressão 3D, prototipagem, modelos 3D, tecnologia, imprima 3D, impressora 3D, imprimir 3D, Brasília, DF, Distrito Federal" />
     <meta name=author content=BEEPRINTED.COM.BR>
     <meta name=viewport content="width=device-width, initial-scale=1" />
