@@ -1216,30 +1216,9 @@
 
     <%= render 'layouts/footer' %>
     <!--<script type=text/javascript src='https://s3.amazonaws.com/beeprinted-stls/assets/indexnew10.js'></script> <script defer src="https://s3.amazonaws.com/beeprinted-stls/assets/Nova/assets/js/jquery.mixitup.min.js"></script>-->
-    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js"></script>
-    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/modernizr-custom-min.js"></script>
-    <script defer>
-        function loadStyleSheet(src) {
-            if (document.createStyleSheet) {
-                document.createStyleSheet(src);
-            } else {
-                $('head').append($('<link rel="stylesheet" href="' + src + '" type="text/css" media="screen">'));
-            }
-        }
-        $(function() {
-            if (stylesheets.length) {
-                for (var i = 0; i < stylesheets.length; i++) {
-                    loadStyleSheet(stylesheets[i]);
-                }
-            }
-        });
-        Modernizr.load({
-            load: scripts,
-            complete: function() {
-                $.holdReady(false);
-            }
-        });
-    </script>
+    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js" defer></script>
+    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/modernizr-custom-min.js" defer></script>
+    <script src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/JS/load_assets.js" defer></script>
 </body>
 
 </html>
