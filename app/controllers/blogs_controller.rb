@@ -88,10 +88,7 @@ class BlogsController < ApplicationController
     @popular = @blogs.limit(4)
     @title = @blog.seo_title
     @meta = @blog.seo_meta
-    if @title
-      puts "AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIi"
-      puts @title
-    end
+    @image_facebook = @blog.attachment.url
   end
 
   # The destroy action removes the post permanently from the database
