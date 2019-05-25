@@ -86,6 +86,8 @@ class BlogsController < ApplicationController
     @next = @blogs.where("id > ?", @blog.id).first
     @relacionados = @blogs.limit(3)
     @popular = @blogs.limit(4)
+    @title = @blog.seo_title
+    @meta = @blog.seo_meta
   end
 
   # The destroy action removes the post permanently from the database

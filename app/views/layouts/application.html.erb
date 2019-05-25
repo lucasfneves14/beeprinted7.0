@@ -13,8 +13,16 @@
     <meta name=viewport content="width=device-width, initial-scale=1" />
     <meta content="ie=edge, chrome=1" http-equiv=x-ua-compatible/>
     <meta name=google-site-verification content=oJ2PyR9oaNsdWXxDUnY615E3gLjjO2Q2ZQEySMCC4IY/>
-    <meta property="og:title" content="Impressão 3D e Prototipagem | BEEPRINTED" />
-    <meta property="og:description" content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão e modelagem 3D de Brasília. Faça parte da comunidade Bee, imprima e poste modelos 3D!" />
+    <%if @title%>
+        <meta property="og:title" content="<%=@title%>" />
+    <%else%>    
+        <meta property="og:title" content="Impressão 3D e Prototipagem | BEEPRINTED" />
+    <%end%>
+    <%if @meta%>
+        <meta property="og:description" content="<%=@meta%>" />
+    <%else%>
+        <meta property="og:description" content="Impressão 3D de ideias e projetos com a BEEPRINTED. Beeprinted é uma plataforma voltada à tecnologia de impressão e modelagem 3D de Brasília. Faça parte da comunidade Bee, imprima e poste modelos 3D!" />
+    <%end%>
     <meta property="og:image" content="https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:url" content="https://beeprinted.com.br" />
