@@ -169,3 +169,31 @@ body{
 		<!-- /container -->
 	</div>
 
+<%= content_for(:javascript) do %>
+<script type="application/ld+json">
+	{
+	  "@context" : "http://schema.org",
+	  "@type" : "Article",
+	  "name" : "<%=@blog.title%>",
+	  "author" : {
+	    "@type" : "Person",
+	    "name" : "<%=@blog.user.name%> <%=@blog.user.sobrenome%>"
+	  },
+	  "headline" : "<%=@blog.title%>",
+	  "datePublished" : "<%= @blog.created_at.strftime('%b %d, %Y') %>",
+	  "dateModified" : "<%= @blog.created_at.strftime('%b %d, %Y') %>",
+	  "image" : "<%=@image_facebook%>",
+	  "url" : "<%=request.original_url%>",
+	  "mainEntityOfPage": "<%= @blog.summary %>",
+	  "publisher" : {
+	    "@type" : "Organization",
+	    "name" : "Beeprinted",
+	    "logo" : {
+	      "@type" : "ImageObject",
+	      "url" : "https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/LOGO-claro.png"
+	    }
+	  }
+	}
+</script>
+<%end%>
+
