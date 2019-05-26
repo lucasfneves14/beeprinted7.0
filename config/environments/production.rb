@@ -102,7 +102,7 @@ Rails.application.configure do
     :port                 => 465,
     :domain               => '18.231.117.205',
     :user_name            => 'contato@beeprinted.com.br',
-    :password             => 'Saculf14/',
+    :password             => 'refletores',
     :authentication       => "login",
     :enable_starttls_auto => true,
     :ssl                  => true,
