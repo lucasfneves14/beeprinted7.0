@@ -4,4 +4,7 @@ class Modeling < ApplicationRecord
 	belongs_to :user
 
 	validates :user_id, presence: true
+	validates :tipo, presence: true
+	validates :prazo, presence: true
+	validates :description, presence: true
 end

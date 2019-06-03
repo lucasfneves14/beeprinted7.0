@@ -20,7 +20,7 @@ class ModelingsController < ApplicationController
       @reference = Reference.new
       @arquivo = Arquivo.new
       @orcamento = Orcamento.new
-      render :new
+      render 'orcamentos/new'
     end
   end
 
