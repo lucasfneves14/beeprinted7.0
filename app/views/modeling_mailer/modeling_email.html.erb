@@ -1,0 +1,41 @@
+<body style="background-color: #f2f2f2";>
+<div style='margin:auto; width:80%; background-color:white;border: 1px solid #e3e3e3; text-align:center'> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+	<h2 class="w3-center" style='text-align:center;'>Olá Lucas</h2>
+	<h3 class="w3-center" style='text-align:center;'>Recebemos mais um pedido de modelagem pelo site!</h3>
+	<div class="image-upload w3-center" style='text-align:center;'>
+		 <%= image_tag "https://beeprinted.com.br/images/LOGO-claro.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
+	</div>
+
+	<h3 style='text-align:center;'>A mensagem enviada foi: </h3>
+	<h3 style='text-align:center;'><i>"<%=@modeling.description%>"</i></h3>
+
+	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@user.name%> <%=@user.sobrenome%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@user.email%></i></h3>
+
+	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
+	<%@modeling.references.each_with_index do |reference, index|%>
+	    <p>Link: <%=reference.attachment.url%></p>
+
+	<%end%>
+
+
+	<h3 style='text-align:center;'>Por favor, responda o mais rápido possível pelo seu email institucional.</h3>
+	<h3 style='text-align:center;'>Muito Obrigado!</h3>
+
+	<div class="w3-center">
+			<img id="navlogo" src="https://beeprinted.com.br/images/MARCA-cinza2.png" alt="Logo-Beeprinted" height="40">
+		</div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</body>

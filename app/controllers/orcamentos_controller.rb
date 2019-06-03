@@ -17,6 +17,8 @@ class OrcamentosController < ApplicationController
   def new
     @orcamento = Orcamento.new
     @arquivo = Arquivo.new
+    @modeling = Modeling.new
+    @reference = Reference.new
 
   end
 
@@ -44,6 +46,8 @@ class OrcamentosController < ApplicationController
     else
       flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."
       @arquivo = Arquivo.new
+      @reference = Reference.new
+      @modeling = Modeling.new
       render :new
     end
   end
