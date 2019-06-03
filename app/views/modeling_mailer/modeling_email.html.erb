@@ -18,6 +18,10 @@
 	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@user.email%></i></h3>
 
 	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
+	<p>Tipo: <%=@modeling.tipo%></p>
+	<p>Prazo: <%=@modeling.prazo%></p>
+
+
 	<%@modeling.references.each_with_index do |reference, index|%>
 	    <p>Link: <%=reference.attachment.url%></p>
 

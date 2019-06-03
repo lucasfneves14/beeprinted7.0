@@ -22,7 +22,7 @@
 <section id=cta class="padding-top-bottom color-bg light-typo" style='padding:20px;background-color:white; border-bottom: 1px solid rgba(0, 0, 18, 0.13);box-shadow: 0 0 10px 3px rgba(0,0,0,0.1);'>
 <div class="container" style='margin-top:60px'>
   <div class="header">
-    <h4 class="text-muted"><strong style='color:#009fab'>1.</strong> Você já possui os arquivos em 3D nas extensoes STL ou OBJ?</h4>
+    <h4 class="text-muted"><strong style='color:#009fab'>1.</strong> Você já possui os arquivos em 3D nas extensões STL ou OBJ?</h4>
   </div> 
 
   <div style='display: flex;justify-content: flex-start; padding-top: 1.5rem; margin-bottom:20px'>
@@ -127,7 +127,7 @@
 <div class="container modelagem" style='margin-top:40px; margin-bottom:20px;display:none'>
 
   <div class="header" style='margin-bottom:30px'>
-    <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos e descreva seu projeto</h4>
+    <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos caso possua</h4>
   </div> 
   <%= form_for(@reference, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
     <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
@@ -139,6 +139,7 @@
       <%= f.submit "Upload" %>
     </div>
   <% end %>
+
   <%if @modeling.references.any?%>
     <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
       <%@modeling.references.each do |reference| %>
@@ -164,33 +165,47 @@
           </div>  
           <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=reference.id%>">Remover arquivo</a></div>
       <%end%>
-      </div>
+    </div>
   <%end%>
-
 
   <%= simple_form_for @modeling, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
     <%= f.error_notification%>
-    <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
+    <div class=w3-center>
+      <%= f.input :array, label: false,input_html:{style:'display:none'} %>
     </div>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:0px'>
+      <div class="header" style='margin-top:30px'>
+        <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Qual o tipo do projeto?</h4>
+      </div>
+      <%= f.input :tipo, label:false, prompt:"Tipo de produto", :collection => ["Produto", "Maquete 3D", "Personagem","Reprodução de Peça", "Jóia", "Outros"],:input_html=>{style:'width:80%;color:#777'} %>
+    </div>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:20px'>
+      <div class="header" style='margin-top:30px'>
+        <h4 class="text-muted"><strong style='color:#009fab'>4.</strong> Para quando você precisa desse serviço?</h4>
+      </div>
+
+      <%= f.input :prazo, prompt:"Prazo para produção", label:false, :collection => ["Hoje ou nos próximos dias", "Nos próximos 30 dias", "Nos próximos 3 meses", "Ainda não tenho previsão"],:input_html=>{style:'width:80%;color:#777'} %>
+    </div>
+    
+    <div class="" style='margin-top:40px'>
+      <h4 class="text-muted"><strong style='color:#009fab'>5.</strong> Descreva o seu projeto</h4>
+    </div>
+
     <div id='antesdoupload' style=''>
-      <br>
-      <div class=row>
-        <h4>Observações (Descreva um pouco o seu projeto)</h4>
         <div class="form-group text-center" id="formgroup2">
           <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
         </div>
-      </div>
     </div>
     <hr class='hrbee'>
     <div class='container' style='text-align:right; margin-bottom: 15px'>
       <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
     </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   <%end%>
 </div>
 </section>
