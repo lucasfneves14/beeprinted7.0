@@ -4,4 +4,5 @@ class Orcamento < ApplicationRecord
 	belongs_to :user
 
 	validates :user_id, presence: true
+	validates :arquivos, presence: true
 end

@@ -28,13 +28,13 @@
   <div style='display: flex;justify-content: flex-start; padding-top: 1.5rem; margin-bottom:20px'>
     <button class='selector__button text-muted' style='margin-right:5px' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();'>
       <span>Ainda não! Não possuo os arquivos ou estão em outro formato.</span>
-      <span class='modelagem' style='float:right;color:#009fab;display:none'>
+      <span class='modelagem' style='float:right;color:#009fab;<%unless @modelagem_check%>display:none<%end%>'>
         <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
       </span>
     </button>
     <button class='selector__button text-muted' style='margin-left:5px' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();'>
       <span>Sim! Eu já possuo os arquivos em formato .STL ou .OBJ.</span>
-      <span class='orcamento' style='float:right;color:#009fab;display:none'>
+      <span class='orcamento' style='float:right;color:#009fab;<%unless @orcamento_check%>display:none<%end%>'>
         <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
       </span>
     </button>
@@ -48,7 +48,7 @@
 
 <section style='min-height:600px'>
 
-<div class="container orcamento" style='margin-top:40px; margin-bottom:20px;display:none'>
+<div class="container orcamento" style='margin-top:40px; margin-bottom:20px;<%unless @orcamento_check%>display:none<%end%>'>
 
   <div class="header" style='margin-bottom:30px'>
     <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos e descreva seu projeto</h4>
@@ -124,7 +124,7 @@
 
 
 
-<div class="container modelagem" style='margin-top:40px; margin-bottom:20px;display:none'>
+<div class="container modelagem" style='margin-top:40px; margin-bottom:20px;<%unless @modelagem_check%>display:none<%end%>'>
 
   <div class="header" style='margin-bottom:30px'>
     <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload de arquivos de referência caso possua</h4>
@@ -143,7 +143,7 @@
   <%if @modeling.references.any?%>
     <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
       <%@modeling.references.each do |reference| %>
-       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=arquivo.id%>">
+       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=reference.id%>">
         <div class="dz-image">
             <img data-dz-thumbnail="">
           </div>

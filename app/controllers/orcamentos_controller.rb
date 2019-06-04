@@ -44,10 +44,15 @@ class OrcamentosController < ApplicationController
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to root_path
     else
-      flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."
+      if @orcamento.arquivos.any?
+        flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."
+      else
+        flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Nenhum arquivo foi enviado ou houve um erro no envio dos arquivos."
+      end
       @arquivo = Arquivo.new
       @reference = Reference.new
       @modeling = Modeling.new
+      @orcamento_check = 1
       render :new
     end
   end
