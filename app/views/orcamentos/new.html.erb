@@ -96,16 +96,30 @@
     <%= f.error_notification%>
     <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
     </div>
+
+    <div class="" style='margin-top:40px'>
+      <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Descreva o seu projeto</h4>
+    </div>
+
+
     <div id='antesdoupload' style=''>
-      <br>
-      <div class=row>
-        <h4>Observações (Descreva um pouco o seu projeto)</h4>
         <div class="form-group text-center" id="formgroup2">
           <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
         </div>
-      </div>
     </div>
-    <hr class='hrbee'>
+
+    <div class="" style='margin-top:40px'>
+      <h4 class="text-muted"><strong style='color:#009fab'>4.</strong>  Passe suas informações</h4>
+    </div>
+
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:0px; padding-right:30px'>
+      <%= f.input :name, label:false, placeholder:"Nome Completo",:input_html=>{style:'color:#777;'} %>
+    </div>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:20px'>
+      <%= f.input :email, placeholder:"Email", label:false,:input_html=>{style:'color:#777'} %>
+    </div>
+
+
     <div class='container' style='text-align:right; margin-bottom: 15px'>
       <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
     </div>
@@ -196,7 +210,18 @@
           <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
         </div>
     </div>
-    <hr class='hrbee'>
+    <div class="" style='margin-top:40px'>
+      <h4 class="text-muted"><strong style='color:#009fab'>6.</strong>  Passe suas informações</h4>
+    </div>
+
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:0px; padding-right:30px'>
+      <%= f.input :name, label:false, placeholder:"Nome Completo",:input_html=>{style:'color:#777;'} %>
+    </div>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:20px'>
+      <%= f.input :email, placeholder:"Email", label:false,:input_html=>{style:'color:#777'} %>
+    </div>
+
+
     <div class='container' style='text-align:right; margin-bottom: 15px'>
       <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
     </div>

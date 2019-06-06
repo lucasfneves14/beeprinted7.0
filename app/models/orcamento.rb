@@ -1,8 +1,9 @@
 class Orcamento < ApplicationRecord
 	attr_accessor :array
 	has_many :arquivos, dependent: :destroy
-	belongs_to :user
+	#belongs_to :user
 
-	validates :user_id, presence: true
 	validates :arquivos, presence: true
+	validates :name, presence: true
+	validates :email, presence: true
 end

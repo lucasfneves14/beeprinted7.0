@@ -1,6 +1,6 @@
 class OrcamentosController < ApplicationController
   before_action :set_orcamento, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, raise: false, only:[:new, :create,:edit,:update]
+  #before_action :authenticate_user!, raise: false, only:[:new, :create,:edit,:update]
 
   # GET /orcamentos
   # GET /orcamentos.json
@@ -29,7 +29,7 @@ class OrcamentosController < ApplicationController
   # POST /orcamentos
   # POST /orcamentos.json
   def create
-    @orcamento = current_user.orcamentos.build(orcamento_params)
+    @orcamento = Orcamento.create(orcamento_params)
     array = @orcamento.array.split(",")
     array.each do |file|
       puts file
@@ -38,9 +38,8 @@ class OrcamentosController < ApplicationController
         @orcamento.arquivos << arquivo
       end
     end
-    @user = @orcamento.user
     if @orcamento.save
-      OrcamentoMailer.orcamento_email(@user, @orcamento).deliver
+      OrcamentoMailer.orcamento_email(@orcamento).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to root_path
     else
@@ -89,6 +88,6 @@ class OrcamentosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orcamento_params
-      params.require(:orcamento).permit(:description, :array)
+      params.require(:orcamento).permit(:description, :array, :name, :email)
     end
 end

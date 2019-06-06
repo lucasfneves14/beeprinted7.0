@@ -14,8 +14,8 @@
 	<h3 style='text-align:center;'>A mensagem enviada foi: </h3>
 	<h3 style='text-align:center;'><i>"<%=@orcamento.description%>"</i></h3>
 
-	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@user.name%> <%=@user.sobrenome%></i></h3>
-	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@user.email%></i></h3>
+	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@orcamento.name%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@orcamento.email%></i></h3>
 
 	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
 	<%@orcamento.arquivos.each_with_index do |arquivo, index|%>
