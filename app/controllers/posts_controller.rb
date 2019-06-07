@@ -39,6 +39,10 @@ class PostsController < ApplicationController
     @images = @post.images.all[1..-1]
     @recomendados = Post.all.where.not(id: params[:id]).sample(5)
     @contato = Contato.new
+
+
+    @title = "#{@post.caption} | BEEPRINTED"
+    @image_facebook = @image.attachment.url
   end
 
   def edit
