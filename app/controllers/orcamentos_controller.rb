@@ -19,6 +19,12 @@ class OrcamentosController < ApplicationController
     @arquivo = Arquivo.new
     @modeling = Modeling.new
     @reference = Reference.new
+    if current_user
+      @orcamento.name = "#{current_user.name} #{current_user.sobrenome}"
+      @modeling.name = "#{current_user.name} #{current_user.sobrenome}"
+      @orcamento.email = current_user.email
+      @modeling.email = current_user.email
+    end
 
   end
 
