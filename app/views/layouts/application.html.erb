@@ -41,7 +41,7 @@
         <meta property="og:image" content="https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png" />
     <%end%>
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:url" content="https://beeprinted.com.br" />
+    <meta property="og:url" content="<%=request.original_url%>" />
     <meta property="og:site_name" content="BEEPRINTED" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -53,12 +53,12 @@
     <%else%>
         <meta name=twitter:image content=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png>
     <%end%>
-    <meta name=twitter:site content=https://beeprinted.com.br>
-    <meta name=twitter:url content=https://beeprinted.com.br>
+    <meta name=twitter:site content=<%=request.original_url%>>
+    <meta name=twitter:url content<%=request.original_url%>>
     <meta name=twitter:locale content=pt_BR>
-    <link rel=canonical href=https://beeprinted.com.br/>
-    <link rel=shortlink href=https://beeprinted.com.br/>
-    <link rel=revision href=https://beeprinted.com.br/>
+    <link rel=canonical href=<%=request.original_url%>/>
+    <link rel=shortlink href=<%=request.original_url%>/>
+    <link rel=revision href=<%=request.original_url%>/>
     <link rel="shortcut icon" href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png sizes=32x32 type="image/png" />
     <link rel=apple-touch-icon-precomposed href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <link rel=apple-touch-icon-precomposed sizes=72x72 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
