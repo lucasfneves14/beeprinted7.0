@@ -1,0 +1,110 @@
+<style>
+.filtro-btn-azul{
+  background-color:#009FAB;
+  color:white;
+  cursor: pointer;
+  border:none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+</style>
+<style>
+.mySlides {display:none}
+@media (min-width: 480px) {
+  .container-bee{
+    padding-left:100px;
+    padding-right:100px;
+  }
+  .orcabee{
+    width:20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtro-btn-azul{
+    font-size:12px;
+    padding: 10px 10px;
+  }
+  .preco-padding{
+    padding-right:35px !important;
+  }
+  .w3-container{
+    padding:0px !important;
+  }
+  #carrinho{
+    width:100% !important;
+  }
+  .width_foto{
+    width:20% !important;
+  }
+  .validade{
+    width: 50% !important;
+  }
+  .mySlides{
+    height:230px !important;
+  }
+  #preco_mobile{
+    display: block !important;
+  }
+  .fotinha{
+     height: 60px !important;
+  }
+  #info_prin{
+    width:50% !important;
+  }
+  #excluir{
+    padding: 25px 0 !important;
+  }
+}
+.well{
+  background-color:white !important;
+}
+.fotinha{
+  overflow:hidden;
+  height: 120px;
+  width:22%;
+  display: inline-block;
+  position:relative;
+  border:1px solid #bfbfbf;
+  background-color:white;
+}
+.degrade {
+  transition: 0.5s !important;
+  background-size: 200% auto !important;
+  background-image: linear-gradient(to right, #009fab 0%, #3F315D 51%, #009fab 100%) !important
+}
+             
+.degrade:hover {
+  background-position: right center !important
+  color:white !important;
+}
+
+
+.info-compra{
+  list-style:none;float:left;width:50%;box-sizing:border-box
+}
+
+</style>
+<br>
+<br>
+<br>
+<br>
+<section style='margin-left:10px;margin-right:10px'>
+  <div class='container container-bee w3-center' style='background-color:white; box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);margin-bottom:80px;'>
+    <i class="fa fa-check-circle-o iconBig" style='font-size:60px;color:#009FAB;'></i>
+    <br>
+    <h1 style='color:#616161'><strong>Muito Obrigado!</strong></h1>
+    <h4 style='margin-top:20px'>O seu pedido de contato foi enviado!</h4>
+    <h4>Em breve entraremos em contato por email.</h4>
+    <hr>
+    <p style='margin-top:20px'>Mais informações seram passadas por email. Qualquer dúvida entre em <a href="<%=root_path%>#contact" style='color:#009FAB'><strong>Contato</strong></a> conosco em contato@beeprinted.com.br</p>
+      <br>
+      <div class="" style='margin-top:30px;width:100%'>
+          <a href=<%=root_path%> class='filtro-btn-azul' style='border-right:1px solid #ccc; background-color: #919191;color:white!important'>Página Inicial</a>
+          <a href=<%=new_orcamento_path%> class='filtro-btn-azul degrade font-bold' style='border-right:1px solid #ccc;color:white!important'>Pedir um Orçamento</a>
+      </div>
+      <br>
+      <br>
+      <br>
+  </div>
+</section>
