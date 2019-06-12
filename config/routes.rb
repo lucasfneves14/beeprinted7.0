@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'modelings/create'
   get 'references/create'
   get 'references/destroy'
+  get 'orcamentos/sucesso', to: 'orcamentos#sucesso', as: :orcamento_sucesso
+  get 'modelagem/sucesso', to: 'modelings#sucesso', as: :modeling_sucesso
   resources :orcamentos
   resources :modelings
   mount Ckeditor::Engine => '/ckeditor'

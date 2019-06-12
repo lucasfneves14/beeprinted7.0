@@ -4,6 +4,10 @@ class OrcamentosController < ApplicationController
 
   # GET /orcamentos
   # GET /orcamentos.json
+
+  def sucesso
+  end
+
   def index
     @orcamentos = Orcamento.all
   end
@@ -47,7 +51,7 @@ class OrcamentosController < ApplicationController
     if @orcamento.save
       OrcamentoMailer.orcamento_email(@orcamento).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
-      redirect_to root_path
+      redirect_to orcamento_sucesso_path
     else
       if @orcamento.arquivos.any?
         flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."

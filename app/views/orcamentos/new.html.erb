@@ -141,7 +141,7 @@
 <div class="container modelagem" style='margin-top:40px; margin-bottom:20px;<%unless @modelagem_check%>display:none<%end%>'>
 
   <div class="header" style='margin-bottom:30px'>
-    <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload de arquivos de referência caso possua</h4>
+    <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload de arquivos de referência (opcional)</h4>
   </div> 
   <%= form_for(@reference, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
     <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>

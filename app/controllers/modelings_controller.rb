@@ -1,5 +1,9 @@
 class ModelingsController < ApplicationController
 	#before_action :authenticate_user!, raise: false, only:[:create]
+
+  def sucesso
+  end
+
   def create
   	@modeling = Modeling.create(modeling_params)
     array = @modeling.array.split(",")
@@ -13,7 +17,7 @@ class ModelingsController < ApplicationController
     if @modeling.save
       ModelingMailer.modeling_email(@modeling).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
-      redirect_to root_path
+      redirect_to modeling_sucesso_path
     else
       flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."
       @reference = Reference.new
