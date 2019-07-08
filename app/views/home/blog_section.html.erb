@@ -1,0 +1,173 @@
+<!--<section id="blog" class="blog">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main_blog sections">
+                        <div class="head_title text-center">
+                            <h2>NOSSO BLOG</h2>
+                            <div class="subtitle"> Aprenda sobre o mundo da impressão 3D com a Beeprinted.</div>
+                            <div class="separator"></div>
+                        </div>
+                        <div class="main_blog_content">
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <div class="imgcontainer">
+                                                    <a href="<%=blog_path(@blog[0].url)%>" class="read_more" title="<%=@blog[0].title%>"><img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog[0].attachment.url(:index)%> alt='
+                                                        <%=@blog[0].title%>'></a>
+                                                    <div style='padding-bottom:66.6%'></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 no-padding" style='max-height:417px'>
+                                            <div class="single_blog_text s_b_left">
+                                                <p>
+                                                    <%=@blog[0].user.name%>
+                                                </p>
+                                                <h3><%=@blog[0].title%></h3>
+                                                <div class="separator2"></div>
+                                                <p>
+                                                    <%=@blog[0].summary%>
+                                                </p><a href="<%=blog_path(@blog[0].url)%>" class="read_more" title="<%=@blog[0].title%>">Ler Mais >></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <div class="imgcontainer">
+                                                    <a href="<%=blog_path(@blog[1].url)%>" class="read_more" title="<%=@blog[1].title%>"><img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog[1].attachment.url(:index)%> alt='
+                                                        <%=@blog[1].title%>'></a>
+                                                    <div style='padding-bottom:66.6%'></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 no-padding" style='max-height:417px'>
+                                            <div class="single_blog_text s_b_left" style='background-color: #3F315D'>
+                                                <p>
+                                                    <%=@blog[1].user.name%>
+                                                </p>
+                                                <h3><%=@blog[1].title%></h3>
+                                                <div class="separator2"></div>
+                                                <p>
+                                                    <%=@blog[1].summary%>
+                                                </p><a href="<%=blog_path(@blog[1].url)%>" class="read_more" title="<%=@blog[1].title%>">Ler Mais >></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-push-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <div class="imgcontainer">
+                                                    <a href="<%=blog_path(@blog[2].url)%>" class="read_more" title="<%=@blog[2].title%>"><img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog[2].attachment.url(:index)%> alt='
+                                                        <%=@blog[2].title%>'></a>
+                                                    <div style='padding-bottom:66.6%'></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-sm-pull-6 no-padding" style='max-height:417px'>
+                                            <div class="single_blog_text s_b_right" style='background-color: #3F315D'>
+                                                <p>
+                                                    <%=@blog[2].user.name%>
+                                                </p>
+                                                <h3><%=@blog[2].title%></h3>
+                                                <div class="separator2"></div>
+                                                <p>
+                                                    <%=@blog[2].summary%>
+                                                </p><a href="<%=blog_path(@blog[2].url)%>" class="read_more" title="<%=@blog[2].title%>">Ler Mais >></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="single_blog_area textwhite">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-push-6 no-padding">
+                                            <div class="single_blog_img">
+                                                <div class="imgcontainer" data-large=<%=@blog[3].attachment.url%> >
+                                                    <a href="<%=blog_path(@blog[3].url)%>" class="read_more" title="<%=@blog[3].title%>"><img class="lazyload imghover img-responsive" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=@blog[3].attachment.url(:index)%> alt='
+                                                        <%=@blog[3].title%>'></a>
+                                                    <div style='padding-bottom:66.6%'></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-sm-pull-6 no-padding" style='max-height:417px'>
+                                            <div class="single_blog_text s_b_right">
+                                                <p>
+                                                    <%=@blog[3].user.name%>
+                                                </p>
+                                                <h3><%=@blog[3].title%></h3>
+                                                <div class="separator2"></div>
+                                                <p>
+                                                    <%=@blog[3].summary%>
+                                                </p><a href="<%=blog_path(@blog[3].url)%>" class="read_more" title="<%=@blog[3].title%>">Ler Mais >></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="team" class="team">
+            <div class="main_team_area lazyload" data-src='https://ds76otpcq42vd.cloudfront.net/uploads/diversas/teambg2.jpg' style='background:bottom center no-repeat;'>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="head_title text-center margin-top-80" style='margin-bottom:80px'>
+                                <h2>NOSSO TIME</h2>
+                                <div class="subtitle"> Equipe de Especialistas em Prototipagem.</div>
+                                <div class="separator"></div>
+                            </div>
+                            <div class="main_team">
+                                <ul>
+                                    <li>
+                                        <div class="single_team_img"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/thierre.jpg' alt='thierre-impressão-3d'></div>
+                                        <div class="single_team_text">
+                                            <p style='color:#009fab; font-size:20px; margin:0px'>Thierre Lorenzo</p>
+                                            <p>Co-Fundador e Diretor Financeiro</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/eu.jpg' alt='lucas-impressão-3d'></div>
+                                        <div class="single_team_text">
+                                            <p style='color:#009fab; font-size:20px; margin:0px'>Lucas Neves</p>
+                                            <p>Co-Fundador e Diretor de Tecnologia</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/iago.jpg' alt='iago-impressão-3d'></div>
+                                        <div class="single_team_text">
+                                            <p style='color:#009fab; font-size:20px; margin:0px'>Iago Boson</p>
+                                            <p>Co-Fundador e Diretor Executivo</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/thiago.jpg' alt='thiago-impressão-3d'></div>
+                                        <div class="single_team_text">
+                                            <p style='color:#009fab; font-size:20px; margin:0px'>Thiago Hirano</p>
+                                            <p>Co-Fundador e Diretor de Operações</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single_team_img"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src='https://s3.amazonaws.com/beeprinted-stls/uploads/diversas/maria.jpg' alt='maria-impressão-3d'></div>
+                                        <div class="single_team_text">
+                                            <p style='color:#009fab; font-size:20px; margin:0px'>Maria Clara Monteiro</p>
+                                            <p>Diretora de Marketing</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
