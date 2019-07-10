@@ -42,7 +42,7 @@
 	  <%end%>
 
 
-	  <%= simple_form_for @post, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+	  <%= simple_form_for @post, style:'color:#616161' do |f| %>
       <%= f.error_notification%>
       <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %></div>
       <div id='antesdoupload' style=''>

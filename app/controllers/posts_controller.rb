@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, raise: false
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :admin, only: [:new, :create, :edit, :update, :destroy]
-  before_action :owned_post, only: [:edit, :update, :destroy]
   def index
   	@posts = Post.all
   end
@@ -46,10 +45,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find_by(url: params[:id])
     @image = Image.new
   end
 
   def update
+    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:success] = "Projeto Editado!"
       redirect_to(post_path(@post.url))
@@ -60,6 +61,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(url: params[:id])
     if @post.destroy
       flash[:success] = "Projeto excluído!"
       redirect_to posts_path
