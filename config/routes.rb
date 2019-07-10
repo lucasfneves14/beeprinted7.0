@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  class SubdomainConstraint
+	  def self.matches?(request)
+	    request.subdomain.present? && request.subdomain == 'modeling'
+	  end
+	end
+
+
+
   get 'modelings/create'
   get 'references/create'
   get 'references/destroy'
@@ -29,4 +37,10 @@ Rails.application.routes.draw do
 
   match "/404", :to => "not_found#not_found", :via => :all
   match "/500", :to => "not_found#internal_server_error", :via => :all
+
+  constraints SubdomainConstraint do
+    get '/info', to: 'blogs#index'
+  end
+
+
 end
