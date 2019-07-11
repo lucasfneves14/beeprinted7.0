@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :store_location
 
   def store_location
-  	session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+  	session[:previous_url] = request.fullpath unless (request.fullpath =~ /\/modelers/ || request.fullpath =~ /\/users/)
   end
 
 

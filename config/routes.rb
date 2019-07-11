@@ -39,7 +39,9 @@ Rails.application.routes.draw do
   match "/500", :to => "not_found#internal_server_error", :via => :all
 
   constraints SubdomainConstraint do
-    get '/info', to: 'blogs#index'
+    get '/index', to: 'hives#index'
+    devise_for :modelers, path: 'modelers', controllers:{sessions:"modelers/sessions", confirmations: "modelers/confirmations", 
+      passwords: "modelers/passwords", registrations: "modelers/registrations", unlocks: "modelers/unlocks"}
   end
 
 

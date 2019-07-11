@@ -81,6 +81,15 @@
 .link-recomendado{
     max-width:100%; float:left; border-bottom:2px solid transparent; border-right: 10px solid transparent;border-left: 10px solid transparent;width:20%; box-sizing: border-box;overflow:hidden; height:100%
 }
+.degrade {
+    transition: 0.5s !important;
+    background-size: 200% auto !important;
+    background-image: linear-gradient(to right, #009fab 0%, #3F315D 51%, #009fab 100%) !important
+}
+                
+.degrade:hover {
+    background-position: right center !important
+}
 
 @media (max-width:991px) {
    .project-wide-col{
@@ -147,6 +156,7 @@
                     </div>
                     <div class='description'>
                         <%= @post.description.html_safe %>
+                        <div class="row text-center"> <a title="Nossa Loja" class="btn-orcamento btn btn-store smooth-scroll font-bold degrade" href=<%=new_orcamento_path%> style='margin-right:0px;margin-top:20px; font-size:12px; padding:12px 40px'>PEÇA O SEU ORÇAMENTO</a></div>
                     </div>
                     <div style='display:flex; align-items: center; flex-flow:column wrap; margin-bottom:40px;margin-top:15px'>
                         <div style='padding:0;margin-bottom:10px;font-size:13px;line-height:23px;overflow:hidden'><span style='color:#b4b5bb; position:relative; display:inline-block;text-decoration: none; margin:0 6px 0 0; padding: 0 9px 0 0'>Categoria:&nbsp;<%@post.services.each do |service|%><a class='categoria'> <%=service.name%></a><%end%></span><a style='color:#b4b5bb; position:relative; display:inline-block; text-decoration: none; margin: 0 6px 0 0; padding: 0 9px 0 0;' href=<%=root_path%> title="Ver todas as postagens de <%=@post.user.name%> <%=@post.user.sobrenome%>" rel="author">Por <span class="fn"><%=@post.user.name%> <%=@post.user.sobrenome%></span></a>
