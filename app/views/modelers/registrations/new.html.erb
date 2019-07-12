@@ -1,25 +1,69 @@
-<h2>Sign up</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class:"login100-form validate-form"}) do |f| %>
+          <span class="login100-form-title p-b-43">
+            Registre-se
+          </span>
+          
+          <%= f.error_notification %>
+          <% flash.each do |key, value| %>
+              <%= content_tag :div, value, class: "flash #{key}", style:'color:red' %>
+            <% end %>
+          <div class="wrap-input100 validate-input" data-validate = "Um email válido é necessário: ex@abc.xyz">
+            <input class="input100 required" type="email" name="modeler[email]" id='modeler_email' required='required'>
+            <span class="focus-input100"></span>
+            <span class="label-input100">Email</span>
+          </div>
+          
+          
+          <div class="wrap-input100 validate-input" data-validate="A senha é necessária">
+            <input class="input100 required" type="password" name="modeler[password]" id="modeler_password" required='required' aria-autocomplete="list">
+            <span class="focus-input100"></span>
+            <span class="label-input100">Senha</span>
+          </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+          <div class="wrap-input100 validate-input form-group password required modeler_password_confirmation" data-validate="A senha é necessária">
+            <input class="input100 required" type="password" name="modeler[password_confirmation]" id="modeler_password_confirmation" required='required' aria-autocomplete="list">
+            <span class="focus-input100"></span>
+            <span class="label-input100">Confirme a Senha</span>
+          </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+          <div class="flex-sb-m w-full p-t-3 p-b-32">
+            <div class="contact100-form-checkbox">
+              <input type="hidden" name="modeler[remember_me]" value='0'>
+              <input class="input-checkbox100" id="modeler_remember_me" type="checkbox" name="modeler[remember_me]" value="1">
+              <label class="label-checkbox100" for="modeler_remember_me">
+                Me mantenha logado
+              </label>
+            </div>
 
-<%= render "modelers/shared/links" %>
+            <div>
+              <%= render "modelers/shared/links" %>
+            </div>
+          </div>
+      
+
+          <div class="container-login100-form-btn">
+            <%= f.button :submit, "Registrar",class:"login100-form-btn"%>
+          </div>
+          
+          <div class="text-center p-t-46 p-b-20">
+            <span class="txt2">
+              or registre-se com
+            </span>
+          </div>
+
+          <div class="login100-form-social flex-c-m">
+            <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+              <i class="fa fa-facebook-f" aria-hidden="true"></i>
+            </a>
+
+            <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </div>
+        <%end%>
+
+
+
+
+

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Modelers::ConfirmationsController < Devise::ConfirmationsController
+  layout "modelers/padrao"
   # GET /resource/confirmation/new
   # def new
   #   super

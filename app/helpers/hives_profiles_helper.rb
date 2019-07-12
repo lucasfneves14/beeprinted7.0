@@ -1,0 +1,2 @@
+module HivesProfilesHelper
+end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Modelers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  layout "modelers/padrao"
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

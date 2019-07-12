@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   constraints SubdomainConstraint do
     get '/index', to: 'hives#index'
+    get '/profile', to: 'hives_profiles#show', as: :hives_profile
     devise_for :modelers, path: 'modelers', controllers:{sessions:"modelers/sessions", confirmations: "modelers/confirmations", 
       passwords: "modelers/passwords", registrations: "modelers/registrations", unlocks: "modelers/unlocks"}
   end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Modelers::UnlocksController < Devise::UnlocksController
+  layout "modelers/padrao"
   # GET /resource/unlock/new
   # def new
   #   super

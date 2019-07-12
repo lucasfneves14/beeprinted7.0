@@ -1,18 +1,30 @@
-<h2>Forgot your password?</h2>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "login100-form validate-form"}) do |f| %>
+          <span class="login100-form-title p-b-43">
+            Esqueceu sua Senha?
+          </span>
+          
+          <%= f.error_notification %>
+          <% flash.each do |key, value| %>
+              <%= content_tag :div, value, class: "flash #{key}", style:'color:red' %>
+            <% end %>
+          <div class="wrap-input100 validate-input" data-validate = "Um email válido é necessário: ex@abc.xyz">
+            <input class="input100 required" type="email" name="modeler[email]" id='modeler_email' required='required'>
+            <span class="focus-input100"></span>
+            <span class="label-input100">Email</span>
+          </div>
+          
+          <div class="flex-sb-m w-full p-t-3 p-b-32">
+            <div class="contact100-form-checkbox">
+            </div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+            <div>
+              <%= render "modelers/shared/links" %>
+            </div>
+          </div>
+      
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "modelers/shared/links" %>
+          <div class="container-login100-form-btn">
+            <%= f.button :submit, "Me envie instruções para nova senha",class:"login100-form-btn"%>
+          </div>
+          
+        <%end%>

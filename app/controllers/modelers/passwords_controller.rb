@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Modelers::PasswordsController < Devise::PasswordsController
+  layout "modelers/padrao"
   # GET /resource/password/new
   # def new
   #   super
