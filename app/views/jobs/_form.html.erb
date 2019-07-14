@@ -1,0 +1,57 @@
+
+<div class="card" style='width:100%'>
+  <div class="card-header">
+    <strong>Novo</strong> Job
+  </div>
+  <%= simple_form_for(@job, :html=>{class:"form-horizontal"}) do |f| %>
+  <div class="card-body card-block">
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputName2" class="pr-1  form-control-label">Título</label></div>
+        <div class="col-12 col-md-9"><%= f.input :title, label:false%></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Descrição</label></div>
+        <div class="col-12 col-md-9"><%= f.input :description, label:false %></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Foto Principal</label></div>
+        <div class="col-12 col-md-9"><%= f.input :image, label:false %></div>
+      </div>
+      <div class='row form-group'>
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Dimensões</label></div>
+        <div class="col-12 col-md-9 form-inline">
+          <div class="form-group">
+            <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">X</label></div>
+            <div class="col-12 col-md-9"><%= f.input :x, label:false %></div>
+          </div>
+          <div class="form-group">
+            <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Y</label></div>
+            <div class="col-12 col-md-9"><%= f.input :y, label:false %></div>
+          </div>
+          <div class="form-group">
+            <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Z</label></div>
+            <div class="col-12 col-md-9"><%= f.input :z, label:false %></div>
+          </div>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Tipo de Modelagem</label></div>
+        <div class="col-12 col-md-9"><%= f.input :tipo, label:false %></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Valor (R$)</label></div>
+        <div class="col-12 col-md-9"><%= f.input :value, label:false %></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Observações</label></div>
+        <div class="col-12 col-md-9"><%= f.input :observations, label:false %></div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <%= f.button :submit,class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+    <a type="reset" href='bla' class="btn btn-danger btn-sm">
+      <i class="fa fa-ban"></i> Cancelar
+    </a>
+  </div>
+  <%end%>
+</div>

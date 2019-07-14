@@ -7,6 +7,13 @@
           <% flash.each do |key, value| %>
               <%= content_tag :div, value, class: "flash #{key}", style:'color:red' %>
             <% end %>
+
+
+          <div class="wrap-input100 validate-input">
+            <input class="input100 required" type="name" name="modeler[name]" id='modeler_name' required='required'>
+            <span class="focus-input100"></span>
+            <span class="label-input100">Nome</span>
+          </div>
           <div class="wrap-input100 validate-input" data-validate = "Um email válido é necessário: ex@abc.xyz">
             <input class="input100 required" type="email" name="modeler[email]" id='modeler_email' required='required'>
             <span class="focus-input100"></span>

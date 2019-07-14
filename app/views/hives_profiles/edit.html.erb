@@ -1,0 +1,33 @@
+  <div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+<div class="card" style='width:100%'>
+  <div class="card-header">
+    <strong>Novo</strong> Job
+  </div>
+  <%= simple_form_for(current_modeler,:url => update_hives_profile_path, :html=>{class:"form-horizontal"}) do |f| %>
+  <div class="card-body card-block">
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputName2" class="pr-1  form-control-label">Nome</label></div>
+        <div class="col-12 col-md-9"><%= f.input :name, label:false%></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputName2" class="pr-1  form-control-label">Cidade</label></div>
+        <div class="col-12 col-md-9"><%= f.input :city, label:false%></div>
+      </div>
+      <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="form-control-label">Foto</label></div>
+        <div class="col-12 col-md-9"><%= f.input :image, label:false %></div>
+      </div>
+  </div>
+  <div class="card-footer">
+    <%= f.button :submit, 'Atualizar Perfil', class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+    <a type="reset" href='bla' class="btn btn-danger btn-sm">
+      <i class="fa fa-ban"></i> Cancelar
+    </a>
+  </div>
+  <%end%>
+</div>
+</div>
+</div>
+</div>

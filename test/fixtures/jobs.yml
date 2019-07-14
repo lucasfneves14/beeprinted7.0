@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  x: 1.5
+  'y': 1.5
+  z: 1.5
+  type: 
+  value: 1
+  observations: MyText
+
+two:
+  title: MyString
+  description: MyText
+  x: 1.5
+  'y': 1.5
+  z: 1.5
+  type: 
+  value: 1
+  observations: MyText

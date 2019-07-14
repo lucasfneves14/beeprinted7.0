@@ -1,0 +1,164 @@
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>LISTA DE JOBS</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">UI Elements</a></li>
+                                    <li class="active">Grids</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+        <h3>Jobs Disponíveis</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                  <%@disponiveis.all.each do |disponivel|%>
+                    <div class="col-sm-3">
+                        <a href=<%=job_path(disponivel.id)%>><div class="card">
+                            <img class="card-img-top" src=<%=disponivel.image.url(:capa)%> alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3"><%=disponivel.title%></h4>
+                                <p class="card-text"><%=disponivel.description%></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=disponivel.id%></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=disponivel.value%></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=disponivel.tipo%></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-clock-o"></i> Disponível <span class="pull-right">Horário Aqui</span></a>
+                                </li>
+                              </ul>
+
+                        </div></a>
+                    </div>
+                  <%end%>
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        <div class="content">
+        <h3>Meus Jobs em Aberto</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img class="card-img-top" src="https://i.imgur.com/ue0AB6J.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Card Image Title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
+                                </li>
+                              </ul>
+                              <div class="card-header bg-success text-center">
+                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img class="card-img-top" src="https://i.imgur.com/hrS2McC.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Card Image Title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
+                                </li>
+                              </ul>
+                              <div class="card-header bg-success text-center">
+                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img class="card-img-top" src="https://i.imgur.com/MUBS4Gh.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Card Image Title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
+                                </li>
+                              </ul>
+                              <div class="card-header bg-success text-center">
+                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img class="card-img-top" src="https://i.imgur.com/MUBS4Gh.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Card Image Title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
+                                </li>
+                                <li class="list-group-item">
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
+                                </li>
+                              </ul>
+                              <a href=''><div class="card-header bg-success text-center">
+                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                            </div></a>
+                        </div>
+                    </div>
+
+
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
