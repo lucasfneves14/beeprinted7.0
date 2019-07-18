@@ -1,0 +1,185 @@
+<style>
+.form-control::placeholder {
+  color: #323232;  
+}
+
+.selector__button {
+    width: 50%;
+    align-items: center;
+    border-radius: 3px;
+    border: solid 1px rgba(0, 0, 23, 0.22);
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 1.5rem;
+    background-color: #fff;
+    font-size: 17px;
+}
+
+
+</style>
+<link href='https://beeprinted-stls.s3.amazonaws.com/Plataforma/Jobs/Css/dropzone.min.css' rel='stylesheet' type='text/css'>
+
+
+<%= form_for(@jobmodel, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
+    <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
+      <p><span><strong>Selecione ou arraste e solte arquivos STL ou OBJ para o seu projeto aqui</strong></span></p>
+    </div>
+
+    <div class="fallback", style='display:none'>
+      <%= f.file_field :attachment %><br>
+      <%= f.submit "Upload" %>
+    </div>
+  <% end %>
+  <%if @job.jobmodels.any?%>
+    <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
+      <%@job.jobmodels.each do |jobmodel| %>
+       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=jobmodel.id%>">
+        <div class="dz-image">
+            <img data-dz-thumbnail="">
+          </div>
+          <div class="dz-details">
+            <div class="dz-size">
+              <span data-dz-size="">
+                <strong><%='%.1f' % (jobmodel.attachment.file.size/1000).round(1)%></strong> KB
+              </span>
+            </div>
+            <div class="dz-filename">
+              <span data-dz-name=""><%=File.basename(jobmodel.attachment.path)%></span>
+            </div>  
+          </div>
+          <div class="dz-progress">
+            <span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span>
+          </div>
+          <div class="dz-error-message">
+            <span data-dz-errormessage=""></span>
+          </div>  
+          <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=jobmodel.id%>">Remover modelo</a></div>
+      <%end%>
+      </div>
+  <%end%>
+
+
+  <%= simple_form_for @job, url: associar_job_path(@job), html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+    <%= f.error_notification%>
+    <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
+    </div>
+
+    <div style='text-align:right; margin-bottom: 15px'>
+      <%=f.submit "Enviar Modelos", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-job' %>
+    </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  <%end%>
+
+<%= content_for(:javascript_hives) do %>
+<script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>
+
+<script>
+$(document).ready(function(){
+  val = $('#job_array').val();
+  Dropzone.autoDiscover = false;
+  var ids = [];
+  <%if @job.jobmodels.any?%>
+    <%@job.jobmodels.each do |jobmodel| %>
+      ids.push(<%=jobmodel.id%>);
+    <%end%>
+  <%end%>
+  $('#job_array').val(ids);
+
+  console.log("ASNAKD");
+  console.log($('#job_array').val());
+
+  $('.deletar-fora').click(function(){ 
+
+    var iddeletar = parseInt($(this).attr('id'));
+
+     $.ajax({
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'DELETE',
+        url: '/jobmodel/' + iddeletar,
+        success: function(data){
+          deletarID = 'deletar-' + iddeletar;
+          $('#'+deletarID).hide();
+          ids.splice( $.inArray(iddeletar,ids) ,1 );
+          $('#job_array').val(ids);
+        }
+      });
+  });
+  Dropzone.options.filedrop = {
+      init: function () {
+        this.on("queuecomplete", function (file) {
+            alert("All files have uploaded ");
+        });
+      }
+  };
+  // grap our upload form by its id
+  $("#new_jobmodel").dropzone({
+
+
+    // restrict image size to a maximum 1MB
+    maxFilesize: 60,
+    timeout: 0,
+    // changed the passed param to one accepted by
+    // our rails app
+    paramName: "jobmodel[attachment]",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    // show remove links on each image upload
+    addRemoveLinks: true,
+    init: function () {
+
+        this.on("queuecomplete", function (file) {
+            console.log("Feito upload!");
+        });
+        this.on("addedfile", function (file) {
+            console.log("Adicionado");
+        });
+      },
+    // if the upload was successful
+    success: function(file, response){
+      // find the remove button link of the uploaded file and give it an id
+      // based of the fileID response from the server
+      $(file.previewTemplate).find('.dz-remove').attr('id', response.fileID);
+      deletarId = 'deletar-' + response.fileID;
+      $(file.previewTemplate).find('.dz-image').parent().attr('id', deletarId);
+      ids.push(response.fileID);
+      $('#job_array').val(ids);
+      console.log($('#job_array').val());
+      // add the dz-success class (the green tick sign)
+      $(file.previewElement).addClass("dz-success");
+    },
+    //when the remove button is clicked
+    removedfile: function(file){
+      // grap the id of the uploaded file we set earlier
+      var id = parseInt($(file.previewTemplate).find('.dz-remove').attr('id'));
+      // make a DELETE ajax request to delete the file
+      $.ajax({
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'DELETE',
+        url: '/jobmodel/' + id,
+        success: function(data){
+          console.log(data.message);
+          deletarID = 'deletar-' + id;
+          $('#'+deletarID).hide();
+          console.log(ids);
+          console.log(id);
+          ids.splice( $.inArray(id,ids) ,1 );
+          $('#job_array').val(ids);
+        }
+      });
+    }
+  }); 
+});
+</script>
+<%end%>

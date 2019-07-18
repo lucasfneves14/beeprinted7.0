@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'jobmodels/create'
+  get 'jobmodels/destroy'
   class SubdomainConstraint
 	  def self.matches?(request)
 	    request.subdomain.present? && request.subdomain == 'modeling'
@@ -45,6 +47,11 @@ Rails.application.routes.draw do
     devise_for :modelers, path: 'modelers', controllers:{sessions:"modelers/sessions", confirmations: "modelers/confirmations", 
       passwords: "modelers/passwords", registrations: "modelers/registrations", unlocks: "modelers/unlocks"}
     resources :jobs
+    post 'jobs/:id/aceitar', to:'jobs#aceitar', as: :aceitar_job
+    get 'jobs/:id/enviar', to:'jobs#enviar', as: :enviar_job
+    post '/jobmodels', to:'jobmodels#create', as: :jobmodels
+    delete 'jobmodel/:id', to: 'jobmodels#destroy', as: :jobmodel
+    patch 'jobs/:id/associar', to:'jobs#associar', as: :associar_job
 
   end
 

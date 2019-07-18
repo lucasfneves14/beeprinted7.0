@@ -1,44 +1,79 @@
-<p id="notice"><%= notice %></p>
+  <div class="content">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class='col-lg-4'>
+          <div class="card">
+            <div class="card-header">
+              <strong>Informações</strong>
+            </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-bell-o"></i> Título<span class="pull-right"><%=@job.title%></span></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=@job.id%></span></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-money"></i> Descrição <div style='padding-top:15px'><%= @job.description %></div></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=@job.tipo%></span></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-clock-o"></i> Dimensões<span class="pull-right">Width (X): <%=@job.x%></span>
+                <ul class="list-group list-group-flush"  style="list-style: none;">
+                  <li>
+                    <span class="pull-right">Depth (Y): <%=@job.y%></span>
+                  </li>
+                  <li>
+                    <span class="pull-right">Height (Z): <%=@job.z%></span>
+                  </li>
+                </ul>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right" style='color:green'>R$<%=@job.value%></span></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"><i class="fa fa-clock-o"></i> DeadLine <span class="pull-right"><strong style='color:red'>Horário Aqui</strong></span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>Observações</strong>
+            </div>
+            <div class="card-body">
+              <p><%= @job.observations %></p>
+             
+            </div>
+          </div>
+        </div>
+        <div class='col-lg-8'>
+          <div class="card">
+            <div class="card-header">
+              <strong>Imagens de Referência</strong>
+            </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<p>
-  <strong>X:</strong>
-  <%= @job.x %>
-</p>
-
-<p>
-  <strong>Y:</strong>
-  <%= @job.y %>
-</p>
-
-<p>
-  <strong>Z:</strong>
-  <%= @job.z %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @job.tipo %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @job.value %>
-</p>
-
-<p>
-  <strong>Observations:</strong>
-  <%= @job.observations %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+            <div class="card-body" style='padding-left:150px; padding-right:150px'>
+              <img class="card-img-top" src=<%=@job.image.url(:capa)%> alt="Card image cap">
+            </div>
+            <div style='text-align:center'>
+              <%= link_to @job.image.url, download: "Job_#{@job.id}_image" do%>
+                <i class="fa fa-upload"></i> Download da Imagem
+              <%end%>
+            </div>
+          </div>
+          <div class='pull-right'>
+            <%= simple_form_for @job, :url => aceitar_job_path(@job), :method => :post do |f|%>
+               <a href=<%=jobs_path%> class="btn btn-sm">
+              <i class="fa fa-ban"></i> Cancelar
+            </a>
+              <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

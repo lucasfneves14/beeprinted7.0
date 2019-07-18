@@ -1,12 +1,13 @@
 class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
   layout 'hives/navbar'
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar]
 
   # GET /jobs
   # GET /jobs.json
   def index
     @disponiveis = Job.all.where(available: true)
+    @aceitos = current_modeler.jobs.where(done: false).order('created_at DESC')
   end
 
   # GET /jobs/1
@@ -65,6 +66,34 @@ class JobsController < ApplicationController
     end
   end
 
+  def aceitar
+    @job.available = false
+    @job.modeler_id = current_modeler.id
+    if @job.save
+      redirect_to jobs_path
+    else
+      render :show
+    end
+  end
+
+  def enviar
+    @jobmodel = Jobmodel.new
+  end
+
+  def associar
+    array = params[:job][:array]
+    array = array.split(",")
+    array.each do |file|
+      puts file
+      if Jobmodel.where(id: file).any?
+        jobmodel = Jobmodel.find(file)
+        @job.jobmodels << jobmodel
+      end
+    end
+    redirect_to jobs_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
@@ -73,6 +102,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description,:image, :x, :y, :z, :tipo, :value, :observations)
+      params.require(:job).permit(:title, :description,:image, :x, :y, :z, :tipo, :value, :observations, :array)
     end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Modelers::RegistrationsController < Devise::RegistrationsController
-  layout "modelers/padrao"
+  layout :resolve_layout
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -68,5 +68,14 @@ class Modelers::RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params.require(:modeler).permit(:email, :name, :password, :password_confirmation, :current_password)
+  end
+
+  def resolve_layout
+    case action_name
+    when "edit"
+      "hives/navbar"
+    else
+      "modelers/padrao"
+    end
   end
 end

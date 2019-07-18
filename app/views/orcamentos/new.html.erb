@@ -259,6 +259,9 @@ $(document).ready(function(){
     var iddeletar = parseInt($(this).attr('id'));
 
      $.ajax({
+      headers: {
+          'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
         type: 'DELETE',
         url: '/arquivo/' + iddeletar,
         success: function(data){
@@ -365,6 +368,9 @@ $(document).ready(function(){
     var iddeletar = parseInt($(this).attr('id'));
 
      $.ajax({
+      headers: {
+          'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
         type: 'DELETE',
         url: '/reference/' + iddeletar,
         success: function(data){

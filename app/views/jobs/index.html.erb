@@ -29,6 +29,7 @@
         <hr>
             <div class="animated fadeIn">
                 <div class="row">
+                  <%if @disponiveis.any?%>
                   <%@disponiveis.all.each do |disponivel|%>
                     <div class="col-sm-3">
                         <a href=<%=job_path(disponivel.id)%>><div class="card">
@@ -55,6 +56,9 @@
                         </div></a>
                     </div>
                   <%end%>
+                  <%else%>
+                    <div class='content'><p>Não existe nenhuma oferta de Job para você no momento. Fique atento a novos Jobs</p></div>
+                  <%end%>
                 </div><!-- .row -->
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -63,22 +67,24 @@
         <hr>
             <div class="animated fadeIn">
                 <div class="row">
+                    <%if @aceitos.any?%>
+                    <%@aceitos.all.each do |aceito|%>
                     <div class="col-sm-3">
                         <div class="card">
-                            <img class="card-img-top" src="https://i.imgur.com/ue0AB6J.png" alt="Card image cap">
+                            <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title mb-3">Card Image Title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h4 class="card-title mb-3"><%=aceito.title%></h4>
+                                <p class="card-text"><%=aceito.description%></p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
+                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=aceito.id%></span></a>
                                 </li>
                                 <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
+                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=aceito.value%></span></a>
                                 </li>
                                 <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
+                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=aceito.tipo%></span></a>
                                 </li>
                               </ul>
                               <div class="card-header bg-success text-center">
@@ -87,77 +93,10 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://i.imgur.com/hrS2McC.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3">Card Image Title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
-                                </li>
-                              </ul>
-                              <div class="card-header bg-success text-center">
-                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://i.imgur.com/MUBS4Gh.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3">Card Image Title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
-                                </li>
-                              </ul>
-                              <div class="card-header bg-success text-center">
-                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://i.imgur.com/MUBS4Gh.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3">Card Image Title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#11</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$10</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right">Modelagem Completa</span></a>
-                                </li>
-                              </ul>
-                              <a href=''><div class="card-header bg-success text-center">
-                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
-                            </div></a>
-                        </div>
-                    </div>
-
-
+                    <%end%>
+                    <%else%>
+                        <div class='content'><p>Você não possui nenhum Job em aberto no momento. Fique atento a novos Jobs</p></div>
+                    <%end%>
 
                 </div><!-- .row -->
             </div><!-- .animated -->
