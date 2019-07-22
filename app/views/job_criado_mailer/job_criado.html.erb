@@ -1,16 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Olá <%= @modeler.name %></h1>
-    <p>
-      O job <%=@job.title%> foi criado com sucesso%>
-    </p>
-    <p>
-    	Para visualizar clique no link abaixo:
-    </p>
-    <a href="https://modeling.beeprinted.com.br/jobs/<%=@job.id%>">JOB CRIADO</a>
-  </body>
-</html>
+<body style="background-color: #f2f2f2";>
+<div style='margin:auto; width:80%; background-color:white;border: 1px solid #e3e3e3; text-align:center'> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+	<h2 class="w3-center" style='text-align:center;'>Olá <%= @modeler.name %></h2>
+	<h3 class="w3-center" style='text-align:center;'>O job <%=@job.title%> foi criado com sucesso</h3>
+	<div class="image-upload w3-center" style='text-align:center;'>
+		 <%= image_tag "https://beeprinted.com.br/images/LOGO-claro.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
+	</div>
+
+	<h3 style='text-align:center;'>Para visualizar clique no link abaixo:</h3>
+	<a style='text-align:center;' href="https://modeling.beeprinted.com.br/jobs/<%=@job.id%>">JOB CRIADO</a>
+
+	<h3 style='text-align:center;'>Muito Obrigado por participar da nossa plataforma!</h3>
+	<div class="w3-center">
+			<img id="navlogo" src="https://beeprinted.com.br/images/MARCA-cinza2.png" alt="Logo-Beeprinted" height="40">
+		</div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</body>
