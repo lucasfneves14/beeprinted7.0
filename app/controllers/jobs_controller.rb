@@ -30,39 +30,34 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.done = false
     @job.available = true
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.save
+      flash[:success] = "O job #{@job.title} foi criado!"
+      JobCriadoMailer.job_criado(current_modeler, @job).deliver
+      redirect_to @job
+    else
+      flash[:alert] = "O job #{@job.title} não pode ser salvo! Por favor, cheque o formulário."
+      render :new
     end
   end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
-        format.json { render :show, status: :ok, location: @job }
-      else
-        format.html { render :edit }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.update(job_params)
+      flash[:success] = "O job #{@job.title} foi editado com sucesso!"
+      redirect_to @job
+    else
+      flash[:alert] = "O job #{@job.title} não pode ser editado! Por favor, cheque o formulário."
+      render :edit
     end
   end
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
+    if @job.destroy
+      flash[:success] = "O job #{@job.title} foi excluído com sucesso!"
+      redirect_to jobs_path
     end
   end
 
@@ -70,8 +65,10 @@ class JobsController < ApplicationController
     @job.available = false
     @job.modeler_id = current_modeler.id
     if @job.save
+      flash[:success] = "Você aceitou o job #{@job.title} com sucesso!"
       redirect_to jobs_path
     else
+      flash[:alert] = "Algo de errado ocorreu. Por favor, tente novamente!"
       render :show
     end
   end
@@ -90,7 +87,10 @@ class JobsController < ApplicationController
         @job.jobmodels << jobmodel
       end
     end
-    redirect_to jobs_path
+    if @job.jobmodels.any?
+      flash[:success] = "Arquivos enviados com sucesso!"
+      redirect_to jobs_path
+    end
   end
 
 

@@ -200,6 +200,24 @@
                 </div>
             </div>
         </header><!-- /header -->
+        <div id=main-nav class="navbar-fixed-top" role=navigation style='top:110px'>
+        <div class='container text-center'>
+
+        <% flash.each do |key, value| %>
+          <% alert_class = case key
+                           when :notice then "success"
+                           when :alert then "danger"
+                           else key
+                           end %>
+          <%= content_tag :div, class: [:alert, alert_for(key)] do %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          <% end %>
+        <% end %>
+
+        </div>
+       </div>
+
         <!-- Header-->
 
         <%=yield%>

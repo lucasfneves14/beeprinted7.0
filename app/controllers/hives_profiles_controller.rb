@@ -21,7 +21,7 @@ class HivesProfilesController < ApplicationController
 
   	private
   	def modeler_params
-      params.require(:modeler).permit(:name, :image)
+      params.require(:modeler).permit(:name, :image, :city)
     end
 
 

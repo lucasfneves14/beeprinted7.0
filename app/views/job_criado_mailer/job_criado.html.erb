@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Olá <%= @modeler.name %></h1>
+    <p>
+      O job <%=@job.title%> foi criado com sucesso%>
+    </p>
+    <p>
+    	Para visualizar clique no link abaixo:
+    </p>
+    <%=link_to "JOB CRIADO", @job%>
+  </body>
+</html>
