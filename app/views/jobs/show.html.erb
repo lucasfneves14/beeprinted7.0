@@ -67,9 +67,14 @@
           </div>
           <div class='pull-right'>
             <%= simple_form_for @job, :url => aceitar_job_path(@job), :method => :post do |f|%>
-               <a href=<%=jobs_path%> class="btn btn-sm">
-              <i class="fa fa-ban"></i> Cancelar
-            </a>
+              <a href=<%=jobs_path%> class="btn btn-sm">
+                <i class="fa fa-ban"></i> Cancelar
+              </a>
+              <%if current_modeler.admin%>
+                <a href=<%=edit_job_path(@job)%> class="btn btn-sm btn-primary" style='background-color:#3F315D; border:none'>
+                  Editar
+                </a>
+              <%end%>
               <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
             <%end%>
           </div>

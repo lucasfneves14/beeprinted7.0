@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy]
   layout 'hives/navbar'
   before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar]
 
@@ -98,6 +99,13 @@ class JobsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job
       @job = Job.find(params[:id])
+    end
+
+    def admin
+      unless current_modeler.admin
+        flash[:alert] = "Acesso negado!"
+        redirect_to jobs_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
