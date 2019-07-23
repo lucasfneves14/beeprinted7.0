@@ -61,6 +61,20 @@
                 var stylesheets = ["https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/CSS/bee-final.css", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"];
             </script>
             <style>
+                .col-lg-5ths {
+                    position: relative;
+                    min-height: 1px;
+                    padding-right: 0px;
+                    padding-left: 0px;
+                }
+                @media (min-width: 1200px) {
+                    .col-lg-5ths {
+                        width: 20%;
+                        float: left;
+                    }
+                }
+            </style>
+            <style>
                 .feature {
                     padding: 70px 50px 30px 50px;
                     background-image: linear-gradient(151deg, #009fab 10%, #fff 0%)!important
@@ -886,7 +900,7 @@
                         </div>
                         <div id="row" style='margin-bottom:0px'>
                             <% @portfolio.each do |portfolio|%>
-                                <div class="col-lg-3"> 
+                                <div class="col-lg-5ths"> 
                                     <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
                                     <%=portfolio.caption%>>
                                     <div class="grid_item_overlay">
