@@ -65,8 +65,7 @@
   color: #323232;  
 }
 
-.selector__button {
-    width: 50%;
+.selector__button {;
     align-items: center;
     border-radius: 3px;
     border: solid 1px rgba(0, 0, 23, 0.22);
@@ -1062,19 +1061,23 @@
                 <h4 class="text-muted"><strong style='color:#009fab'>1.</strong> Você já possui os arquivos em 3D nas extensões STL ou OBJ?</h4>
               </div> 
 
-              <div style='display: flex;justify-content: flex-start; padding-top: 1.5rem; margin-bottom:20px'>
-                <button class='selector__button text-muted' style='margin-right:5px' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();$("#setinha-pra-baixo").fadeIn();'>
+              <div class='row ' style='margin-bottom:20px'>
+                <div class='col-lg-6' style='padding-top: 1.5rem;'>
+                <button class='selector__button text-muted' style='width:100%' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();$("#setinha-pra-baixo").fadeIn();'>
                   <span>Ainda não! Não possuo os arquivos ou estão em outro formato.</span>
                   <span class='modelagem' style='float:right;color:#009fab;<%unless @modelagem_check%>display:none<%end%>'>
                     <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
                   </span>
                 </button>
-                <button class='selector__button text-muted' style='margin-left:5px' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();$("#setinha-pra-baixo").fadeIn()'>
+                </div>
+                <div class='col-lg-6' style='padding-top: 1.5rem;'>
+                <button class='selector__button text-muted' style='width:100%' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();$("#setinha-pra-baixo").fadeIn()'>
                   <span>Sim! Eu já possuo os arquivos em formato .STL ou .OBJ.</span>
                   <span class='orcamento' style='float:right;color:#009fab;<%unless @orcamento_check%>display:none<%end%>'>
                     <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
                   </span>
                 </button>
+                </div>
               
               </div>
             </div>
