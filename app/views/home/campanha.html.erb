@@ -1063,13 +1063,13 @@
               </div> 
 
               <div style='display: flex;justify-content: flex-start; padding-top: 1.5rem; margin-bottom:20px'>
-                <button class='selector__button text-muted' style='margin-right:5px' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();'>
+                <button class='selector__button text-muted' style='margin-right:5px' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();$("#setinha-pra-baixo").fadeIn();'>
                   <span>Ainda não! Não possuo os arquivos ou estão em outro formato.</span>
                   <span class='modelagem' style='float:right;color:#009fab;<%unless @modelagem_check%>display:none<%end%>'>
                     <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
                   </span>
                 </button>
-                <button class='selector__button text-muted' style='margin-left:5px' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();'>
+                <button class='selector__button text-muted' style='margin-left:5px' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();$("#setinha-pra-baixo").fadeIn()'>
                   <span>Sim! Eu já possuo os arquivos em formato .STL ou .OBJ.</span>
                   <span class='orcamento' style='float:right;color:#009fab;<%unless @orcamento_check%>display:none<%end%>'>
                     <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
@@ -1077,6 +1077,10 @@
                 </button>
               
               </div>
+            </div>
+            <div class="container text-center" id='setinha-pra-baixo' style='display:none'>
+                <strong><i class="fa fa-chevron-down" aria-hidden="true" style='color:#009fab'></i></strong>
+
             </div>
         </section>
         <section style='background-color:#f2f2f2;'>
