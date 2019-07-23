@@ -884,11 +884,19 @@
                                 <div class="separator"></div>
                             </div>
                         </div>
-                        <div style="clear:both;"></div>
-                        <div id="portfoliowork" style='margin-bottom:0px'>
+                        <div id="row" style='margin-bottom:0px'>
                             <% @portfolio.each do |portfolio|%>
-                                <div class="single_portfolio tile scale-anm web grid-item-width2 <%portfolio.services.each do |service|%><%=service.name%> <%end%>"> <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
-                                    <%=portfolio.caption%>> <div class="grid_item_overlay"><div class="separator4"></div><h3><%=portfolio.caption%></h3><p><%portfolio.services.each do |service|%><%=service.name%> <%end%></p></div></div>
+                                <div class="col-lg-3"> 
+                                    <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
+                                    <%=portfolio.caption%>>
+                                    <div class="grid_item_overlay">
+                                        <div class="separator4"></div>
+                                        <h3><%=portfolio.caption%></h3>
+                                        <p><%portfolio.services.each do |service|%><%=service.name%> <%end%>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
                                 <%end%>
                         </div>
                         <div style="clear:both;"></div>
