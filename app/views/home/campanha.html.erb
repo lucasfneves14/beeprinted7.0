@@ -900,8 +900,8 @@
                         </div>
                         <div id="row" style='margin-bottom:0px'>
                             <% @portfolio.each do |portfolio|%>
-                                <div class="col-lg-5ths col-sm-6 single_portfolio"> 
-                                    <img class="lazyload" src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
+                                <div class="col-lg-5ths col-xs-6 col-sm-6 single_portfolio"> 
+                                    <img class="lazyload" style='width:100%' src="https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg" data-src=<%=portfolio.images.first.attachment.url(:thumb)%> alt=
                                     <%=portfolio.caption%>>
                                     <div class="grid_item_overlay">
                                         <div class="separator4"></div>
