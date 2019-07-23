@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @contato = Contato.new
   end
   def campanha
-  	@portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(10)
+  	@portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(8)
     @contato = Contato.new
   end
 
