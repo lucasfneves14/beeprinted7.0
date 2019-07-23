@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  get 'jobmodels/create'
-  get 'jobmodels/destroy'
   class SubdomainConstraint
 	  def self.matches?(request)
 	    request.subdomain.present? && request.subdomain == 'modeling'
 	  end
 	end
-
-
+  get 'campanha',to: 'home#campanha', as: :campanha
 
   get 'modelings/create'
   get 'references/create'
@@ -41,6 +38,10 @@ Rails.application.routes.draw do
   match "/500", :to => "not_found#internal_server_error", :via => :all
 
   constraints SubdomainConstraint do
+    get 'jobmodels/create'
+    get 'jobmodels/destroy'
+
+
     get '/profile', to: 'hives_profiles#show', as: :hives_profile
     get '/profile/edit', to: 'hives_profiles#edit', as: :edit_hives_profile
     patch '/profile', to: 'hives_profiles#update', as: :update_hives_profile
