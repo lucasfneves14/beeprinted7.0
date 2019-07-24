@@ -37,7 +37,7 @@
     <link rel=apple-touch-icon-precomposed href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <link rel=apple-touch-icon-precomposed sizes=72x72 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <link rel=apple-touch-icon-precomposed sizes=120x120 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
-    <link rel=apple-touch-icon-precomposed sizes=152x152 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />#
+    <link rel=apple-touch-icon-precomposed sizes=152x152 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
     <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -81,6 +81,30 @@
 
 </style>
             <style>
+            .navbar_campanha {
+                  overflow: hidden;
+                  background-color: #242424;
+                  position: fixed;
+                  top: 0;
+                  width: 100%;
+                  color:white;
+                  z-index:999999;
+                }
+                .navbar_campanha a {
+                  float: left;
+                  display: block;
+                  color: #f2f2f2;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                  font-size: 17px;
+                }
+
+                .navbar_campanha a:hover {
+                  background: #ddd;
+                  color: black;
+                }
+
                 .col-lg-5ths {
                     position: relative;
                     min-height: 1px;
@@ -797,7 +821,8 @@
                 }
                 
                 .degrade:hover {
-                    background-position: right center !important
+                    background-position: right center !important;
+                    color:white !important;
                 }
                 
                 @media (max-width:1400px) {
@@ -885,7 +910,12 @@
             <%=image_tag 'https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/LoadGIF.gif', id:'item-1', style:'margin-left:auto;margin-right:auto;width:100px', alt:'loader-beeprinted-impressão-3D' %>
         </div>
     </div>
-    <%= render 'layouts/navbar' %>
+    <div class="navbar_campanha">
+        <div class='container'>
+          <img src="https://ds76otpcq42vd.cloudfront.net/uploads/diversas/MARCA-fundoEscuro.png" alt="logo" style='width:200px;margin-top:10px'>
+          <a title="Peça o seu orçamento" class="btn-orcamento btn btn-store smooth-scroll font-bold degrade" href=<%=new_orcamento_path%> style='margin-right:0px;margin-top:10px; font-size:14px; padding:8px 30px;float:right'>PEÇA UM ORÇAMENTO</a>
+        </div>
+    </div>
         <header class="masthead video light-typo full-height" style='height:auto;min-height:0'>
             <div class=overlay-bg></div>
             <div class=overlay-bg id="particles-js" style='background-color:transparent; opacity: 1'></div>
