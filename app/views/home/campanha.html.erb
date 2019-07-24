@@ -628,6 +628,23 @@
           <a title="Peça o seu orçamento" class="btn-orcamento btn btn-store smooth-scroll font-bold degrade" href='#orcamento' style='margin-right:0px;margin-top:10px; font-size:14px; padding:8px 30px;float:right'>PEÇA UM ORÇAMENTO</a>
         </div>
     </div>
+    <div class="navbar_campanha" style='top:80px;background:transparent;'>
+    <div class='container text-center'>
+
+        <% flash.each do |key, value| %>
+          <% alert_class = case key
+                           when :notice then "success"
+                           when :alert then "danger"
+                           else key
+                           end %>
+          <%= content_tag :div, class: [:alert, alert_for(key)] do %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          <% end %>
+        <% end %>
+
+        </div>
+        </div>
         <header class="masthead video light-typo full-height" style='height:auto;min-height:0'>
             <div class=overlay-bg></div>
             <div class=overlay-bg id="particles-js" style='background-color:transparent; opacity: 1'></div>
