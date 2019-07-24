@@ -459,6 +459,23 @@
                 .single_portfolio:hover .grid_item_overlay {
                     opacity: 1
                 }
+
+                .processo:hover .grid_item_overlay_processo {
+                    opacity: 1;
+                }
+                .grid_item_overlay_processo{
+                    height:350px;
+                    position: absolute;
+                    left: 0%;
+                    top: -70%;
+                    width: 100%;
+                    background: rgba(0, 159, 171, 1);
+                    color: #fff;
+                    padding: 20px 20px 20px;
+                    opacity: 0;
+                    transition: .6s;
+                    z-index: 99
+                }
                 
                 .single_portfolio img {
                     -webkit-transform: initial;
@@ -987,25 +1004,40 @@
                         </div>
                         <div class='container'>
                         <div class='row' style='color:#009fab;margin-bottom:100px'>
-                            <div class='col-lg-5ths text-center'>
-                            <i class="fa fa-lightbulb-o" aria-hidden="true" style='font-size:100px;'></i>
-                            <h2><strong>Briefing</strong></h2>
+                            <div class='col-lg-5ths text-center processo'>
+                                <i class="fa fa-lightbulb-o" aria-hidden="true" style='font-size:100px;'></i>
+                                <h2><strong>Briefing</strong></h2>
+                                <div class="grid_item_overlay_processo">
+                                    <h6>Criatividade começa com restrições. Precisamos saber exatamente o que você está procurando. Quais são os materiais que você está procurando, quais elementos você quer destacar, em que contexto a peça será aplicada, ... espere que a gente escute, pergunte e mostre muitas referências neste estágio.</h6>
+                                 </div>
                             </div>
-                            <div class='col-lg-5ths text-center'>
+                            <div class='col-lg-5ths text-center processo'>
                             <i class="fa fa-pencil" aria-hidden="true" style='font-size:100px;'></i>
                             <h2><strong>Esboço</strong></h2>
+                            <div class="grid_item_overlay_processo">
+                                    <h6>Você provavelmente já verá nossos designers rabiscarem e desenharem durante a primeira reunião. Você não acreditaria na quantidade de lápis e cadernos que usamos em um mês. Mas é crucial ter muitos rascunhos e ideias para abordar diferentes ângulos e tomadas no assunto e estimular a criatividade. É tão divertido quanto parece. (E, sim, também consideramos as restrições orçamentárias).</h6>
+                                 </div>
                             </div>
-                            <div class='col-lg-5ths text-center'>
+                            <div class='col-lg-5ths text-center processo'>
                             <i class="fa fa-desktop" aria-hidden="true" style='font-size:100px;'></i>
                             <h2><strong>Design</strong></h2>
+                            <div class="grid_item_overlay_processo">
+                                    <h6>Para as máquinas! De esboços a lápis, vamos para modelos 3D e imagens renderizadas na tela do nosso computador. Elas parecem quase reais. Aqui, nós criamos, moldamos e repensamos cada detalhe do design para acabar com a peça que você queria.</h6>
+                                 </div>
                             </div>
-                            <div class='col-lg-5ths text-center'>
+                            <div class='col-lg-5ths text-center processo'>
                             <i class="fa fa-cube" aria-hidden="true" style='font-size:95px;'></i>
                             <h2><strong>Produção</strong></h2>
+                            <div class="grid_item_overlay_processo">
+                                    <h6>Design aprovado? Então vamos fazer algumas impressões! Na verdade, é um pouco mais técnico do que isso, com a preparação de arquivos e a escolha de técnicas de impressão e acabamento. Mas essas habilidades estão embutidas em nosso DNA (e já foram acionadas no estágio de design também!).</h6>
+                                 </div>
                             </div>
-                            <div class='col-lg-5ths text-center'>
+                            <div class='col-lg-5ths text-center processo'>
                             <i class="fa fa-envelope-open-o" aria-hidden="true" style='font-size:95px;'></i>
                            <h2><strong>Entrega</strong></h2>
+                           <div class="grid_item_overlay_processo">
+                                    <h6>Enviamos para todo o Brasil! O packing e envio é pensado com o mesmo carinho das etapas anteriores. Inspecionamos e embalamos todas as peças para garantir que chegue em segurança e da forma que você imaginou.</h6>
+                                 </div>
                             </div>
 
                         </div>
@@ -1021,7 +1053,7 @@
             <div class=container>
                 <div class="col-sm-12">
                     <div class="head_title text-center">
-                        <h2>EMPRESAS QUE CONFIAM NA BEE</h2>
+                        <h2><strong>EMPRESAS QUE CONFIAM NA BEE</strong></h2>
                         <div class="separator" style='background-color:white'></div>
                     </div>
                 </div>
