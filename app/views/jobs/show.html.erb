@@ -75,7 +75,13 @@
                   Editar
                 </a>
               <%end%>
-              <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+              <%if @job.modeler%>
+              <a href=<%=enviar_job_path(@job)%> class="btn btn-primary btn-sm" style='background-color:green'>
+               <i class="fa fa-upload"></i>Enviar Modelo
+              </a>
+              <%else%>
+                <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+              <%end%>
             <%end%>
           </div>
         </div>

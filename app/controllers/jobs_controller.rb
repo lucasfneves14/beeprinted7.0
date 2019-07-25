@@ -66,6 +66,8 @@ class JobsController < ApplicationController
     @job.available = false
     @job.modeler_id = current_modeler.id
     if @job.save
+      AceitouModelerMailer.aceitou_modeler(current_modeler, @job).deliver
+      AceitouModelerMailer.aceitou_admin(current_modeler, @job).deliver
       flash[:success] = "Você aceitou o job #{@job.title} com sucesso!"
       redirect_to jobs_path
     else

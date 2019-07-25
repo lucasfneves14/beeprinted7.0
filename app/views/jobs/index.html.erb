@@ -70,28 +70,30 @@
                     <%if @aceitos.any?%>
                     <%@aceitos.all.each do |aceito|%>
                     <div class="col-sm-3">
-                        <div class="card">
-                            <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3"><%=aceito.title%></h4>
-                                <p class="card-text"><%=aceito.description%></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=aceito.id%></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=aceito.value%></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=aceito.tipo%></span></a>
-                                </li>
-                              </ul>
-                              <div class="card-header bg-success text-center">
-                                <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
-                            </div>
+                        <a href=<%=job_path(aceito.id)%>>
+                            <div class="card">
+                                <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-3"><%=aceito.title%></h4>
+                                    <p class="card-text"><%=aceito.description%></p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=aceito.id%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=aceito.value%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=aceito.tipo%></span></a>
+                                    </li>
+                                  </ul>
+                                  <a href=<%=enviar_job_path(aceito)%> class="card-header bg-success text-center">
+                                    <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                                </a>
 
-                        </div>
+                            </div>
+                        </a>
                     </div>
                     <%end%>
                     <%else%>
