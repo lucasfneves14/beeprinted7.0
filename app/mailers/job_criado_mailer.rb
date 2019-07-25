@@ -1,5 +1,5 @@
 class JobCriadoMailer < ApplicationMailer
-	default from: "contato@beeprinted.com.br"
+	default from: "Beeprinted Modelagem <contato@beeprinted.com.br>"
 	def job_criado(modeler, job)
 		@modeler = modeler
 		@job = job

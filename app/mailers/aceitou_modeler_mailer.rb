@@ -1,5 +1,5 @@
 class AceitouModelerMailer < ApplicationMailer
-	default from: "contato@beeprinted.com.br"
+	default from: "Beeprinted <contato@beeprinted.com.br>"
 	def aceitou_modeler(modeler, job)
 		@modeler = modeler
 		@job = job
