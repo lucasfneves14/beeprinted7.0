@@ -1,0 +1,33 @@
+<body style="background-color: #f2f2f2";>
+<div style='margin:auto; width:80%; background-color:white;border: 1px solid #e3e3e3; text-align:center'> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+	<h2 class="w3-center" style='text-align:center;'>Olá Admin</h2>
+	<h3 class="w3-center" style='text-align:center;'>O modelador <%=@modeler.name%> enviou os modelos para o job '<%=@job.title%>'.</h3>
+	<div class="image-upload w3-center" style='text-align:center;'>
+		 <%= image_tag "https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/Email/logo-opt.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
+	</div>
+
+	<h3 style='text-align:center;'>Para visualizar clique no link abaixo:</h3>
+	<a style='text-align:center;' href="https://modeling.beeprinted.com.br/jobs/<%=@job.id%>">JOB que foi enviado</a>
+	<h3 style='text-align:center;'>Modelos enviados:</h3>
+	<%@job.jobmodels.each do |jobmodel|%>
+		<a style='text-align:center;' href="<%=jobmodel.attachment.url%>"><%=jobmodel.attachment.url%></a>
+	<%end%>
+
+	<h3 style='text-align:center;'>Muito Obrigado por participar da nossa plataforma!</h3>
+	<div class="w3-center">
+			<img id="navlogo" src="https://beeprinted-stls.s3.amazonaws.com/uploads/diversas/MARCA-cinza2.png" alt="Logo-Beeprinted" height="40">
+		</div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</body>
