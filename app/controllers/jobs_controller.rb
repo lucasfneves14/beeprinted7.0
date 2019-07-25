@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
-  before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar]
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar, :abertos, :aprovados]
   layout 'hives/navbar'
   before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar]
 
@@ -9,6 +9,11 @@ class JobsController < ApplicationController
   def index
     @disponiveis = Job.all.where(available: true)
     @aceitos = current_modeler.jobs.where(done: false).order('created_at DESC')
+  end
+
+  def meus_jobs
+    @aceitos = current_modeler.jobs.where(done: false).order('created_at DESC')
+    @dones = current_modeler.jobs.where(done: true).order('created_at DESC')
   end
 
   # GET /jobs/1
@@ -100,6 +105,14 @@ class JobsController < ApplicationController
 
   def analisar
     @analisados = Job.includes(:jobmodels).where(available: false, done: false).where.not(jobmodels: {job_id: nil})
+  end
+
+  def abertos
+    @abertos = Job.includes(:jobmodels).where(available: false, done: false).where(jobmodels: {job_id: nil})
+  end
+
+  def aprovados
+    @aprovados = Job.includes(:jobmodels).where(done: true)
   end
 
   def aprovar

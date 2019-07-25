@@ -2,6 +2,12 @@ class HivesProfilesController < ApplicationController
 	before_action :authenticate_modeler!, raise: false
 	layout 'hives/navbar'
 	def show
+		jobs_done = current_modeler.jobs.where(done:true)
+		@preco = 0
+		jobs_done.each do |job_done|
+			@preco = @preco + job_done.value
+		end
+		@count = jobs_done.count
 	end
 
 	def edit
@@ -16,6 +22,16 @@ class HivesProfilesController < ApplicationController
 	        format.html { render :edit }
 	      end
 	    end
+  	end
+
+  	def pagamentos
+
+  	end
+  	def instrucoes
+
+  	end
+  	def ajuda
+
   	end
 
 

@@ -1,0 +1,80 @@
+<div class="content">
+        <h3>Meus Jobs em Aberto</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <%if @aceitos.any?%>
+                    <%@aceitos.all.each do |aceito|%>
+                    <div class="col-sm-3">
+                        <a href=<%=job_path(aceito.id)%>>
+                            <div class="card">
+                                <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-3"><%=aceito.title%></h4>
+                                    <p class="card-text"><%=aceito.description%></p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=aceito.id%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=aceito.value%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=aceito.tipo%></span></a>
+                                    </li>
+                                  </ul>
+                                  <a href=<%=enviar_job_path(aceito)%> class="card-header bg-success text-center">
+                                    <strong class="card-title text-light"><i class="fa fa-upload"></i> Enviar Modelo</strong>
+                                </a>
+
+                            </div>
+                        </a>
+                    </div>
+                    <%end%>
+                    <%else%>
+                        <div class='content'><p>Você não possui nenhum Job em aberto no momento. Fique atento a novos Jobs</p></div>
+                    <%end%>
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+        <div class="content">
+        <h3>Meus Jobs Concluídos</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <%if @dones.any?%>
+                    <%@dones.all.each do |done|%>
+                    <div class="col-sm-3">
+                        <a href=<%=job_path(done.id)%>>
+                            <div class="card">
+                                <img class="card-img-top" src=<%=done.image.url(:capa)%> alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-3"><%=done.title%></h4>
+                                    <p class="card-text"><%=done.description%></p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=done.id%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=done.value%></span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=done.tipo%></span></a>
+                                    </li>
+                                  </ul>
+
+                            </div>
+                        </a>
+                    </div>
+                    <%end%>
+                    <%else%>
+                        <div class='content'><p>Você não possui nenhum Job concluído no momento. Fique atento a novos Jobs</p></div>
+                    <%end%>
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->

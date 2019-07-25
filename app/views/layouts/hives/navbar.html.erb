@@ -77,16 +77,16 @@
                         <a href=<%=hives_profile_path%>><i class="menu-icon fa fa-user"></i><strong>Meu Perfil</strong> </a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="menu-icon fa fa-th"></i><strong>Meus Jobs </strong></a>
+                        <a href=<%=meus_jobs_path%>><i class="menu-icon fa fa-th"></i><strong>Meus Jobs </strong></a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="menu-icon fa fa-credit-card"></i><strong>Pagamentos </strong></a>
+                        <a href=<%=pagamentos_path%>><i class="menu-icon fa fa-credit-card"></i><strong>Pagamentos </strong></a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="menu-icon fa fa-users"></i><strong>Instruções </strong></a>
+                        <a href=<%=instrucoes_path%>><i class="menu-icon fa fa-users"></i><strong>Instruções </strong></a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="menu-icon fa fa-question-circle"></i><strong>Ajuda </strong></a>
+                        <a href=<%=ajuda_path%>><i class="menu-icon fa fa-question-circle"></i><strong>Ajuda </strong></a>
                     </li>
                     <%if current_modeler.admin%>
                         <li style='margin-top:20px'>
@@ -99,10 +99,10 @@
                             <a href=<%=analisar_job_path%>><i class="menu-icon fa fa-exclamation-circle"></i></i><strong>Analisar Envios</strong></a>
                         </li>
                         <li>
-                            <a href=<%=analisar_job_path%>><i class="menu-icon fa fa-check"></i></i><strong>Jobs Aprovados</strong></a>
+                            <a href=<%=abertos_job_path%>><i class="menu-icon fa fa-coffee"></i></i><strong>Jobs em Aberto</strong></a>
                         </li>
                         <li>
-                            <a href=<%=analisar_job_path%>><i class="menu-icon fa fa-coffee"></i></i><strong>Jobs em Aberto</strong></a>
+                            <a href=<%=aprovados_job_path%>><i class="menu-icon fa fa-check"></i></i><strong>Jobs Aprovados</strong></a>
                         </li>
                     <%end%>
                 </ul>

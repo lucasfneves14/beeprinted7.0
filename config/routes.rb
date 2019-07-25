@@ -45,9 +45,15 @@ Rails.application.routes.draw do
     get '/profile', to: 'hives_profiles#show', as: :hives_profile
     get '/profile/edit', to: 'hives_profiles#edit', as: :edit_hives_profile
     patch '/profile', to: 'hives_profiles#update', as: :update_hives_profile
+    get '/pagamentos', to: 'hives_profiles#pagamentos', as: :pagamentos
+    get '/instrucoes', to: 'hives_profiles#instrucoes', as: :instrucoes
+    get '/ajuda', to: 'hives_profiles#ajuda', as: :ajuda
     devise_for :modelers, path: 'modelers', controllers:{sessions:"modelers/sessions", confirmations: "modelers/confirmations", 
       passwords: "modelers/passwords", registrations: "modelers/registrations", unlocks: "modelers/unlocks"}
-      get 'jobs/analisar', to:'jobs#analisar', as: :analisar_job
+    get 'jobs/meus-jobs', to:'jobs#meus_jobs', as: :meus_jobs
+    get 'jobs/analisar', to:'jobs#analisar', as: :analisar_job
+    get 'jobs/abertos', to:'jobs#abertos', as: :abertos_job
+    get 'jobs/aprovados', to:'jobs#aprovados', as: :aprovados_job
     resources :jobs
     post 'jobs/:id/aceitar', to:'jobs#aceitar', as: :aceitar_job
     get 'jobs/:id/enviar', to:'jobs#enviar', as: :enviar_job
