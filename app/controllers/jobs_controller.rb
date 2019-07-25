@@ -1,8 +1,8 @@
 class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
-  before_action :admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar]
   layout 'hives/navbar'
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar]
 
   # GET /jobs
   # GET /jobs.json
@@ -95,6 +95,23 @@ class JobsController < ApplicationController
       AceitouModelerMailer.enviou_modeler(current_modeler, @job).deliver
       flash[:success] = "Arquivos enviados com sucesso!"
       redirect_to jobs_path
+    end
+  end
+
+  def analisar
+    @analisados = Job.includes(:jobmodels).where(available: false, done: false).where.not(jobmodels: {job_id: nil})
+  end
+
+  def aprovar
+    @job.done = true
+    if @job.save
+      AceitouModelerMailer.aprovou_admin(current_modeler, @job).deliver
+      AceitouModelerMailer.aprovou_modeler(current_modeler, @job).deliver
+      flash[:success] = "Job Aprovado!"
+      redirect_to jobs_path
+    else
+      flash[:success] = "Algo de errado ocorreu! Por favor, tente novamente"
+      redirect_to job_path(@job)
     end
   end
 

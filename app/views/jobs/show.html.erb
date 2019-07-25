@@ -86,5 +86,62 @@
           </div>
         </div>
       </div>
+
+      <%if @job.jobmodels.any?%>
+        <div class="row">
+           <div class="card" style='width:100%'>
+              <div class="card-header">
+                <strong class="card-title">Modelos Enviados</strong>
+              </div>
+              <div class="table-stats order-table ov-h">
+                <table class="table ">
+                  <thead>
+                    <tr>
+                      <th class="serial">#</th>
+                      <th class="avatar">Modelador</th>
+                      <th>ID</th>
+                      <th>Nome do Arquivo</th>
+                      <th>Download</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%@job.jobmodels.each do |jobmodel|%>
+                      <tr>
+                        <td class="serial">1.</td>
+                        <td class="avatar">
+                          <div class="round-img">
+                            <a href="#"><img class="rounded-circle" src="<%=@job.modeler.image.url(:profile)%>" alt=""></a>
+                          </div>
+                        </td>
+                        <td> #<%=jobmodel.id%> </td>
+                        <td>  <span class="name"><%=File.basename(jobmodel.attachment.url)%></span> </td>
+                        <td>
+                          <a href='<%=jobmodel.attachment.url%>' title='Download'><span class="badge badge-complete"><i class="fa fa-download" aria-hidden="true"></i></span></a>
+                        </td>
+                      </tr>
+                    <%end%>
+                            
+                  </tbody>
+                </table>
+              </div> <!-- /.table-stats -->
+            </div>
+        </div>
+        <%if current_modeler.admin%>
+        <div class="row">
+          <div class="card" style='width:100%'>
+            <div class="card-header">
+              <strong>Aprovar </strong>Job
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group mx-auto d-block text-sm-center">
+                  <%= button_to "Aprovar Job e Liberar Pagamento", aprovar_job_path(@job), data: { confirm: "Você tem certeza que quer aprovar esse job?" }, method: :post, class:'external btn btn-success btn-sm text-sm-center' %>
+                </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <%end%>
+
+
     </div>
   </div>

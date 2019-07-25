@@ -47,12 +47,14 @@ Rails.application.routes.draw do
     patch '/profile', to: 'hives_profiles#update', as: :update_hives_profile
     devise_for :modelers, path: 'modelers', controllers:{sessions:"modelers/sessions", confirmations: "modelers/confirmations", 
       passwords: "modelers/passwords", registrations: "modelers/registrations", unlocks: "modelers/unlocks"}
+      get 'jobs/analisar', to:'jobs#analisar', as: :analisar_job
     resources :jobs
     post 'jobs/:id/aceitar', to:'jobs#aceitar', as: :aceitar_job
     get 'jobs/:id/enviar', to:'jobs#enviar', as: :enviar_job
     post '/jobmodels', to:'jobmodels#create', as: :jobmodels
     delete 'jobmodel/:id', to: 'jobmodels#destroy', as: :jobmodel
     patch 'jobs/:id/associar', to:'jobs#associar', as: :associar_job
+    post 'jobs/:id/aprovar', to: 'jobs#aprovar', as: :aprovar_job
 
   end
 
