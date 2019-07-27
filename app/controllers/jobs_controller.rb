@@ -98,7 +98,7 @@ class JobsController < ApplicationController
     if @job.jobmodels.any?
       AceitouModelerMailer.enviou_admin(current_modeler, @job).deliver
       AceitouModelerMailer.enviou_modeler(current_modeler, @job).deliver
-      flash[:success] = "Arquivos enviados com sucesso!"
+      flash[:success] = "Arquivos enviados com sucesso! Os modelos serão analisados. Aguarde aprovação!"
       redirect_to jobs_path
     end
   end

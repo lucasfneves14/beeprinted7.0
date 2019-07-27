@@ -22,60 +22,66 @@
 <link href='https://beeprinted-stls.s3.amazonaws.com/Plataforma/Jobs/Css/dropzone.min.css' rel='stylesheet' type='text/css'>
 
 
-<%= form_for(@jobmodel, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
-    <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
-      <p><span><strong>Selecione ou arraste e solte arquivos STL ou OBJ para o seu projeto aqui</strong></span></p>
-    </div>
 
-    <div class="fallback", style='display:none'>
-      <%= f.file_field :attachment %><br>
-      <%= f.submit "Upload" %>
-    </div>
-  <% end %>
-  <%if @job.jobmodels.any?%>
-    <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
-      <%@job.jobmodels.each do |jobmodel| %>
-       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=jobmodel.id%>">
-        <div class="dz-image">
-            <img data-dz-thumbnail="">
-          </div>
-          <div class="dz-details">
-            <div class="dz-size">
-              <span data-dz-size="">
-                <strong><%='%.1f' % (jobmodel.attachment.file.size/1000).round(1)%></strong> KB
-              </span>
-            </div>
-            <div class="dz-filename">
-              <span data-dz-name=""><%=File.basename(jobmodel.attachment.path)%></span>
-            </div>  
-          </div>
-          <div class="dz-progress">
-            <span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span>
-          </div>
-          <div class="dz-error-message">
-            <span data-dz-errormessage=""></span>
-          </div>  
-          <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=jobmodel.id%>">Remover modelo</a></div>
-      <%end%>
+<div class="content">
+  <h3>Envie os Arquivos</h3>
+  <hr>
+
+  <%= form_for(@jobmodel, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
+      <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
+        <p><span><strong>Selecione ou arraste e solte arquivos STL ou OBJ para o seu projeto aqui</strong></span></p>
       </div>
-  <%end%>
+
+      <div class="fallback", style='display:none'>
+        <%= f.file_field :attachment %><br>
+        <%= f.submit "Upload" %>
+      </div>
+    <% end %>
+    <%if @job.jobmodels.any?%>
+      <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
+        <%@job.jobmodels.each do |jobmodel| %>
+         <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=jobmodel.id%>">
+          <div class="dz-image">
+              <img data-dz-thumbnail="">
+            </div>
+            <div class="dz-details">
+              <div class="dz-size">
+                <span data-dz-size="">
+                  <strong><%='%.1f' % (jobmodel.attachment.file.size/1000).round(1)%></strong> KB
+                </span>
+              </div>
+              <div class="dz-filename">
+                <span data-dz-name=""><%=File.basename(jobmodel.attachment.path)%></span>
+              </div>  
+            </div>
+            <div class="dz-progress">
+              <span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span>
+            </div>
+            <div class="dz-error-message">
+              <span data-dz-errormessage=""></span>
+            </div>  
+            <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=jobmodel.id%>">Remover modelo</a></div>
+        <%end%>
+        </div>
+    <%end%>
 
 
-  <%= simple_form_for @job, url: associar_job_path(@job), html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
-    <%= f.error_notification%>
-    <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
-    </div>
+    <%= simple_form_for @job, url: associar_job_path(@job), html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+      <%= f.error_notification%>
+      <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
+      </div>
 
-    <div style='text-align:right; margin-bottom: 15px'>
-      <%=f.submit "Enviar Modelos", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-job' %>
-    </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-  <%end%>
+      <div style='text-align:right; margin-bottom: 15px'>
+        <%=f.submit "Enviar Modelos", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-job' %>
+      </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <%end%>
+</div>
 
 <%= content_for(:javascript_hives) do %>
 <script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>

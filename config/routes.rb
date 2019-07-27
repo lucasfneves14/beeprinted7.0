@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     get 'jobmodels/create'
     get 'jobmodels/destroy'
 
-
+    
     get '/profile', to: 'hives_profiles#show', as: :hives_profile
     get '/profile/edit', to: 'hives_profiles#edit', as: :edit_hives_profile
     patch '/profile', to: 'hives_profiles#update', as: :update_hives_profile

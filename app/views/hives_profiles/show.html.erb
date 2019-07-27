@@ -152,21 +152,52 @@ am4core.useTheme(am4themes_animated);
 var chart = am4core.create("chartdiv", am4charts.PieChart);
 
 // Add data
+<%if @completa==0 && @ajuste==0 && @design==0 && @parcial==0%>
+
+
 chart.data = [ {
-  "country": "Modelagem Completa",
-  "litres": 333.3333
+  "tipo": "Modelagem Completa",
+  "quantidade": 25
 }, {
-  "country": "Reparos para Impressão",
-  "litres": 333.3333
+  "tipo": "Ajustes para Impressão",
+  "quantidade": 25
 }, {
-  "country": "Design de Produto",
-  "litres": 333.3333
-}];
+  "tipo": "Design de Produto",
+  "quantidade": 25
+},
+{
+  "tipo": "Modelagem Parcial",
+  "quantidade": 25
+}
+];
+
+
+
+<%else%>
+
+chart.data = [{
+  "tipo": "Modelagem Completa",
+  "quantidade": <%=@completa%>
+}, {
+  "tipo": "Ajustes para Impressão",
+  "quantidade": <%=@ajuste%>
+}, {
+  "tipo": "Design de Produto",
+  "quantidade": <%=@design%>
+},
+{
+  "tipo": "Modelagem Parcial",
+  "quantidade": <%=@parcial%>
+}
+];
+
+<%end%>
 
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
-pieSeries.dataFields.category = "country";
+pieSeries.fontSize =12;
+pieSeries.dataFields.value = "quantidade";
+pieSeries.dataFields.category = "tipo";
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;
 pieSeries.slices.template.strokeOpacity = 1;
@@ -184,14 +215,15 @@ chart2.fill = am4core.color("green");
 // Add data
 chart2.data = [ {
   "country": "Cancelados",
-  "litres": 500
+  "litres": 0
 }, {
   "country": "Finalizados",
-  "litres": 500
+  "litres": 100
 }];
 
 // Add and configure Series
 var pieSeries = chart2.series.push(new am4charts.PieSeries());
+pieSeries.fontSize =12;
 pieSeries.colors.list = [
   am4core.color("red"),
   am4core.color("#009fab")

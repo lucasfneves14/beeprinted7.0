@@ -8,6 +8,10 @@ class HivesProfilesController < ApplicationController
 			@preco = @preco + job_done.value
 		end
 		@count = jobs_done.count
+		@ajuste = jobs_done.where(tipo: "Ajustes para Impressão").count
+		@completa = jobs_done.where(tipo: "Modelagem Completa").count
+		@parcial = jobs_done.where(tipo: "Modelagem Parcial").count
+		@design = jobs_done.where(tipo: "Design de Produto").count
 	end
 
 	def edit

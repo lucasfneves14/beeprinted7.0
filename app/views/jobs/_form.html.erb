@@ -36,7 +36,11 @@
       </div>
       <div class="row form-group">
         <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Tipo de Modelagem</label></div>
-        <div class="col-12 col-md-9"><%= f.input :tipo, label:false %></div>
+        <div class="col-12 col-md-9">
+          <%= f.input :tipo, label:false, prompt:"O que é o projeto", :collection => ["Design de Produto", "Ajustes para Impressão", "Modelagem Completa","Modelagem Parcial"] %>
+
+
+        </div>
       </div>
       <div class="row form-group">
         <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Valor (R$)</label></div>
