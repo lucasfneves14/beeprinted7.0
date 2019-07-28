@@ -8,7 +8,7 @@ class AceitouModelerMailer < ApplicationMailer
 	def aceitou_admin(modeler, job)
 		@modeler = modeler
 		@job = job
-		mail(to: 'contato@beeprinted.com.br', subject: "O modelador #{@modeler.name} aceitou o job ##{@job.id}")
+		mail(to: 'iago@beeprinted.com.br', subject: "O modelador #{@modeler.name} aceitou o job ##{@job.id}")
 	end
 	def enviou_modeler(modeler, job)
 		@modeler = modeler
@@ -19,7 +19,7 @@ class AceitouModelerMailer < ApplicationMailer
 	def enviou_admin(modeler, job)
 		@modeler = modeler
 		@job = job
-		mail(to: 'contato@beeprinted.com.br', subject: "O modelador #{@modeler.name} enviou os modelos para o job ##{@job.id}")
+		mail(to: 'iago@beeprinted.com.br', subject: "O modelador #{@modeler.name} enviou os modelos para o job ##{@job.id}")
 	end
 	def aprovou_modeler(modeler, job)
 		@modeler = modeler
@@ -30,7 +30,7 @@ class AceitouModelerMailer < ApplicationMailer
 	def aprovou_admin(modeler, job)
 		@modeler = modeler
 		@job = job
-		mail(to: 'contato@beeprinted.com.br', subject: "O job ##{@job.id} do modelador #{@modeler.name} foi aprovado")
+		mail(to: 'iago@beeprinted.com.br', subject: "O job ##{@job.id} do modelador #{@modeler.name} foi aprovado")
 	end
 
 end
