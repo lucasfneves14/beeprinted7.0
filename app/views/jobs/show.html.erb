@@ -1,3 +1,18 @@
+<style>
+
+.fotinha{
+  overflow:hidden;
+  height: 120px;
+  width:22%;
+  display: inline-block;
+  position:relative;
+  border:1px solid #bfbfbf;
+  background-color:white;
+}
+
+</style>
+
+
   <div class="content">
     <div class="animated fadeIn">
       <div class="row">
@@ -56,33 +71,40 @@
               <strong>Imagens de Referência</strong>
             </div>
 
-            <div class="card-body" style='padding-left:150px; padding-right:150px'>
-              <img class="card-img-top" src=<%=@job.image.url(:capa)%> alt="Card image cap">
+
+
+            <div class="card-body mySlides" style='padding-left:5em; padding-right:5em'>
+              <img class="card-img-top" src=<%=@job.image.url%> alt="Card image cap">
             </div>
+
+            <div class="card-body mySlides" style='padding-left:5em; padding-right:5em'>
+              <img class="card-img-top" src=<%=@job.images.first.attachment.url%> alt="Card image cap">
+            </div>
+
+
+
+
             <div style='text-align:center'>
               <%= link_to @job.image.url, download: "Job_#{@job.id}_image" do%>
                 <i class="fa fa-upload"></i> Download da Imagem
               <%end%>
             </div>
-          </div>
-          <div class='pull-right'>
-            <%= simple_form_for @job, :url => aceitar_job_path(@job), :method => :post do |f|%>
-              <a href=<%=jobs_path%> class="btn btn-sm">
-                <i class="fa fa-ban"></i> Cancelar
-              </a>
-              <%if current_modeler.admin%>
-                <a href=<%=edit_job_path(@job)%> class="btn btn-sm btn-primary" style='background-color:#3F315D; border:none'>
-                  Editar
-                </a>
+            <br>
+
+            <ul style="padding-left:0px;white-space:nowrap;width:100%">
+              <li class="fotinha">
+              <%=image_tag @job.image.url,style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(1)",class:"demo w3-opacity w3-hover-opacity-off"%>
+              </li>
+
+              <%@job.images.each_with_index do |image,index|%>
+                <li class="fotinha">
+                  <%=image_tag image.attachment.url(:thumb),style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(#{index +2})",class:"demo w3-opacity w3-hover-opacity-off"%> 
+                </li>
               <%end%>
-              <%if @job.modeler%>
-              <a href=<%=enviar_job_path(@job)%> class="btn btn-primary btn-sm" style='background-color:green'>
-               <i class="fa fa-upload"></i>Enviar Modelo
-              </a>
-              <%else%>
-                <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
-              <%end%>
-            <%end%>
+            </ul>
+
+
+
           </div>
         </div>
       </div>
@@ -142,6 +164,59 @@
       <%end%>
       <%end%>
 
+      <div class='pull-right'>
+            <%= simple_form_for @job, :url => aceitar_job_path(@job), :method => :post do |f|%>
+              <a href=<%=jobs_path%> class="btn btn-sm">
+                <i class="fa fa-ban"></i> Cancelar
+              </a>
+              <%if current_modeler.admin%>
+                <a href=<%=edit_job_path(@job)%> class="btn btn-sm btn-primary" style='background-color:#3F315D; border:none'>
+                  Editar
+                </a>
+              <%end%>
+              <%if @job.modeler%>
+              <a href=<%=enviar_job_path(@job)%> class="btn btn-primary btn-sm" style='background-color:green'>
+               <i class="fa fa-upload"></i>Enviar Modelo
+              </a>
+              <%else%>
+                <%= f.button :submit, "Aceitar Job",class:"btn btn-primary btn-sm", style:'background-color:#009fab'%>
+              <%end%>
+            <%end%>
+          </div>
 
     </div>
   </div>
+
+
+
+
+
+<script>
+// Slideshow Apartment Images
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>

@@ -24,6 +24,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
+    @image = Image.new
   end
 
   # GET /jobs/1/edit
@@ -36,6 +37,19 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.done = false
     @job.available = true
+
+
+    array = @job.array.split(",")
+    array.each do |file|
+      puts file
+      if Image.where(id: file).any?
+        image = Image.find(file)
+        @job.images << image
+      end
+    end
+
+
+
     if @job.save
       flash[:success] = "O job #{@job.title} foi criado!"
       JobCriadoMailer.job_criado(current_modeler, @job).deliver
@@ -144,6 +158,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description,:image, :x, :y, :z, :tipo, :value, :observations, :array)
+      params.require(:job).permit(:title, :description, :array, :image, :x, :y, :z, :tipo, :value, :observations, :array)
     end
 end
