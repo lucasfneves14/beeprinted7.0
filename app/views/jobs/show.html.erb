@@ -77,9 +77,11 @@
               <img class="card-img-top" src=<%=@job.image.url%> alt="Card image cap">
             </div>
 
-            <div class="card-body mySlides" style='padding-left:5em; padding-right:5em'>
-              <img class="card-img-top" src=<%=@job.images.first.attachment.url%> alt="Card image cap">
-            </div>
+            <%@job.images.each_with_index do |image,index|%>
+              <div class="card-body mySlides" style='padding-left:5em; padding-right:5em'>
+                <img class="card-img-top" src=<%=@job.images.first.attachment.url%> alt="Card image cap">
+              </div>
+            <%end%>
 
 
 
