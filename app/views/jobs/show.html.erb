@@ -87,7 +87,7 @@
 
 
             <div style='text-align:center'>
-              <%= link_to @job.image.url, download: "Job_#{@job.id}_image" do%>
+              <%= link_to @job.image.url, download: "Job_#{@job.id}_image", id:'download_image' do%>
                 <i class="fa fa-upload"></i> Download da Imagem
               <%end%>
             </div>
@@ -95,12 +95,12 @@
 
             <ul style="padding-left:0px;white-space:nowrap;width:100%">
               <li class="fotinha">
-              <%=image_tag @job.image.url,style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(1)",class:"demo w3-opacity w3-hover-opacity-off"%>
+              <%=image_tag @job.image.url,style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(1);$('#download_image').attr('href', '#{@job.image.url}') ",class:"demo w3-opacity w3-hover-opacity-off"%>
               </li>
 
               <%@job.images.each_with_index do |image,index|%>
                 <li class="fotinha">
-                  <%=image_tag image.attachment.url(:thumb),style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(#{index +2})",class:"demo w3-opacity w3-hover-opacity-off"%> 
+                  <%=image_tag image.attachment.url(:thumb),style:"position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%) translateX(-50%); margin-bottom:-6px;width:100%; cursor:pointer", onclick:"currentDiv(#{index +2});$('#download_image').attr('href', '#{image.attachment.url}')",class:"demo w3-opacity w3-hover-opacity-off"%> 
                 </li>
               <%end%>
             </ul>
