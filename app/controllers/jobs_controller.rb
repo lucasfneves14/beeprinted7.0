@@ -29,6 +29,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
+    @image = Image.new
   end
 
   # POST /jobs
