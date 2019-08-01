@@ -32,5 +32,16 @@ class AceitouModelerMailer < ApplicationMailer
 		@job = job
 		mail(to: 'iago@beeprinted.com.br', subject: "O job ##{@job.id} do modelador #{@modeler.name} foi aprovado")
 	end
+	def reprovou_modeler(modeler, job)
+		@modeler = job.modeler
+		@job = job
+		mail(to: @modeler.email, subject: "O seu job ##{@job.id} foi REPROVADO")
+
+	end
+	def reprovou_admin(modeler, job)
+		@modeler = job.modeler
+		@job = job
+		mail(to: 'iago@beeprinted.com.br', subject: "O job ##{@job.id} do modelador #{@modeler.name} foi REPROVADO")
+	end
 
 end

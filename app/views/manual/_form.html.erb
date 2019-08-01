@@ -1,0 +1,33 @@
+<%= simple_form_for @erro do |f| %>
+
+  <div class="form-group">
+    <%= f.input :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :resume, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :summary, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.input :image, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :seo_title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :seo_meta, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>

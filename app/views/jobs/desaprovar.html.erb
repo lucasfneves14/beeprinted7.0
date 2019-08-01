@@ -1,0 +1,27 @@
+
+<div class="content">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="card" style='width:100%'>
+        <div class="card-header">
+          <strong>Desaprovar</strong> Job
+        </div>
+        <%= simple_form_for(@job, :url => "/jobs/#{@job.id}?email=true", :html=>{class:"form-horizontal"}) do |f| %>
+          <div class="card-body card-block">
+            <div class="row form-group">
+              <div class="col col-md-3"><label for="exampleInputName2" class="pr-1  form-control-label">Descreva os Erros</label></div>
+              <div class="col-12 col-md-9"><%= f.input :erros, label:false%></div>
+              <div class="col-12 col-md-9" style='display:none'><%= f.input :unaproved, label:false, input_html:{checked: true}%></div>
+            </div>
+            <div class="row form-group mx-auto d-block text-sm-center">
+                  <%= f.button :submit, "Desaprovar Job",class:"btn btn-primary btn-sm btn-danger"%>
+
+                </div>
+          </div>
+        <%end%>
+
+      </div>
+
+    </div>
+    </div>
+    </div>

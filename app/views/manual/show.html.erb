@@ -1,0 +1,27 @@
+<style>
+.body{
+	padding-top:40px;
+}
+h3{
+	margin-bottom:15px;
+	margin-top: 30px;
+}
+</style>
+<div class=container style='padding:40px;margin-top:40px;margin-bottom:40px;color:#646464; background-color:white'>
+	<div class=row>
+		<div class="col-lg-3 col-md-3">
+			<img src="https://www.simplify3d.com/wp-content/uploads/2019/04/not-extruding-at-start-1024x1024.jpg" style='width:100%' alt="">
+		</div>
+		<div class="col-lg-6 col-md-6">
+			<h1 style='color:#009fab'><%=@erro.title%></h1>
+			<p><%=@erro.summary%></p>
+		</div>	
+	</div>
+
+	<div class='body'>
+		<h2 style='margin-bottom:30px;color:#009fab'>Soluções</h2>
+		<%= @erro.body.html_safe %>
+	</div>
+
+
+</div>

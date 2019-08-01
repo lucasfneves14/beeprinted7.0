@@ -1,0 +1,47 @@
+<style>
+.summary{
+	padding-bottom:40px;
+}
+.descricao{
+	padding-top:20px;
+}
+.col-lg-3.col-md-3{
+	padding:15px;
+}
+</style>
+<div class=container style='padding:40px;margin-top:40px;margin-bottom:40px;color:#646464; background-color:white'>
+	<div class="col-sm-12" style='padding-bottom:40px'>
+        <div class="head_title w3-center">
+            <h1 style="color:#009fab">Manual para solução de erros de Impressão 3D</h1>
+            <div class="separator"></div>
+            <div class="subtitle">
+            	Conheça e resolva os erros mais comuns encontrados no mundo da tecnologia de impressão 3d!
+ 			</div>
+        </div>
+
+    </div>
+
+    <div class=summary>
+    <p>Este guia é um ótimo lugar para começar se você estiver tentando melhorar a qualidade de suas peças impressas em 3D. Nós montamos uma extensa lista dos problemas de impressão 3D mais comuns, juntamente com as configurações de software que você pode usar para resolvê-los. O melhor de tudo é que o guia usa uma grande coleção de imagens do mundo real para facilitar a identificação de cada problema ao examinar suas próprias peças impressas em 3D. Então vamos começar!</p>
+
+    </div>
+     <h3><strong>Lista de Erros</strong></h3>
+     <p>Use as miniaturas abaixo para identificar a imagem que mais representa o problema de qualidade que você vê nas suas próprias peças impressas em 3D. Você pode clicar na miniatura para pular essa parte do guia para recomendações imediatas sobre como resolver o problema. Se você não conseguir localizar seus problemas nas miniaturas, sinta-se à vontade para rolar para baixo e ler cada seção do guia com mais detalhes. Há muitas dicas úteis para aprender que podem ajudar a melhorar seus resultados impressos em 3D!</p>
+
+     <div class=row style='margin-top:40px'>
+     	<%@erros.each do |erro|%>
+     		<a href=<%=erro_path(erro.url)%>>
+		     	<div class="col-lg-3 col-md-3">
+		     		<img src="https://www.simplify3d.com/wp-content/uploads/2019/04/not-extruding-at-start-1024x1024.jpg" style='width:100%' alt="">
+		     		<div class='descricao'>
+		     			<p><strong><%=erro.title%></strong></p>
+		     			<p><%=erro.resume%></p>
+
+		     		</div>
+		     	</div>
+		     </a>
+	    <%end%>
+     </div>
+
+
+</div>

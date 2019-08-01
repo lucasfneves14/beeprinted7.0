@@ -15,6 +15,18 @@
 
   <div class="content">
     <div class="animated fadeIn">
+    <%if @job.unaproved%>
+        <div class="row">
+          <div class="card" style='width:100%; border:1px solid red'>
+            <div class="card-header">
+              <strong style='color:red'>Feedbacks</strong> - Seu Job não foi aprovado. Necessário reenvio dos arquivos
+            </div>
+            <div class="card-body card-block">
+                <%= @job.erros.html_safe %>
+            </div>
+          </div>
+        </div>
+      <%end%>
       <div class="row">
         <div class='col-lg-4'>
           <div class="card">
@@ -150,14 +162,17 @@
               </div> <!-- /.table-stats -->
             </div>
         </div>
+
         <%if current_modeler.admin%>
         <div class="row">
           <div class="card" style='width:100%'>
             <div class="card-header">
-              <strong>Aprovar </strong>Job
+              <strong>Avaliar </strong>Job
             </div>
             <div class="card-body card-block">
                 <div class="row form-group mx-auto d-block text-sm-center">
+                  <%= button_to "Desaprovar Job", desaprovar_job_path(@job), method: :get, class:'external btn btn-danger btn-sm text-sm-center' %>
+                  <br>
                   <%= button_to "Aprovar Job e Liberar Pagamento", aprovar_job_path(@job), data: { confirm: "Você tem certeza que quer aprovar esse job?" }, method: :post, class:'external btn btn-success btn-sm text-sm-center' %>
                 </div>
             </div>

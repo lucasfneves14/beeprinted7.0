@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
   before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar, :abertos, :aprovados]
   layout 'hives/navbar'
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar, :desaprovar]
 
   # GET /jobs
   # GET /jobs.json
@@ -65,6 +65,10 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1.json
   def update
     if @job.update(job_params)
+      if params[:email]
+        AceitouModelerMailer.reprovou_admin(current_modeler, @job).deliver
+        AceitouModelerMailer.reprovou_modeler(current_modeler, @job).deliver
+      end
       flash[:success] = "O job #{@job.title} foi editado com sucesso!"
       redirect_to @job
     else
@@ -130,8 +134,13 @@ class JobsController < ApplicationController
     @aprovados = Job.includes(:jobmodels).where(done: true)
   end
 
+  def reprovados
+    @reprovados = current_modeler.jobs.includes(:jobmodels).where(unaproved: true)
+  end
+
   def aprovar
     @job.done = true
+    @job.unaproved = false
     if @job.save
       AceitouModelerMailer.aprovou_admin(current_modeler, @job).deliver
       AceitouModelerMailer.aprovou_modeler(current_modeler, @job).deliver
@@ -141,6 +150,10 @@ class JobsController < ApplicationController
       flash[:success] = "Algo de errado ocorreu! Por favor, tente novamente"
       redirect_to job_path(@job)
     end
+  end
+
+  def desaprovar
+
   end
 
 
@@ -159,6 +172,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :array, :image, :x, :y, :z, :tipo, :value, :observations, :array)
+      params.require(:job).permit(:title, :description, :array, :image, :x, :y, :z, :tipo, :value, :observations,:erros, :unaproved, :array)
     end
 end

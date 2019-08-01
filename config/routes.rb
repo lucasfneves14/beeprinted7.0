@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  get 'manual/index'
   class SubdomainConstraint
 	  def self.matches?(request)
 	    request.subdomain.present? && request.subdomain == 'modeling'
 	  end
 	end
+
+  get 'suporte/manual-para-solucao-de-erros-de-impressao-3d', to: 'manual#index', as: :manual
+  get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id', to: 'manual#show', as: :erro
+  get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id/edit', to: 'manual#edit', as: :edit_erro
+  patch 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id', to: 'manual#update', as: :update_erro
+  get 'suporte/erros/new', to: 'manual#new', as: :erro_new
+  post 'suporte/erros', to: 'manual#create', as: :erros
   get 'campanha',to: 'home#campanha', as: :campanha
 
   get 'modelings/create'
@@ -54,6 +62,7 @@ Rails.application.routes.draw do
     get 'jobs/analisar', to:'jobs#analisar', as: :analisar_job
     get 'jobs/abertos', to:'jobs#abertos', as: :abertos_job
     get 'jobs/aprovados', to:'jobs#aprovados', as: :aprovados_job
+    get 'jobs/reprovados', to:'jobs#reprovados', as: :reprovados_job
     resources :jobs
     post 'jobs/:id/aceitar', to:'jobs#aceitar', as: :aceitar_job
     get 'jobs/:id/enviar', to:'jobs#enviar', as: :enviar_job
@@ -61,6 +70,7 @@ Rails.application.routes.draw do
     delete 'jobmodel/:id', to: 'jobmodels#destroy', as: :jobmodel
     patch 'jobs/:id/associar', to:'jobs#associar', as: :associar_job
     post 'jobs/:id/aprovar', to: 'jobs#aprovar', as: :aprovar_job
+    get 'jobs/:id/desaprovar', to: 'jobs#desaprovar', as: :desaprovar_job
 
   end
 

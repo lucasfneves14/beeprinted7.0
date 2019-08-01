@@ -1,3 +1,9 @@
+<style>
+.border-red{
+    border: 5px solid red;
+}
+</style>
+
         <div class="content">
         <h3>Jobs Disponíveis</h3>
         <hr>
@@ -45,7 +51,7 @@
                     <%@aceitos.all.each do |aceito|%>
                     <div class="col-sm-3">
                         <a href=<%=job_path(aceito.id)%>>
-                            <div class="card">
+                            <div class="card <%if aceito.unaproved%>border-red<%end%>">
                                 <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title mb-3"><%=aceito.title%></h4>
