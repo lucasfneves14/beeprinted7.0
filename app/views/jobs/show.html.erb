@@ -99,7 +99,8 @@
                 <%@job.job_notifications.each do |notification|%>
                   <div class="media">
                     <a href="#">
-                      <img class="align-self-center rounded-circle mr-3" style="width:50px; height:50px;" alt="" src="<%=notification.modeler.image.url(:thumb)%>">
+
+                      <img class="align-self-center rounded-circle mr-3" style="width:50px; height:50px;" alt="" src="<%if notification.modeler.image.url(:thumb)%><%=notification.modeler.image.url(:thumb)%><%else%>https://beeprinted-stls.s3.amazonaws.com/Plataforma/Profile/user.jpg<%end%>">
                     </a>
                     <div class="media-body">
                       <p><%=notification.message%></p>
