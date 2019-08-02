@@ -11,7 +11,7 @@ class JobmodelsController < ApplicationController
 
   def destroy
     @jobmodel = Jobmodel.find(params[:id])
-    if @jomodel.destroy
+    if @jobmodel.destroy
       respond_to do |format|  
         format.json {render json: { message: "Arquivo deletado do servidor!" }}
       end
