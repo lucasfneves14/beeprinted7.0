@@ -7,6 +7,7 @@ class Modeler < ApplicationRecord
 
 
   has_many :jobs
+  has_many :job_notification
 
   validates :name, presence: true
   validates :email, presence: true

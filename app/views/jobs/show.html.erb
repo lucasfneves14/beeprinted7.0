@@ -12,8 +12,8 @@
 
 @media (max-width: 768px){
   .mySlides{
-  height:200px !important;
-  overflow:auto;
+  height:auto !important;
+  overflow:hidden;
   padding:5px !important;
 }
 }
@@ -89,6 +89,31 @@
              
             </div>
           </div>
+          <aside class="profile-nav alt">
+            <section class="card">
+              <div class="card-header">
+                <strong>Histórico</strong>
+              </div>
+              <div class="card-header user-header alt" style='background-color:white'>
+
+                <%@job.job_notifications.each do |notification|%>
+                  <div class="media">
+                    <a href="#">
+                      <img class="align-self-center rounded-circle mr-3" style="width:50px; height:50px;" alt="" src="<%=notification.modeler.image.url(:thumb)%>">
+                    </a>
+                    <div class="media-body">
+                      <p><%=notification.message%></p>
+                    </div>
+                  </div>
+                  <div class='text-right' style='opacity:0.6'>
+                    <p><strong><%=time_ago_in_words notification.created_at%></strong></p>
+                  </div>
+                  <hr>
+                <%end%>
+              </div>
+
+            </section>
+          </aside>
         </div>
         <div class='col-lg-8'>
           <div class="card">
@@ -129,15 +154,8 @@
                 </li>
               <%end%>
             </ul>
-
-
-
           </div>
-        </div>
-      </div>
-
-      <%if @job.jobmodels.any?%>
-        <div class="row">
+          <%if @job.jobmodels.any?%>
            <div class="card" style='width:100%'>
               <div class="card-header">
                 <strong class="card-title">Modelos Enviados</strong>
@@ -171,11 +189,10 @@
                   </tbody>
                 </table>
               </div> <!-- /.table-stats -->
-            </div>
-        </div>
-
+            </div>    
+        <%end%>
+        <%if @job.jobmodels.any?%>
         <%if current_modeler.admin%>
-        <div class="row">
           <div class="card" style='width:100%'>
             <div class="card-header">
               <strong>Avaliar </strong>Job
@@ -188,10 +205,8 @@
                 </div>
             </div>
           </div>
-        </div>
       <%end%>
       <%end%>
-
       <div class='pull-right'>
             <%= simple_form_for @job, :url => aceitar_job_path(@job), :method => :post do |f|%>
               <a href=<%=jobs_path%> class="btn btn-sm">
@@ -211,6 +226,8 @@
               <%end%>
             <%end%>
           </div>
+        </div>
+      </div>
 
     </div>
   </div>

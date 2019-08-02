@@ -49,11 +49,10 @@ class JobsController < ApplicationController
       end
     end
 
-
-
     if @job.save
       flash[:success] = "O job #{@job.title} foi criado!"
       JobCriadoMailer.job_criado(current_modeler, @job).deliver
+      JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi criado com sucesso")
       redirect_to @job
     else
       flash[:alert] = "O job #{@job.title} não pode ser salvo! Por favor, cheque o formulário."
@@ -66,6 +65,7 @@ class JobsController < ApplicationController
   def update
     if @job.update(job_params)
       if params[:email]
+        JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi reprovado")
         AceitouModelerMailer.reprovou_admin(current_modeler, @job).deliver
         AceitouModelerMailer.reprovou_modeler(current_modeler, @job).deliver
       end
@@ -90,6 +90,7 @@ class JobsController < ApplicationController
     @job.available = false
     @job.modeler_id = current_modeler.id
     if @job.save
+      JobNotification.create(modeler_id:@job.modeler.id, job_id:@job.id,message:"O modelador #{@job.modeler.name} aceitou o job '#{@job.title}'")
       AceitouModelerMailer.aceitou_modeler(current_modeler, @job).deliver
       AceitouModelerMailer.aceitou_admin(current_modeler, @job).deliver
       flash[:success] = "Você aceitou o job #{@job.title} com sucesso!"
@@ -117,6 +118,7 @@ class JobsController < ApplicationController
     if @job.jobmodels.any?
       AceitouModelerMailer.enviou_admin(current_modeler, @job).deliver
       AceitouModelerMailer.enviou_modeler(current_modeler, @job).deliver
+      JobNotification.create(modeler_id:@job.modeler.id, job_id:@job.id,message:"O modelador #{@job.modeler.name} enviou arquivos para o job '#{@job.title}'")
       flash[:success] = "Arquivos enviados com sucesso! Os modelos serão analisados. Aguarde aprovação!"
       redirect_to jobs_path
     end
@@ -144,6 +146,8 @@ class JobsController < ApplicationController
     if @job.save
       AceitouModelerMailer.aprovou_admin(current_modeler, @job).deliver
       AceitouModelerMailer.aprovou_modeler(current_modeler, @job).deliver
+      JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi aprovado")
+
       flash[:success] = "Job Aprovado!"
       redirect_to jobs_path
     else
