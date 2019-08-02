@@ -1,3 +1,18 @@
+<style>
+.grid_item_overlay {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 0, 0, .4);
+    color: #fff;
+    padding: 35% 20px 20px;
+    opacity: 1;
+    transition: .6s;
+    z-index: 99;
+}
+</style>
 <div class="content">
         <h3>Jobs a serem analisados</h3>
         <hr>
@@ -28,6 +43,14 @@
                               </ul>
 
                         </div></a>
+                        <% if analisado.unaproved%>
+                            <a href=<%=job_path(analisado.id)%>>
+                            <div class="grid_item_overlay"> 
+                                <div class="separator4"></div>
+                                <h3>Reprovado - Clique aqui para ver Feedback</h3>
+                            </div>
+                            </a>
+                        <%end%>
                     </div>
                   <%end%>
                   <%else%>

@@ -1,6 +1,16 @@
 <style>
-.border-red{
-    border: 5px solid red;
+.grid_item_overlay {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 0, 0, .4);
+    color: #fff;
+    padding: 35% 20px 20px;
+    opacity: 1;
+    transition: .6s;
+    z-index: 99;
 }
 </style>
 <div class="content">
@@ -12,7 +22,7 @@
                     <%@aceitos.all.each do |aceito|%>
                     <div class="col-sm-3">
                         <a href=<%=job_path(aceito.id)%>>
-                            <div class="card <%if aceito.unaproved%>border-red<%end%>">
+                            <div class="card">
                                 <img class="card-img-top" src=<%=aceito.image.url(:capa)%> alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title mb-3"><%=aceito.title%></h4>
@@ -35,6 +45,14 @@
 
                             </div>
                         </a>
+                        <% if aceito.unaproved%>
+                            <a href=<%=job_path(aceito.id)%>>
+                            <div class="grid_item_overlay"> 
+                                <div class="separator4"></div>
+                                <h3>Reprovado - Clique aqui para ver Feedback</h3>
+                            </div>
+                            </a>
+                        <%end%>
                     </div>
                     <%end%>
                     <%else%>
