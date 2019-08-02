@@ -145,9 +145,7 @@
                       <tr>
                         <td class="serial">1.</td>
                         <td class="avatar">
-                          <div class="round-img">
-                            <a href="#"><img class="rounded-circle" src="<%=@job.modeler.image.url(:profile)%>" alt=""></a>
-                          </div>
+                          <%=@job.modeler.name%>
                         </td>
                         <td> #<%=jobmodel.id%> </td>
                         <td>  <span class="name"><%=File.basename(jobmodel.attachment.url)%></span> </td>
