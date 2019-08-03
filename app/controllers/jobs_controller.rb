@@ -87,17 +87,22 @@ class JobsController < ApplicationController
   end
 
   def aceitar
-    @job.available = false
-    @job.modeler_id = current_modeler.id
-    if @job.save
-      JobNotification.create(modeler_id:@job.modeler.id, job_id:@job.id,message:"O modelador #{@job.modeler.name} aceitou o job '#{@job.title}'")
-      AceitouModelerMailer.aceitou_modeler(current_modeler, @job).deliver
-      AceitouModelerMailer.aceitou_admin(current_modeler, @job).deliver
-      flash[:success] = "Você aceitou o job #{@job.title} com sucesso!"
+    if @job.modeler
+      flash[:alert] = "O Job já foi aceito por outro modelador!"
       redirect_to jobs_path
     else
-      flash[:alert] = "Algo de errado ocorreu. Por favor, tente novamente!"
-      render :show
+      @job.available = false
+      @job.modeler_id = current_modeler.id
+      if @job.save
+        JobNotification.create(modeler_id:@job.modeler.id, job_id:@job.id,message:"O modelador #{@job.modeler.name} aceitou o job '#{@job.title}'")
+        AceitouModelerMailer.aceitou_modeler(current_modeler, @job).deliver
+        AceitouModelerMailer.aceitou_admin(current_modeler, @job).deliver
+        flash[:success] = "Você aceitou o job #{@job.title} com sucesso!"
+        redirect_to jobs_path
+      else
+        flash[:alert] = "Algo de errado ocorreu. Por favor, tente novamente!"
+        render :show
+      end
     end
   end
 
