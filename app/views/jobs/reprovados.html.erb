@@ -6,33 +6,7 @@
                 <div class="row">
                   <%if @reprovados.any?%>
                   <%@reprovados.all.each do |reprovado|%>
-                    <div class="col-sm-3">
-                        <a href=<%=job_path(reprovado.id)%>><div class="card">
-                            <img class="card-img-top" src=<%=reprovado.image.url(:capa)%> alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title mb-3"><%=reprovado.title%></h4>
-                                <p class="card-text"><%=reprovado.description%></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=reprovado.id%></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=reprovado.value%></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=reprovado.tipo%></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-clock-o"></i> Disponível <span class="pull-right">Horário Aqui</span></a>
-                                </li>
-                                <li class="list-group-item">
-                                  <a href="#"> <i class="fa fa-user"></i> Dono <span class="pull-right"><%=reprovado.modeler.name%></span></a>
-                                </li>
-                              </ul>
-
-                        </div></a>
-                    </div>
+                    <%= render 'job_card', job: reprovado %>
                   <%end%>
                   <%else%>
                     <div class='content'><p>Não existe nenhum Job em reprovado no momento.</p></div>

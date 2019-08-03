@@ -1,0 +1,33 @@
+<div class="col-sm-3">
+  <a href=<%=job_path(job.id)%>>
+    <div class="card">
+      <img class="card-img-top" src=<%=job.image.url(:capa)%> alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title mb-3"><%=job.title%></h4>
+          <p class="card-text"><%=job.description%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a href="#"> <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=job.id%></span></a>
+        </li>
+        <li class="list-group-item">
+          <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right">R$<%=job.value%></span></a>
+        </li>
+        <li class="list-group-item">
+          <a href="#"> <i class="fa fa-tasks"></i> Tipo <span class="pull-right"><%=job.tipo%></span></a>
+        </li>
+        <li class="list-group-item">
+          <a href="#"> <i class="fa fa-clock-o"></i> Deadline <span class="pull-right"><%=job.deadline%></span></a>
+        </li>
+      </ul>
+    </div>
+  </a>
+  <% if job.unaproved%>
+    <a href=<%=job_path(job.id)%>>
+      <div class="grid_item_overlay"> 
+        <div class="separator4"></div>
+        <h3>Reprovado - Clique aqui para ver Feedback</h3>
+      </div>
+    </a>
+  <%end%>
+</div>
