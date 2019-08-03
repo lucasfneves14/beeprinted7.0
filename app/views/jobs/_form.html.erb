@@ -21,6 +21,8 @@
 </style>
 
 <link href='https://beeprinted-stls.s3.amazonaws.com/Plataforma/Jobs/Css/dropzone.min.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+
 <div class="card" style='width:100%'>
   <div class="card-header">
     <strong>Novo</strong> Job
@@ -114,6 +116,10 @@
         <div class="col-12 col-md-9"><%= f.input :value, label:false %></div>
       </div>
       <div class="row form-group">
+        <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Deadline</label></div>
+        <div class="col-12 col-md-9"><%= f.input :deadline, label:false,:input_html=>{id:'datepicker'} %></div>
+      </div>
+      <div class="row form-group">
         <div class="col col-md-3"><label for="exampleInputEmail2" class="px-1  form-control-label">Observações</label></div>
         <div class="col-12 col-md-9"><%= f.input :observations, label:false %></div>
       </div>
@@ -130,6 +136,14 @@
 
 <%= content_for(:javascript_hives) do %>
 <script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      dateFormat: 'dd/mm/yy'
+    });
+  } );
+  </script>
 
 <script>
 $(document).ready(function(){
