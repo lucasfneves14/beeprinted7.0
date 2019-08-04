@@ -12,10 +12,6 @@ class HivesProfilesController < ApplicationController
 
 		@rating = @rating.round
 
-		puts "AAAAAAAAAAAAAAAAAAAAAAAAA: #{@rating}"
-
-
-
 		jobs_done = current_modeler.jobs.where(done:true)
 		@preco = 0
 		jobs_done.each do |job_done|

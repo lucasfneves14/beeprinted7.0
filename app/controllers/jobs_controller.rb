@@ -156,7 +156,7 @@ class JobsController < ApplicationController
     if @job.save
       AceitouModelerMailer.aprovou_admin(current_modeler, @job).deliver
       AceitouModelerMailer.aprovou_modeler(current_modeler, @job).deliver
-      JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi aprovado")
+      JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi aprovado com avaliação #{@job.ratings.last.value}/5")
 
       flash[:success] = "Job Aprovado!"
       redirect_to jobs_path
