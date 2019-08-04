@@ -2,6 +2,20 @@ class HivesProfilesController < ApplicationController
 	before_action :authenticate_modeler!, raise: false
 	layout 'hives/navbar'
 	def show
+		@rating = 0
+		ratings = current_modeler.ratings
+		ratings.each do |rating|
+			@rating = @rating + rating.value
+		end
+
+		@rating = @rating.to_f/ratings.count
+
+		@rating = @rating.round
+
+		puts "AAAAAAAAAAAAAAAAAAAAAAAAA: #{@rating}"
+
+
+
 		jobs_done = current_modeler.jobs.where(done:true)
 		@preco = 0
 		jobs_done.each do |job_done|

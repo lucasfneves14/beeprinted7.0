@@ -76,7 +76,7 @@
                 <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right" style='color:green'>R$<%=@job.value%></span></a>
               </li>
               <li class="list-group-item">
-                <a href="#"><i class="fa fa-clock-o"></i> DeadLine <span class="pull-right"><strong style='color:red'>Horário Aqui</strong></span></a>
+                <a href="#"><i class="fa fa-clock-o"></i> DeadLine <span class="pull-right"><strong style='color:red'><%=@job.deadline%></strong></span></a>
               </li>
             </ul>
           </div>
@@ -202,7 +202,7 @@
                 <div class="row form-group mx-auto d-block text-sm-center">
                   <%= button_to "Desaprovar Job", desaprovar_job_path(@job), method: :get, class:'external btn btn-danger btn-sm text-sm-center' %>
                   <br>
-                  <%= button_to "Aprovar Job e Liberar Pagamento", aprovar_job_path(@job), data: { confirm: "Você tem certeza que quer aprovar esse job?" }, method: :post, class:'external btn btn-success btn-sm text-sm-center' %>
+                  <%= button_to "Aprovar Job e Liberar Pagamento", avaliar_job_path(@job), method: :get, class:'external btn btn-success btn-sm text-sm-center' %>
                 </div>
             </div>
           </div>

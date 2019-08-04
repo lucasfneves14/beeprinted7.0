@@ -1,8 +1,8 @@
 class JobsController < ApplicationController
   before_action :authenticate_modeler!, raise: false
-  before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar, :abertos, :aprovados]
+  before_action :admin, only: [:new, :create, :edit, :update, :destroy, :analisar, :aprovar, :avaliar, :abertos, :aprovados]
   layout 'hives/navbar'
-  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar, :desaprovar]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :aceitar, :enviar, :associar, :aprovar, :avaliar, :desaprovar]
 
   # GET /jobs
   # GET /jobs.json
@@ -146,6 +146,11 @@ class JobsController < ApplicationController
   end
 
   def aprovar
+
+    @rating = Rating.create(rating_params)
+    @rating.modeler_id = @job.modeler.id
+    @rating.job_id = @job.id
+    @rating.save
     @job.done = true
     @job.unaproved = false
     if @job.save
@@ -159,6 +164,10 @@ class JobsController < ApplicationController
       flash[:success] = "Algo de errado ocorreu! Por favor, tente novamente"
       redirect_to job_path(@job)
     end
+  end
+
+  def avaliar
+    @rating = Rating.new
   end
 
   def desaprovar
@@ -182,5 +191,8 @@ class JobsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
       params.require(:job).permit(:title, :description, :array, :image, :x, :y, :z, :tipo, :value, :observations,:erros, :unaproved,:deadline, :array)
+    end
+    def rating_params
+      params.require(:rating).permit(:comentario, :value)
     end
 end

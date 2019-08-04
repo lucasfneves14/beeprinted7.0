@@ -5,4 +5,5 @@ class Job < ApplicationRecord
 	belongs_to :modeler, optional:true
 	has_many :jobmodels, dependent: :destroy
 	has_many :job_notifications, dependent: :destroy
+	has_many :ratings
 end

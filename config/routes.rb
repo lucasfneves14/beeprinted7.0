@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     patch 'jobs/:id/associar', to:'jobs#associar', as: :associar_job
     post 'jobs/:id/aprovar', to: 'jobs#aprovar', as: :aprovar_job
     get 'jobs/:id/desaprovar', to: 'jobs#desaprovar', as: :desaprovar_job
+    get 'jobs/:id/avaliar', to: 'jobs#avaliar', as: :avaliar_job
 
   end
 
