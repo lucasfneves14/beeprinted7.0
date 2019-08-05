@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     post 'jobs/:id/aprovar', to: 'jobs#aprovar', as: :aprovar_job
     get 'jobs/:id/desaprovar', to: 'jobs#desaprovar', as: :desaprovar_job
     get 'jobs/:id/avaliar', to: 'jobs#avaliar', as: :avaliar_job
+    get 'jobmodels/:id', to: 'view3d#show', as: :view3d
 
   end
 

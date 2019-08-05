@@ -3,14 +3,16 @@ class HivesProfilesController < ApplicationController
 	layout 'hives/navbar'
 	def show
 		@rating = 0
-		ratings = current_modeler.ratings
-		ratings.each do |rating|
-			@rating = @rating + rating.value
+		if current_modeler.ratings.any?
+			ratings = current_modeler.ratings
+			ratings.each do |rating|
+				@rating = @rating + rating.value
+			end
+
+			@rating = @rating.to_f/ratings.count
+
+			@rating = @rating.round
 		end
-
-		@rating = @rating.to_f/ratings.count
-
-		@rating = @rating.round
 
 		jobs_done = current_modeler.jobs.where(done:true)
 		@preco = 0

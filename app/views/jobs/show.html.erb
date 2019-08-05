@@ -24,8 +24,7 @@
 }
 
 </style>
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <div class="content">
     <div class="animated fadeIn">
     <%if @job.unaproved%>
@@ -169,6 +168,7 @@
                       <th class="avatar">Modelador</th>
                       <th>ID</th>
                       <th>Nome do Arquivo</th>
+                      <th>Ver</th>
                       <th>Download</th>
                     </tr>
                   </thead>
@@ -181,6 +181,7 @@
                         </td>
                         <td> #<%=jobmodel.id%> </td>
                         <td>  <span class="name"><%=File.basename(jobmodel.attachment.url)%></span> </td>
+                        <td><a href="<%=view3d_path(jobmodel.id)%>" rel="modal:open"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         <td>
                           <a href='<%=jobmodel.attachment.url%>' title='Download'><span class="badge badge-complete"><i class="fa fa-download" aria-hidden="true"></i></span></a>
                         </td>
@@ -235,8 +236,6 @@
 
 
 
-
-
 <script>
 // Slideshow Apartment Images
 var slideIndex = 1;
@@ -266,3 +265,11 @@ function showDivs(n) {
   dots[slideIndex-1].className += " w3-opacity-off";
 }
 </script>
+
+
+
+
+<%= content_for(:javascript_hives) do %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+<%end%>
