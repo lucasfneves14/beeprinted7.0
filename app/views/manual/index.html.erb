@@ -32,7 +32,7 @@
      	<%@erros.each do |erro|%>
      		<a href=<%=erro_path(erro.url)%>>
 		     	<div class="col-lg-3 col-md-3">
-		     		<img src="https://www.simplify3d.com/wp-content/uploads/2019/04/not-extruding-at-start-1024x1024.jpg" style='width:100%' alt="">
+		     		<img class='lazyload' src='https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg' data-src="<%=erro.image.url(:port_first)%>" style='width:100%' alt="">
 		     		<div class='descricao'>
 		     			<p><strong><%=erro.title%></strong></p>
 		     			<p><%=erro.resume%></p>
