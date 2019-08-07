@@ -38,7 +38,7 @@ h3{
 		<h3 style='margin-top:60px;'>Seções Relacionadas</h3>
 		<div class=row>
 			<%@relacionados.each do |relacionado|%>
-     			<a href=<%=erro_path(relacionado.url)%>>
+     			<a href=<%=erro_path(relacionado.url)%> title='<%=relacionado.title%>'>
 					<div class="col-lg-3 col-md-3" style='padding:0px;'>
 						<div style='height:440px;padding:15px;margin:5px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); background-color:white'>
 		    		     	<img class='lazyload' src='https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg' data-src="<%=relacionado.image.url(:port_first)%>" style='width:100%' alt="<%=relacionado.title%>">
