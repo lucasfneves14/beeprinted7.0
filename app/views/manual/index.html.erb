@@ -33,7 +33,7 @@
      		<a href=<%=erro_path(erro.url)%>>
 		     	<div class="col-lg-3 col-md-3" style='padding:0px;'>
                     <div style='height:440px;padding:15px;margin:5px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); background-color:white'>
-    		     		<img class='lazyload' src='https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg' data-src="<%=erro.image.url(:port_first)%>" style='width:100%' alt="">
+    		     		<img class='lazyload' src='https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg' data-src="<%=erro.image.url(:port_first)%>" style='width:100%' alt="<%=erro.title%>">
     		     		<div class='descricao'>
     		     			<p><strong><%=erro.title%></strong></p>
     		     			<p><%=erro.resume%></p>

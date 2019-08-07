@@ -26,7 +26,7 @@ class ManualController < ApplicationController
   end
 
   def show
-
+    @relacionados = Erro.where.not(id: @erro.id).order("RANDOM()").limit(4)
   end
 
   def edit

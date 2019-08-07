@@ -7,6 +7,17 @@ h3{
 	margin-top: 30px;
 }
 </style>
+<style>
+.summary{
+	padding-bottom:40px;
+}
+.descricao{
+	padding-top:20px;
+}
+.col-lg-3.col-md-3{
+	padding:15px;
+}
+</style>
 <div class=container style='padding:40px;margin-top:40px;margin-bottom:40px;color:#646464; background-color:white'>
 	<div class=row>
 		<div class="col-lg-3 col-md-3">
@@ -21,6 +32,26 @@ h3{
 	<div class='body'>
 		<h2 style='margin-bottom:30px;color:#009fab'>Soluções</h2>
 		<%= @erro.body.html_safe %>
+	</div>
+
+	<div class='related'>
+		<h3 style='margin-top:60px;'>Seções Relacionadas</h3>
+		<div class=row>
+			<%@relacionados.each do |relacionado|%>
+     			<a href=<%=erro_path(relacionado.url)%>>
+					<div class="col-lg-3 col-md-3" style='padding:0px;'>
+						<div style='height:440px;padding:15px;margin:5px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.08); background-color:white'>
+		    		     	<img class='lazyload' src='https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/pre-image.jpg' data-src="<%=relacionado.image.url(:port_first)%>" style='width:100%' alt="<%=relacionado.title%>">
+		    		     	<div class='descricao'>
+		    		     		<p><strong><%=relacionado.title%></strong></p>
+		    		     		<p><%=relacionado.resume%></p>
+
+		    		     	</div>
+		                </div>
+					</div>
+				</a>
+			<%end%>
+		</div>
 	</div>
 
 
