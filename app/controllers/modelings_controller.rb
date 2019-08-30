@@ -15,7 +15,7 @@ class ModelingsController < ApplicationController
       end
     end
     if @modeling.save
-      ModelingMailer.modeling_email(@modeling).deliver
+      ModelingMailer.modeling_email(@modeling, current_visit).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to modeling_sucesso_path
     else

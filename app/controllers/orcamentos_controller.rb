@@ -79,7 +79,7 @@ class OrcamentosController < ApplicationController
     #end
 
     if @orcamento.save
-      OrcamentoMailer.orcamento_email(@orcamento).deliver
+      OrcamentoMailer.orcamento_email(@orcamento, current_visit).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to orcamento_sucesso_path
     else

@@ -21,6 +21,12 @@
 	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
 	<p>Tipo: <%=@modeling.tipo%></p>
 	<p>Prazo: <%=@modeling.prazo%></p>
+	<%if @info%>
+		<h3 style='text-align:center; margin-bottom:0px'>Fonte: <i><%=@info.utm_source%></i></h3>
+		<h3 style='text-align:center; margin-bottom:0px'>Tipo: <i><%=@info.utm_medium%></i></h3>
+		<h3 style='text-align:center; margin-bottom:0px'>Campanha: <i><%=@info.utm_campaign%></i></h3>
+		<h3 style='text-align:center; margin-bottom:0px'>Termos: <i><%=@info.utm_term%></i></h3>
+	<%end%>
 
 
 	<%@modeling.references.each_with_index do |reference, index|%>
