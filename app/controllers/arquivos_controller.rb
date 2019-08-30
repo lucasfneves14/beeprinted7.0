@@ -1,5 +1,5 @@
 class ArquivosController < ApplicationController
-	require 'rest-client'
+	#require 'rest-client'
   def create
   	@arquivo = Arquivo.create(arquivo_params)
     

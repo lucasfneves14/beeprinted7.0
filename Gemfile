@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
-gem 'rest-client'
-gem 'pipedrive.rb', git: 'https://github.com/amoniacou/pipedrive.rb.git'
 gem 'rack-attack'
 gem 'omniauth'
 gem 'omniauth-facebook'
