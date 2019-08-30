@@ -17,7 +17,16 @@
     font-size: 17px;
 }
 
-
+ .loader-orcamento{
+    position: fixed;
+    display: table;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: no-repeat #f9f9f9;
+ }
 </style>
 <section id=cta class="padding-top-bottom color-bg light-typo" style='padding:20px;background-color:white; border-bottom: 1px solid rgba(0, 0, 18, 0.13);box-shadow: 0 0 10px 3px rgba(0,0,0,0.1);'>
 <div class="container" style='margin-top:60px'>
@@ -127,7 +136,7 @@
 
 
     <div style='text-align:right; margin-bottom: 15px'>
-      <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
+      <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento', onclick: '$(".loader-orcamento").fadeIn()' %>
     </div>
       <br>
       <br>
@@ -235,7 +244,7 @@
 
 
     <div style='text-align:right; margin-bottom: 15px'>
-      <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento' %>
+      <%=f.submit "Enviar Pedido de Orçamento", style:"font-weight:bold; font-size:16px; padding:15px", class:"btn btn-default dropdown-toggle font-bold w3-center", id:'button-orcamento', onclick: '$(".loader-orcamento").fadeIn()' %>
     </div>
     <br>
     <br>
@@ -246,6 +255,17 @@
   <%end%>
 </div>
 </section>
+
+
+
+
+<div class=loader-orcamento style='display:none'>
+  <div class=loader-bee><%=image_tag 'https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/LoadGIF.gif', id:'item-1', style:'margin-left:auto;margin-right:auto;width:100px; margin-bottom:15px', alt:'loader-beeprinted-impressão-3D' %>
+    <h3 style='color:#616161'><strong>Enviando arquivos...</strong></h3>
+  </div>
+</div>
+
+
 
 
 

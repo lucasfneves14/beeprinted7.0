@@ -1,7 +1,16 @@
 class ArquivosController < ApplicationController
-	def create
+	require 'rest-client'
+  def create
   	@arquivo = Arquivo.create(arquivo_params)
+    
+    #file = ::Pipedrive::File.new
+    #@file = file.create(file: params[:arquivo][:attachment])
+    #puts @arquivo.attachment.url
+    #puts @arquivo.attachment
+    #puts params[:arquivo][:attachment]
+    #puts @file
   	if @arquivo.save
+
   		render json: { message: "success", fileID: @arquivo.id, filename: File.basename(@arquivo.attachment.path)}, :status => 200
     else
     	render json: { error: "Um ERRO ocorreu! Por favor, entre em contato em contato@beeprinted.com.br"}, :status => 400

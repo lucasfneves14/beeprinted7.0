@@ -1,4 +1,5 @@
 class OrcamentosController < ApplicationController
+  require 'json'
   before_action :set_orcamento, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_user!, raise: false, only:[:new, :create,:edit,:update]
 
@@ -40,14 +41,43 @@ class OrcamentosController < ApplicationController
   # POST /orcamentos.json
   def create
     @orcamento = Orcamento.create(orcamento_params)
+
+    #@client = ::Pipedrive::Person.new
+    #bla = RestClient.get('https://beeprinted-981d36.pipedrive.com/v1/persons/find?api_token=3b5b5a35e9fe27d0d10b21d8a2d004ab0efa91d3', :params => {term: @orcamento.email, search_by_email: 1})
+    #bla = JSON.parse bla.body
+    #if bla["data"]
+    #  @id = bla["data"].first["id"]
+    #else
+    #  @client = @client.create(name: @orcamento.name, email: @orcamento.email, 'a397d8273b813ca4a92514490706109ddc08460e' => @orcamento.cep, label: 4)
+    #  @client = @client.data
+    #  @id = @client.id
+    #end
+
+    #deal = ::Pipedrive::Deal.new
+    #@deal = deal.create(person_id: @id, title: "Negócio #{@orcamento.name} Teste")
+    #@deal = @deal.data
+
+    #@anterior = deal.find_by_id(@deal.id-1)
+    #@anterior = @anterior.data
+    #codigo = @anterior.title
+    #codigo = codigo[/\((.*?)\)/, 1]
+    #puts 'BBBBBBBBBBBBBBBBBBBBBB'
+    #puts codigo
+
+
     array = @orcamento.array.split(",")
     array.each do |file|
-      puts file
       if Arquivo.where(id: file).any?
         arquivo = Arquivo.find(file)
         @orcamento.arquivos << arquivo
       end
     end
+
+    #@orcamento.arquivos.each do |arquivo|
+    #  bla = RestClient.post('https://beeprinted-981d36.pipedrive.com/v1/files?api_token=3b5b5a35e9fe27d0d10b21d8a2d004ab0efa91d3', 
+    #    :file => File.open("#{ Rails.env.development? ? 'public' : '' }#{arquivo.attachment.url}"), deal_id: @deal.id)
+    #end
+
     if @orcamento.save
       OrcamentoMailer.orcamento_email(@orcamento).deliver
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
