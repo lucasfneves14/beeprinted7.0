@@ -37,7 +37,7 @@ class ModelingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def modeling_params
-      params.require(:modeling).permit(:description, :tipo, :prazo, :array, :name, :email, :cep)
+      params.require(:modeling).permit(:description, :tipo, :prazo, :array, :name, :sobrenome, :estado, :empresa, :telefone, :email, :cep)
     end
 
 

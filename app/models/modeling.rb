@@ -7,5 +7,7 @@ class Modeling < ApplicationRecord
 	validates :prazo, presence: true
 	validates :description, presence: true
 	validates :name, presence: true
+	validates :sobrenome, presence: true
+	validates :estado, presence: true
 	validates :email, presence: true
 end

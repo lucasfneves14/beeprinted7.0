@@ -25,8 +25,10 @@ class OrcamentosController < ApplicationController
     @modeling = Modeling.new
     @reference = Reference.new
     if current_user
-      @orcamento.name = "#{current_user.name} #{current_user.sobrenome}"
-      @modeling.name = "#{current_user.name} #{current_user.sobrenome}"
+      @orcamento.name = "#{current_user.name}"
+      @orcamento.sobrenome = "#{current_user.sobrenome}"
+      @modeling.name = "#{current_user.name}"
+      @modeling.sobrenome = "#{current_user.sobrenome}"
       @orcamento.email = current_user.email
       @modeling.email = current_user.email
     end
@@ -128,6 +130,6 @@ class OrcamentosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def orcamento_params
-      params.require(:orcamento).permit(:description, :array, :name, :email, :cep)
+      params.require(:orcamento).permit(:description, :array, :name, :sobrenome, :estado, :empresa, :telefone, :email, :cep)
     end
 end

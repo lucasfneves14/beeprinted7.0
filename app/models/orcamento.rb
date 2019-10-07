@@ -5,5 +5,7 @@ class Orcamento < ApplicationRecord
 
 	validates :arquivos, presence: true
 	validates :name, presence: true
+	validates :sobrenome, presence: true
+	validates :estado, presence: true
 	validates :email, presence: true
 end
