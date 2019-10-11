@@ -1,0 +1,268 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+
+  <title>Sistema Beeprinted | BEEPRINTED</title>
+    <meta charset=utf-8>
+    <meta name="msvalidate.01" content="C2730C7A271697BA8A0F86E1ED368E39" />
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name=title content="Plataforma de Modelagem | BEEPRINTED" />
+    <meta name=robots content="index, follow">
+    <meta name=description content="Plataforma foca em modelagem digital de objedos 3D direcionados à impressão 3D. Comunidade internacional de designers e modeladores.">
+    <meta name=keywords content="modelagem 3D, impressão 3D, prototipagem, modelos 3D, tecnologia, imprima 3D, impressora 3D, imprimir 3D, Brasília, DF, Distrito Federal" />
+    <meta name=author content=BEEPRINTED.COM.BR>
+    <meta name=viewport content="width=device-width, initial-scale=1.0" />
+    <meta content="ie=edge, chrome=1" http-equiv=x-ua-compatible/>
+    <meta name=google-site-verification content=oJ2PyR9oaNsdWXxDUnY615E3gLjjO2Q2ZQEySMCC4IY/>
+    <meta property="og:title" content="Plataforma de Modelagem | BEEPRINTED" />
+    <meta property="og:description" content="Plataforma foca em modelagem digital de objedos 3D direcionados à impressão 3D. Comunidade internacional de designers e modeladores." />
+    <meta property="og:image" content="https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content="https://modeling.beeprinted.com.br" />
+    <meta property="og:site_name" content="BEEPRINTED" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="fb:app_id" content="187082005107883" />
+    <meta name=twitter:card content=summary/>
+    <meta name=twitter:title content="Plataforma de Modelagem | BEEPRINTED">
+    <meta name=twitter:description content="Plataforma foca em modelagem digital de objedos 3D direcionados à impressão 3D. Comunidade internacional de designers e modeladores.">
+    <meta name=twitter:image content=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png>
+    <meta name=twitter:site content=https://modeling.beeprinted.com.br>
+    <meta name=twitter:url content=https://modeling.beeprinted.com.br>
+    <meta name=twitter:locale content=pt_BR>
+    <link rel=canonical href=https://modeling.beeprinted.com.br/>
+    <link rel=shortlink href=https://modeling.beeprinted.com.br/>
+    <link rel=revision href=https://modeling.beeprinted.com.br/>
+    <link rel="shortcut icon" href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png sizes=32x32 type="image/png" />
+    <link rel=apple-touch-icon-precomposed href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=72x72 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=120x120 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <link rel=apple-touch-icon-precomposed sizes=152x152 href=https://ds76otpcq42vd.cloudfront.net/uploads/diversas/LOGO-claro.png type="image/png" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/CSS/cs-skin-elastic.css">
+    <link rel="stylesheet" href="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/CSS/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    <script src="https://ds76otpcq42vd.cloudfront.net/assets/Nova/assets/js/jquery-2.2.4.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <style>
+        .grid_item_overlay {
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            width: 80%;
+            height: 80%;
+            background: rgba(255, 0, 0, .4);
+            color: #fff;
+            padding: 35% 20px 20px;
+            opacity: 1;
+            transition: .6s;
+            z-index: 99;
+        }
+        .blocker{
+            z-index:999999 !important;
+        }
+        .navbar .navbar-nav li.menu-item-has-children a:before {
+            top: 20px;
+    right: -15px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon fa fa-cogs"></i>Orçamentos 
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">           
+                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Todos</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Upload</a></li>
+                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Modelagem</a></li>
+
+                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Contato</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+
+    <div id="right-panel" class="right-panel">
+
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="./"><img src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/logo-beta-peq.png" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="./"><img src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                       <!-- <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">3</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-check"></i>
+                                    <p>Server #1 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-info"></i>
+                                    <p>Server #2 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-warning"></i>
+                                    <p>Server #3 overloaded.</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <span class="count bg-primary">4</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/1.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Jonathan Smith</span>
+                                        <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/2.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Jack Sanders</span>
+                                        <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/3.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Cheryl Wheeler</span>
+                                        <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/Images/4.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Rachel Santos</span>
+                                        <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Profile/user.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href=''><i class="fa fa-user"></i>Meu Perfil</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href=''><i class="fa fa-cog"></i>Editar Conta</a>
+
+                            <%=link_to destroy_user_session_path, class: "nav-link external" do%>
+                              <i class="fa fa-power-off"></i>Sair
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /header -->
+        <div id=main-nav class="navbar-fixed-top" role=navigation style='top:110px'>
+        <div class='container text-center'>
+
+        <% flash.each do |key, value| %>
+          <% alert_class = case key
+                           when :notice then "success"
+                           when :alert then "danger"
+                           else key
+                           end %>
+          <%= content_tag :div, class: [:alert, alert_for(key)] do %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          <% end %>
+        <% end %>
+
+        </div>
+       </div>
+
+        <!-- Header-->
+
+        <%=yield%>
+
+        <div class="clearfix"></div>
+
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        Copyright &copy; 2019 <a href="https://beeprinted.com.br">BEEPRINTED</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <%= yield(:javascript_hives) %>
+    <script src="https://beeprinted-stls.s3.amazonaws.com/Plataforma/Assets/js/main.js"></script>
+
+</body>
+</html>

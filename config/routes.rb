@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 	  end
 	end
 
+
+  get '/system', to:'system#index', as: :system
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d', to: 'manual#index', as: :manual
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id', to: 'manual#show', as: :erro
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id/edit', to: 'manual#edit', as: :edit_erro

@@ -1,0 +1,170 @@
+<style>
+.id, .name, .product{
+    color:#009fab !important;
+}
+
+
+.table-stats table th, .table-stats table td, .name{
+    font-size:12px !important;
+}
+
+.table-stats table th, .table-stats table td{
+
+    text-transform:initial !important;
+}
+
+</style>
+
+
+        <div class="content">
+        <h3>Todos os Pedidos de Orçamento</h3>
+        <div class="dropdown">
+                        <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="<%=request.path%>?mes=1">Janeiro</a>
+
+                            <a class="nav-link" href="<%=request.path%>?mes=2">Fevereiro</a>
+
+                            <a class="nav-link" href="<%=request.path%>?mes=3">Março</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=4">Abril</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=5">Maio</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=6">Junho</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=7">Julho</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=8">Agosto</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=9">Setembro</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=10">Outubro</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=11">Novembro</a>
+                            <a class="nav-link" href="<%=request.path%>?mes=12">Dezembro</a>
+                        </div>
+                    </div>  
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row" style='overflow:auto'>
+                    <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Uploads do mês de <%=@mes%></strong>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Telefone</th>
+                                            <th>Estado</th>
+                                            <th>Empresa</th>
+                                            <th>Descricao</th>
+                                            <th>Arquivos</th>
+                                            <th>Data</th>
+                                            <th>Info</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%@orcamentos.each_with_index do |orcamento,index|%>
+                                            <tr>
+                                                <td class="serial"><%=index+1%>.</td>
+                                                <td><span class='id'> #<%=orcamento.id%> </span></td>
+                                                <td>  <span class="name"><%=orcamento.name%><%=orcamento.sobrenome%></span> </td>
+                                                <td> <span class="product"><%=orcamento.email%></span> </td>
+                                                <td><span class=""><%=orcamento.telefone%>999999999999</span></td>
+                                                <td><span class=""><%=orcamento.estado%></span></td>
+                                                <td><span class=""><%=orcamento.empresa%>999999999999</span></td>
+                                                <td><span>
+                                                  <% if orcamento.description.length > 40%>
+                                                    <%= truncate(orcamento.description, length: 40) %>
+                                                    <%= link_to "...Ler Mais", "", class: "read-more-orcamento-#{orcamento.id}" %>
+                                                    <script>
+                                                      $('.read-more-orcamento-<%= orcamento.id %>').on('click', function(e) {
+                                                        e.preventDefault()
+                                                        $(this).parent().html('<%= escape_javascript orcamento.description %>')
+                                                      })
+                                                    </script>
+                                                  <% else %>
+                                                    <%= orcamento.description %>
+                                                  <% end %>
+                                                </span></td>
+                                                <td>
+                                                    <span class="badge badge-complete">Ver aquivos</span>
+                                                </td>
+                                                <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                                <td>
+                                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
+                                                </td>
+                                            </tr>
+                                        <%end%>
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+
+
+
+                </div><!-- .row -->
+                <br>
+                <br>
+                <div class="row" style='overflow:auto'>
+                    <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Pedidos de Modelagem de <%=@mes%></strong>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Telefone</th>
+                                            <th>Estado</th>
+                                            <th>Empresa</th>
+                                            <th>Descricao</th>
+                                            <th>Arquivos</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%@modelagens.each_with_index do |modelagem,index|%>
+                                            <tr>
+                                                <td class="serial"><%=index+1%>.</td>
+                                                <td><span class='id'>#<%=modelagem.id%></span> </td>
+                                                <td>  <span class="name"><%=modelagem.name%><%=modelagem.sobrenome%></span> </td>
+                                                <td> <span class="product"><%=modelagem.email%></span> </td>
+                                                <td><span class=""><%=modelagem.telefone%></span></td>
+                                                <td><span class=""><%=modelagem.estado%></span></td>
+                                                <td><span class=""><%=modelagem.empresa%></span></td>
+                                                <td><span>
+                                                  <% if modelagem.description.length > 40 %>
+                                                    <%= truncate(modelagem.description, length: 40) %>
+                                                    <%= link_to "...Ler mais", "", class: "read-more-modelagem-#{modelagem.id}" %>
+                                                    <script>
+                                                      $('.read-more-modelagem-<%= modelagem.id %>').on('click', function(e) {
+                                                        e.preventDefault()
+                                                        $(this).parent().html('<%= escape_javascript modelagem.description %>')
+                                                      })
+                                                    </script>
+                                                  <% else %>
+                                                    <%= modelagem.description %>
+                                                  <% end %>
+                                                </span></td>
+                                                <td>
+                                                    <span class="badge badge-complete">Ver aquivos</span>
+                                                </td>
+                                                <td><%=modelagem.created_at.strftime("%d/%m/%y")%></td>
+                                            </tr>
+                                        <%end%>
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+
+
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
