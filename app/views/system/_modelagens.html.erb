@@ -18,6 +18,7 @@
                                             <th>Descricao</th>
                                             <th>Arquivos</th>
                                             <th>Data</th>
+                                            <th>Info</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +49,9 @@
                                                     <span class="badge badge-complete">Ver aquivos</span>
                                                 </td>
                                                 <td><%=modelagem.created_at.strftime("%d/%m/%y")%></td>
+                                                <td>
+                                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
+                                                </td>
                                             </tr>
                                         <%end%>
                                     </tbody>
