@@ -1,7 +1,7 @@
 <div class="row" style='overflow:auto'>
                     <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Uploads do mês de <%=mes%></strong>
+                                <strong class="card-title">Mês de <%=mes%></strong>
                                 <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
                             </div>
                             <div class="table-stats order-table ov-h">
@@ -11,6 +11,7 @@
                                             <th class="serial">#</th>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Canal</th>
                                             <th>Email</th>
                                             <th>Telefone</th>
                                             <th>Estado</th>
@@ -26,7 +27,14 @@
                                             <tr>
                                                 <td class="serial" height="45"><%=index+1%>.</td>
                                                 <td><span class='id'> #<%=orcamento.id%> </span></td>
-                                                <td>  <span class="name"><%=orcamento.name%><%=orcamento.sobrenome%></span> </td>
+                                                <td>  <span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </td>
+
+                                                <%if orcamento.class.name.demodulize == "Orcamento"%>
+
+                                                    <td> <span class="">Upload</span> </td>
+                                                <%elsif orcamento.class.name.demodulize == "Modeling"%>
+                                                    <td> <span class="">Modelagem</span> </td>
+                                                <%end%>
                                                 <td> <span class="product"><%=orcamento.email%></span> </td>
                                                 <td><span class=""><%=orcamento.telefone%></span></td>
                                                 <td><span class=""><%=orcamento.estado%></span></td>

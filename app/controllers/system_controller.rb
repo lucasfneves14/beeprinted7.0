@@ -10,6 +10,7 @@ class SystemController < ApplicationController
 		end 
 		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+		@planilha = (@modelagens + @orcamentos).sort{|a,b| a.created_at <=> b.created_at }
 		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)
 		
 		if @mes=="1"
