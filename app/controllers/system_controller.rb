@@ -37,6 +37,101 @@ class SystemController < ApplicationController
 		elsif @mes=="12"
 			@mes="Dezembro"	
 		end
+	end
+
+	def uploads
+		if params[:mes]
+			@mes = params[:mes]
+		else
+			@mes = Date.today.strftime("%m")
+		end
+		if params[:tudo] 
+			@orcamentos = Orcamento.all
+		else
+			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+		end
+
+		if @mes=="1"
+			@mes="Janeiro"
+		elsif @mes=="2"
+			@mes="Fevereiro"
+		elsif @mes=="3"
+			@mes="Março"
+		elsif @mes=="4"
+			@mes="Abril"
+		elsif @mes=="5"
+			@mes="Maio"
+		elsif @mes=="6"
+			@mes="Junho"
+		elsif @mes=="7"
+			@mes="Julho"
+		elsif @mes=="8"
+			@mes="Agosto"
+		elsif @mes=="9"
+			@mes="Setembro"
+		elsif @mes=="10"
+			@mes="Outubro"
+		elsif @mes=="11"
+			@mes="Novembro"
+		elsif @mes=="12"
+			@mes="Dezembro"	
+		end
+
+
+		respond_to do |format|
+		  format.html
+		  format.xls
+		end
+
+
+	end
+
+
+
+	def modelagens
+		if params[:mes]
+			@mes = params[:mes]
+		else
+			@mes = Date.today.strftime("%m")
+		end
+		if params[:tudo]
+			@modelagens = Modeling.all
+		else
+			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+		end
+
+		if @mes=="1"
+			@mes="Janeiro"
+		elsif @mes=="2"
+			@mes="Fevereiro"
+		elsif @mes=="3"
+			@mes="Março"
+		elsif @mes=="4"
+			@mes="Abril"
+		elsif @mes=="5"
+			@mes="Maio"
+		elsif @mes=="6"
+			@mes="Junho"
+		elsif @mes=="7"
+			@mes="Julho"
+		elsif @mes=="8"
+			@mes="Agosto"
+		elsif @mes=="9"
+			@mes="Setembro"
+		elsif @mes=="10"
+			@mes="Outubro"
+		elsif @mes=="11"
+			@mes="Novembro"
+		elsif @mes=="12"
+			@mes="Dezembro"	
+		end
+
+
+		respond_to do |format|
+		  format.html
+		  format.xls
+		end
+
 
 	end
 

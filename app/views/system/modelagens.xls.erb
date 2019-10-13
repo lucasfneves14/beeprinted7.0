@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Nome</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Telefone</Data></Cell>
+        <Cell><Data ss:Type="String">Estado</Data></Cell>
+        <Cell><Data ss:Type="String">Empresa</Data></Cell>
+        <Cell><Data ss:Type="String">Descrição</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+      </Row>
+    <% @modelagens.each do |modelagem| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= modelagem.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.name %> <%= modelagem.sobrenome %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.telefone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.estado %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.empresa %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= modelagem.created_at.strftime("%d/%m/%y")%></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

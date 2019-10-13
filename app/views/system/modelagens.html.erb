@@ -17,7 +17,7 @@
 
 
         <div class="content">
-        <h3>Todos os Pedidos de Orçamento</h3>
+        <h3>Todos os Uploads</h3>
         <div class="dropdown">
                         <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
@@ -42,7 +42,6 @@
                     </div>  
         <hr>
             <div class="animated fadeIn">
-                <%=render 'uploads', orcamentos: @orcamentos, mes: @mes%>
                 <%=render 'modelagens', modelagens: @modelagens, mes: @mes%>
             </div><!-- .animated -->
         </div><!-- .content -->

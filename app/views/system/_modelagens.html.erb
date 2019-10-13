@@ -1,0 +1,60 @@
+<div class="row" style='overflow:auto'>
+                    <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Pedidos de Modelagem de <%=mes%></strong>
+                                <span style='float:right'>Download: <%= link_to "Tudo", system_modelagens_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_modelagens_path(format: "xls") %></span>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Telefone</th>
+                                            <th>Estado</th>
+                                            <th>Empresa</th>
+                                            <th>Descricao</th>
+                                            <th>Arquivos</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%modelagens.each_with_index do |modelagem,index|%>
+                                            <tr>
+                                                <td class="serial"><%=index+1%>.</td>
+                                                <td><span class='id'>#<%=modelagem.id%></span> </td>
+                                                <td>  <span class="name"><%=modelagem.name%><%=modelagem.sobrenome%></span> </td>
+                                                <td> <span class="product"><%=modelagem.email%></span> </td>
+                                                <td><span class=""><%=modelagem.telefone%></span></td>
+                                                <td><span class=""><%=modelagem.estado%></span></td>
+                                                <td><span class=""><%=modelagem.empresa%></span></td>
+                                                <td><span>
+                                                  <% if modelagem.description.length > 40 %>
+                                                    <%= truncate(modelagem.description, length: 40) %>
+                                                    <%= link_to "...Ler mais", "", class: "read-more-modelagem-#{modelagem.id}" %>
+                                                    <script>
+                                                      $('.read-more-modelagem-<%= modelagem.id %>').on('click', function(e) {
+                                                        e.preventDefault()
+                                                        $(this).parent().html('<%= escape_javascript modelagem.description %>')
+                                                      })
+                                                    </script>
+                                                  <% else %>
+                                                    <%= modelagem.description %>
+                                                  <% end %>
+                                                </span></td>
+                                                <td>
+                                                    <span class="badge badge-complete">Ver aquivos</span>
+                                                </td>
+                                                <td><%=modelagem.created_at.strftime("%d/%m/%y")%></td>
+                                            </tr>
+                                        <%end%>
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+
+
+
+                </div><!-- .row -->

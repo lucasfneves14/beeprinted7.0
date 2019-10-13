@@ -1,0 +1,66 @@
+<div class="row" style='overflow:auto'>
+                    <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Uploads do mês de <%=mes%></strong>
+                                <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Telefone</th>
+                                            <th>Estado</th>
+                                            <th>Empresa</th>
+                                            <th>Descricao</th>
+                                            <th>Arquivos</th>
+                                            <th>Data</th>
+                                            <th>Info</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%orcamentos.each_with_index do |orcamento,index|%>
+                                            <tr>
+                                                <td class="serial"><%=index+1%>.</td>
+                                                <td><span class='id'> #<%=orcamento.id%> </span></td>
+                                                <td>  <span class="name"><%=orcamento.name%><%=orcamento.sobrenome%></span> </td>
+                                                <td> <span class="product"><%=orcamento.email%></span> </td>
+                                                <td><span class=""><%=orcamento.telefone%>999999999999</span></td>
+                                                <td><span class=""><%=orcamento.estado%></span></td>
+                                                <td><span class=""><%=orcamento.empresa%>999999999999</span></td>
+                                                <td><span>
+                                                  <% if orcamento.description.length > 40%>
+                                                    <%= truncate(orcamento.description, length: 40) %>
+                                                    <%= link_to "...Ler Mais", "", class: "read-more-orcamento-#{orcamento.id}" %>
+                                                    <script>
+                                                      $('.read-more-orcamento-<%= orcamento.id %>').on('click', function(e) {
+                                                        e.preventDefault()
+                                                        $(this).parent().html('<%= escape_javascript orcamento.description %>')
+                                                      })
+                                                    </script>
+                                                  <% else %>
+                                                    <%= orcamento.description %>
+                                                  <% end %>
+                                                </span></td>
+                                                <td>
+                                                    <span class="badge badge-complete">Ver aquivos</span>
+                                                </td>
+                                                <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                                <td>
+                                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
+                                                </td>
+                                            </tr>
+                                        <%end%>
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+
+
+
+                </div><!-- .row -->
+                <br>
+                <br>
