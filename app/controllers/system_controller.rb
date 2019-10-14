@@ -55,6 +55,7 @@ class SystemController < ApplicationController
 			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		end
 
+		@adicionado = Adicionado.new
 
 		@mes_num = @mes
 
@@ -108,6 +109,8 @@ class SystemController < ApplicationController
 		end
 
 
+		@adicionado = Adicionado.new
+		
 		@mes_num = @mes
 
 		
