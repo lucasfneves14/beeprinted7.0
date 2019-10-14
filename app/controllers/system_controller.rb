@@ -10,9 +10,12 @@ class SystemController < ApplicationController
 		end 
 		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-		@planilha = (@modelagens + @orcamentos).sort{|a,b| a.created_at <=> b.created_at }
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)
+		@adicionado = Adicionado.new
 		
+		@mes_num = @mes
 		if @mes=="1"
 			@mes="Janeiro"
 		elsif @mes=="2"
@@ -51,6 +54,9 @@ class SystemController < ApplicationController
 		else
 			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		end
+
+
+		@mes_num = @mes
 
 		if @mes=="1"
 			@mes="Janeiro"
@@ -101,6 +107,10 @@ class SystemController < ApplicationController
 			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
 		end
 
+
+		@mes_num = @mes
+
+		
 		if @mes=="1"
 			@mes="Janeiro"
 		elsif @mes=="2"

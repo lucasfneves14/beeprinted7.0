@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'adicionados/create'
   get 'manual/index'
   class SubdomainConstraint
 	  def self.matches?(request)
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get '/system', to:'system#index', as: :system
   get '/system/uploads', to:'system#uploads', as: :system_uploads
   get '/system/modelagens', to:'system#modelagens', as: :system_modelagens
+  post 'system/adicionados', to: 'adicionados#create', as: :adicionados
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d', to: 'manual#index', as: :manual
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id', to: 'manual#show', as: :erro
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id/edit', to: 'manual#edit', as: :edit_erro

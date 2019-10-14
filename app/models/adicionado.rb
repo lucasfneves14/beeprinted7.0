@@ -1,0 +1,2 @@
+class Adicionado < ApplicationRecord
+end

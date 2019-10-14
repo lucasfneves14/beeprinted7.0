@@ -1,74 +1,113 @@
+<style>
+.form-control{
+    font-size:11px;
+}
+</style>
 <div class="row" style='overflow:auto'>
-                    <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Mês de <%=mes%></strong>
-                                <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
-                            </div>
-                            <div class="table-stats order-table ov-h">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-                                            <th class="serial">#</th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Canal</th>
-                                            <th>Email</th>
-                                            <th>Telefone</th>
-                                            <th>Estado</th>
-                                            <th>Empresa</th>
-                                            <th>Descricao</th>
-                                            <th>Arquivos</th>
-                                            <th>Data</th>
-                                            <th>Info</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <%orcamentos.each_with_index do |orcamento,index|%>
-                                            <tr>
-                                                <td class="serial" height="45"><%=index+1%>.</td>
-                                                <td><span class='id'> #<%=orcamento.id%> </span></td>
-                                                <td>  <span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </td>
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Mês de <%=mes%></strong>
+            <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
+        </div>
+        <div class="table-stats order-table ov-h">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th class="serial">#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Canal</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Estado</th>
+                        <th>Empresa</th>
+                        <th>Descricao</th>
+                        <th>Arquivos</th>
+                        <th>Data</th>
+                        <th>Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%= simple_form_for @adicionado, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+                        <%orcamentos.each_with_index do |orcamento,index|%>
+                            <tr>
+                                <td class="serial" height="45"><%=index+1%>.</td>
 
-                                                <%if orcamento.class.name.demodulize == "Orcamento"%>
 
-                                                    <td> <span class="">Upload</span> </td>
-                                                <%elsif orcamento.class.name.demodulize == "Modeling"%>
-                                                    <td> <span class="">Modelagem</span> </td>
-                                                <%end%>
-                                                <td> <span class="product"><%=orcamento.email%></span> </td>
-                                                <td><span class=""><%=orcamento.telefone%></span></td>
-                                                <td><span class=""><%=orcamento.estado%></span></td>
-                                                <td><span class=""><%=orcamento.empresa%></span></td>
-                                                <td width="200"><span>
-                                                  <% if orcamento.description.length > 40%>
-                                                    <%= truncate(orcamento.description, length: 40) %>
-                                                    <%= link_to "...Ler Mais", "", class: "read-more-orcamento-#{orcamento.id}" %>
-                                                    <script>
-                                                      $('.read-more-orcamento-<%= orcamento.id %>').on('click', function(e) {
-                                                        e.preventDefault()
-                                                        $(this).parent().html('<%= escape_javascript orcamento.description %>')
-                                                      })
-                                                    </script>
-                                                  <% else %>
-                                                    <%= orcamento.description %>
-                                                  <% end %>
-                                                </span></td>
-                                                <td>
-                                                    <span class="badge badge-complete">Ver aquivos</span>
-                                                </td>
-                                                <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
-                                                <td>
-                                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
-                                                </td>
-                                            </tr>
-                                        <%end%>
-                                    </tbody>
-                                </table>
-                            </div> <!-- /.table-stats -->
-                        </div>
+                                <td><span class='id'> #<%=(201900+@mes_num.to_i)*100 + index+1%> </span></td>
+
+
+                                <%if orcamento.class.name.demodulize == "Adicionado"%>
+                                    <td>  <span class="name"><%=orcamento.name%></span> </td>
+                                <%else%>
+                                    <td>  <span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </td>
+                                <%end%>
 
 
 
-                </div><!-- .row -->
-                <br>
-                <br>
+                                <%if orcamento.class.name.demodulize == "Orcamento"%>
+                                    <td> <span class="">Upload</span> </td>
+                                <%elsif orcamento.class.name.demodulize == "Modeling"%>
+                                        <td> <span class="">Modelagem</span> </td>
+                                <%elsif orcamento.class.name.demodulize == "Adicionado"%>
+                                    <td> <span class=""><%=orcamento.canal%></span> </td>
+
+                                <%end%>
+
+
+
+                                <td> <span class="product"><%=orcamento.email%></span> </td>
+
+
+                                <td><span class=""><%=orcamento.telefone%></span></td>
+                                <td><span class=""><%=orcamento.estado%></span></td>
+                                <td><span class=""><%=orcamento.empresa%></span></td>
+                                <td width="200"><span>
+                                <%if orcamento.description%>
+                                <% if orcamento.description.length > 40%>
+                                    <%= truncate(orcamento.description, length: 40) %>
+                                    <%= link_to "...Ler Mais", "", class: "read-more-orcamento-#{orcamento.id}" %>
+                                    <script>
+                                      $('.read-more-orcamento-<%= orcamento.id %>').on('click', function(e) {
+                                            e.preventDefault()
+                                           $(this).parent().html('<%= escape_javascript orcamento.description %>')
+                                       })
+                                    </script>
+                                <% else %>
+                                    <%= orcamento.description %>
+                                <% end %>
+                                <%end%>
+                                </span></td>
+                                <td>
+                                    <span class="badge badge-complete">Ver aquivos</span>
+                                </td>
+                                <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                <td>
+                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
+                                </td>
+                            </tr>
+                        <%end%>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><%= f.input :name, label:false, placeholder:"Nome",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%= f.input :canal, prompt:"Canal", :collection => ["Upload", "Modelagem", "Email","Contato", "Whatsapp", "Mouth"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
+                            <td><%= f.input :email, label:false, placeholder:"Email",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%= f.input :telefone, label:false, placeholder:"Telefone",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%= f.input :estado, prompt:"Estado", :collection => ["Acre", "Alagoas", "Amapá","Amazonas", "Bahia", "Ceará","Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte","Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Segipe", "Tocantins"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
+                            <td><%= f.input :empresa, label:false, placeholder:"Empresa",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%= f.input :descricao, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
+                            <td></td>
+                            <td><%= f.input :data, label:false, placeholder:"Data",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%=f.submit "Adicionar pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %></td>
+
+                        </tr>
+                    <%end%>
+                </tbody>
+            </table>
+        </div> <!-- /.table-stats -->
+     </div>
+
+</div><!-- .row -->
+   <br>
+    <br>
