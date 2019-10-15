@@ -22,8 +22,10 @@
                         <th>Estado</th>
                         <th>Empresa</th>
                         <th>Descricao</th>
-                        <th>Arquivos</th>
-                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Criado em</th>
+                        <th>Data 1° retorno</th>
+                        <th>Último Contato</th>
                         <th>Info</th>
                     </tr>
                 </thead>
@@ -78,12 +80,22 @@
                                 <% end %>
                                 <%end%>
                                 </span></td>
-                                <td>
-                                    <span class="badge badge-complete">Ver aquivos</span>
+                                <td <%if orcamento.status=="New"%> style="color:red"<%end%>>
+                                    <%= orcamento.status%>
                                 </td>
                                 <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                <td class='text-center'><%=orcamento.dataretorno%></td>
+                                <td class='text-center'><%=orcamento.dataultimo%></td>
                                 <td>
-                                    <span class="badge badge-complete" style='background-color:#009fab'><strong>Mais Informaçoes</strong></span>
+                                    <%if orcamento.class.name.demodulize == "Orcamento"%>
+                                        <a href=<%=system_upload_path(orcamento.id)%>>
+                                    <%elsif orcamento.class.name.demodulize == "Modeling"%>
+                                        <a href=<%=system_modelagem_path(orcamento.id)%>>
+                                    <%elsif orcamento.class.name.demodulize == "Adicionado"%>
+                                        <a href=<%=system_adicionado_path(orcamento.id)%>>
+                                    <%end%>
+                                    <span class="badge badge-complete" style=''><strong>Editar Informaçoes</strong></span>
+                                    </a>
                                 </td>
                             </tr>
                         <%end%>
@@ -96,9 +108,11 @@
                             <td><%= f.input :telefone, label:false, placeholder:"Telefone",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :estado, prompt:"Estado", :collection => ["Acre", "Alagoas", "Amapá","Amazonas", "Bahia", "Ceará","Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte","Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Segipe", "Tocantins"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
                             <td><%= f.input :empresa, label:false, placeholder:"Empresa",:input_html=>{style:'color:#777;'} %></td>
-                            <td><%= f.input :descricao, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
+                            <td><%= f.input :description, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
                             <td></td>
                             <td><%= f.input :data, label:false, placeholder:"Data",:input_html=>{style:'color:#777;'} %></td>
+                            <td></td>
+                            <td></td>
                             <td><%=f.submit "Adicionar pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %></td>
 
                         </tr>

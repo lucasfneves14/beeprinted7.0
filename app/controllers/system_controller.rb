@@ -150,6 +150,18 @@ class SystemController < ApplicationController
 	end
 
 
+	def upload
+		@upload = Orcamento.find(params[:id])
+	end
+
+
+	def modelagem
+		@modelagem = Modeling.find(params[:id])
+	end
+
+	def adicionado
+    	@adicionado = Adicionado.find(params[:id])
+  	end
 
 
 
