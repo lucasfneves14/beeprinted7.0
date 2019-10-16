@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tempo: 1
+  massa: 1
+  valor_unit: 1.5
+  quantidade: 1
+  valor: 1.5
+  resolucao: MyString
+  infill: 1
+  cor: MyString
+  material: MyString
+
+two:
+  name: MyString
+  tempo: 1
+  massa: 1
+  valor_unit: 1.5
+  quantidade: 1
+  valor: 1.5
+  resolucao: MyString
+  infill: 1
+  cor: MyString
+  material: MyString

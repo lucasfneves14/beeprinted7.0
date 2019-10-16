@@ -154,6 +154,7 @@ class SystemController < ApplicationController
 
 	def upload
 		@upload = Orcamento.find(params[:id])
+		@item = @upload.items.build
 	end
 
 	def update
@@ -198,7 +199,7 @@ class SystemController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo)
+    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, items_attributes:[:id,:name,:_destroy])
   	end
 
   	def modelagem_params

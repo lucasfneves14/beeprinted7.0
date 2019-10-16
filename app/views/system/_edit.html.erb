@@ -8,6 +8,16 @@ body{
 .form-group{
     margin-bottom: 5px;
 }
+.form-control{
+    padding: 0rem .4rem .1rem .2rem;
+    font-size: 0.9rem;
+    height: calc(1.50rem + 2px);
+    border-radius: 0px;
+    border-right:0.8px;
+}
+.remove_fields{
+    color:red;
+}
 </style>
 
 <div class="content">
@@ -66,6 +76,62 @@ body{
                     <br>
                     <hr>
                 </div>
+
+
+
+                <div class="card-body card-block">
+                    <div class='row form-group' style='font-size:13px;color:#666'>
+                        <div class='col col-md-2 text-center' style="padding:0px;padding-left:15px">
+                            <span style="margin:0px"><strong>Item</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Tempo (min)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Massa (g)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Valor Unit (R$)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Quant.</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Total (R$)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Resolução</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Infill (%)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Cor</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px; padding-right:15px">
+                            <span style="margin:0px"><strong>Material</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px; padding-right:15px">
+                            <span style="margin:0px"><strong></strong></span>
+                        </div>
+                    </div>
+
+
+                    <div id="items">
+
+                                <%= f.fields_for :items do |item| %>
+                                    <%= render 'item_fields', f: item %>
+                                <% end %>
+                                <div class="links">
+                                    <%= link_to_add_association 'Adicionar Item', f, :items %>
+                                </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                </div>
+
+
 
 
                 <div class="card-body card-block">
@@ -142,13 +208,8 @@ body{
 
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fa fa-dot-circle-o"></i> Submit
-                    </button>
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        <i class="fa fa-ban"></i> Reset
-                    </button>
-                </div>
+                <%=f.submit "Atualizar Pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
+            </div>
             <%end%>
         </div>
     </div>
