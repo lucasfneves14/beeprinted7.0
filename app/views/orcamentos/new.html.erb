@@ -62,6 +62,10 @@
   <div class="header" style='margin-bottom:30px'>
     <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos e descreva seu projeto</h4>
   </div> 
+  <div class="alert alert-danger" style='display:none' id='error_alert'>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <span id='messagem_erro'>Login efetuado com sucesso!</span>
+</div>
   <%= form_for(@arquivo, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
     <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
       <p><span><strong>Selecione ou arraste e solte arquivos STL ou OBJ para o seu projeto aqui</strong></span></p>
@@ -168,7 +172,7 @@
 
   <div class="header" style='margin-bottom:30px'>
     <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload de arquivos de referência (opcional)</h4>
-  </div> 
+  </div>
   <%= form_for(@reference, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
     <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
       <p><span><strong>Selecione ou arraste e solte arquivos de referência para o seu projeto aqui</strong></span></p>
@@ -338,6 +342,7 @@ $(document).ready(function(){
     // restrict image size to a maximum 1MB
     maxFilesize: 60,
     timeout: 0,
+    acceptedFiles: ".stl, .STL, .obj, .OBJ",
     // changed the passed param to one accepted by
     // our rails app
     paramName: "arquivo[attachment]",
@@ -356,9 +361,22 @@ $(document).ready(function(){
             $('#button-orcamento').hide();
             $('#antesdoupload').fadeIn();
             console.log("Adicionado");
+            console.log(file);
+        });
+        this.on("error", function (file, errorMessage) {
+            file.previewElement.innerHTML = "";
+            var extensao = file.name.split('.').pop();
+            if ((extensao != 'stl')&&((extensao != 'STL'))&&((extensao != 'OBJ'))&&(extensao != 'obj')){
+              $('#messagem_erro').text("Arquivos "+extensao+" não são suportados. Faça o upload em um dos seguintes formatos: STL ou OBJ. Caso não possua, altere a opção na etapa 1.");
+              $('#error_alert').show();
+            }
+            else{
+              $('#messagem_erro').text("Algum erro ocorreu no envio deste arquivo. Por favor tente novamente ou entre em contato em contato@beeprinted.com.br");
+              $('#error_alert').show();
+            }
         });
       },
-    // if the upload was successful
+    // if the upload was successfu
     success: function(file, response){
       // find the remove button link of the uploaded file and give it an id
       // based of the fileID response from the server
@@ -367,7 +385,6 @@ $(document).ready(function(){
       $(file.previewTemplate).find('.dz-image').parent().attr('id', deletarId);
       ids.push(response.fileID);
       $('#orcamento_array').val(ids);
-      console.log($('#orcamento_array').val());
       // add the dz-success class (the green tick sign)
       $(file.previewElement).addClass("dz-success");
     },
