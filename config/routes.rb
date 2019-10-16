@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   get 'system/uploads/:id', to:'system#upload', as: :system_upload
   get 'system/modelagens/:id', to:'system#modelagem', as: :system_modelagem
   get 'system/adicionados/:id', to:'system#adicionado', as: :system_adicionado
+  patch 'system/orcamentos/:id', to: 'system#update', as: :system_update
+
+
+
+
+
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d', to: 'manual#index', as: :manual
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id', to: 'manual#show', as: :erro
   get 'suporte/manual-para-solucao-de-erros-de-impressao-3d/:id/edit', to: 'manual#edit', as: :edit_erro

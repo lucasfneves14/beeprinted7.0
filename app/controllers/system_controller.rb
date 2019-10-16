@@ -12,6 +12,8 @@ class SystemController < ApplicationController
 		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
 		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+		
+
 		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)
 		@adicionado = Adicionado.new
 		
@@ -154,10 +156,38 @@ class SystemController < ApplicationController
 		@upload = Orcamento.find(params[:id])
 	end
 
+	def update
+		tipo = params[:tipo]
+		id = params[:id]
+		if tipo == "Orcamento"
+			@orcamento = Orcamento.find(params[:id])
+			params = upload_params
+			path = system_upload_path(@orcamento)
+		end
+		if tipo == "Modeling"
+			@orcamento = Orcamento.find(id)
+			params = modelagem_params
+			path = system_modelagem_path(@orcamento)
+		end
+		if tipo == "Adicionado"
+			@orcamento = Adicionado.find(id)
+			params = adicionado_params
+			path = system_adicionado_path(@orcamento)
+		end
+	    if @orcamento.update(params)
+	      flash[:success] = "Orçamento Editado!"
+	      redirect_to(path)
+	    else
+	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
+	      render :upload
+	    end
+	end
+
 
 	def modelagem
 		@modelagem = Modeling.find(params[:id])
 	end
+
 
 	def adicionado
     	@adicionado = Adicionado.find(params[:id])
@@ -166,6 +196,19 @@ class SystemController < ApplicationController
 
 
 	private
+
+	def upload_params
+    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo)
+  	end
+
+  	def modelagem_params
+    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo)
+  	end
+  	def adicionado_params
+    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo)
+  	end
+
+
 	def admin
     unless current_user.admin
       flash[:alert] = "Acesso negado!"

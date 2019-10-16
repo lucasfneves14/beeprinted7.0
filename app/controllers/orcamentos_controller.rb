@@ -44,6 +44,19 @@ class OrcamentosController < ApplicationController
   def create
     @orcamento = Orcamento.create(orcamento_params)
 
+
+    @mes = Date.today.strftime("%m")
+    @ano = Date.today.strftime("%Y")
+
+    @orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+    @modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+    @adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+    @planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+
+    identificador = (@ano.to_i*100 + @mes.to_i)*1000 + @planilha.count + 1
+
+    @orcamento.identificador = identificador
+
     #@client = ::Pipedrive::Person.new
     #bla = RestClient.get('https://beeprinted-981d36.pipedrive.com/v1/persons/find?api_token=3b5b5a35e9fe27d0d10b21d8a2d004ab0efa91d3', :params => {term: @orcamento.email, search_by_email: 1})
     #bla = JSON.parse bla.body

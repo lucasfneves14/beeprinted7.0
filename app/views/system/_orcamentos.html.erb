@@ -36,7 +36,7 @@
                                 <td class="serial" height="45"><%=index+1%>.</td>
 
 
-                                <td><span class='id'> #<%=(201900+@mes_num.to_i)*100 + index+1%> </span></td>
+                                <td><span class='id'> #<%=orcamento.identificador%> </span></td>
 
 
                                 <%if orcamento.class.name.demodulize == "Adicionado"%>
@@ -80,7 +80,7 @@
                                 <% end %>
                                 <%end%>
                                 </span></td>
-                                <td <%if orcamento.status=="New"%> style="color:red"<%end%>>
+                                <td <%if orcamento.status=="New"%> style="color:red"<%elsif orcamento.status=="Fechado"%> style="color:green"<%elsif orcamento.status=="Briefing"%> style="color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:orange"<%elsif orcamento.status=="Negociação"%> style="color:orange"<%end%>>
                                     <%= orcamento.status%>
                                 </td>
                                 <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>

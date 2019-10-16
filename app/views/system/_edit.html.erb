@@ -1,0 +1,77 @@
+<style>
+.form-control.is-valid{
+    border: 1px solid #ced4da;
+}
+.form-group{
+    margin-bottom: 5px;
+}
+</style>
+
+<div class="content">
+    <h3>Pedido de Orçamento #<%=orcamento.identificador%></h3>
+    <div class="animated fadeIn" style='margin-top:50px'>
+        <div class="card">
+            <div class="card-header" style=color:green>
+                <strong>Editar</strong> Status
+            </div>
+            <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize}) do |f|%>
+            <div class="card-body card-block form-inline">
+                    <div class="form-group" style='margin-left:10px'><label style='padding-right:10px; color:green'>Status </label><%= f.input :status, label: false, :collection => ["New", "Briefing", "Negociação","Proposta Env", "Fechado", "No bid"]%></div>
+                    <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Data 1° retorno </label><%= f.input :dataretorno, label: false%></div>
+                    <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Último Contato </label><%= f.input :dataultimo, label: false%></div>
+            </div>
+            <div class="card-footer">
+                <%=f.submit "Atualizar Pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
+            </div>
+            <%end%>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style='color:green'>
+                <strong>Informações</strong> para Documento
+            </div>
+            <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize}) do |f|%>
+                <div class="card-body card-block">
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Nome</label></div>
+                        <div class="col-12 col-md-5">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <%= f.input :sobrenome, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Empresa</label></div>
+                        <div class="col-12 col-md-10">
+                            <%= f.input :empresa, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Email</label></div>
+                        <div class="col-12 col-md-10">
+                            <%= f.input :email, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Telefone</label></div>
+                        <div class="col-12 col-md-10">
+                            <%= f.input :telefone, label: false%>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o"></i> Submit
+                    </button>
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban"></i> Reset
+                    </button>
+                </div>
+            <%end%>
+        </div>
+    </div>
+</div>
