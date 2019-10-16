@@ -1,4 +1,7 @@
 <style>
+body{
+    font-size:14px;
+}
 .form-control.is-valid{
     border: 1px solid #ced4da;
 }
@@ -9,7 +12,8 @@
 
 <div class="content">
     <h3>Pedido de Orçamento #<%=orcamento.identificador%></h3>
-    <div class="animated fadeIn" style='margin-top:50px'>
+    <hr>
+    <div class="animated fadeIn" style='margin-top:40px'>
         <div class="card">
             <div class="card-header" style=color:green>
                 <strong>Editar</strong> Status
@@ -61,8 +65,82 @@
                     </div>
                     <br>
                     <hr>
+                </div>
+
+
+                <div class="card-body card-block">
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Tempo de Projeto  </label></div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Valor Frete</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Tempo de Modelagem  </label></div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Prazo de Entrega</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Tempo de Impressao </label></div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Tempo de Setup</label></div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
                     <br>
                 </div>
+
+
+                <div class="card-body card-block">
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Prazo Desejado</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :name, label: false%>
+                        </div>
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'>VALOR DO ORÇAMENTO</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Tempo de Execuçao Total (dias)</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :name, label: false%>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="fa fa-dot-circle-o"></i> Submit
