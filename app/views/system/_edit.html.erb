@@ -135,7 +135,7 @@ body{
 
 
                 <div class="card-body card-block">
-                    <div class="row form-group">
+                    <!--<div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Projeto  </label></div>
                         <div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
@@ -147,8 +147,8 @@ body{
                         <div class="col-12 col-md-4">
                             <%= f.input :name, label: false%>
                         </div>
-                    </div>
-                    <div class="row form-group">
+                    </div>-->
+                    <!--<div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Modelagem  </label></div>
                         <div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
@@ -160,23 +160,31 @@ body{
                         <div class="col-12 col-md-4">
                             <%= f.input :name, label: false%>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Impressao </label></div>
                         <div class="col-12 col-md-2">
-                            <%= f.input :name, label: false%>
+                            <%= f.input :tempo_impressao, label: false%>
                         </div>
-                        <div class="col-12 col-md-2">
+                        <!--<div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
+                        </div>-->
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Valor Frete</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :frete, label: false%>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Setup</label></div>
                         <div class="col-12 col-md-2">
-                            <%= f.input :name, label: false%>
+                            <%= f.input :tempo_setup, label: false%>
                         </div>
-                        <div class="col-12 col-md-2">
+                        <!--<div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
+                        </div>-->
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Prazo de Entrega</label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :prazo, label: false%>
                         </div>
                     </div>
                     <br>
@@ -189,17 +197,17 @@ body{
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Prazo Desejado</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :name, label: false%>
+                            <%= f.input :prazo_desejado, label: false%>
                         </div>
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'><strong>VALOR DO ORÇAMENTO</strong></label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :name, label: false%>
+                            <%= f.input :valor, label: false%>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Execuçao Total (dias)</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :name, label: false%>
+                            <%= f.input :tempo_execucao, label: false%>
                         </div>
                     </div>
                 </div>
