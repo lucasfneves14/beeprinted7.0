@@ -217,6 +217,9 @@ body{
 
                 <div class="card-footer">
                 <%=f.submit "Atualizar Pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
+                <a href=<%=system_upload_path(orcamento.id,format: "pdf")%>>
+                    <span class="badge badge-complete" style=''><strong>Baixar Documento (Atualize antes)</strong></span>
+                </a>
             </div>
             <%end%>
         </div>

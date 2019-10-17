@@ -162,6 +162,14 @@ class SystemController < ApplicationController
 				@item.name = File.basename(arquivo.attachment.url)
 			end
 		end
+		respond_to do |format|
+		  format.html
+		  format.pdf do 
+		  	render pdf: "teste",
+		  	template: "system/upload_pdf.html.erb",
+		  	layout: false
+		  end
+		end
 	end
 
 	def update
@@ -182,7 +190,9 @@ class SystemController < ApplicationController
 			params = adicionado_params
 			path = system_adicionado_path(@orcamento)
 		end
+
 	    if @orcamento.update(params)
+	    	puts @orcamento
 	      flash[:success] = "Orçamento Editado!"
 	      redirect_to(path)
 	    else
