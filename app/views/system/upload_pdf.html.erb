@@ -684,7 +684,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx3'>Bruno Diogo</td>
   <td class = 'flx1'></td>
 <td class = 'flx1'></td>
-<td class = 'flx1' style = 'vertical-align:top;text-align:left;padding:0;'>  <img src='j0qo61u1nbrj909yl8bxyb0hesgfmz4a_Vers%25C3%25A3o%2BThierre%2B-%2BPlanilha%2Bde%2BOr%25C3%25A7amento%2B%25282%2529_1_image1.png' width='262' height='40' alt="image1.png" class = 'imagediv' style='margin-top: 2.16pt; margin-left: 59.22pt; z-index:1;width:196.5pt;height:30pt;'  >
+<td class = 'flx1' style = 'vertical-align:top;text-align:left;padding:0;'>  <img src='https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/MARCA-cinza2+(4).png' width='262' height='40' alt="image1.png" class = 'imagediv' style='margin-top: 2.16pt; margin-left: 59.22pt; z-index:1;width:196.5pt;height:30pt;'  >
 </td>
 <td class = 'flx4'></td>
 <td class = 'flx1'></td>
@@ -757,7 +757,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class = 'flx0' style = 'border-right:1px none black;'></td>
 <td class = 'flx0' style = 'border-left:medium solid black;'></td>
 
-  <td class='flx6'>10/17/2019</td>
+  <td class='flx6'><%=Date.today.strftime("%d/%m/%Y")%></td>
   <td class = 'flx0'></td>
 <td class = 'flx0'></td>
 <td class = 'flx0'></td>
@@ -767,7 +767,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0'></td>
 <td class = 'flx0' style = 'border-right:1px none black;'></td>
 
-  <td class='flx6' style ='border-left:medium solid black;border-right:medium solid black;border-bottom:medium solid black;'>N. 201910155</td>
+  <td class='flx6' style ='border-left:medium solid black;border-right:medium solid black;border-bottom:medium solid black;'>N. <%=@upload.identificador%></td>
   <td class = 'flx0' style = 'border-left:1px none black;border-right:medium solid black;'></td>
 
 </tr>
@@ -809,7 +809,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>NOME</td>
-  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'>Bruno Diogo</td>
+  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@upload.name%> <%=@upload.sobrenome%></td>
   <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -826,7 +826,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>EMPRESA</td>
-  <td class='flx9' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'>-</td>
+  <td class='flx9' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@upload.empresa%></td>
   <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -843,7 +843,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>E-MAIL</td>
-  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2'>brndiogo@gmail.com</td>
+  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2'><%=@upload.email%></td>
   <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -904,278 +904,43 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class = 'flx11' style = 'border-left:1px none black;border-right:medium solid black;'></td>
 
 </tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
+<%@upload.items.each_with_index do |item,index|%>
+  <%if (index%2) == 0%>
+   <tr  style='height:15.29pt;'>
+    <td class = 'flx0' style = 'border-right:1px none black;'></td>
+  <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3mmSpacer</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.00</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.00</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>3</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
+    <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.name%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.tempo%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.massa%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor_unit%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.quantidade%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.resolucao%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.infill%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.cor%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'><%=item.material%></td>
+    <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>3</td>
+  </tr>
+  <%else%>
+     <tr  style='height:15.29pt;'>
+      <td class = 'flx0' style = 'border-right:1px none black;'></td>
+    <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>4mmSpacer</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.00</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.00</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>3</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>7mmSpacer</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>4</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.24</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.24</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>4</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>9mmSpacer</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>5</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.48</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.48</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>5</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>ArduinoStandoff</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>0.52</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>0.52</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>1</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>BottomRocker</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>7</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.96</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.96</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>7</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>BottomRocker-inside</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>7</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.96</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.96</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>7</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>CenterGear</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>21</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>5.88</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>5.88</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>21</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Crank</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>6</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.72</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1.72</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>6</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Gear</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>22</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>6.12</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>6.12</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>22</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Idler</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>2</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>0.76</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>0.76</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>2</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Leg</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>10</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3.24</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3.24</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Normal</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>10</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>LinkageConnector</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>26</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>7</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>8.20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>8.20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Normal</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>26</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>LinkageFrame</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>80</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>27</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>26.76</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>26.76</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Normal</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>80</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Platform</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>124</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>48</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>43.20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>43.20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Normal</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>124</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>PowerLink</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>31</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>3</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>8.28</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>8.28</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>31</td>
-</tr>
- <tr  style='height:15.29pt;'>
-  <td class = 'flx0' style = 'border-right:1px none black;'></td>
-<td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
-
-  <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>TopRocker</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>9</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>2.44</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>1</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>2.44</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Alta</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>20</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>Preto</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'>PLA</td>
-  <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>9</td>
-</tr>
+      <td class='flx14' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.name%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.tempo%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.massa%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor_unit%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.quantidade%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.resolucao%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.infill%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.cor%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:1px solid black;'><%=item.material%></td>
+      <td class='flx11' style ='border-left:1px none black;border-right:medium solid black;text-align:right;'>3</td>
+    </tr>
+  <%end%>
+<%end%>
  <tr  style='height:15.29pt;'>
   <td class = 'flx0' style = 'border-right:1px none black;'></td>
 <td class = 'flx0' style = 'border-left:medium solid black;'></td>
@@ -1197,11 +962,11 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx16' style ='border-left:medium solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;'>TEMPO DE IMPRESS&Atilde;O</td>
-  <td class='flx17' style ='border-left:1px none black;border-top:1px solid black;border-right:medium solid black;border-bottom:1px solid black;'>6 horas</td>
+  <td class='flx17' style ='border-left:1px none black;border-top:1px solid black;border-right:medium solid black;border-bottom:1px solid black;'><%=@upload.tempo_impressao%> horas</td>
   <td class = 'flx12' style = 'border-left:1px none black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:medium solid black;border-top:medium solid black;border-right:1px solid black;border-bottom:1px solid black;'>VALOR FRETE</td>
-  <td class='flx13' style ='border-left:1px solid black;border-top:medium solid black;border-right:medium solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'>R$ 0.00</td>
+  <td class='flx13' style ='border-left:1px solid black;border-top:medium solid black;border-right:medium solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'>R$ <%=@upload.frete%></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
 <td class = 'flx0'></td>
 <td class = 'flx0'></td>
@@ -1214,11 +979,11 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:medium solid black;'>TEMPO DE SETUP</td>
-  <td class='flx17' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:medium solid black;'>0.5 horas</td>
+  <td class='flx17' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:medium solid black;'><%=@upload.tempo_setup%> horas</td>
   <td class = 'flx12' style = 'border-left:1px none black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:medium solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:medium solid black;'>PRAZO DE ENTREGA</td>
-  <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:medium solid black;border-bottom:medium solid black;' colspan = '2' rowspan ='1'>0 dias &uacute;teis</td>
+  <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:medium solid black;border-bottom:medium solid black;' colspan = '2' rowspan ='1'><%=@upload.prazo%> dias &uacute;teis</td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 
   <td class='flx10' style ='border-bottom:medium solid black;' colspan = '2' rowspan ='1'>VALOR DO OR&Ccedil;AMENTO &nbsp;</td>
@@ -1237,7 +1002,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx3' style ='border-top:1px none black;'>0.05</td>
   <td class='flx19' style ='border-top:1px none black;text-align:right;'>0</td>
   <td class='flx19' style ='border-right:1px none black;text-align:right;'>7</td>
-  <td class='flx20' style ='border-left:medium solid black;border-top:medium solid black;border-right:medium solid black;border-bottom:medium solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;'>R$ 115.76</span></td>
+  <td class='flx20' style ='border-left:medium solid black;border-top:medium solid black;border-right:medium solid black;border-bottom:medium solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;'>R$ <%=@upload.valor%></span></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
 <td class = 'flx0' style = 'border-right:medium solid black;'></td>
 
@@ -1247,7 +1012,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:medium solid black;border-top:medium solid black;border-right:1px solid black;border-bottom:1px solid black;'>PRAZO DESEJADO (DIAS)</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:medium solid black;border-right:medium solid black;border-bottom:1px solid black;'>-</td>
+  <td class='flx13' style ='border-left:1px none black;border-top:medium solid black;border-right:medium solid black;border-bottom:1px solid black;'><%=@upload.prazo_desejado%></td>
   <td class = 'flx12' style = 'border-left:1px none black;'></td>
 
   <td class='flx3'>2500</td>
@@ -1264,7 +1029,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:medium solid black;border-right:1px none black;'></td>
 
   <td class='flx16' style ='border-left:medium solid black;border-top:1px none black;border-right:1px solid black;border-bottom:medium solid black;'>TEMPO DE EXECU&Ccedil;&Atilde;O<br>TOTAL (DIAS &Uacute;TEIS)</td>
-  <td class='flx17' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:medium solid black;'>3</td>
+  <td class='flx17' style ='border-left:1px none black;border-top:1px none black;border-right:medium solid black;border-bottom:medium solid black;'><%=@upload.tempo_execucao%></td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 
   <td class='flx3'>5000</td>
@@ -1352,7 +1117,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 
   <td class='flx22' style ='border-left:medium solid black;border-top:1px none black;'>Cuidados e Conserva&ccedil;&atilde;o</td>
 <td class ='imagecell' colspan = '9' rowspan ='4' style ='width:759.4pt;height:114.33pt;border-top:1px none black;border-right:medium solid black;border-bottom:medium solid black;'>
-  <img src='j0qo61u1nbrj909yl8bxyb0hesgfmz4a_Vers%25C3%25A3o%2BThierre%2B-%2BPlanilha%2Bde%2BOr%25C3%25A7amento%2B%25282%2529_1_image2.png' width='159' height='48' alt="image2.png" class = 'imagediv' style='margin-top: 13.13pt; margin-left: 335.49pt; z-index:2;width:119.25pt;height:36pt;'  >
+  <img src='https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/Logo_PagSeguro.png' width='159' height='48' alt="image2.png" class = 'imagediv' style='margin-top: 13.13pt; margin-left: 335.49pt; z-index:2;width:119.25pt;height:36pt;'  >
 <table border='0' cellpadding='0' cellspacing='0' summary='Helper container' style='border-collapse: collapse; border-spacing: 0;'><tr>
   <td class='flx16' style ='width:759.4pt;height:114.33pt;border:0'><span class='flx16' style ='height:114.33pt;'>&bull; As pe&ccedil;as podem sofrer altera&ccedil;&otilde;es se expostas a altas temperaturas ou diretamente ao sol por longos per&iacute;odos.<br>&bull; Evitar contato com produtos qu&iacute;micos solventes que possam corroer pl&aacute;stico.<br>&bull; A precis&atilde;o das impressoras &eacute; de &plusmn;0.1 mm. Recomenda-se criar o modelo considerando este erro, pois pode influenciar em pe&ccedil;as que precisam de encaixe ou rosqueamento. <br>&bull; As pe&ccedil;as impressas s&atilde;o fi&eacute;is ao modelo digital em 3D apresentado pelo cliente, sendo de sua responsabilidade fazer os ajustes necess&aacute;rios para impress&atilde;o<br>&bull; Em comprovado defeito de fabrica&ccedil;&atilde;o a pe&ccedil;a ser&aacute; substitu&iacute;da.<br></span></td></tr></table>
 </td>
