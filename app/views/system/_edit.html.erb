@@ -44,7 +44,7 @@ body{
             <div class="card-header" style='color:green'>
                 <strong>Informações</strong> para Documento
             </div>
-            <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize}) do |f|%>
+            <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize, calculo: true}) do |f|%>
                 <div class="card-body card-block">
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Nome</label></div>
@@ -164,7 +164,7 @@ body{
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Impressao </label></div>
                         <div class="col-12 col-md-2">
-                            <%= f.input :tempo_impressao, label: false%>
+                            <%= f.input :tempo_impressao, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
                         </div>
                         <!--<div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
@@ -201,7 +201,7 @@ body{
                         </div>
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'><strong>VALOR DO ORÇAMENTO</strong></label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :valor, label: false%>
+                            <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
                         </div>
                     </div>
                     <div class="row form-group">

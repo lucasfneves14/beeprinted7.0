@@ -155,7 +155,7 @@ class SystemController < ApplicationController
 	def upload
 		@upload = Orcamento.find(params[:id])
 		if @upload.items.any?
-			@upload.items.build
+			
 		else
 			@upload.arquivos.each do |arquivo|
 				@item = @upload.items.build
@@ -175,6 +175,7 @@ class SystemController < ApplicationController
 	def update
 		tipo = params[:tipo]
 		id = params[:id]
+		calculo = params[:calculo]
 		if tipo == "Orcamento"
 			@orcamento = Orcamento.find(params[:id])
 			params = upload_params
@@ -192,9 +193,47 @@ class SystemController < ApplicationController
 		end
 
 	    if @orcamento.update(params)
-	    	puts @orcamento
-	      flash[:success] = "Orçamento Editado!"
-	      redirect_to(path)
+	      puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+	      if calculo
+	      	puts 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBb'
+	      	tempo = 0
+	      	@orcamento.items.each do |item|
+	      		tempo = tempo + item.tempo*item.quantidade
+	      	end
+	      	@orcamento.tempo_impressao = tempo/60
+	      	taxa = 0
+	      	if tempo > 1000
+	      		taxa = 0.05
+	      		if tempo > 2500
+	      			taxa = 0.1
+	      			if tempo > 5000
+	      				taxa = 0.15
+	      				if tempo > 10000
+	      					taxa = 0.3
+	      					if tempo > 15000
+	      						taxa = 0.4
+	      					end
+	      				end
+	      			end
+	      		end
+	      	end
+	      	total = 0
+	      	@orcamento.items.each do |item|
+	      		item.valor_unit = item.tempo*0.24*(1-taxa) + item.massa*0.28
+	      		item.valor = item.valor_unit*item.quantidade
+	      		total = total + item.valor
+	      		item.save
+	      	end
+
+	      	@orcamento.valor = total + @orcamento.frete
+	      end
+	      if @orcamento.save
+		      flash[:success] = "Orçamento Editado!"
+		      redirect_to(path)
+		   else
+		   	 	flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
+	      		render :upload
+	      	end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
 	      render :upload
