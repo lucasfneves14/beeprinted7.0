@@ -266,8 +266,10 @@ class SystemController < ApplicationController
 			if !@modelagem.servicos.any?
 				@servico1 = @modelagem.servicos.build
 				@servico1.name = "Design 3D"
+				@servico1.prazo = 3
 				@servico2 = @modelagem.servicos.build
 				@servico2.name = "Impressão 3D"
+				@servico2.prazo = 4
 			end
 		end
 		@orcamento = @modelagem
@@ -284,6 +286,20 @@ class SystemController < ApplicationController
 
 	def adicionado
     	@adicionado = Adicionado.find(params[:id])
+    	if params[:format] != "pdf"
+			if !@adicionado.items.any?
+				@item = @adicionado.items.build
+			end
+		end
+		@orcamento = @adicionado
+		respond_to do |format|
+		  format.html
+		  format.pdf do 
+		  	render pdf: "#{@adicionado.identificador}",
+		  	template: "system/upload_pdf.html.erb",
+		  	layout: false
+		  end
+		end
   	end
 
 
@@ -302,7 +318,9 @@ class SystemController < ApplicationController
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
   	def adicionado_params
-    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo)
+    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
+    		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
 
 
