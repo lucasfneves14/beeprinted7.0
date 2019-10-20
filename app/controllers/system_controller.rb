@@ -180,22 +180,25 @@ class SystemController < ApplicationController
 		if tipo == "Orcamento"
 			@orcamento = Orcamento.find(params[:id])
 			params = upload_params
-			path = system_upload_path(@orcamento, format: "pdf")
+			path = system_upload_path(@orcamento)
+			path_pdf = system_upload_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Modeling"
 			@orcamento = Modeling.find(id)
 			params = modelagem_params
-			path = system_modelagem_path(@orcamento, format: "pdf")
+			path = system_modelagem_path(@orcamento)
+			path_pdf = system_modelagem_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Adicionado"
 			@orcamento = Adicionado.find(id)
 			params = adicionado_params
-			path = system_adicionado_path(@orcamento, format: "pdf")
+			path = system_adicionado_path(@orcamento)
+			path_pdf = system_adicionado_path(@orcamento, format: "pdf")
 		end
 
 	    if @orcamento.update(params)
 	      if calculo
-
+	      	puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 #############################    PARTE ITEMS    ################################
 	      	tempo = 0
 	      	@orcamento.items.each do |item|
@@ -239,17 +242,20 @@ class SystemController < ApplicationController
 	      		end
 
 	      	end
-	      end
 
 #############################    FIM    ################################
 
 
-	      if @orcamento.save
-		      redirect_to(path)
-		   else
-		   	 	flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
-	      		render :upload
-	      	end	
+		    if @orcamento.save
+			      redirect_to(path_pdf)
+			else
+				flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
+		    	render :upload
+		    end
+		  else
+		  	flash[:success] = "Orçamento editado!"
+	      	redirect_to(path)
+		  end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
 	      render :upload
@@ -307,18 +313,18 @@ class SystemController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
+    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
     	items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     	servicos_attributes:[:id, :name, :valor_unit,:quantidade, :valor, :prazo,:_destroy])
   	end
 
   	def modelagem_params
-    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
   	def adicionado_params
-    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
