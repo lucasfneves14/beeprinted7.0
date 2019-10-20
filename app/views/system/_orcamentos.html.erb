@@ -39,12 +39,7 @@
                                 <td><span class='id'> #<%=orcamento.identificador%> </span></td>
 
 
-                                <%if orcamento.class.name.demodulize == "Adicionado"%>
-                                    <td>  <span class="name"><%=orcamento.name%></span> </td>
-                                <%else%>
-                                    <td>  <span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </td>
-                                <%end%>
-
+                                <td>  <a href=<%=system_path(name: "#{orcamento.name} #{orcamento.sobrenome}")%>><span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </a></td>
 
 
                                 <%if orcamento.class.name.demodulize == "Orcamento"%>
@@ -58,7 +53,7 @@
 
 
 
-                                <td> <span class="product"><%=orcamento.email%></span> </td>
+                                <td> <a href=<%=system_path(email: orcamento.email)%>><span class="product"><%=orcamento.email%></span> </a></td>
 
 
                                 <td><span class=""><%=orcamento.telefone%></span></td>

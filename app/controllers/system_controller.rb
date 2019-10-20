@@ -8,9 +8,30 @@ class SystemController < ApplicationController
 		else
 			@mes = Date.today.strftime("%m")
 		end 
-		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+
+
+		if params[:email]
+			email = params[:email]
+			@orcamentos = Orcamento.where(email: email)
+			@modelagens = Modeling.where(email: email)
+			@adicionados = Adicionado.where(email: email)
+		elsif params[:name]
+			name = params[:name]
+			@orcamentos = Orcamento.where("name || ' ' || sobrenome ILIKE ?", "#{name}")
+			@modelagens = Modeling.where("name || ' ' || sobrenome ILIKE ?", "#{name}")
+			@adicionados = Adicionado.where("name || ' ' ILIKE ?", "#{name}")
+		elsif params[:query]
+			query = params[:query]
+			@orcamentos = Orcamento.where("'#' || identificador || ' ' || email || ' ' || name || ' ' || sobrenome ILIKE ?", "%#{query}%")
+			@modelagens = Modeling.where("'#' || identificador || ' ' || email || ' ' || name || ' ' || sobrenome ILIKE ?", "%#{query}%")
+			@adicionados = Adicionado.where("'#' || identificador || ' ' || email || ' ' || name || ' ' ILIKE ?", "%#{query}%")
+		else
+
+			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+		end
+
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		
 
