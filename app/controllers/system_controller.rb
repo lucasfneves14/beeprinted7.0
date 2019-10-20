@@ -9,18 +9,20 @@ class SystemController < ApplicationController
 			@mes = Date.today.strftime("%m")
 		end 
 
-
 		if params[:email]
+			@sem_mes = true
 			email = params[:email]
 			@orcamentos = Orcamento.where(email: email)
 			@modelagens = Modeling.where(email: email)
 			@adicionados = Adicionado.where(email: email)
 		elsif params[:name]
+			@sem_mes = true
 			name = params[:name]
 			@orcamentos = Orcamento.where("name || ' ' || sobrenome ILIKE ?", "#{name}")
 			@modelagens = Modeling.where("name || ' ' || sobrenome ILIKE ?", "#{name}")
 			@adicionados = Adicionado.where("name || ' ' ILIKE ?", "#{name}")
 		elsif params[:query]
+			@sem_mes = true
 			query = params[:query]
 			@orcamentos = Orcamento.where("'#' || identificador || ' ' || email || ' ' || name || ' ' || sobrenome ILIKE ?", "%#{query}%")
 			@modelagens = Modeling.where("'#' || identificador || ' ' || email || ' ' || name || ' ' || sobrenome ILIKE ?", "%#{query}%")

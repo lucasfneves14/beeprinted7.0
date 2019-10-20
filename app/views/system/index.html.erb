@@ -18,7 +18,7 @@
 
         <div class="content">
         <h3>Todos os Pedidos de Orçamento</h3>
-        <div class="dropdown">
+        <%if !@sem_mes%><div class="dropdown">
                         <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
                         </a>
@@ -40,6 +40,7 @@
                             <a class="nav-link" href="<%=request.path%>?mes=12">Dezembro</a>
                         </div>
                     </div>  
+        <%end%>
         <hr>
             <div class="animated fadeIn">
                 <%=render 'orcamentos', orcamentos: @planilha, mes: @mes%>

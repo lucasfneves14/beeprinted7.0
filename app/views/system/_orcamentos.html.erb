@@ -5,10 +5,12 @@
 </style>
 <div class="row" style='overflow:auto'>
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Mês de <%=mes%></strong>
-            <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
-        </div>
+        <%if !@sem_mes%>
+            <div class="card-header">
+                <strong class="card-title">Mês de <%=mes%></strong>
+                <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
+            </div>
+        <%end%>
         <div class="table-stats order-table ov-h">
             <table class="table ">
                 <thead>
