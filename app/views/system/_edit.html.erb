@@ -1,3 +1,11 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#orcamento_dataretorno" ).datepicker();
+    $( "#orcamento_dataultimo" ).datepicker();
+  } );
+  </script>
 <style>
 body{
     font-size:14px;
@@ -17,6 +25,9 @@ body{
 }
 .remove_fields{
     color:red;
+}
+.card .card-body {
+    padding: 1em;
 }
 </style>
 
@@ -76,6 +87,43 @@ body{
                     <br>
                     <hr>
                 </div>
+
+
+                <div class="card-body card-block">
+                    <div class='row form-group' style='font-size:13px;color:#666'>
+                        <div class='col col-md-2 text-center' style="padding:0px;padding-left:15px">
+                            <span style="margin:0px"><strong>Serviços</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Valor Unit</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Quant.</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Valor TT</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px">
+                            <span style="margin:0px"><strong>Prazo (dias)</strong></span>
+                        </div>
+                        <div class='col text-center' style="padding:0px; padding-right:15px">
+                            <span style="margin:0px"><strong></strong></span>
+                        </div>
+                    </div>
+
+
+                    <div id="servicos">
+
+                                <%= f.fields_for :servicos do |servico| %>
+                                    <%= render 'servico_fields', f: servico %>
+                                <% end %>
+                                <div class="links">
+                                    <%= link_to_add_association 'Adicionar Item', f, :servicos %>
+                                </div>
+                    </div>
+                    <hr>
+                </div>
+
 
 
 
@@ -184,7 +232,7 @@ body{
                         </div>-->
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Prazo de Entrega</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :prazo, label: false%>
+                            <%= f.input :prazo_orc, label: false%>
                         </div>
                     </div>
                     <br>
@@ -216,10 +264,7 @@ body{
 
 
                 <div class="card-footer">
-                <%=f.submit "Atualizar Pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
-                <a href=<%=system_upload_path(orcamento.id,format: "pdf")%>>
-                    <span class="badge badge-complete" style=''><strong>Baixar Documento (Atualize antes)</strong></span>
-                </a>
+                <%=f.submit "Gerar Documento", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
             </div>
             <%end%>
         </div>

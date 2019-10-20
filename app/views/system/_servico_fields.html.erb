@@ -8,13 +8,7 @@
       <%= f.input :name, label: false%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :tempo, label: false%>
-    </div>
-    <div class="col" style="padding:0px">
-      <%= f.input :massa, label: false%>
-    </div>
-    <div class="col" style="padding:0px">
-      <%= f.input :valor_unit, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+      <%= f.input :valor_unit, label: false%>
     </div>
     <div class="col" style="padding:0px">
       <%= f.input :quantidade, label: false%>
@@ -23,16 +17,7 @@
       <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :resolucao, label: false, :collection => ["Baixa", "Normal", "Alta","Ultra"]%>
-    </div>
-    <div class="col" style="padding:0px">
-      <%= f.input :infill, label: false%>
-    </div>
-    <div class="col" style="padding:0px">
-      <%= f.input :cor, label: false, :collection => ["Preto", "Branco", "Vermelho","Verde","Azul","Laranja","Roxo", "Amarelo", "Colorido"]%>
-    </div>
-    <div class="col" style="padding:0px;">
-      <%= f.input :material, label: false, :collection => ["PLA", "ABS"]%>
+      <%= f.input :prazo, label: false%>
     </div>
     <div class="col text-center" style="padding:0px; padding-right:15px;color:red">
       <strong><%= link_to_remove_association "x", f %></strong>

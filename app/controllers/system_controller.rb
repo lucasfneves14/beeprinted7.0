@@ -154,18 +154,19 @@ class SystemController < ApplicationController
 
 	def upload
 		@upload = Orcamento.find(params[:id])
-		if @upload.items.any?
-			
-		else
-			@upload.arquivos.each do |arquivo|
-				@item = @upload.items.build
-				@item.name = File.basename(arquivo.attachment.url)
+		if params[:format] != "pdf"
+			if !@upload.items.any?
+				@upload.arquivos.each do |arquivo|
+					@item = @upload.items.build
+					@item.name = File.basename(arquivo.attachment.url)
+				end
 			end
 		end
+		@orcamento = @upload
 		respond_to do |format|
 		  format.html
 		  format.pdf do 
-		  	render pdf: "teste",
+		  	render pdf: "#{@upload.identificador}",
 		  	template: "system/upload_pdf.html.erb",
 		  	layout: false
 		  end
@@ -179,23 +180,23 @@ class SystemController < ApplicationController
 		if tipo == "Orcamento"
 			@orcamento = Orcamento.find(params[:id])
 			params = upload_params
-			path = system_upload_path(@orcamento)
+			path = system_upload_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Modeling"
-			@orcamento = Orcamento.find(id)
+			@orcamento = Modeling.find(id)
 			params = modelagem_params
-			path = system_modelagem_path(@orcamento)
+			path = system_modelagem_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Adicionado"
 			@orcamento = Adicionado.find(id)
 			params = adicionado_params
-			path = system_adicionado_path(@orcamento)
+			path = system_adicionado_path(@orcamento, format: "pdf")
 		end
 
 	    if @orcamento.update(params)
-	      puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 	      if calculo
-	      	puts 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBb'
+
+#############################    PARTE ITEMS    ################################
 	      	tempo = 0
 	      	@orcamento.items.each do |item|
 	      		tempo = tempo + item.tempo*item.quantidade
@@ -226,9 +227,24 @@ class SystemController < ApplicationController
 	      	end
 
 	      	@orcamento.valor = total + @orcamento.frete
+
+
+#############################    PARTE SERVIÇOS    ################################
+
+			if @orcamento.servicos.any?
+	      		@orcamento.servicos.each do |servico|
+	      			servico.valor = servico.valor_unit*servico.quantidade
+	      			servico.save
+	      			@orcamento.valor = @orcamento.valor + servico.valor 
+	      		end
+
+	      	end
 	      end
+
+#############################    FIM    ################################
+
+
 	      if @orcamento.save
-		      flash[:success] = "Orçamento Editado!"
 		      redirect_to(path)
 		   else
 		   	 	flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
@@ -243,6 +259,26 @@ class SystemController < ApplicationController
 
 	def modelagem
 		@modelagem = Modeling.find(params[:id])
+		if params[:format] != "pdf"
+			if !@modelagem.items.any?
+				@item = @modelagem.items.build
+			end
+			if !@modelagem.servicos.any?
+				@servico1 = @modelagem.servicos.build
+				@servico1.name = "Design 3D"
+				@servico2 = @modelagem.servicos.build
+				@servico2.name = "Impressão 3D"
+			end
+		end
+		@orcamento = @modelagem
+		respond_to do |format|
+		  format.html
+		  format.pdf do 
+		  	render pdf: "#{@modelagem.identificador}",
+		  	template: "system/upload_pdf.html.erb",
+		  	layout: false
+		  end
+		end
 	end
 
 
@@ -255,11 +291,15 @@ class SystemController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo, :prazo_desejado, :tempo_execucao, :valor, items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy])
+    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
+    	items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
+    	servicos_attributes:[:id, :name, :valor_unit,:quantidade, :valor, :prazo,:_destroy])
   	end
 
   	def modelagem_params
-    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo)
+    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
+    		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
   	def adicionado_params
     	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo)

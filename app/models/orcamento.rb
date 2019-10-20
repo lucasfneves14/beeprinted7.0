@@ -4,6 +4,8 @@ class Orcamento < ApplicationRecord
 	has_many :arquivos, dependent: :destroy
 	has_many :items, inverse_of: :orcamento, dependent: :destroy
 	accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
+	has_many :servicos, inverse_of: :orcamento, dependent: :destroy
+	accepts_nested_attributes_for :servicos, reject_if: :all_blank, allow_destroy: true
 
 
 	#belongs_to :user
