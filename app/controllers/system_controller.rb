@@ -245,8 +245,13 @@ class SystemController < ApplicationController
 	      		end
 	      	end
 	      	total = 0
+	      	puts 'BBBBBBBBBBBBBBBBBBBBBBBB'
+	      	puts taxa
 	      	@orcamento.items.each do |item|
-	      		item.valor_unit = item.tempo*0.24*(1-taxa) + item.massa*0.28
+	      		puts 'CCCCCCCCCCCC'
+	      		puts item.tempo
+	      		puts item.massa
+	      		item.valor_unit = (item.tempo*0.24*(1-taxa) + item.massa*0.28).round(2)
 	      		item.valor = item.valor_unit*item.quantidade
 	      		total = total + item.valor
 	      		item.save
