@@ -266,7 +266,9 @@ class SystemController < ApplicationController
 	      		@orcamento.servicos.each do |servico|
 	      			servico.valor = servico.valor_unit*servico.quantidade
 	      			servico.save
-	      			@orcamento.valor = @orcamento.valor + servico.valor 
+	      			if servico.name != "Impressão 3D"
+	      				@orcamento.valor = @orcamento.valor + servico.valor
+	      			end 
 	      		end
 
 	      	end
