@@ -68,6 +68,26 @@ class SystemController < ApplicationController
 		end
 	end
 
+
+
+
+	def localizacao
+
+		@orcamentos = Orcamento.all
+		@modelagens = Modeling.all
+		@adicionados = Adicionado.all
+		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+
+	end
+
+
+
+
+
+
+
+
+
 	def uploads
 		if params[:mes]
 			@mes = params[:mes]

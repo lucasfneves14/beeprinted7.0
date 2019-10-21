@@ -79,7 +79,8 @@
         }
         .navbar .navbar-nav li.menu-item-has-children a:before {
             top: 20px;
-    right: -10px;
+            right: -10px;
+            border:none;
         }
         aside.left-panel{
             width:230px;
@@ -109,6 +110,14 @@
                             <li><i class="fa fa-bars"></i><a href=<%=system_modelagens_path%>>Modelagens</a></li>
 
                             <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Contatox</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon fa fa-bar-chart"></i>Análise 
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">           
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href=<%=system_localizacao_path%>>Localização</a></li>
                         </ul>
                     </li>
                 </ul>

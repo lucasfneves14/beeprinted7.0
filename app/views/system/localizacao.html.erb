@@ -1,0 +1,212 @@
+<!-- Styles -->
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px
+}
+
+</style>
+
+
+
+
+<div class="content">
+  <h3>Localizaçao dos pedidos de orçamento</h3>
+  <hr>
+   <div class="animated fadeIn" style='margin-top:40px'>
+    <div class="card">
+      <div class="card-header" style=color:green>
+        <strong>Brasil</strong>
+      </div>
+      <div class="card-body card-block form-inline">
+        <div id='chartdiv'></div>
+      </div>
+        
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/brazilLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+ // Create map instance
+var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+// Set map definition
+chart.geodata = am4geodata_brazilLow;
+
+
+// Create map polygon series
+var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+//Set min/max fill color for each area
+polygonSeries.heatRules.push({
+  property: "fill",
+  target: polygonSeries.mapPolygons.template,
+  min: am4core.color("#e2e2e2"),
+  max: am4core.color("#009fab")
+});
+console.log(chart.colors.getIndex(1).brighten(1));
+// Make map load polygon data (state shapes and names) from GeoJSON
+polygonSeries.useGeodata = true;
+
+// Set heatmap values for each state
+polygonSeries.data = [
+  {
+    id: "BR-AC",
+    value: <%=@planilha.select{|estado| estado.estado == 'Acre'}.count%>
+  },
+  {
+    id: "BR-AL",
+    value: <%=@planilha.select{|estado| estado.estado == 'Alagoas'}.count%>
+  },
+  {
+    id: "BR-AP",
+    value: <%=@planilha.select{|estado| estado.estado == 'Amapá'}.count%>
+  },
+  {
+    id: "BR-AM",
+    value: <%=@planilha.select{|estado| estado.estado == 'Amazonas'}.count%>
+  },
+  {
+    id: "BR-BA",
+    value: <%=@planilha.select{|estado| estado.estado == 'Bahia'}.count%>
+  },
+  {
+    id: "BR-CE",
+    value: <%=@planilha.select{|estado| estado.estado == 'Ceará'}.count%>
+  },
+  {
+    id: "BR-DF",
+    value: <%=@planilha.select{|estado| estado.estado == 'Distrito Federal'}.count%>
+  },
+  {
+    id: "BR-ES",
+    value: <%=@planilha.select{|estado| estado.estado == 'Espírito Santo'}.count%>
+  },
+  {
+    id: "BR-GO",
+    value: <%=@planilha.select{|estado| estado.estado == 'Goiás'}.count%>
+  },
+  {
+    id: "BR-MA",
+    value: <%=@planilha.select{|estado| estado.estado == 'Maranhao'}.count%>
+  },
+  {
+    id: "BR-MT",
+    value: <%=@planilha.select{|estado| estado.estado == 'Mato Grosso'}.count%>
+  },
+  {
+    id: "BR-MS",
+    value: <%=@planilha.select{|estado| estado.estado == 'Mato Grosso do Sul'}.count%>
+  },
+  {
+    id: "BR-MG",
+    value: <%=@planilha.select{|estado| estado.estado == 'Minas Gerais'}.count%>
+  },
+  {
+    id: "BR-PA",
+    value: <%=@planilha.select{|estado| estado.estado == 'Pará'}.count%>
+  },
+  {
+    id: "BR-PB",
+    value: <%=@planilha.select{|estado| estado.estado == 'Paraíba'}.count%>
+  },
+  {
+    id: "BR-PR",
+    value: <%=@planilha.select{|estado| estado.estado == 'Paraná'}.count%>
+  },
+  {
+    id: "BR-PE",
+    value: <%=@planilha.select{|estado| estado.estado == 'Pernambuco'}.count%>
+  },
+  {
+    id: "BR-PI",
+    value: <%=@planilha.select{|estado| estado.estado == 'Piauí'}.count%>
+  },
+  {
+    id: "BR-RJ",
+    value: <%=@planilha.select{|estado| estado.estado == 'Rio de Janeiro'}.count%>
+  },
+  {
+    id: "BR-RN",
+    value: <%=@planilha.select{|estado| estado.estado == 'Rio Grande do Norte'}.count%>
+  },
+  {
+    id: "BR-RS",
+    value: <%=@planilha.select{|estado| estado.estado == 'Rio Grande do Sul'}.count%>
+  },
+  {
+    id: "BR-RO",
+    value: <%=@planilha.select{|estado| estado.estado == 'Rondônia'}.count%>
+  },
+  {
+    id: "BR-RR",
+    value: <%=@planilha.select{|estado| estado.estado == 'Roraima'}.count%>
+  },
+  {
+    id: "BR-SC",
+    value: <%=@planilha.select{|estado| estado.estado == 'Santa Catarina'}.count%>
+  },
+  {
+    id: "BR-SP",
+    value: <%=@planilha.select{|estado| estado.estado == 'Sao Paulo'}.count%>
+  },
+  {
+    id: "BR-SE",
+    value: <%=@planilha.select{|estado| estado.estado == 'Sergipe'}.count%>5
+  },
+  {
+    id: "BR-TO",
+    value: <%=@planilha.select{|estado| estado.estado == 'Tocantins'}.count%>
+  }
+];
+
+// Set up heat legend
+let heatLegend = chart.createChild(am4maps.HeatLegend);
+heatLegend.series = polygonSeries;
+heatLegend.align = "right";
+heatLegend.valign = "bottom";
+heatLegend.width = am4core.percent(20);
+heatLegend.marginRight = am4core.percent(4);
+heatLegend.minValue = 0;
+heatLegend.maxValue = 40000000;
+
+// Set up custom heat map legend labels using axis ranges
+var minRange = heatLegend.valueAxis.axisRanges.create();
+minRange.value = heatLegend.minValue;
+minRange.label.text = "Little";
+var maxRange = heatLegend.valueAxis.axisRanges.create();
+maxRange.value = heatLegend.maxValue;
+maxRange.label.text = "A lot!";
+
+// Blank out internal heat legend value axis labels
+heatLegend.valueAxis.renderer.labels.template.adapter.add("text", function(labelText) {
+  return "";
+});
+
+// Configure series tooltip
+var polygonTemplate = polygonSeries.mapPolygons.template;
+polygonTemplate.tooltipText = "{name}: {value}";
+polygonTemplate.nonScalingStroke = true;
+polygonTemplate.strokeWidth = 0.5;
+
+// Create hover state and set alternative fill color
+var hs = polygonTemplate.states.create("hover");
+hs.properties.fill = am4core.color("#3F315D");
+
+}); // end am4core.ready()
+</script>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'system/modelagens/:id', to:'system#modelagem', as: :system_modelagem
   get 'system/adicionados/:id', to:'system#adicionado', as: :system_adicionado
   patch 'system/orcamentos/:id', to: 'system#update', as: :system_update
+  get 'system/localizacao', to:'system#localizacao', as: :system_localizacao
 
 
 
