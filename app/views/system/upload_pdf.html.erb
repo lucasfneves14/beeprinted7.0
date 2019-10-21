@@ -915,9 +915,9 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'><%=servico.name%></td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%=servico.valor_unit%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%='%.2f' % servico.valor_unit%></td>
   <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=servico.quantidade%></td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%=servico.valor%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%='%.2f' % servico.valor%></td>
   <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=servico.prazo%></td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 <td class = 'flx1'></td>
@@ -932,9 +932,9 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;' colspan = '2' rowspan ='1'><%=servico.name%></td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'>R$ <%=servico.valor_unit%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'>R$ <%='%.2f' % servico.valor_unit%></td>
   <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'><%=servico.quantidade%></td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'>R$ <%=servico.valor%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'>R$ <%='%.2f' % servico.valor%></td>
   <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;background-color:#cfe2f3;'><%=servico.prazo%></td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 <td class = 'flx1'></td>
@@ -1007,9 +1007,9 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
     <td class='flx12' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.name%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.tempo%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.massa%></td>
-    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor_unit%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%='%.2f' % item.valor_unit%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.quantidade%></td>
-    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor%></td>
+    <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%='%.2f' % item.valor%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.resolucao%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.infill%></td>
     <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.cor%></td>
@@ -1024,9 +1024,9 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
       <td class='flx14' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.name%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.tempo%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.massa%></td>
-      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor_unit%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%='%.2f' % item.valor_unit%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.quantidade%></td>
-      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.valor%></td>
+      <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%='%.2f' % item.valor%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.resolucao%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.infill%></td>
       <td class='flx15' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%=item.cor%></td>
@@ -1060,7 +1060,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class = 'flx12' style = 'border-left:1px none black;border-right:1px none black;'></td>
 
   <td class='flx12' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;'>VALOR FRETE</td>
-  <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'>R$ <%=@orcamento.frete%></td>
+  <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'>R$ <%='%.2f' % @orcamento.frete%></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
 <td class = 'flx0'></td>
 <td class = 'flx0'></td>
@@ -1096,7 +1096,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx3' style ='border-top:1px none black;'>0.05</td>
   <td class='flx19' style ='border-top:1px none black;text-align:right;'>0</td>
   <td class='flx19' style ='border-right:1px none black;text-align:right;'>7</td>
-  <td class='flx20' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;'>R$ <%=@orcamento.valor%></span></td>
+  <td class='flx20' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;'>R$ <%='%.2f' % @orcamento.valor%></span></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
 <td class = 'flx0' style = 'border-right:1px solid black;'></td>
 
