@@ -13,10 +13,12 @@
 <div class="content">
   <h3>Localizaçao dos pedidos de orçamento</h3>
   <hr>
+  <a href=<%if @fechado%><%=system_localizacao_path%><%else%><%=system_localizacao_path(fechado: true)%><%end%>><button type="button" class="btn <%if @fechado%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Fechado</button></a>
+  <button type="button" class="btn btn-outline-secondary">Faturamento</button>
    <div class="animated fadeIn" style='margin-top:40px'>
     <div class="card">
       <div class="card-header" style=color:green>
-        <strong>Brasil</strong>
+        <strong>Brasil <%if @fechado%> - Fechados<%end%></strong>
       </div>
       <div class="card-body card-block form-inline">
         <div id='chartdiv'></div>
@@ -171,7 +173,7 @@ polygonSeries.data = [
   },
   {
     id: "BR-SE",
-    value: <%=@planilha.select{|estado| estado.estado == 'Sergipe'}.count%>5
+    value: <%=@planilha.select{|estado| estado.estado == 'Sergipe'}.count%>
   },
   {
     id: "BR-TO",

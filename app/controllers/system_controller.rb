@@ -72,10 +72,17 @@ class SystemController < ApplicationController
 
 
 	def localizacao
+		@fechado = params[:fechado]
+		if @fechado
+			@orcamentos = Orcamento.all.where(status: 'Fechado')
+			@modelagens = Modeling.all.where(status: 'Fechado')
+			@adicionados = Adicionado.all.where(status: 'Fechado')
+		else
+			@orcamentos = Orcamento.all
+			@modelagens = Modeling.all
+			@adicionados = Adicionado.all
+		end
 
-		@orcamentos = Orcamento.all
-		@modelagens = Modeling.all
-		@adicionados = Adicionado.all
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
 	end
