@@ -14,4 +14,10 @@ class Modeling < ApplicationRecord
 	validates :sobrenome, presence: true
 	validates :estado, presence: true
 	validates :email, presence: true
+	validates :cep, presence: true, if: :fora_de_brasilia?
+
+
+	def fora_de_brasilia?
+		estado != "Distrito Federal"
+	end
 end
