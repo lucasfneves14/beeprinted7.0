@@ -4,6 +4,6 @@ class OrcamentoMailer < ApplicationMailer
 	def orcamento_email(orcamento, visit)
 		@info = visit
 		@orcamento = orcamento
-		mail(to: "thierre@beeprinted.com.br", subject: "Pedido de Orçamento (#{orcamento.id}) - BEEPRINTED")
+		mail(to: "thierre@beeprinted.com.br", subject: "Pedido de Orçamento (#{orcamento.identificador}) - BEEPRINTED")
 	end
 end

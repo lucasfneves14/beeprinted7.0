@@ -4,6 +4,6 @@ class ModelingMailer < ApplicationMailer
 	def modeling_email(modeling, visit)
 		@info = visit
 		@modeling = modeling
-		mail(to: "iago@beeprinted.com.br", subject: "Pedido de Modelagem (#{modeling.id}) - BEEPRINTED")
+		mail(to: "iago@beeprinted.com.br", subject: "Pedido de Modelagem (#{modeling.identificador}) - BEEPRINTED")
 	end
 end
