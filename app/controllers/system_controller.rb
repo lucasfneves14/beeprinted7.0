@@ -72,25 +72,49 @@ class SystemController < ApplicationController
 
 
 	def localizacao
+		@estados = Array.new
+
 		@fechado = params[:fechado]
-		if @fechado
-			@orcamentos = Orcamento.all.where(status: 'Fechado')
-			@modelagens = Modeling.all.where(status: 'Fechado')
-			@adicionados = Adicionado.all.where(status: 'Fechado')
-		else
-			@orcamentos = Orcamento.all
-			@modelagens = Modeling.all
-			@adicionados = Adicionado.all
-		end
+		@conversao = params[:conversao]
+		@orcamentos = Orcamento.all
+		@modelagens = Modeling.all
+		@adicionados = Adicionado.all
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+		estados_nomes = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", 
+			"Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais",
+			"Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte",
+			"Rio Grande do Sul", "Rondônia", "Roraima",  "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+
+		@siglas = ["BR-AC","BR-AL","BR-AP","BR-AM","BR-BA","BR-CE","BR-DF","BR-ES","BR-GO","BR-MA","BR-MT","BR-MS",
+			"BR-MG","BR-PA","BR-PB","BR-PR","BR-PE","BR-PI","BR-RJ","BR-RN","BR-RS","BR-RO","BR-RR","BR-SC",
+			"BR-SP","BR-SE","BR-TO"]
+
+
+		estados_nomes.each_with_index do |nome,index|
+			estado = Estado.new
+			estado.name = nome
+			estado.fechado = @planilha.select{|orcamento| (orcamento.estado == nome)&&(orcamento.status == "Fechado")}.count
+			puts estado.fechado
+			estado.pedido = @planilha.select{|orcamento| (orcamento.estado == nome)}.count
+			if estado.fechado == 0
+				estado.conversao = 0
+			else
+				estado.conversao = ((Float(estado.fechado)/estado.pedido)*100).round(1)
+			end
+			estado.sigla = @siglas[index]
+			@estados << estado
+		end
+
+		@estados = @estados.sort {|a, b| a[:pedido] <=> b[:pedido]}.reverse
+		if @fechado
+			@estados = @estados.sort {|a, b| a[:fechado] <=> b[:fechado]}.reverse
+		elsif @conversao 
+			@estados = @estados.sort {|a, b| a[:conversao] <=> b[:conversao]}.reverse
+		end
+			
 
 	end
-
-
-
-
-
 
 
 
