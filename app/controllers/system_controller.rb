@@ -309,15 +309,18 @@ class SystemController < ApplicationController
 
 
 #############################    PARTE SERVIÇOS    ################################
-
+			
 			if @orcamento.servicos.any?
+				prazo = 0
 	      		@orcamento.servicos.each do |servico|
 	      			servico.valor = servico.valor_unit*servico.quantidade
 	      			servico.save
 	      			if servico.name != "Impressão 3D"
 	      				@orcamento.valor = @orcamento.valor + servico.valor
-	      			end 
+	      			end
+	      			prazo = prazo + servico.prazo
 	      		end
+	      		@orcamento.tempo_execucao = @orcamento.prazo_orc + prazo
 
 	      	end
 
