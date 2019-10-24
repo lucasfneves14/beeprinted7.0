@@ -390,6 +390,31 @@ class SystemController < ApplicationController
   	end
 
 
+  	def enviar_avaliacao
+	    identificador = params[:id]
+		orcamento = Orcamento.find_by(identificador: identificador)
+		modelagem = Modeling.find_by(identificador: identificador)
+		adicionado = Adicionado.find_by(identificador: identificador)
+		if orcamento
+			@pedido = orcamento
+			path = system_upload_path(@pedido)
+		elsif modelagem
+			@pedido = modelagem
+			path = system_modelagem_path(@pedido)
+		elsif orcamento
+			@pedido = adicionado
+			path = system_adicionado_path(@pedido)
+		end
+		if @pedido.email
+			AvaliacaoMailer.avaliacao_email(@pedido).deliver
+			flash[:success] = "Email enviado!"
+			redirect_to path
+		else
+			flash.now[:danger] = "Esse pedido nao possui email. Favor adicionar email ou enviar de outra forma!"
+			redirect_to path
+		end
+  	end
+
 
 	private
 

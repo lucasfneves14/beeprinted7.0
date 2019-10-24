@@ -39,13 +39,26 @@ body{
     <h3>Pedido de Orçamento #<%=orcamento.identificador%></h3>
     <hr>
     <div class="animated fadeIn" style='margin-top:40px'>
+        <%if orcamento.status == "Entregue"%>
+        <div class="card">
+            <div class="card-header" style=color:green>
+                <strong>Enviar</strong> Formulário de Avaliaçao
+            </div>
+            <%=simple_form_for(orcamento, :url => { :action => :enviar_avaliacao , :id => orcamento.identificador}) do |f|%>
+            <div class="card-body card-block form-inline">
+                <%=f.submit "Enviar Formulário de Avaliaçao", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
+                    
+            </div>
+            <%end%>
+        </div>
+        <%end%>
         <div class="card">
             <div class="card-header" style=color:green>
                 <strong>Editar</strong> Status
             </div>
             <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize}) do |f|%>
             <div class="card-body card-block form-inline">
-                    <div class="form-group" style='margin-left:10px'><label style='padding-right:10px; color:green'>Status </label><%= f.input :status, label: false, :collection => ["New", "Briefing", "Negociação","Proposta Env", "Fechado", "No bid"]%></div>
+                    <div class="form-group" style='margin-left:10px'><label style='padding-right:10px; color:green'>Status </label><%= f.input :status, label: false, :collection => ["New", "Briefing", "Negociação","Proposta Env", "Fechado", "No bid", "Entregue"]%></div>
                     <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Data 1° retorno </label><%= f.input :dataretorno, label: false%></div>
                     <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Último Contato </label><%= f.input :dataultimo, label: false%></div>
             </div>

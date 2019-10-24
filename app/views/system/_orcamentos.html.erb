@@ -79,7 +79,7 @@
                                 <% end %>
                                 <%end%>
                                 </span></td>
-                                <td <%if orcamento.status=="New"%> style="color:red"<%elsif orcamento.status=="Fechado"%> style="color:green"<%elsif orcamento.status=="Briefing"%> style="color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:orange"<%elsif orcamento.status=="Negociação"%> style="color:orange"<%end%>>
+                                <td <%if orcamento.status=="New"%> style="color:red"<%elsif orcamento.status=="Fechado"%> style="color:green"<%elsif orcamento.status=="Briefing"%> style="color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:orange"<%elsif orcamento.status=="Negociação"%> style="color:orange"<%elsif orcamento.status=="Entregue"%> style="color:#3F315D"<%end%>>
                                     <%= orcamento.status%>
                                 </td>
                                 <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
