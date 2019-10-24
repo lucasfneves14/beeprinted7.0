@@ -277,7 +277,7 @@ class SystemController < ApplicationController
 	      	@orcamento.items.each do |item|
 	      		tempo = tempo + item.tempo*item.quantidade
 	      	end
-	      	@orcamento.tempo_impressao = tempo/60
+	      	@orcamento.tempo_impressao = (Float(tempo)/60).round(1)
 	      	taxa = 0
 	      	if tempo > 1000
 	      		taxa = 0.05
