@@ -1,5 +1,5 @@
 class AvaliacaoMailer < ApplicationMailer
-	default from: "contato@beeprinted.com.br"
+	default from: "Beeprinted <contato@beeprinted.com.br>"
 
 	def avaliacao_email(pedido)
 		@pedido = pedido
