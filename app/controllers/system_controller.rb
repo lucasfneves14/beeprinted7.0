@@ -272,7 +272,6 @@ class SystemController < ApplicationController
 
 	    if @orcamento.update(params)
 	      if calculo
-	      	puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 #############################    PARTE ITEMS    ################################
 	      	tempo = 0
 	      	@orcamento.items.each do |item|
@@ -296,10 +295,8 @@ class SystemController < ApplicationController
 	      		end
 	      	end
 	      	total = 0
-	      	puts 'BBBBBBBBBBBBBBBBBBBBBBBB'
 	      	puts taxa
 	      	@orcamento.items.each do |item|
-	      		puts 'CCCCCCCCCCCC'
 	      		puts item.tempo
 	      		puts item.massa
 	      		item.valor_unit = (item.tempo*0.24*(1-taxa) + item.massa*0.28).round(2)
