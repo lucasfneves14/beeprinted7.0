@@ -324,7 +324,10 @@ body{
     quantidade = $(this).closest(".row").find('.item_quant').val();
     var tempo = 0;
     $('.item_tempo').each(function(){
-        tempo += parseFloat(this.value);
+        if(this.value != ""){
+            tempo += parseFloat(this.value);
+        }
+
     });
     var taxa = 0;
     if(tempo > 1000){
