@@ -18,6 +18,7 @@ class ModelingsController < ApplicationController
     identificador = (@ano.to_i*100 + @mes.to_i)*1000 + @planilha.count
 
     @modeling.identificador = identificador
+    @modeling.responsavel = "Iago"
 
 
 

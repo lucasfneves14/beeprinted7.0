@@ -7,5 +7,6 @@ class Adicionado < ApplicationRecord
 	validates :name, presence: true
 	validates :estado, presence: true
 	validates :email, presence: true
+	validates :responsavel, presence: true
 	validates_format_of :email,:with => Devise::email_regexp
 end
