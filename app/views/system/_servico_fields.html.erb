@@ -5,19 +5,19 @@
   <div class="field">
   <div class='row form-group' style="margin-bottom:0px">
     <div class="col col-md-2" style="padding:0px;padding-left:15px">
-      <%= f.input :name, label: false%>
+      <%= f.input :name, label: false, :input_html =>{class:'servico_name'}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :valor_unit, label: false%>
+      <%= f.input :valor_unit, label: false, :input_html =>{class:'servico_unit'}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :quantidade, label: false%>
+      <%= f.input :quantidade, label: false, :input_html =>{class:'servico_quant'}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+      <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2", class:'servico_valor'}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :prazo, label: false%>
+      <%= f.input :prazo, label: false, :input_html =>{class:'servico_prazo'}%>
     </div>
     <div class="col text-center" style="padding:0px; padding-right:15px;color:red">
       <strong><%= link_to_remove_association "x", f %></strong>

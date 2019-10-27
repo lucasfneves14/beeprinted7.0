@@ -9,6 +9,7 @@
     $( "#modeling_dataretorno" ).datepicker();
     $( "#modeling_dataultimo" ).datepicker();
   } );
+  var servicos_quant = 0;
   </script>
 <style>
 body{
@@ -244,14 +245,14 @@ body{
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Impressao </label></div>
                         <div class="col-12 col-md-2">
-                            <%= f.input :tempo_impressao, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+                            <%= f.input :tempo_impressao, label: false, :input_html =>{style:"background-color:#e2e2e2", class:'tempo_impressao'}%>
                         </div>
                         <!--<div class="col-12 col-md-2">
                             <%= f.input :name, label: false%>
                         </div>-->
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Valor Frete</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :frete, label: false%>
+                            <%= f.input :frete, label: false, :input_html =>{class:'valor_frete'}%>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -264,7 +265,7 @@ body{
                         </div>-->
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right'>Prazo de Entrega</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :prazo_orc, label: false%>
+                            <%= f.input :prazo_orc, label: false, :input_html =>{class:'prazo_orc'}%>
                         </div>
                     </div>
                     <br>
@@ -281,13 +282,13 @@ body{
                         </div>
                         <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'><strong>VALOR DO ORÇAMENTO</strong></label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+                            <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2", class:'valor_orcamento'}%>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Tempo de Execuçao Total (dias)</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :tempo_execucao, label: false%>
+                            <%= f.input :tempo_execucao, label: false, :input_html =>{class:'tempo_execucao'}%>
                         </div>
                     </div>
                 </div>
@@ -302,3 +303,85 @@ body{
         </div>
     </div>
 </div>
+<script> 
+
+  $('.servico_quant, .servico_unit').change(function(){
+    valor_unit = $(this).closest(".row").find('.servico_unit').val();
+    quantidade = $(this).closest(".row").find('.servico_quant').val();
+    valor = (valor_unit*quantidade).toFixed(2);
+    $(this).closest(".row").find('.servico_valor').val(valor);
+
+    Atualizar($(this));
+
+  });
+  $('.item_tempo, .item_massa, .item_quant').change(function(){
+    tempo = $(this).closest(".row").find('.item_tempo').val();
+    massa = $(this).closest(".row").find('.item_massa').val();
+    quantidade = $(this).closest(".row").find('.item_quant').val();
+    var tempo = 0;
+    $('.item_tempo').each(function(){
+        tempo += parseFloat(this.value);
+    });
+    var taxa = 0;
+    if(tempo > 1000){
+        taxa = 0.05
+        if (tempo > 2500){
+            taxa = 0.1
+            if(tempo > 5000){
+                taxa = 0.15
+                if (tempo > 10000){
+                    taxa = 0.3
+                    if (tempo > 15000){
+                        taxa = 0.4
+                    }
+                }
+            }
+        }
+    }
+    valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
+    $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
+    valor = (valor_unit*quantidade).toFixed(2);
+    $(this).closest(".row").find('.item_valor').val(valor);
+    $(this).closest("form").find('.tempo_impressao').val((tempo/60).toFixed(1));
+    Atualizar($(this));
+
+  });
+
+  $('.valor_frete').change(function(){
+    Atualizar($(this));
+  });
+
+  $('.servico_prazo, .prazo_orc').change(function(){
+    tempo_execucao = 0
+    $('.servico_prazo').each(function(){
+        tempo_execucao += parseFloat(this.value);
+    });
+    tempo_execucao = tempo_execucao + parseFloat($(this).closest("form").find('.prazo_orc').val());
+    $(this).closest("form").find('.tempo_execucao').val(tempo_execucao);
+
+  });
+
+
+
+
+
+  function Atualizar(p) {
+       items_valor = 0
+    $('.item_valor').each(function(){
+        items_valor += parseFloat(this.value);
+    });
+
+    servicos_valor = 0
+    $('.servico_valor').each(function(){
+        if($(this).closest(".row").find('.servico_name').val() != "Impressão 3D"){
+            servicos_valor += parseFloat(this.value);
+        }
+    });
+
+    frete = p.closest("form").find('.valor_frete').val();
+
+    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
+
+    p.closest("form").find('.valor_orcamento').val(valor_orcamento);
+  }
+</script>

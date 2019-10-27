@@ -247,6 +247,55 @@ class SystemController < ApplicationController
 		end
 	end
 
+	def modelagem
+		@modelagem = Modeling.find(params[:id])
+		if params[:format] != "pdf"
+			if !@modelagem.items.any?
+				@item = @modelagem.items.build
+			end
+			if !@modelagem.servicos.any?
+				@servico1 = @modelagem.servicos.build
+				@servico1.name = "Design 3D"
+				@servico1.prazo = 3
+				@servico2 = @modelagem.servicos.build
+				@servico2.name = "Impressão 3D"
+				@servico2.prazo = 4
+			end
+		end
+		@orcamento = @modelagem
+		respond_to do |format|
+		  format.html
+		  format.pdf do 
+		  	render pdf: "#{@modelagem.identificador}",
+		  	template: "system/upload_pdf.html.erb",
+		  	layout: false
+		  end
+		end
+	end
+
+
+	def adicionado
+    	@adicionado = Adicionado.find(params[:id])
+    	if params[:format] != "pdf"
+			if !@adicionado.items.any?
+				@item = @adicionado.items.build
+			end
+		end
+		@orcamento = @adicionado
+		respond_to do |format|
+		  format.html
+		  format.pdf do 
+		  	render pdf: "#{@adicionado.identificador}",
+		  	template: "system/upload_pdf.html.erb",
+		  	layout: false
+		  end
+		end
+  	end
+
+
+
+
+
 	def update
 		tipo = params[:tipo]
 		id = params[:id]
@@ -344,50 +393,11 @@ class SystemController < ApplicationController
 	end
 
 
-	def modelagem
-		@modelagem = Modeling.find(params[:id])
-		if params[:format] != "pdf"
-			if !@modelagem.items.any?
-				@item = @modelagem.items.build
-			end
-			if !@modelagem.servicos.any?
-				@servico1 = @modelagem.servicos.build
-				@servico1.name = "Design 3D"
-				@servico1.prazo = 3
-				@servico2 = @modelagem.servicos.build
-				@servico2.name = "Impressão 3D"
-				@servico2.prazo = 4
-			end
-		end
-		@orcamento = @modelagem
-		respond_to do |format|
-		  format.html
-		  format.pdf do 
-		  	render pdf: "#{@modelagem.identificador}",
-		  	template: "system/upload_pdf.html.erb",
-		  	layout: false
-		  end
-		end
-	end
 
 
-	def adicionado
-    	@adicionado = Adicionado.find(params[:id])
-    	if params[:format] != "pdf"
-			if !@adicionado.items.any?
-				@item = @adicionado.items.build
-			end
-		end
-		@orcamento = @adicionado
-		respond_to do |format|
-		  format.html
-		  format.pdf do 
-		  	render pdf: "#{@adicionado.identificador}",
-		  	template: "system/upload_pdf.html.erb",
-		  	layout: false
-		  end
-		end
-  	end
+
+
+
 
 
   	def enviar_avaliacao

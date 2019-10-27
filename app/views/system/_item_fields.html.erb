@@ -8,19 +8,19 @@
       <%= f.input :name, label: false%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :tempo, label: false%>
+      <%= f.input :tempo, label: false, :input_html =>{class:"item_tempo"}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :massa, label: false%>
+      <%= f.input :massa, label: false, :input_html =>{class:"item_massa"}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :valor_unit, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+      <%= f.input :valor_unit, label: false, :input_html =>{style:"background-color:#e2e2e2",class:"item_valor_unit"}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :quantidade, label: false%>
+      <%= f.input :quantidade, label: false, :input_html =>{class:"item_quant"}%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2"}%>
+      <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2",class:"item_valor"}%>
     </div>
     <div class="col" style="padding:0px">
       <%= f.input :resolucao, label: false, :collection => ["Baixa", "Normal", "Alta","Ultra"]%>
