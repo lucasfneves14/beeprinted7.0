@@ -319,72 +319,18 @@ class SystemController < ApplicationController
 			path_pdf = system_adicionado_path(@orcamento, format: "pdf")
 		end
 
+
 	    if @orcamento.update(params)
 	      if calculo
-#############################    PARTE ITEMS    ################################
-	      	tempo = 0
-	      	@orcamento.items.each do |item|
-	      		tempo = tempo + item.tempo*item.quantidade
-	      	end
-	      	@orcamento.tempo_impressao = (Float(tempo)/60).round(1)
-	      	taxa = 0
-	      	if tempo > 1000
-	      		taxa = 0.05
-	      		if tempo > 2500
-	      			taxa = 0.1
-	      			if tempo > 5000
-	      				taxa = 0.15
-	      				if tempo > 10000
-	      					taxa = 0.3
-	      					if tempo > 15000
-	      						taxa = 0.4
-	      					end
-	      				end
-	      			end
-	      		end
-	      	end
-	      	total = 0
-	      	puts taxa
-	      	@orcamento.items.each do |item|
-	      		puts item.tempo
-	      		puts item.massa
-	      		item.valor_unit = (item.tempo*0.24*(1-taxa) + item.massa*0.28).round(2)
-	      		item.valor = item.valor_unit*item.quantidade
-	      		total = total + item.valor
-	      		item.save
-	      	end
-
-	      	@orcamento.valor = total + @orcamento.frete
-
-
-#############################    PARTE SERVIÇOS    ################################
-			
-			if @orcamento.servicos.any?
-				prazo = 0
-	      		@orcamento.servicos.each do |servico|
-	      			servico.valor = servico.valor_unit*servico.quantidade
-	      			servico.save
-	      			if servico.name != "Impressão 3D"
-	      				@orcamento.valor = @orcamento.valor + servico.valor
-	      			end
-	      			prazo = prazo + servico.prazo
-	      		end
-	      		@orcamento.tempo_execucao = @orcamento.prazo_orc + prazo
-
-	      	end
-
-#############################    FIM    ################################
-
-
-		    if @orcamento.save
-			      redirect_to(path_pdf)
-			else
-				flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
-		    	render :upload
-		    end
+			    redirect_to(path_pdf)
 		  else
-		  	flash[:success] = "Orçamento editado!"
-	      	redirect_to(path)
+		  	if @orcamento.status == "Fechado" && @orcamento.prazo_final == ""
+		  		flash[:alert] = "Rapaz, você bote o prazo!!"
+	      		redirect_to(path)
+	      	else
+	      		flash[:success] = "Orçamento editado!"
+	      		redirect_to(path)
+	      	end
 		  end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
