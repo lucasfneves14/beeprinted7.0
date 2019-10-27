@@ -319,9 +319,6 @@ body{
 
   });
   $('.item_tempo, .item_massa, .item_quant').change(function(){
-    tempo = $(this).closest(".row").find('.item_tempo').val();
-    massa = $(this).closest(".row").find('.item_massa').val();
-    quantidade = $(this).closest(".row").find('.item_quant').val();
     var tempo_total = 0;
     $('.item_tempo').each(function(){
         tempo_total += parseFloat(this.value);
@@ -342,10 +339,19 @@ body{
             }
         }
     }
-    valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
-    $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
-    valor = (valor_unit*quantidade).toFixed(2);
-    $(this).closest(".row").find('.item_valor').val(valor);
+
+    $('.item_valor_unit').each(function(){
+        tempo = $(this).closest(".row").find('.item_tempo').val();
+        massa = $(this).closest(".row").find('.item_massa').val();
+        quantidade = $(this).closest(".row").find('.item_quant').val();
+
+        valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
+        $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
+        valor = (valor_unit*quantidade).toFixed(2);
+        $(this).closest(".row").find('.item_valor').val(valor);
+
+    });
+
     $(this).closest("form").find('.tempo_impressao').val((tempo_total/60).toFixed(1));
     Atualizar($(this));
 
