@@ -29,6 +29,7 @@
                         <th>Criado em</th>
                         <th>Data 1° retorno</th>
                         <th>Último Contato</th>
+                        <th>Prazo Final</th>
                         <th>Info</th>
                     </tr>
                 </thead>
@@ -79,12 +80,13 @@
                                 <% end %>
                                 <%end%>
                                 </span></td>
-                                <td <%if orcamento.status=="New"%> style="color:red"<%elsif orcamento.status=="Fechado"%> style="color:green"<%elsif orcamento.status=="Briefing"%> style="color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:orange"<%elsif orcamento.status=="Negociação"%> style="color:orange"<%elsif orcamento.status=="Entregue"%> style="color:#3F315D"<%end%>>
-                                    <%= orcamento.status%>
+                                <td class='text-center' <%if orcamento.status=="New"%> style="color:white;background-color:red;"<%elsif orcamento.status=="Fechado"%> style="color:white;background-color:green"<%elsif orcamento.status=="Briefing"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Negociação"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Entregue"%> style="color:white;background-color:#3F315D"<%end%>>
+                                    <strong><%= orcamento.status%></strong>
                                 </td>
                                 <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
                                 <td class='text-center'><%=orcamento.dataretorno%></td>
                                 <td class='text-center'><%=orcamento.dataultimo%></td>
+                                <td class='text-center'><%=orcamento.prazo_final%></td>
                                 <td>
                                     <%if orcamento.class.name.demodulize == "Orcamento"%>
                                         <a href=<%=system_upload_path(orcamento.id)%>>
@@ -111,6 +113,7 @@
                             <td><%= f.input :description, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
                             <td></td>
                             <td><%= f.input :data, label:false, placeholder:"Data",:input_html=>{style:'color:#777;'} %></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td><%=f.submit "Adicionar pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %></td>
