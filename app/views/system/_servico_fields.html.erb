@@ -42,7 +42,7 @@
   $('.item_tempo, .item_massa, .item_quant').change(function(){
     var tempo_total = 0;
     $('.item_tempo').each(function(){
-        tempo_total += parseFloat(this.value);
+        tempo_total += parseFloat(this.value)*$(this).closest(".row").find('.item_quant').val();
     });
     var taxa = 0;
     if(tempo_total > 1000){
