@@ -300,12 +300,21 @@ body{
 
 
                 <div class="card-footer">
-                <%=f.submit "Gerar Documento", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center",:formtarget => "_blank" %>
+                <%=f.submit "Gerar Documento", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center",:formtarget => "_blank", id:"gerar_documento" %>
             </div>
             <%end%>
         </div>
     </div>
 </div>
+<script>
+$('#gerar_documento').click(function() {
+    setTimeout(function() {
+        location.reload();
+    }, 3000);
+});
+</script>
+
+
 <script> 
 
   $('.servico_quant, .servico_unit').change(function(){
