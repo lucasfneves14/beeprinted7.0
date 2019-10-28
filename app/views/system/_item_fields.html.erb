@@ -43,3 +43,91 @@
     link_to_remove_association é o helper que o cocoon nos fornece para deletar algum nested
   -->
 </div>
+<script> 
+
+  $('.servico_quant, .servico_unit').change(function(){
+    valor_unit = $(this).closest(".row").find('.servico_unit').val();
+    quantidade = $(this).closest(".row").find('.servico_quant').val();
+    valor = (valor_unit*quantidade).toFixed(2);
+    $(this).closest(".row").find('.servico_valor').val(valor);
+
+    Atualizar($(this));
+
+  });
+  $('.item_tempo, .item_massa, .item_quant').change(function(){
+    var tempo_total = 0;
+    $('.item_tempo').each(function(){
+        tempo_total += parseFloat(this.value);
+    });
+    var taxa = 0;
+    if(tempo_total > 1000){
+        taxa = 0.05
+        if (tempo_total > 2500){
+            taxa = 0.1
+            if(tempo_total > 5000){
+                taxa = 0.15
+                if (tempo_total > 10000){
+                    taxa = 0.3
+                    if (tempo_total > 15000){
+                        taxa = 0.4
+                    }
+                }
+            }
+        }
+    }
+
+    $('.item_valor_unit').each(function(){
+        tempo = $(this).closest(".row").find('.item_tempo').val();
+        massa = $(this).closest(".row").find('.item_massa').val();
+        quantidade = $(this).closest(".row").find('.item_quant').val();
+
+        valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
+        $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
+        valor = (valor_unit*quantidade).toFixed(2);
+        $(this).closest(".row").find('.item_valor').val(valor);
+
+    });
+
+    $(this).closest("form").find('.tempo_impressao').val((tempo_total/60).toFixed(1));
+    Atualizar($(this));
+
+  });
+
+  $('.valor_frete').change(function(){
+    Atualizar($(this));
+  });
+
+  $('.servico_prazo, .prazo_orc').change(function(){
+    tempo_execucao = 0
+    $('.servico_prazo').each(function(){
+        tempo_execucao += parseFloat(this.value);
+    });
+    tempo_execucao = tempo_execucao + parseFloat($(this).closest("form").find('.prazo_orc').val());
+    $(this).closest("form").find('.tempo_execucao').val(tempo_execucao);
+
+  });
+
+
+
+
+
+  function Atualizar(p) {
+       items_valor = 0
+    $('.item_valor').each(function(){
+        items_valor += parseFloat(this.value);
+    });
+
+    servicos_valor = 0
+    $('.servico_valor').each(function(){
+        if($(this).closest(".row").find('.servico_name').val() != "Impressão 3D"){
+            servicos_valor += parseFloat(this.value);
+        }
+    });
+
+    frete = p.closest("form").find('.valor_frete').val();
+
+    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
+
+    p.closest("form").find('.valor_orcamento').val(valor_orcamento);
+  }
+</script>
