@@ -37,7 +37,7 @@
                 <tbody>
                     <%= simple_form_for @adicionado, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
                         <%orcamentos.each_with_index do |orcamento,index|%>
-                            <tr>
+                            <tr <%if orcamento.status == "Cancelado"%> style='background-color:#a2a2a2' <%end%>>
                                 <td class="serial" height="45"><%=index+1%>.</td>
 
 

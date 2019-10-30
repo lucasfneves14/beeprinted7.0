@@ -333,6 +333,7 @@ class SystemController < ApplicationController
 	      	end
 		  end	
 	    else
+	      puts @orcamento.update(params)
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
 	      render :upload
 	    end
