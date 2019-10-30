@@ -227,9 +227,12 @@ class SystemController < ApplicationController
 
 
 	def upload
-		@upload = Orcamento.find(params[:id])
+		@upload = Orcamento.includes(:arquivos).find(params[:id])
 		if params[:format] != "pdf"
 			if !@upload.items.any?
+				puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+				#upload_arquivos = @upload.order('arquivos.attachemnt.url ASC')
+				puts 'BBBBBBBBBBBBBBBBBBBBBBBBBB'
 				@upload.arquivos.each do |arquivo|
 					@item = @upload.items.build
 					@item.name = File.basename(arquivo.attachment.url)

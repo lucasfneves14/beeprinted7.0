@@ -11,9 +11,9 @@ body{
   line-height:1.6 !important;
 }
 .flxmain_table {table-layout:fixed; border-collapse:collapse;border-spacing: 0}
-table.flxmain_table td {overflow:visible;padding: 0 1.5pt}
+table.flxmain_table td {overflow:hidden;padding: 0 1.5pt}
 .flxmain_bordered_table {table-layout:fixed; border-collapse:collapse;border-spacing: 0;border:none}
-.flxmain_bordered_table td {overflow:visible;padding: 0 1.5pt;}
+.flxmain_bordered_table td {overflow:hidden;padding: 0 1.5pt;}
  .imagediv {position:absolute;border:none}
  table td.imagecell {vertical-align:top;text-align:left;padding:0}
 table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px solid black;font-family:helvetica,arial,sans-serif;font-size:10pt}
@@ -813,7 +813,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>NOME</td>
-  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.name%> <%=@orcamento.sobrenome%></td>
+  <td class='flx1' style ='overflow: visible;border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.name%> <%=@orcamento.sobrenome%></td>
   <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -830,7 +830,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>EMPRESA</td>
-  <td class='flx9' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.empresa%></td>
+  <td class='flx9' style ='overflow: visible;border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.empresa%></td>
   <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -847,7 +847,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>E-MAIL</td>
-  <td class='flx1' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2'><%=@orcamento.email%></td>
+  <td class='flx1' style ='overflow: visible;border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2'><%=@orcamento.email%></td>
   <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx1' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
@@ -863,7 +863,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
 
   <td class='flx8' style ='border-left:1px solid black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>TELEFONE</td>
-  <td class='flx9' style ='border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.telefone%></td>
+  <td class='flx9' style ='overflow: visible;border-left:1px none black;border-top:1px none black;border-bottom:1px solid black;'><%=@orcamento.telefone%></td>
   <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
 <td class = 'flx9' style = 'border-top:1px none black;border-bottom:1px solid black;'></td>
