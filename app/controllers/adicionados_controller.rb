@@ -32,7 +32,7 @@ class AdicionadosController < ApplicationController
   private
 
   	def adicionado_params
-    	params.require(:adicionado).permit(:name,:canal,:email,:telefone,:estado,:empresa,:description,:data)
+    	params.require(:adicionado).permit(:name,:canal,:responsavel,:email,:telefone,:estado,:cep,:empresa,:description,:data)
   	end
 	def admin
     unless current_user.admin
