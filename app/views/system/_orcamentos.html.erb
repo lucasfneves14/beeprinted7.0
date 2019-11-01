@@ -39,11 +39,20 @@
                 <tbody>
                     <%= simple_form_for @adicionado, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
                         <%orcamentos.each_with_index do |orcamento,index|%>
-                            <tr <%if orcamento.status == "Cancelado"%> style='background-color:#a2a2a2' <%end%>>
+                            <tr <%if orcamento.status == "Cancelado"%> style='background-color:#d2d2d2' <%end%>>
                                 <td class="serial" height="45"><%=index+1%>.</td>
 
 
-                                <td><span class='id'> #<%=orcamento.identificador%> </span></td>
+                                <td>
+                                    <%if orcamento.class.name.demodulize == "Orcamento"%>
+                                        <a href=<%=system_upload_path(orcamento.id)%>>
+                                    <%elsif orcamento.class.name.demodulize == "Modeling"%>
+                                        <a href=<%=system_modelagem_path(orcamento.id)%>>
+                                    <%elsif orcamento.class.name.demodulize == "Adicionado"%>
+                                        <a href=<%=system_adicionado_path(orcamento.id)%>>
+                                    <%end%>
+                                    <span class='id'> #<%=orcamento.identificador%> </span>
+                                </td>
 
 
                                 <td>  <a href=<%=system_path(name: "#{orcamento.name} #{orcamento.sobrenome}")%>><span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </a></td>
@@ -112,7 +121,7 @@
                             <td></td>
                             <td></td>
                             <td><%= f.input :name, label:false, placeholder:"Nome",:input_html=>{style:'color:#777;'} %></td>
-                            <td><%= f.input :canal, prompt:"Canal", :collection => ["Upload", "Modelagem", "Email","Contato", "Whatsapp", "Mouth"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
+                            <td><%= f.input :canal, prompt:"Canal", :collection => ["Upload", "Modelagem", "Email","Contato", "Telefone", "Whatsapp", "Mouth"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
                             <td><%= f.input :responsavel, prompt:"Resp.", :collection => ["Iago", "Thierre", "Thiago"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %></td>
                             <td><%= f.input :email, label:false, placeholder:"Email",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :telefone, label:false, placeholder:"Telefone",:input_html=>{style:'color:#777;'} %></td>
