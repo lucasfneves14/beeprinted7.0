@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">#</Data></Cell>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Nome</Data></Cell>
+        <Cell><Data ss:Type="String">Canal</Data></Cell>
+        <Cell><Data ss:Type="String">Responsável</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Telefone</Data></Cell>
+        <Cell><Data ss:Type="String">Estado</Data></Cell>
+        <Cell><Data ss:Type="String">CEP</Data></Cell>
+        <Cell><Data ss:Type="String">Empresa</Data></Cell>
+        <Cell><Data ss:Type="String">Descrição</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+        <Cell><Data ss:Type="String">Frete</Data></Cell>
+        <Cell><Data ss:Type="String">Criado em</Data></Cell>
+        <Cell><Data ss:Type="String">Data 1° retorno</Data></Cell>
+        <Cell><Data ss:Type="String">Último Contato</Data></Cell>
+        <Cell><Data ss:Type="String">Prazo Final</Data></Cell>
+      </Row>
+    <% @planilha.each_with_index do |orcamento,index| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= index+1 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= orcamento.identificador %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.name %> <%= orcamento.sobrenome %></Data></Cell>
+        <%if orcamento.class.name.demodulize == "Orcamento"%>
+          <Cell><Data ss:Type="String">Upload</Data></Cell>
+        <%elsif orcamento.class.name.demodulize == "Modeling"%>
+          <Cell><Data ss:Type="String">Modelagem</Data></Cell>
+        <%elsif orcamento.class.name.demodulize == "Adicionado"%>
+          <Cell><Data ss:Type="String"><%= orcamento.canal %></Data></Cell>
+        <%end%>
+
+        <Cell><Data ss:Type="String"><%= orcamento.responsavel %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.telefone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.estado %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.cep %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.empresa %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.valor %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.frete %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.created_at.strftime("%d/%m/%y")%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.dataretorno %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.dataultimo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= orcamento.prazo_final %></Data></Cell>
+        
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

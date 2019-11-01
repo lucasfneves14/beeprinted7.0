@@ -8,7 +8,7 @@
         <%if !@sem_mes%>
             <div class="card-header">
                 <strong class="card-title">Mês de <%=mes%></strong>
-                <span style='float:right'>Download: <%= link_to "Tudo", system_uploads_path(tudo: true,format: "xls") %> | <%= link_to "Mes", system_uploads_path(format: "xls") %></span>
+                <span>Download: <%= link_to "XLS", system_path(mes: @mes_num,format: "xls") %></span>
             </div>
         <%end%>
         <div class="table-stats order-table ov-h">

@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
 
   get '/system', to:'system#index', as: :system
-  get '/system/uploads', to:'system#uploads', as: :system_uploads
-  get '/system/modelagens', to:'system#modelagens', as: :system_modelagens
   post 'system/adicionados', to: 'adicionados#create', as: :adicionados
   get 'system/uploads/:id', to:'system#upload', as: :system_upload
   get 'system/modelagens/:id', to:'system#modelagem', as: :system_modelagem

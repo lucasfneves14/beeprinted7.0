@@ -37,6 +37,18 @@ body{
 .card .card-body {
     padding: 1em;
 }
+
+ .loader-orcamento{
+    position: fixed;
+    display: table;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: no-repeat #f9f9f9;
+ }
+
 </style>
 
 <div class="content">
@@ -300,12 +312,24 @@ body{
 
 
                 <div class="card-footer">
-                <%=f.submit "Gerar Documento", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center",:formtarget => "_blank", id:"gerar_documento" %>
+                <%=f.submit "Gerar Documento", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center",:formtarget => "_blank", id:"gerar_documento", onclick: '$(".loader-orcamento").fadeIn()' %>
             </div>
             <%end%>
         </div>
     </div>
 </div>
+
+
+
+<div class='loader-orcamento text-center' style='display:none;padding-top: 150px'>
+  <div class=loader-bee><%=image_tag 'https://ds76otpcq42vd.cloudfront.net/Revisao_Bee7.0/Assets/Imagens/LoadGIF.gif', id:'item-1', style:'margin-left:auto;margin-right:auto;width:100px; margin-bottom:15px', alt:'loader-beeprinted-impressão-3D' %>
+    <h3 style='color:#616161'><strong>Salvando...</strong></h3>
+  </div>
+</div>
+
+
+
+
 <script>
 $('#gerar_documento').click(function() {
     setTimeout(function() {
