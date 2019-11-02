@@ -34,7 +34,7 @@ class SystemController < ApplicationController
 			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
 		end
 
-		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }
 		
 
 		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)
@@ -128,9 +128,6 @@ class SystemController < ApplicationController
 		@upload = Orcamento.includes(:arquivos).find(params[:id])
 		if params[:format] != "pdf"
 			if !@upload.items.any?
-				puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-				#upload_arquivos = @upload.order('arquivos.attachemnt.url ASC')
-				puts 'BBBBBBBBBBBBBBBBBBBBBBBBBB'
 				@upload.arquivos.each do |arquivo|
 					@item = @upload.items.build
 					@item.name = File.basename(arquivo.attachment.url)
