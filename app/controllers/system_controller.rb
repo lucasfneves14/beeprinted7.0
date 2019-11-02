@@ -162,6 +162,9 @@ class SystemController < ApplicationController
 	def usuarios
 		@planilha = Orcamento.where.not(email:nil) + Modeling.where.not(email:nil) + Adicionado.where.not(email:nil)
 		@planilha = @planilha.group_by{|d| d[:email]}.sort{|a,b| a[1].count <=> b[1].count}.reverse.first(15)
+
+		@planilha2 = Orcamento.where.not(email:nil).where(status: "Fechado") + Modeling.where.not(email:nil).where(status: "Fechado") + Adicionado.where.not(email:nil).where(status: "Fechado")
+		@planilha2 = @planilha2.group_by{|d| d[:email]}.sort{|a,b| a[1].count <=> b[1].count}.reverse.first(15)
 	end
 
 

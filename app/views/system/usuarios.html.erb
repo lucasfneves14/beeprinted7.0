@@ -36,6 +36,33 @@
           </div> <!-- /.table-stats -->
         </div>
       </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">Usuários que mais fecharam</strong>
+          </div>
+          <div class="table-stats order-table ov-h">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th class="serial">#</th>
+                  <th class="serial">Email</th>
+                  <th class="avatar">Pedidos Fechados</th>
+                </tr>
+              </thead>
+              <tbody>
+              <%@planilha2.each_with_index do |planilha,index|%>
+                <tr>
+                  <td class="serial"><%=index+1%>.</td>
+                  <td class="avatar"><a href=<%=system_path(email: planilha[0])%>><span style='color:#009fab'><%=planilha[0]%></span></a></td>
+                  <td><%=planilha[1].count%></td>
+                </tr>
+              <%end%>
+              </tbody>
+            </table>
+          </div> <!-- /.table-stats -->
+        </div>
+      </div>
     </div>
   </div>
 
