@@ -10,10 +10,29 @@
 
 <div class="content">
   <h3>Localização dos pedidos de orçamento</h3>
+  <div class="dropdown">
+    <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+    </a>
+    <div class="user-menu dropdown-menu">
+      <a class="nav-link" href="<%=request.path%>?mes=1">Janeiro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=2">Fevereiro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=3">Março</a>
+      <a class="nav-link" href="<%=request.path%>?mes=4">Abril</a>
+      <a class="nav-link" href="<%=request.path%>?mes=5">Maio</a>
+      <a class="nav-link" href="<%=request.path%>?mes=6">Junho</a>
+      <a class="nav-link" href="<%=request.path%>?mes=7">Julho</a>
+      <a class="nav-link" href="<%=request.path%>?mes=8">Agosto</a>
+      <a class="nav-link" href="<%=request.path%>?mes=9">Setembro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=10">Outubro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=11">Novembro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=12">Dezembro</a>
+    </div>
+  </div> 
   <hr>
-  <a href=<%=system_localizacao_path%>><button type="button" class="btn <%if @fechado || @conversao%>btn-outline-secondary<%else%>btn-outline-link<%end%>">Pedidos</button></a>
-  <a href=<%=system_localizacao_path(fechado: true)%>><button type="button" class="btn <%if @fechado%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Fechado</button></a>
-  <a href=<%=system_localizacao_path(conversao: true)%>><button type="button" class="btn <%if @conversao%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Conversão</button></a>
+  <a href=<%=system_localizacao_path(mes: @mes_num)%>><button type="button" class="btn <%if @fechado || @conversao%>btn-outline-secondary<%else%>btn-outline-link<%end%>">Pedidos</button></a>
+  <a href=<%=system_localizacao_path(mes: @mes_num,fechado: true)%>><button type="button" class="btn <%if @fechado%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Fechado</button></a>
+  <a href=<%=system_localizacao_path(mes: @mes_num,conversao: true)%>><button type="button" class="btn <%if @conversao%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Conversão</button></a>
   <button type="button" class="btn btn-outline-secondary">Faturamento</button>
    <div class="animated fadeIn" style='margin-top:40px'>
     <div class="row">

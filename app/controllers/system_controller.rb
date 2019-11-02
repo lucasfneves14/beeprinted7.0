@@ -79,13 +79,16 @@ class SystemController < ApplicationController
 
 
 	def localizacao
+
+		@mes = params[:mes]
+
 		@estados = Array.new
 
 		@fechado = params[:fechado]
 		@conversao = params[:conversao]
-		@orcamentos = Orcamento.all
-		@modelagens = Modeling.all
-		@adicionados = Adicionado.all
+		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		estados_nomes = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", 
@@ -119,6 +122,40 @@ class SystemController < ApplicationController
 		elsif @conversao 
 			@estados = @estados.sort {|a, b| a[:conversao] <=> b[:conversao]}.reverse
 		end
+
+
+
+
+		@mes_num = @mes
+		if @mes=="1"
+			@mes="Janeiro"
+		elsif @mes=="2"
+			@mes="Fevereiro"
+		elsif @mes=="3"
+			@mes="Março"
+		elsif @mes=="4"
+			@mes="Abril"
+		elsif @mes=="5"
+			@mes="Maio"
+		elsif @mes=="6"
+			@mes="Junho"
+		elsif @mes=="7"
+			@mes="Julho"
+		elsif @mes=="8"
+			@mes="Agosto"
+		elsif @mes=="9"
+			@mes="Setembro"
+		elsif @mes=="10"
+			@mes="Outubro"
+		elsif @mes=="11"
+			@mes="Novembro"
+		elsif @mes=="12"
+			@mes="Dezembro"	
+		end
+
+
+
+
 			
 
 	end
@@ -274,18 +311,18 @@ class SystemController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
+    	params.require(:orcamento).permit(:name, :sobrenome, :email, :empresa, :telefone, :status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
     	items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     	servicos_attributes:[:id, :name, :valor_unit,:quantidade, :valor, :prazo,:_destroy])
   	end
 
   	def modelagem_params
-    	params.require(:modeling).permit(:status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:modeling).permit(:name, :sobrenome, :email, :empresa, :telefone, :status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
   	def adicionado_params
-    	params.require(:adicionado).permit(:status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:adicionado).permit(:name, :sobrenome, :email, :empresa, :telefone, :status, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
