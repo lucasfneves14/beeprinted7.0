@@ -107,7 +107,11 @@
                                 </td>
                                 <td class='text-center'><%=orcamento.valor%></td>
                                 <td class='text-center'><%=orcamento.frete%></td>
-                                <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                <%if orcamento.class.name.demodulize == "Adicionado"%>
+                                    <td><%=orcamento.data%></td>
+                                <%else%>    
+                                    <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                <%end%>
                                 <td class='text-center'><%=orcamento.dataretorno%></td>
                                 <td class='text-center'><%=orcamento.dataultimo%></td>
                                 <td class='text-center'><%=orcamento.prazo_final%></td>
