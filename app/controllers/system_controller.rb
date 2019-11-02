@@ -159,6 +159,10 @@ class SystemController < ApplicationController
 			
 
 	end
+	def usuarios
+		@planilha = Orcamento.all + Modeling.all + Adicionado.all
+		@planilha = @planilha.group_by{|d| d[:email]}.sort{|a,b| a[1].count <=> b[1].count}.reverse.first(10)
+	end
 
 
 	def upload

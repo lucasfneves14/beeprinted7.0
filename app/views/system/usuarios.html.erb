@@ -1,0 +1,42 @@
+<style>
+.table-stats table td {
+  text-transform:inherit;  
+
+}
+</style>
+<div class="content">
+  <h3>Usuários</h3>
+  <hr>
+   <div class="animated fadeIn" style='margin-top:40px'>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">Usuários com mais pedidos de orçamento</strong>
+          </div>
+          <div class="table-stats order-table ov-h">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th class="serial">#</th>
+                  <th class="serial">Email</th>
+                  <th class="avatar">Pedidos Quant.</th>
+                </tr>
+              </thead>
+              <tbody>
+              <%@planilha.each_with_index do |planilha,index|%>
+                <tr>
+                  <td class="serial"><%=index+1%>.</td>
+                  <td class="avatar"><a href=<%=system_path(email: planilha[0])%>><span style='color:#009fab'><%=planilha[0]%></span></a></td>
+                  <td><%=planilha[1].count%></td>
+                </tr>
+              <%end%>
+              </tbody>
+            </table>
+          </div> <!-- /.table-stats -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
