@@ -111,7 +111,7 @@
                                             <strong>Atrasado!</strong>
                                     </td>
                                 <%elsif orcamento.dataultimo != "-" && orcamento.status == "Proposta Env" && DateTime.parse(orcamento.dataultimo).strftime("%A, %d %b %Y %l:%M %p") < 3.days.ago%>
-                                    <td class='text-center' style="color:white;background-color:red;">
+                                    <td class='text-center' style="color:white;background-color:#3F315D;">
                                             <strong>Retargeting!</strong>
                                     </td>
                                 <%else%>
