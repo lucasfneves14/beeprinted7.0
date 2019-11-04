@@ -174,7 +174,8 @@ class SystemController < ApplicationController
 			if !@upload.items.any?
 				@upload.arquivos.each do |arquivo|
 					@item = @upload.items.build
-					@item.name = File.basename(arquivo.attachment.url)
+					string = File.basename(arquivo.attachment.url)
+					@item.name = CGI.unescape(string)
 				end
 			end
 		end
