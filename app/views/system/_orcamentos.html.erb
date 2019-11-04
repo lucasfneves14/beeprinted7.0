@@ -34,6 +34,7 @@
                         <th>Empresa</th>
                         <th>Descricao</th>
                         <th>Status</th>
+                        <th>Alerta</th>
                         <th>Valor</th>
                         <th>Frete</th>
                         <th>Criado em</th>
@@ -105,6 +106,14 @@
                                 <td class='text-center' <%if orcamento.status=="New"%> style="color:white;background-color:red;"<%elsif orcamento.status=="Fechado"%> style="color:white;background-color:green"<%elsif orcamento.status=="Briefing"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Proposta Env"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Negociação"%> style="color:white;background-color:orange"<%elsif orcamento.status=="Entregue"%> style="color:white;background-color:#3F315D"<%end%>>
                                     <strong><%= orcamento.status%></strong>
                                 </td>
+                                <%if orcamento.status == "New" && orcamento.created_at < 2.days.ago%>
+                                    <td class='text-center' style="color:white;background-color:red;">
+                                            <strong>Atrasado!</strong>
+                                    </td>
+                                <%else%>
+                                    <td class='text-center'></td>
+                                <%end%>
+
                                 <td class='text-center'><%=orcamento.valor%></td>
                                 <td class='text-center'><%=orcamento.frete%></td>
                                 <%if orcamento.class.name.demodulize == "Adicionado"%>
@@ -140,6 +149,7 @@
                             <td><%= f.input :cep, label:false, placeholder:"Empresa",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :empresa, label:false, placeholder:"Empresa",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :description, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
