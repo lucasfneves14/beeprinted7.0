@@ -6,12 +6,6 @@ class ContatosController < ApplicationController
 
 	def create
 		@contato = Contato.create(contato_params)
-		@adicionado = Adicionado.create()
-		@adicionado.name = @contato.name
-		@adicionado.email = @contato.email
-		@adicionado.description = @contato.mensagem
-		@adicionado.responsavel = "Iago"
-
 
 		@mes = Date.today.strftime("%m")
     	@ano = Date.today.strftime("%Y")
@@ -23,9 +17,13 @@ class ContatosController < ApplicationController
 
     	identificador = (@ano.to_i*100 + @mes.to_i)*1000 + @planilha.count + 1
 
-    	@orcamento.identificador = identificador
 
-		if @contato.save && @adicionado.save
+
+		@adicionado = Adicionado.new(name: @contato.name, email: @contato.email, description: @contato.mensagem, responsavel: "Iago", identificador: identificador)
+		puts 'AAAAAAAAAAAAAA'
+		puts @contato.name
+
+		if @contato.save && @adicionado.save(validate: false)
 			ContatoMailer.contato_email(@contato).deliver
 			flash[:success] = "Seu pedido de contato foi enviado! Em breve, entraremos em contato por email."
 			redirect_to contato_sucesso_path
