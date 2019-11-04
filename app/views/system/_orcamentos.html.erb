@@ -2,7 +2,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#adicionado_data" ).datepicker({dateFormat: 'dd/mm/y'});
+    $( "#adicionado_data" ).datepicker({dateFormat: 'dd/mm/yy'});
   } );
   </script>
 <style>
@@ -110,6 +110,10 @@
                                     <td class='text-center' style="color:white;background-color:red;">
                                             <strong>Atrasado!</strong>
                                     </td>
+                                <%elsif orcamento.dataultimo != "-" && orcamento.status == "Proposta Env" && DateTime.parse(orcamento.dataultimo).strftime("%A, %d %b %Y %l:%M %p") < 3.days.ago%>
+                                    <td class='text-center' style="color:white;background-color:red;">
+                                            <strong>Retargeting!</strong>
+                                    </td>
                                 <%else%>
                                     <td class='text-center'></td>
                                 <%end%>
@@ -119,7 +123,7 @@
                                 <%if orcamento.class.name.demodulize == "Adicionado"%>
                                     <td><%=orcamento.data%></td>
                                 <%else%>    
-                                    <td><%=orcamento.created_at.strftime("%d/%m/%y")%></td>
+                                    <td><%=orcamento.created_at.strftime("%d/%m/%Y")%></td>
                                 <%end%>
                                 <td class='text-center'><%=orcamento.dataretorno%></td>
                                 <td class='text-center'><%=orcamento.dataultimo%></td>
