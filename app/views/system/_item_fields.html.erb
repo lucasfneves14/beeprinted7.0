@@ -8,7 +8,7 @@
       <%= f.input :name, label: false%>
     </div>
     <div class="col" style="padding:0px">
-      <%= f.input :tempo, label: false, :input_html =>{class:"item_tempo"}%>
+      <%= f.input :tempo, label: false, :input_html =>{class:"item_tempo", type:'string'}%>
     </div>
     <div class="col" style="padding:0px">
       <%= f.input :massa, label: false, :input_html =>{class:"item_massa"}%>
@@ -55,6 +55,7 @@
 
   });
   $('.item_tempo, .item_massa, .item_quant').change(function(){
+    $(this).closest(".row").find('.item_tempo').val(math.eval($(this).closest(".row").find('.item_tempo').val()));
     var tempo_total = 0;
     $('.item_tempo').each(function(){
         tempo_total += parseFloat(this.value)*$(this).closest(".row").find('.item_quant').val();
