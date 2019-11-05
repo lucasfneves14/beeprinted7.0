@@ -104,8 +104,12 @@ class SystemController < ApplicationController
 		estados_nomes.each_with_index do |nome,index|
 			estado = Estado.new
 			estado.name = nome
-			estado.fechado = @planilha.select{|orcamento| (orcamento.estado == nome)&&(orcamento.status == "Fechado")}.count
-			puts estado.fechado
+			fechados = @planilha.select{|orcamento| (orcamento.estado == nome)&&((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))}
+			estado.faturamento = 0
+			fechados.each do |fechado|
+				estado.faturamento = estado.faturamento + fechado.valor + fechado.frete
+			end
+			estado.fechado = fechados.count
 			estado.pedido = @planilha.select{|orcamento| (orcamento.estado == nome)}.count
 			if estado.fechado == 0
 				estado.conversao = 0
