@@ -19,7 +19,7 @@ class ContatosController < ApplicationController
 
 
 
-		@adicionado = Adicionado.new(name: @contato.name, email: @contato.email,estado: "-", description: @contato.mensagem, responsavel: "Iago", identificador: identificador)
+		@adicionado = Adicionado.new(name: @contato.name, email: @contato.email,estado: "-", description: @contato.mensagem, responsavel: "Iago", identificador: identificador, canal: "Contato")
 		puts 'AAAAAAAAAAAAAA'
 		puts @contato.name
 

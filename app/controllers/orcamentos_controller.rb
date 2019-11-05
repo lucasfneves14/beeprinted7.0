@@ -57,6 +57,7 @@ class OrcamentosController < ApplicationController
 
     @orcamento.identificador = identificador
     @orcamento.responsavel = "Thierre"
+    @orcamento.canal = "Upload"
 
     #@client = ::Pipedrive::Person.new
     #bla = RestClient.get('https://beeprinted-981d36.pipedrive.com/v1/persons/find?api_token=3b5b5a35e9fe27d0d10b21d8a2d004ab0efa91d3', :params => {term: @orcamento.email, search_by_email: 1})

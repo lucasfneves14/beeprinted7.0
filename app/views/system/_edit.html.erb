@@ -69,6 +69,17 @@ body{
             <%end%>
         </div>
         <%end%>
+        <%if orcamento.status == "Fechado"%>
+        <div class="card">
+            <div class="card-header" style=color:green>
+                <strong>Código</strong> Trello
+            </div>
+            <div class="card-body card-block form-inline">
+                <%=orcamento.identificador%> | <%=orcamento.name%> <%orcamento.sobrenome%> | <%=orcamento.canal%> | <%=orcamento.responsavel%> |  | <%=orcamento.email%> |  | <%=orcamento.dataretorno%>
+                    
+            </div>
+        </div>
+        <%end%>
         <div class="card">
             <div class="card-header" style=color:green>
                 <strong>Editar</strong> Status

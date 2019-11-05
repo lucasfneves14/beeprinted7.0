@@ -19,6 +19,7 @@ class ModelingsController < ApplicationController
 
     @modeling.identificador = identificador
     @modeling.responsavel = "Iago"
+    @modeling.canal = "Modelagem"
 
 
 
