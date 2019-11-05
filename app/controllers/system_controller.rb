@@ -109,6 +109,7 @@ class SystemController < ApplicationController
 			fechados.each do |fechado|
 				estado.faturamento = estado.faturamento + fechado.valor + fechado.frete
 			end
+			estado.faturamento = '%.2f' % estado.faturamento
 			estado.fechado = fechados.count
 			estado.pedido = @planilha.select{|orcamento| (orcamento.estado == nome)}.count
 			if estado.fechado == 0
