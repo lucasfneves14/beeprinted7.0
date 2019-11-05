@@ -182,13 +182,33 @@ class SystemController < ApplicationController
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
 			@vendidos = @vendidos + planilha.valor + planilha.frete
 		end
-		@ticket_medio = '%.2f' % (@vendidos/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
+		@ticket_medio = @vendidos/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count
+		@vendidos = '%.2f' % @vendidos
 		@atrasados = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 		@atrasados = '%.2f' % ((Float(@atrasados)/planilha.count)*100)
 
 ##########################################################################################################################
 ######################################################################################################################################
+		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1)
+		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1)
+		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1)
 
+		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
+
+		@atendimentos_ant = planilha.count
+		@propostas_ant = planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count
+		@propostas_por_ant = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / planilha.count) * 100)
+		@convertidos_ant = (planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
+
+		@vendidos_ant = 0.0
+
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
+			@vendidos_ant = @vendidos_ant + planilha.valor + planilha.frete
+		end
+		@ticket_medio_ant = '%.2f' % (@vendidos_ant/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
+		@vendidos_ant = '%.2f' % @vendidos_ant
+		@atrasados_ant = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
+		@atrasados_ant = '%.2f' % ((Float(@atrasados_ant)/planilha.count)*100)
 		
 
 ##########################################################################################################################################
