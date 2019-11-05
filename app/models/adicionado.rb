@@ -5,8 +5,6 @@ class Adicionado < ApplicationRecord
 	accepts_nested_attributes_for :servicos, reject_if: :all_blank, allow_destroy: true
 
 	validates :name, presence: true
-	validates :estado, presence: true
 	validates :email, presence: true
 	validates :responsavel, presence: true
-	validates :email, presence: true
 end
