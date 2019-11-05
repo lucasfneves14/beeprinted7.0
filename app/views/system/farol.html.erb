@@ -65,37 +65,37 @@
               </tr>
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>% vs M-1</strong></td>
-                <%if @atendimentos_ant%>
+                <%if @atendimentos_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%=(@atendimentos/@atendimentos_ant)*100%></td>
                 <%end%>
-                <%if @propostas_ant%>
+                <%if @propostas_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%=(@propostas/@propostas_ant)*100%></td>
                 <%end%>
-                <%if @propostas_por_ant%>
+                <%if @propostas_por_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%=(@propostas_por/@propostas_por_ant)*100%>%</td>
                 <%end%>
-                <%if @convertidos_ant%>
+                <%if @convertidos_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%=(@convertidos/@convertidos_ant)*100%></td>
                 <%end%>
-                <%if @vendidos_ant%>
+                <%if @vendidos_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td>R$ <%=(@vendidos/@vendidos_ant)*100%></td>
                 <%end%>
-                <%if @ticket_medio_ant%>
+                <%if @ticket_medio_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td>R$ <%=(@ticket_medio/@ticket_medio_ant)*100%></td>
                 <%end%>
-                <%if @atrasados_ant%>
+                <%if @atrasados_ant == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%=(@atrasados/@atrasados_ant)*100%></td>
