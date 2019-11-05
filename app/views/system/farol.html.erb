@@ -65,40 +65,40 @@
               </tr>
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>% vs M-1</strong></td>
-                <%if @atendimentos_ant == 0%>
+                <%if @atendimentos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@atendimentos/@atendimentos_ant)*100%></td>
+                  <td><%=(@atendimentos.to_f/@atendimentos_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @propostas_ant == 0%>
+                <%if @propostas_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@propostas/@propostas_ant)*100%></td>
+                  <td><%=(@propostas.to_f/@propostas_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @propostas_por_ant == 0%>
+                <%if @propostas_por_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@propostas_por/@propostas_por_ant)*100%>%</td>
+                  <td><%=(@propostas_por.to_f/@propostas_por_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @convertidos_ant == 0%>
+                <%if @convertidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@convertidos/@convertidos_ant)*100%></td>
+                  <td><%=(@convertidos.to_f/@convertidos_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @vendidos_ant == 0%>
+                <%if @vendidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td>R$ <%=(@vendidos/@vendidos_ant)*100%></td>
+                  <td>R$ <%=(@vendidos.to_f/@vendidos_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @ticket_medio_ant == 0%>
+                <%if @ticket_medio_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td>R$ <%=(@ticket_medio/@ticket_medio_ant)*100%></td>
+                  <td>R$ <%=(@ticket_medio.to_f/@ticket_medio_ant.to_f)*100%>%</td>
                 <%end%>
-                <%if @atrasados_ant == 0%>
+                <%if @atrasados_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@atrasados/@atrasados_ant)*100%></td>
+                  <td><%=(@atrasados.to_f/@atrasados_ant.to_f)*100%>%</td>
                 <%end%>
 
               </tr>
