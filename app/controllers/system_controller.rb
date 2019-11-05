@@ -164,7 +164,7 @@ class SystemController < ApplicationController
 	end
 
 	def farol
-		@mes = params[:mes]
+		@mes = params[:mes].to_i
 
 		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
@@ -172,6 +172,13 @@ class SystemController < ApplicationController
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
+##########################################################################################################################
+		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1)
+		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1)
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1)
+
+		@planilha_anterior = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+##########################################################################################################################
 		@vendidos = 0.0
 
 
@@ -180,8 +187,15 @@ class SystemController < ApplicationController
 		end
 
 		@atrasados = @planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
-		puts 'AAAAAAAAAAAAAAAAAAAAA'
-		puts @atrasados
+######################################################################################################################################
+		@vendidos_anterior = 0.0
+
+		@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.each do |planilha|
+			@vendidos_anterior = @vendidos_anterior + planilha.valor + planilha.frete
+		end
+
+		@atrasados_anterior = @planilha_anterior.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
+##########################################################################################################################################
 
 		@mes_num = @mes
 		if @mes=="1"
