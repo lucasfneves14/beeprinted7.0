@@ -31,13 +31,7 @@
         <Cell><Data ss:Type="Number"><%= index+1 %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= orcamento.identificador %></Data></Cell>
         <Cell><Data ss:Type="String"><%= orcamento.name %> <%= orcamento.sobrenome %></Data></Cell>
-        <%if orcamento.class.name.demodulize == "Orcamento"%>
-          <Cell><Data ss:Type="String">Upload</Data></Cell>
-        <%elsif orcamento.class.name.demodulize == "Modeling"%>
-          <Cell><Data ss:Type="String">Modelagem</Data></Cell>
-        <%elsif orcamento.class.name.demodulize == "Adicionado"%>
-          <Cell><Data ss:Type="String"><%= orcamento.canal %></Data></Cell>
-        <%end%>
+        <Cell><Data ss:Type="String"><%= orcamento.canal %></Data></Cell>
 
         <Cell><Data ss:Type="String"><%= orcamento.responsavel %></Data></Cell>
         <Cell><Data ss:Type="String"><%= orcamento.email %></Data></Cell>
