@@ -68,37 +68,37 @@
                 <%if @atendimentos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@atendimentos.to_f/@atendimentos_ant.to_f)*100%>%</td>
+                  <td><%='%.2f' %  ((@atendimentos.to_f/@atendimentos_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @propostas_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@propostas.to_f/@propostas_ant.to_f)*100%>%</td>
+                  <td><%='%.2f' %  ((@propostas.to_f/@propostas_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @propostas_por_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@propostas_por.to_f/@propostas_por_ant.to_f)*100%>%</td>
+                  <td><%='%.2f' %  ((@propostas_por.to_f/@propostas_por_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @convertidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@convertidos.to_f/@convertidos_ant.to_f)*100%>%</td>
+                  <td><%='%.2f' %  ((@convertidos.to_f/@convertidos_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @vendidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td>R$ <%=(@vendidos.to_f/@vendidos_ant.to_f)*100%>%</td>
+                  <td>R$ <%='%.2f' %  ((@vendidos.to_f/@vendidos_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @ticket_medio_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td>R$ <%=(@ticket_medio.to_f/@ticket_medio_ant.to_f)*100%>%</td>
+                  <td>R$ <%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_ant.to_f)*100)%>%</td>
                 <%end%>
                 <%if @atrasados_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
-                  <td><%=(@atrasados.to_f/@atrasados_ant.to_f)*100%>%</td>
+                  <td><%='%.2f' %  ((@atrasados.to_f/@atrasados_ant.to_f)*100)%>%</td>
                 <%end%>
 
               </tr>
