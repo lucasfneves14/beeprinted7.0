@@ -236,12 +236,12 @@ class SystemController < ApplicationController
 		
 
 ##########################################################################################################################################
-		@atendimentos_meta = 250
-		@propostas_meta = 50
+		@atendimentos_meta = 360
+		@propostas_meta = 60
 		@propostas_por_meta = 10
-		@convertidos_meta = 20
+		@convertidos_meta = 30
 		@vendidos_meta = 25000
-		@ticket_medio_meta = 750
+		@ticket_medio_meta = 850
 		@atrasados_meta = 80
 
 

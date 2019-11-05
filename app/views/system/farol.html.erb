@@ -1,3 +1,9 @@
+<style>
+.table-stats table th, .table-stats table td {
+  border: 1px solid #e8e9ef !important;
+  padding: 1.25em 1.75em;
+}
+</style>
 <div class="content">
   <h3>Farol de Atendimento - <%=@mes%></h3>
   <div class="dropdown">
@@ -20,8 +26,8 @@
     </div>
   </div> 
   <hr>
-  <div class="animated fadeIn" style='margin-top:40px'>
-    <div class="row">
+  <div class="animated fadeIn w3-center">
+    <div class="row justify-content-md-center">
       <div class="card">
         <div class="card-header" style=color:green>
           <strong><%=@mes%></strong>
@@ -30,137 +36,142 @@
           <table class="table text-center" style='margin-bottom:0px'>
             <thead>
               <tr>
-                <th></th>
-                <th>Atendimentos</th>
-                <th>Propostas Enviadas</th>
-                <th>Propostas Convertidas (%)</th>
-                <th>Propostas Convertidas (N°)</th>
-                <th>Vendidos (R$)</th>
-                <th>Ticket Médio</th>
-                <th>Solicitações atendidas no prazo (%)</th>
+                <th>Farol</th>
+                <th>Meta</th>
+                <th>Real</th>
+                <th>% vs Meta</th>
+                <th>GAP</th>
+                <th>M-1</th>
+                <th>% vs M-1</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style='background-color:#3F315C;color:white'><strong>Meta</strong></td>
+                <td style='background-color:#009fab;color:white'><strong>Atendimentos</strong></td>
                 <td><%=@atendimentos_meta%></td>
-                <td><%=@propostas_meta%>%</td>
-                <td><%=@propostas_por_meta%>%</td>
-                <td><%=@convertidos_meta%></td>
-                <td>R$ <%=@vendidos_meta%></td>
-                <td>R$ <%=@ticket_medio_meta%></td>
-                <td><%=@atrasados_meta%>%</td>
-
-              </tr>
-              <tr>
-                <td style='background-color:#009fab;color:white'><strong>Real</strong></td>
                 <td><%=@atendimentos%></td>
-                <td><%=@propostas%>%</td>
-                <td><%=@propostas_por%>%</td>
-                <td><%=@convertidos%></td>
-                <td>R$ <%=@vendidos%></td>
-                <td>R$ <%=@ticket_medio%></td>
-                <td><%=@atrasados%>%</td>
-
-              </tr>
-              <tr>
-                <td style='background-color:#3F315C;color:white'><strong>% vs Meta</strong></td>
                 <%if @atendimentos_meta.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%='%.2f' %  ((@atendimentos.to_f/@atendimentos_meta.to_f)*100)%>%</td>
                 <%end%>
-                <%if @propostas_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td><%='%.2f' %  ((@propostas.to_f/@propostas_meta.to_f)*100)%>%</td>
-                <%end%>
-                <%if @propostas_por_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td><%='%.2f' %  ((@propostas_por.to_f/@propostas_por_meta.to_f)*100)%>%</td>
-                <%end%>
-                <%if @convertidos_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td><%='%.2f' %  ((@convertidos.to_f/@convertidos_meta.to_f)*100)%>%</td>
-                <%end%>
-                <%if @vendidos_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td>R$ <%='%.2f' %  ((@vendidos.to_f/@vendidos_meta.to_f)*100)%>%</td>
-                <%end%>
-                <%if @ticket_medio_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td>R$ <%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_meta.to_f)*100)%>%</td>
-                <%end%>
-                <%if @atrasados_meta.to_f == 0%>
-                  <td>Infinito</td>
-                <%else%>
-                  <td><%='%.2f' %  ((@atrasados.to_f/@atrasados_meta.to_f)*100)%>%</td>
-                <%end%>
-
-              </tr>
-
-              <tr>
-                <td style='background-color:#3F315C;color:white'><strong>GAP</strong></td>
-                <td><%=@atendimentos.to_f - @atendimentos_meta.to_f%></td>
-                <td><%=@propostas.to_f - @propostas_meta.to_f%>%</td>
-                <td><%=@propostas_por.to_f - @propostas_por_meta.to_f%>%</td>
-                <td><%=@convertidos.to_f - @convertidos_meta.to_f%></td>
-                <td>R$ <%=@vendidos.to_f - @vendidos_meta.to_f%></td>
-                <td>R$ <%=@ticket_medio.to_f - @ticket_medio_meta.to_f%></td>
-                <td><%=@atrasados.to_f - @atrasados_meta.to_f%>%</td>
-
-              </tr>
-
-
-
-              <tr>
-                <td style='background-color:#3F315C;color:white'><strong>M-1</strong></td>
+                <td><%='%.0f' %  (@atendimentos.to_f - @atendimentos_meta.to_f)%></td>
                 <td><%=@atendimentos_ant%></td>
-                <td><%=@propostas_ant%></td>
-                <td><%=@propostas_por_ant%>%</td>
-                <td><%=@convertidos_ant%></td>
-                <td>R$ <%=@vendidos_ant%></td>
-                <td>R$ <%=@ticket_medio_ant%></td>
-                <td><%=@atrasados_ant%>%</td>
-
-              </tr>
-
-              <tr>
-                <td style='background-color:#3F315C;color:white'><strong>% vs M-1</strong></td>
                 <%if @atendimentos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%='%.2f' %  ((@atendimentos.to_f/@atendimentos_ant.to_f)*100)%>%</td>
                 <%end%>
+
+              </tr>
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Propostas Enviadas</strong></td>
+                <td><%=@propostas_meta%>%</td>
+                <td><%=@propostas%>%</td>
+                <%if @propostas_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td><%='%.2f' %  ((@propostas.to_f/@propostas_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td><%='%.2f' %  (@propostas.to_f - @propostas_meta.to_f)%>%</td>
+                <td><%=@propostas_ant%></td>
                 <%if @propostas_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%='%.2f' %  ((@propostas.to_f/@propostas_ant.to_f)*100)%>%</td>
                 <%end%>
+
+              </tr>
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Propostas Convertidas (%)</strong></td>
+                <td><%=@propostas_por_meta%>%</td>
+                <td><%=@propostas_por%>%</td>
+                <%if @propostas_por_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td><%='%.2f' %  ((@propostas_por.to_f/@propostas_por_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td><%='%.2f' %  (@propostas_por.to_f - @propostas_por_meta.to_f)%>%</td>
+                <td><%=@propostas_por_ant%>%</td>
                 <%if @propostas_por_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%='%.2f' %  ((@propostas_por.to_f/@propostas_por_ant.to_f)*100)%>%</td>
                 <%end%>
+
+
+              </tr>
+
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Propostas Convertidas (N°)</strong></td>
+                
+                <td><%=@convertidos_meta%></td>
+                <td><%=@convertidos%></td>
+                <%if @convertidos_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td><%='%.2f' %  ((@convertidos.to_f/@convertidos_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td><%='%.2f' %  (@convertidos.to_f - @convertidos_meta.to_f)%></td>
+                <td><%=@convertidos_ant%></td>
                 <%if @convertidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td><%='%.2f' %  ((@convertidos.to_f/@convertidos_ant.to_f)*100)%>%</td>
                 <%end%>
+
+              </tr>
+
+
+
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Vendidos</strong></td>
+                <td>R$ <%=@vendidos_meta%></td>
+                <td>R$ <%=@vendidos%></td>
+                <%if @vendidos_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td>R$ <%='%.2f' %  ((@vendidos.to_f/@vendidos_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@vendidos.to_f - @vendidos_meta.to_f)%></td>
+                <td>R$ <%=@vendidos_ant%></td>
                 <%if @vendidos_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td>R$ <%='%.2f' %  ((@vendidos.to_f/@vendidos_ant.to_f)*100)%>%</td>
                 <%end%>
+              </tr>
+
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Ticket Médio</strong></td>
+                <td>R$ <%=@ticket_medio_meta%></td>
+                <td>R$ <%=@ticket_medio%></td>
+                <%if @ticket_medio_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td>R$ <%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@ticket_medio.to_f - @ticket_medio_meta.to_f)%></td>
+                <td>R$ <%=@ticket_medio_ant%></td>
                 <%if @ticket_medio_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
                   <td>R$ <%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_ant.to_f)*100)%>%</td>
                 <%end%>
+
+              </tr>
+              <tr>
+                <td style='background-color:#009fab;color:white'><strong>Solicitaçoes Atendidas no Prazo (%)</strong></td>
+                
+                <td><%=@atrasados_meta%>%</td>
+                <td><%=@atrasados%>%</td>
+                <%if @atrasados_meta.to_f == 0%>
+                  <td>Infinito</td>
+                <%else%>
+                  <td><%='%.2f' %  ((@atrasados.to_f/@atrasados_meta.to_f)*100)%>%</td>
+                <%end%>
+                <td><%='%.2f' %  (@atrasados.to_f - @atrasados_meta.to_f)%>%</td>
+                <td><%=@atrasados_ant%>%</td>
                 <%if @atrasados_ant.to_f == 0%>
                   <td>Infinito</td>
                 <%else%>
