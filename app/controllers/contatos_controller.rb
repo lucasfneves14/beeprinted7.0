@@ -24,7 +24,7 @@ class ContatosController < ApplicationController
 		puts @contato.name
 
 		if @contato.save && @adicionado.save(validate: false)
-			@adicionado.data = @contato.created_at
+			@adicionado.data = @contato.created_at.strftime("%d/%m/%Y")
 			@adicionado.save
 			ContatoMailer.contato_email(@contato).deliver
 			flash[:success] = "Seu pedido de contato foi enviado! Em breve, entraremos em contato por email."
