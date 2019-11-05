@@ -45,8 +45,8 @@
                 <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count%></td>
                 <td><%='%.2f' %  ((Float(@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @planilha.count) * 100)%>%</td>
                 <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count%></td>
-                <td>R$<%='%.2f' % @vendidos%></td>
-                <td>R$<%='%.2f' % @vendidos/@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count%></td>
+                <td>R$<%='%.2f' % (@vendidos)%></td>
+                <td>R$<%='%.2f' % (@vendidos/@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)%></td>
                 <td><%='%.2f' %((Float(@atrasados)/@planilha.count)*100)%></td>
 
               </tr>
