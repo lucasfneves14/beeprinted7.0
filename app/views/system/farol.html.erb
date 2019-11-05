@@ -43,35 +43,13 @@
             <tbody>
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>Real</strong></td>
-                <td><%=@planilha.count%></td>
-                <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count%></td>
-                <td><%='%.2f' %  ((Float(@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @planilha.count) * 100)%>%</td>
-                <td><%='%.2f' % (@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count/@planilha.count)%></td>
-                <td>R$<%='%.2f' % (@vendidos)%></td>
-                <td>R$<%='%.2f' % (@vendidos/@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)%></td>
-                <td><%='%.2f' %((Float(@atrasados)/@planilha.count)*100)%></td>
-
-              </tr>
-              <tr>
-                <td style='background-color:#009fab;color:white'><strong>M-1</strong></td>
-                <td><%=@planilha_anterior.count%></td>
-                <td><%=@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count%></td>
-                <td><%='%.2f' %  ((Float(@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @planilha_anterior.count) * 100)%>%</td>
-                <td><%='%.2f' % (@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count/@planilha_anterior.count)%></td>
-                <td>R$<%='%.2f' % (@vendidos_anterior)%></td>
-                <td>R$<%='%.2f' % (@vendidos_anterior/@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)%></td>
-                <td><%='%.2f' %((Float(@atrasados_anterior)/@planilha_anterior.count)*100)%></td>
-
-              </tr>
-              <tr>
-                <td style='background-color:#009fab;color:white'><strong>% vs M-1</strong></td>
-                <td><%=@planilha.count%></td>
-                <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count%></td>
-                <td><%='%.2f' %  ((Float(@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @planilha.count) * 100)%>%</td>
-                <td><%='%.2f' % (@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count/@planilha.count)%></td>
-                <td>R$<%='%.2f' % (@vendidos)%></td>
-                <td>R$<%='%.2f' % (@vendidos/@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)%></td>
-                <td><%='%.2f' %((Float(@atrasados)/@planilha.count)*100)%></td>
+                <td><%=@atendimentos%></td>
+                <td><%=@propostas%></td>
+                <td><%=@propostas_por%>%</td>
+                <td><%=@convertidos%></td>
+                <td>R$ <%=@vendidos%></td>
+                <td>R$ <%=@ticket_medio%></td>
+                <td><%=@atrasados%></td>
 
               </tr>
             </tbody>

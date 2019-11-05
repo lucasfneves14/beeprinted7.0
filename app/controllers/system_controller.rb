@@ -166,61 +166,57 @@ class SystemController < ApplicationController
 	def farol
 		@mes = params[:mes].to_i
 
-		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
 
-		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
-##########################################################################################################################
-		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1)
-		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1)
-		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1)
+		@atendimentos = planilha.count
+		@propostas = planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count
+		@propostas_por = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / planilha.count) * 100)
+		@convertidos = (planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
 
-		@planilha_anterior = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
-##########################################################################################################################
 		@vendidos = 0.0
 
-
-		@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.each do |planilha|
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
 			@vendidos = @vendidos + planilha.valor + planilha.frete
 		end
+		@ticket_medio = '%.2f' % (@vendidos/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
+		@atrasados = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
+		@atrasados = '%.2f' % ((Float(@atrasados)/planilha.count)*100)
 
-		@atrasados = @planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
+##########################################################################################################################
 ######################################################################################################################################
-		@vendidos_anterior = 0.0
 
-		@planilha_anterior.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.each do |planilha|
-			@vendidos_anterior = @vendidos_anterior + planilha.valor + planilha.frete
-		end
+		
 
-		@atrasados_anterior = @planilha_anterior.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 ##########################################################################################################################################
 
 		@mes_num = @mes
-		if @mes=="1"
+		if @mes==1
 			@mes="Janeiro"
-		elsif @mes=="2"
+		elsif @mes==2
 			@mes="Fevereiro"
-		elsif @mes=="3"
+		elsif @mes==3
 			@mes="Março"
-		elsif @mes=="4"
+		elsif @mes==4
 			@mes="Abril"
-		elsif @mes=="5"
+		elsif @mes==5
 			@mes="Maio"
-		elsif @mes=="6"
+		elsif @mes==6
 			@mes="Junho"
-		elsif @mes=="7"
+		elsif @mes==7
 			@mes="Julho"
-		elsif @mes=="8"
+		elsif @mes==8
 			@mes="Agosto"
-		elsif @mes=="9"
+		elsif @mes==9
 			@mes="Setembro"
-		elsif @mes=="10"
+		elsif @mes==10
 			@mes="Outubro"
-		elsif @mes=="11"
+		elsif @mes==11
 			@mes="Novembro"
-		elsif @mes=="12"
+		elsif @mes==12
 			@mes="Dezembro"	
 		end
 
