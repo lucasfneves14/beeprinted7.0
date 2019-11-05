@@ -161,12 +161,58 @@ class SystemController < ApplicationController
 			@mes="Dezembro"	
 		end
 
+	end
+
+	def farol
+		@mes = params[:mes]
+
+		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
+		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+
+		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
+
+		@vendidos = 0.0
 
 
+		@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.each do |planilha|
+			@vendidos = @vendidos + planilha.valor + planilha.frete
+		end
 
-			
+		@atrasados = @planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
+		puts 'AAAAAAAAAAAAAAAAAAAAA'
+		puts @atrasados
+
+		@mes_num = @mes
+		if @mes=="1"
+			@mes="Janeiro"
+		elsif @mes=="2"
+			@mes="Fevereiro"
+		elsif @mes=="3"
+			@mes="Março"
+		elsif @mes=="4"
+			@mes="Abril"
+		elsif @mes=="5"
+			@mes="Maio"
+		elsif @mes=="6"
+			@mes="Junho"
+		elsif @mes=="7"
+			@mes="Julho"
+		elsif @mes=="8"
+			@mes="Agosto"
+		elsif @mes=="9"
+			@mes="Setembro"
+		elsif @mes=="10"
+			@mes="Outubro"
+		elsif @mes=="11"
+			@mes="Novembro"
+		elsif @mes=="12"
+			@mes="Dezembro"	
+		end
 
 	end
+
+
 	def usuarios
 		@planilha = Orcamento.where.not(email:nil) + Modeling.where.not(email:nil) + Adicionado.where.not(email:nil)
 		@planilha = @planilha.group_by{|d| d[:email]}.sort{|a,b| a[1].count <=> b[1].count}.reverse.first(15)

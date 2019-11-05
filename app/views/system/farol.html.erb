@@ -1,0 +1,60 @@
+<div class="content">
+  <h3>Farol de Atendimento - <%=@mes%></h3>
+  <div class="dropdown">
+    <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+    </a>
+    <div class="user-menu dropdown-menu">
+      <a class="nav-link" href="<%=request.path%>?mes=1">Janeiro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=2">Fevereiro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=3">Março</a>
+      <a class="nav-link" href="<%=request.path%>?mes=4">Abril</a>
+      <a class="nav-link" href="<%=request.path%>?mes=5">Maio</a>
+      <a class="nav-link" href="<%=request.path%>?mes=6">Junho</a>
+      <a class="nav-link" href="<%=request.path%>?mes=7">Julho</a>
+      <a class="nav-link" href="<%=request.path%>?mes=8">Agosto</a>
+      <a class="nav-link" href="<%=request.path%>?mes=9">Setembro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=10">Outubro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=11">Novembro</a>
+      <a class="nav-link" href="<%=request.path%>?mes=12">Dezembro</a>
+    </div>
+  </div> 
+  <hr>
+  <div class="animated fadeIn" style='margin-top:40px'>
+    <div class="row">
+      <div class="card">
+        <div class="card-header" style=color:green>
+          <strong><%=@mes%></strong>
+        </div>
+        <div class="table-stats order-table ov-h">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Atendimentos</th>
+                <th>Propostas Enviadas</th>
+                <th>Propostas Convertidas (%)</th>
+                <th>Propostas Convertidas (N°)</th>
+                <th>Vendidos (R$)</th>
+                <th>Ticket Médio</th>
+                <th>Solicitações atendidas no prazo (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%=@planilha.count%></td>
+                <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count%></td>
+                <td><%='%.2f' %  ((Float(@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @planilha.count) * 100)%>%</td>
+                <td><%=@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count%></td>
+                <td>R$<%=@vendidos%></td>
+                <td>R$<%=@vendidos/@planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count%></td>
+                <td><%='%.2f' %((Float(@atrasados)/@planilha.count)*100)%></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

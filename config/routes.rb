@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'system/adicionados/:id', to:'system#adicionado', as: :system_adicionado
   patch 'system/orcamentos/:id', to: 'system#update', as: :system_update
   get 'system/localizacao', to:'system#localizacao', as: :system_localizacao
+  get 'system/farol', to:'system#farol', as: :system_farol
   get 'system/usuarios', to:'system#usuarios', as: :system_usuarios
   get 'system/avaliacao', to: 'avaliacoes#show', as: :avaliacao
   patch 'system/avaliacao/:id', to: 'avaliacoes#update', as: :avaliacao_update

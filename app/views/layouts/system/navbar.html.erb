@@ -117,6 +117,14 @@
                             <li><i class="fa fa-user" aria-hidden="true"></i><a href=<%=system_usuarios_path%>>Usuários</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon fa fa-lightbulb-o"></i>Farol 
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">           
+                            <li><i class="fa fa-bar-chart"></i><a href=<%=system_farol_path(mes: Date.today.strftime("%m"))%>>Atendimento</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
