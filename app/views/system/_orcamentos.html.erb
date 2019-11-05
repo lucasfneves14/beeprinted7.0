@@ -64,16 +64,9 @@
 
 
                                 <td>  <a href=<%=system_path(name: "#{orcamento.name} #{orcamento.sobrenome}")%>><span class="name"><%=orcamento.name%> <%=orcamento.sobrenome%></span> </a></td>
+                                
+                                <td> <span class=""><%=orcamento.canal%></span> </td>
 
-
-                                <%if orcamento.class.name.demodulize == "Orcamento"%>
-                                    <td> <span class="">Upload</span> </td>
-                                <%elsif orcamento.class.name.demodulize == "Modeling"%>
-                                        <td> <span class="">Modelagem</span> </td>
-                                <%elsif orcamento.class.name.demodulize == "Adicionado"%>
-                                    <td> <span class=""><%=orcamento.canal%></span> </td>
-
-                                <%end%>
                                 <td class='text-center' <%if orcamento.responsavel=="Iago"%> style="color:white;background-color:#009fab;"<%elsif orcamento.responsavel=="Thierre"%> style="color:white;background-color:#3F315D"<%end%>>
                                     <strong><%= orcamento.responsavel%></strong>
                                 </td>
