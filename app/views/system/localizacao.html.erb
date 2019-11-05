@@ -30,10 +30,10 @@
     </div>
   </div> 
   <hr>
-  <a href=<%=system_localizacao_path(mes: @mes_num)%>><button type="button" class="btn <%if @fechado || @conversao%>btn-outline-secondary<%else%>btn-outline-link<%end%>">Pedidos</button></a>
+  <a href=<%=system_localizacao_path(mes: @mes_num)%>><button type="button" class="btn <%if @fechado || @conversao || @faturamento%>btn-outline-secondary<%else%>btn-outline-link<%end%>">Pedidos</button></a>
   <a href=<%=system_localizacao_path(mes: @mes_num,fechado: true)%>><button type="button" class="btn <%if @fechado%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Fechado</button></a>
   <a href=<%=system_localizacao_path(mes: @mes_num,conversao: true)%>><button type="button" class="btn <%if @conversao%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Conversão</button></a>
-  <button type="button" class="btn btn-outline-secondary">Faturamento</button>
+  <a href=<%=system_localizacao_path(mes: @mes_num,faturamento: true)%>><button type="button" class="btn <%if @faturamento%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Faturamento</button></a>
    <div class="animated fadeIn" style='margin-top:40px'>
     <div class="row">
       <div class=col-lg-6>
@@ -128,7 +128,7 @@ polygonSeries.data = [
   <%@estados.each_with_index do |estado,index|%>
     {
       id: "<%=estado.sigla%>",
-      value: <%if @fechado%><%=estado.fechado%><%elsif @conversao%><%=estado.conversao%><%else%><%=estado.pedido%><%end%>
+      value: <%if @fechado%><%=estado.fechado%><%elsif @conversao%><%=estado.conversao%><%elsif @faturamento%><%=estado.faturamento%><%else%><%=estado.pedido%><%end%>
     },
   <%end%>
 

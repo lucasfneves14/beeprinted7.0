@@ -86,6 +86,7 @@ class SystemController < ApplicationController
 
 		@fechado = params[:fechado]
 		@conversao = params[:conversao]
+		@faturamento = params[:faturamento]
 		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
 		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
 		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
@@ -126,6 +127,8 @@ class SystemController < ApplicationController
 			@estados = @estados.sort {|a, b| a[:fechado] <=> b[:fechado]}.reverse
 		elsif @conversao 
 			@estados = @estados.sort {|a, b| a[:conversao] <=> b[:conversao]}.reverse
+		elsif @faturamento 
+			@estados = @estados.sort {|a, b| a[:faturamento] <=> b[:faturamento]}.reverse
 		end
 
 
