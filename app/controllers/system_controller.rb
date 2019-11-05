@@ -173,11 +173,13 @@ class SystemController < ApplicationController
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
 		@atendimentos = planilha.count
-		@propostas = planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count
+		
 		if @atendimentos == 0
+			@propostas = 0
 			@propostas_por = 0
 		else
 			@propostas_por = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @atendimentos) * 100)
+			@propostas = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / @atendimentos) * 100)
 		end
 		@convertidos = (planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
 
@@ -206,11 +208,13 @@ class SystemController < ApplicationController
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
 		@atendimentos_ant = planilha.count
-		@propostas_ant = planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count
+		
 		if @atendimentos_ant
+			@propostas_ant = 0
 			@propostas_por_ant = 0
 		else
 			@propostas_por_ant = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count) / @atendimentos_ant) * 100)
+			@propostas_ant = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / @atendimentos_ant) * 100)
 		end
 		@convertidos_ant = (planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
 
@@ -232,6 +236,14 @@ class SystemController < ApplicationController
 		
 
 ##########################################################################################################################################
+		@atendimentos_meta = 250
+		@propostas_meta = 50
+		@propostas_por_meta = 10
+		@convertidos_meta = 20
+		@vendidos_meta = 25000
+		@ticket_medio_meta = 750
+		@atrasados_meta = 80
+
 
 		@mes_num = @mes
 		if @mes==1
