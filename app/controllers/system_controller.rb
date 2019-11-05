@@ -182,7 +182,7 @@ class SystemController < ApplicationController
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
 			@vendidos = @vendidos + planilha.valor + planilha.frete
 		end
-		@ticket_medio = @vendidos/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count
+		@ticket_medio = '%.2f' % (@vendidos/planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")}.count)
 		@vendidos = '%.2f' % @vendidos
 		@atrasados = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 		@atrasados = '%.2f' % ((Float(@atrasados)/planilha.count)*100)
