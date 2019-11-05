@@ -437,6 +437,10 @@ $('#gerar_documento').click(function() {
 
     valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
 
+    if((valor_orcamento-frete) < 25){
+        valor_orcamento = 25+parseFloat(frete);
+    }
+
     p.closest("form").find('.valor_orcamento').val(valor_orcamento);
   }
 </script>
