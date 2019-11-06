@@ -967,7 +967,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 
 </tr>
 
-
+<%if @orcamento.items.any?%>
  <tr  style='height:18pt;'>
   <td class = 'flx0' style = 'border-right:1px none black;'></td>
 <td class = 'flx0' style = 'border-left:1px solid black;'></td>
@@ -985,7 +985,6 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 <td class = 'flx0' style = 'border-right:1px solid black;'></td>
 
 </tr>
-<%if @orcamento.items.any?%>
  <tr  style='height:18pt;'>
   <td class = 'flx0' style = 'border-right:1px none black;'></td>
 <td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
