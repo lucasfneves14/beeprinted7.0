@@ -236,6 +236,15 @@ class SystemController < ApplicationController
 		
 
 ##########################################################################################################################################
+		@propostas_iago = 0
+		@propostas_thierre = 0
+		@propostas_iago_ant = 0
+		@propostas_thierre_ant = 0
+
+		@atrasados_iago = 0
+		@atrasados_thierre = 0
+
+##########################################################################################################################
 		@atendimentos_meta = 360
 		@propostas_meta = 60
 		@propostas_por_meta = 10
