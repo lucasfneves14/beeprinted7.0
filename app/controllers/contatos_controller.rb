@@ -26,7 +26,7 @@ class ContatosController < ApplicationController
 		if @contato.save && @adicionado.save(validate: false)
 			@adicionado.data = @contato.created_at.strftime("%d/%m/%Y")
 			@adicionado.save
-			ContatoMailer.contato_email(@contato).deliver
+			ContatoMailer.contato_email(@contato, @adicionado.identificador).deliver
 			flash[:success] = "Seu pedido de contato foi enviado! Em breve, entraremos em contato por email."
 			redirect_to contato_sucesso_path
 		else
