@@ -424,17 +424,27 @@ $('#gerar_documento').click(function() {
   function Atualizar(p) {
        items_valor = 0
     $('.item_valor').each(function(){
-        items_valor += parseFloat(this.value);
+        if(!isNaN(parseFloat(this.value))) {
+            items_valor += parseFloat(this.value);
+            console.log(parseFloat(this.value));
+        }
     });
 
     servicos_valor = 0
     $('.servico_valor').each(function(){
         if($(this).closest(".row").find('.servico_name').val() != "Impressão 3D"){
-            servicos_valor += parseFloat(this.value);
+            if(!isNaN(parseFloat(this.value))){
+                servicos_valor += parseFloat(this.value);
+            }
         }
     });
 
-    frete = p.closest("form").find('.valor_frete').val();
+    if(!isNaN(p.closest("form").find('.valor_frete').val())){
+        frete = p.closest("form").find('.valor_frete').val();
+    }
+    else{
+        frete = 0;
+    }
 
     valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
 
