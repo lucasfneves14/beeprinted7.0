@@ -342,6 +342,9 @@ class SystemController < ApplicationController
 
 	def upload
 		@upload = Orcamento.includes(:arquivos).find(params[:id])
+		if @upload.frete == nil
+			@upload.frete = 0
+		end
 		if params[:format] != "pdf"
 			if !@upload.items.any?
 				@upload.arquivos.each do |arquivo|
@@ -364,6 +367,9 @@ class SystemController < ApplicationController
 
 	def modelagem
 		@modelagem = Modeling.find(params[:id])
+		if @modelagem.frete == nil
+			@modelagem.frete = 0
+		end
 		if params[:format] != "pdf"
 			if !@modelagem.items.any?
 				@item = @modelagem.items.build
@@ -391,6 +397,9 @@ class SystemController < ApplicationController
 
 	def adicionado
     	@adicionado = Adicionado.find(params[:id])
+    	if @adicionado.frete == nil
+			@adicionado.frete = 0
+		end
     	if params[:format] != "pdf"
 			if !@adicionado.items.any?
 				@item = @adicionado.items.build
