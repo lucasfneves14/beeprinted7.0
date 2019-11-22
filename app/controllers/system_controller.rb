@@ -34,7 +34,7 @@ class SystemController < ApplicationController
 			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
 		end
 
-		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }
+		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 		
 
 		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)

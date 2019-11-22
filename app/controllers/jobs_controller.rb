@@ -55,6 +55,7 @@ class JobsController < ApplicationController
       JobNotification.create(modeler_id:1, job_id:@job.id,message:"O job '#{@job.title}' foi criado com sucesso")
       redirect_to @job
     else
+      @image = Image.new
       flash[:alert] = "O job #{@job.title} não pode ser salvo! Por favor, cheque o formulário."
       render :new
     end
