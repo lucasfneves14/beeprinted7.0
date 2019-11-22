@@ -11,11 +11,12 @@
 		 <%= image_tag "https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/Email/logo-opt.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
 	</div>
 
-	<h3 style='text-align:center;'>Valor: </h3>
-	<h3 style='text-align:center;'><i>"<%=@orcamento.valor%>"</i></h3>
+	<h3 style='text-align:center;'>Nome: <i><%=@orcamento.name%> <%=@orcamento.sobrenome%></h3>
+	<h3 style='text-align:center;'>Valor Total: <i><%=@orcamento.valor + @orcamento.frete%></h3>
 
 	<h3 style='text-align:center; margin-bottom:0px'>Frete: <i><%=@orcamento.frete%></i></h3>
 	<h3 style='text-align:center; margin-top:0px'>Tipo de Pagamento: <i><%=@orcamento.pag%></i></h3>
+	
 	<h3 style='text-align:center;'>Muito Obrigado!</h3>
 
 	<div class="w3-center">
