@@ -35,6 +35,7 @@
                         <th>Status</th>
                         <th>Alerta</th>
                         <th>Valor</th>
+                        <th>Pag.</th>
                         <th>Frete</th>
                         <th>Criado em</th>
                         <th>Data 1° retorno</th>
@@ -55,6 +56,7 @@
                             <td><%= f.input :cep, label:false, placeholder:"CEP",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :empresa, label:false, placeholder:"Empresa",:input_html=>{style:'color:#777;'} %></td>
                             <td><%= f.input :description, label:false, placeholder:"Descriçao",:input_html=>{style:'color:#777;'} %></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -130,6 +132,7 @@
                                 <%end%>
 
                                 <td class='text-center'><%=orcamento.valor%></td>
+                                <td class='text-center'><%if orcamento.status == "Entregue" or orcamento.status == "Fechado"%><%=orcamento.pag%><%end%></td>
                                 <td class='text-center'><%=orcamento.frete%></td>
                                 <%if orcamento.class.name.demodulize == "Adicionado"%>
                                     <td><%=orcamento.data%></td>

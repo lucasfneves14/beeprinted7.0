@@ -87,9 +87,9 @@ class SystemController < ApplicationController
 		@fechado = params[:fechado]
 		@conversao = params[:conversao]
 		@faturamento = params[:faturamento]
-		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		estados_nomes = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", 
@@ -461,20 +461,20 @@ class SystemController < ApplicationController
 		if @orcamento.status == "Proposta Env"
 			@orcamento.proposta_enviada = true
 		end
+		fechado = @orcamento.status
 	    if @orcamento.update(params)
-	      if calculo
-			    redirect_to(path_pdf)
-		  else
-		  	if @orcamento.status == "Fechado" && @orcamento.prazo_final == ""
-		  		flash[:alert] = "Rapaz, você bote o prazo!!"
-	      		redirect_to(path)
+		  	if @orcamento.status == "Fechado"
+		  		if @orcamento.prazo_final == ""
+		  			flash[:alert] = "Rapaz, você bote o prazo!!"
+		  		end
+		  		if fechado != "Fechado"
+	      			FechadoMailer.fechado_email(@orcamento).deliver
+	      		end
 	      	else
 	      		flash[:success] = "Orçamento editado!"
-	      		redirect_to(path)
 	      	end
-		  end	
+	      	redirect_to(path)	
 	    else
-	      puts @orcamento.update(params)
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
 	      render :upload
 	    end

@@ -90,8 +90,11 @@ body{
                     <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Data 1° retorno </label><%= f.input :dataretorno, label: false%></div>
                     <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Último Contato </label><%= f.input :dataultimo, label: false%></div>
                     <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Prazo Final </label><%= f.input :prazo_final, label: false%></div>
-                    <div class="form-group" style='margin-left:30px'><label style='padding-right:10px'>Responsável </label><%= f.input :responsavel, label: false%></div>
             </div>
+            <div class="card-body card-block form-inline">
+                <div class="form-group"><label style='padding-right:10px'>Responsável </label><%= f.input :responsavel, label: false, :collection => ["Thierre","Iago","Thiago"]%></div>
+                    <div class="form-group" style='margin-left:30px'><label style='padding-right:10px;'>Pagamento </label><%= f.input :pag, label: false, :collection => ["Único","2x","3x","4x", "Outro"]%></div>
+                </div>
             <div class="card-footer">
                 <%=f.submit "Atualizar Pedido", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center" %>
             </div>
