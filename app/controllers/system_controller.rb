@@ -164,11 +164,14 @@ class SystemController < ApplicationController
 	end
 
 	def farol
+
+		######### GERAL (ATUAL) #########
+
 		@mes = params[:mes].to_i
 
-		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
@@ -201,6 +204,9 @@ class SystemController < ApplicationController
 		@vendidos = '%.2f' % @vendidos
 
 ##########################################################################################################################
+
+		######### THIERRE e IAGO (ATUAL) #########
+
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Iago")}
 
 		if planilha.count == 0
@@ -226,9 +232,12 @@ class SystemController < ApplicationController
 
 
 ######################################################################################################################################
-		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1)
-		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1)
-		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1)
+		
+		######### GERAL (ANTERIOR) #########
+
+		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
+		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
+		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
@@ -262,6 +271,9 @@ class SystemController < ApplicationController
 		
 
 ##########################################################################################################################################
+
+		######### THIERRE e IAGO (ANTERIOR) #########
+
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Iago")}
 
 		if planilha.count == 0
@@ -286,6 +298,9 @@ class SystemController < ApplicationController
 		end
 
 ##########################################################################################################################
+		
+		########### METAS ##############
+
 		@propostas_iago_meta = 20
 		@propostas_thierre_meta = 80
 		@atrasados_iago_meta = 85

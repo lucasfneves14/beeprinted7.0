@@ -40,7 +40,6 @@
                         <th>Data 1° retorno</th>
                         <th>Último Contato</th>
                         <th>Prazo Final</th>
-                        <th>Info</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -141,17 +140,6 @@
                                 <td class='text-center'><%=orcamento.dataretorno%></td>
                                 <td class='text-center'><%=orcamento.dataultimo%></td>
                                 <td class='text-center'><%=orcamento.prazo_final%></td>
-                                <td>
-                                    <%if orcamento.class.name.demodulize == "Orcamento"%>
-                                        <a href=<%=system_upload_path(orcamento.id)%>>
-                                    <%elsif orcamento.class.name.demodulize == "Modeling"%>
-                                        <a href=<%=system_modelagem_path(orcamento.id)%>>
-                                    <%elsif orcamento.class.name.demodulize == "Adicionado"%>
-                                        <a href=<%=system_adicionado_path(orcamento.id)%>>
-                                    <%end%>
-                                    <span class="badge badge-complete" style=''><strong>Editar Informaçoes</strong></span>
-                                    </a>
-                                </td>
                             </tr>
                         <%end%>
                     <%end%>
