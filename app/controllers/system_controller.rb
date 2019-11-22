@@ -473,7 +473,11 @@ class SystemController < ApplicationController
 	      	else
 	      		flash[:success] = "Orçamento editado!"
 	      	end
-	      	redirect_to(path)	
+	      	if calculo
+	      		redirect_to(path_pdf)
+	      	else
+	      		redirect_to(path)
+	      	end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
 	      render :upload
@@ -517,18 +521,18 @@ class SystemController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
+    	params.require(:orcamento).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :cep, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor,
     	items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     	servicos_attributes:[:id, :name, :valor_unit,:quantidade, :valor, :prazo,:_destroy])
   	end
 
   	def modelagem_params
-    	params.require(:modeling).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:modeling).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :cep, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
   	def adicionado_params
-    	params.require(:adicionado).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
+    	params.require(:adicionado).permit(:name, :sobrenome, :responsavel, :email, :empresa, :telefone, :cep, :status, :pag, :dataretorno, :dataultimo, :prazo_final, :versao, :tempo_impressao, :tempo_setup, :frete, :prazo_orc, :prazo_desejado, :tempo_execucao, :valor, 
     		items_attributes:[:id,:name,:tempo,:massa,:valor_unit,:quantidade,:valor,:resolucao,:infill,:cor,:material,:_destroy],
     		servicos_attributes:[:id, :name, :valor_unit, :quantidade, :valor, :prazo,:_destroy])
   	end
