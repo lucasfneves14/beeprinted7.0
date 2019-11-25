@@ -389,14 +389,6 @@ class SystemController < ApplicationController
 			if !@modelagem.items.any?
 				@item = @modelagem.items.build
 			end
-			if !@modelagem.servicos.any?
-				@servico1 = @modelagem.servicos.build
-				@servico1.name = "Design 3D"
-				@servico1.prazo = 3
-				@servico2 = @modelagem.servicos.build
-				@servico2.name = "Impressão 3D"
-				@servico2.prazo = 4
-			end
 		end
 		@orcamento = @modelagem
 		respond_to do |format|
