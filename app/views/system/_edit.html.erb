@@ -361,7 +361,13 @@ $('#gerar_documento').click(function() {
 </script>
 
 
-<script> 
+<script>
+
+  $('.remove_fields').click(function(){
+     $(this).closest(".nested-fields").remove();
+    Atualizar($(this));
+
+  });
 
   $('.servico_quant, .servico_unit').change(function(){
     valor_unit = $(this).closest(".row").find('.servico_unit').val();
@@ -431,7 +437,7 @@ $('#gerar_documento').click(function() {
 
 
   function Atualizar(p) {
-       items_valor = 0
+       items_valor = 0;
     $('.item_valor').each(function(){
         if(!isNaN(parseFloat(this.value))) {
             items_valor += parseFloat(this.value);
@@ -461,6 +467,6 @@ $('#gerar_documento').click(function() {
         valor_orcamento = 25+parseFloat(frete);
     }
 
-    p.closest("form").find('.valor_orcamento').val(valor_orcamento);
+    $('.valor_orcamento').val(valor_orcamento);
   }
 </script>

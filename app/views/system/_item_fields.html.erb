@@ -43,7 +43,14 @@
     link_to_remove_association é o helper que o cocoon nos fornece para deletar algum nested
   -->
 </div>
-<script> 
+<script>
+
+  $('.remove_fields').click(function(){
+     $(this).closest(".nested-fields").remove();
+    Atualizar($(this));
+
+  });
+
 
   $('.servico_quant, .servico_unit').change(function(){
     valor_unit = $(this).closest(".row").find('.servico_unit').val();
@@ -113,7 +120,7 @@
 
 
   function Atualizar(p) {
-       items_valor = 0
+       items_valor = 0;
     $('.item_valor').each(function(){
         if(!isNaN(parseFloat(this.value))) {
             items_valor += parseFloat(this.value);
@@ -143,6 +150,6 @@
         valor_orcamento = 25+parseFloat(frete);
     }
 
-    p.closest("form").find('.valor_orcamento').val(valor_orcamento);
+    $('.valor_orcamento').val(valor_orcamento);
   }
 </script>

@@ -15,6 +15,6 @@
 // require rails-ujs
 //= require cocoon
 // require activestorage
-// require turbolinks
+//= require turbolinks
 //= require ckeditor/init
 // require_tree .
