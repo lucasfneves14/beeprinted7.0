@@ -450,11 +450,13 @@ $('#gerar_documento').click(function() {
 
     servicos_valor = 0
     $('.servico_valor').each(function(){
+        if($(this).closest(".nested-fields").css('display') != 'none'){
         if($(this).closest(".row").find('.servico_name').val() != "Impressão 3D"){
             if(!isNaN(parseFloat(this.value))){
                 servicos_valor += parseFloat(this.value);
             }
         }
+      }
     });
 
     if(!isNaN(p.closest("form").find('.valor_frete').val())){

@@ -28,7 +28,13 @@
     link_to_remove_association é o helper que o cocoon nos fornece para deletar algum nested
   -->
 </div>
-<script> 
+<script>
+
+  $('.remove_fields').click(function(){
+    $(this).closest(".nested-fields").hide();
+    Atualizar($(this));
+
+  });
 
   $('.servico_quant, .servico_unit').change(function(){
     valor_unit = $(this).closest(".row").find('.servico_unit').val();
@@ -40,6 +46,7 @@
 
   });
   $('.item_tempo, .item_massa, .item_quant').change(function(){
+    $(this).closest(".row").find('.item_tempo').val(math.eval($(this).closest(".row").find('.item_tempo').val()));
     var tempo_total = 0;
     $('.item_tempo').each(function(){
         tempo_total += parseFloat(this.value)*$(this).closest(".row").find('.item_quant').val();
@@ -97,22 +104,41 @@
 
 
   function Atualizar(p) {
-       items_valor = 0
+       items_valor = 0;
     $('.item_valor').each(function(){
-        items_valor += parseFloat(this.value);
+        if($(this).closest(".nested-fields").css('display') != 'none'){
+            console.log("puta");
+        if(!isNaN(parseFloat(this.value))) {
+            items_valor += parseFloat(this.value);
+            console.log(parseFloat(this.value));
+        }
+        }
     });
 
     servicos_valor = 0
     $('.servico_valor').each(function(){
+        if($(this).closest(".nested-fields").css('display') != 'none'){
         if($(this).closest(".row").find('.servico_name').val() != "Impressão 3D"){
-            servicos_valor += parseFloat(this.value);
+            if(!isNaN(parseFloat(this.value))){
+                servicos_valor += parseFloat(this.value);
+            }
         }
+      }
     });
 
-    frete = p.closest("form").find('.valor_frete').val();
+    if(!isNaN(p.closest("form").find('.valor_frete').val())){
+        frete = p.closest("form").find('.valor_frete').val();
+    }
+    else{
+        frete = 0;
+    }
 
     valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
 
-    p.closest("form").find('.valor_orcamento').val(valor_orcamento);
+    if((valor_orcamento-frete) < 25){
+        valor_orcamento = 25+parseFloat(frete);
+    }
+
+    $('.valor_orcamento').val(valor_orcamento);
   }
 </script>
