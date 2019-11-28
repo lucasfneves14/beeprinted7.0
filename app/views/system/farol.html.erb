@@ -85,8 +85,8 @@
                   <td><span><%='%.2f' %  ((@atendimentos_thierre.to_f/@atendimentos_meta_thierre.to_f)*100)%>%</span></td>
                 <%end%>
                 <td><%='%.2f' %  (@atendimentos_thierre.to_f - @atendimentos_meta_thierre.to_f)%></td>
-                <td><%=@antendimentos_ant_thierre%></td>
-                <%if @antendimentos_ant_thierre.to_f == 0%>
+                <td><%=@atendimentos_ant_thierre%></td>
+                <%if @atendimentos_ant_thierre.to_f == 0%>
                   <td><span>Infinito</span></td>
                 <%else%>
                   <td><span><%='%.2f' %  ((@atendimentos_thierre.to_f/@atendimentos_ant_thierre.to_f)*100)%>%</span></td>
@@ -104,8 +104,8 @@
                   <td><span><%='%.2f' %  ((@atendimentos_iago.to_f/@atendimentos_meta_iago.to_f)*100)%>%</span></td>
                 <%end%>
                 <td><%='%.2f' %  (@atendimentos_iago.to_f - @atendimentos_meta_iago.to_f)%></td>
-                <td><%=@antendimentos_ant_iago%></td>
-                <%if @antendimentos_ant_iago.to_f == 0%>
+                <td><%=@atendimentos_ant_iago%></td>
+                <%if @atendimentos_ant_iago.to_f == 0%>
                   <td><span>Infinito</span></td>
                 <%else%>
                   <td><span><%='%.2f' %  ((@atendimentos_iago.to_f/@atendimentos_ant_iago.to_f)*100)%>%</span></td>
