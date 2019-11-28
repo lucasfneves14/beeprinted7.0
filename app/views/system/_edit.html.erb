@@ -106,20 +106,11 @@ body{
                 <strong>Informações</strong> para Documento
             </div>
             <%=simple_form_for(orcamento, :url => { :action => :update , :tipo => orcamento.class.name.demodulize, calculo: true}) do |f|%>
+
+
+
+
                 <div class="card-body card-block">
-                    <div class="row form-group">
-                        <div class="col col-md-2"><label class=" form-control-label">Versão</label></div>
-                        <div class="col-12 col-md-1">
-                            <%= f.input :versao, label: false%>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-
-
-
-
-                <div class="card-body card-block" style='padding-top:0px'>
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Nome</label></div>
                         <div class="col-12 col-md-5">
@@ -154,6 +145,16 @@ body{
                         </div>
                     </div>
                     <br>
+                    <hr>
+                </div>
+
+                <div class="card-body card-block" style='padding-top:0px'>
+                    <div class="row form-group">
+                        <div class="col col-md-2"><label class=" form-control-label">Versão</label></div>
+                        <div class="col-12 col-md-1">
+                            <%= f.input :versao, label: false%>
+                        </div>
+                    </div>
                     <hr>
                 </div>
 
