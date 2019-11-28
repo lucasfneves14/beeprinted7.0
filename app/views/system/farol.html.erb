@@ -188,6 +188,47 @@
 
               </tr>
 
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thierre</strong></td>
+                <td><%=@propostas_por_meta_thierre%>%</td>
+                <td><%=@propostas_por_thierre%>%</td>
+                <%if @propostas_por_meta_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@propostas_por_thierre.to_f/@propostas_por_meta_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+                <td><%='%.2f' %  (@propostas_por_thierre.to_f - @propostas_por_meta_thierre.to_f)%>%</td>
+                <td><%=@propostas_por_ant_thierre%>%</td>
+                <%if @propostas_por_ant_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@propostas_por_thierre.to_f/@propostas_por_ant_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+
+
+              </tr>
+
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Iago</strong></td>
+                <td><%=@propostas_por_meta_iago%>%</td>
+                <td><%=@propostas_por_iago%>%</td>
+                <%if @propostas_por_meta_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@propostas_por_iago.to_f/@propostas_por_meta_iago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td><%='%.2f' %  (@propostas_por_iago.to_f - @propostas_por_meta_iago.to_f)%>%</td>
+                <td><%=@propostas_por_ant_iago%>%</td>
+                <%if @propostas_por_ant_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@propostas_por_iago.to_f/@propostas_por_ant_iago.to_f)*100)%>%</span></td>
+                <%end%>
+
+
+              </tr>
+
+
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>Propostas Convertidas (N°)</strong></td>
                 
@@ -204,6 +245,45 @@
                   <td><span class='cor'>Infinito</span></td>
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@convertidos.to_f/@convertidos_ant.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thierre</strong></td>
+                
+                <td><%=@convertidos_meta_thierre%></td>
+                <td><%=@convertidos_thierre%></td>
+                <%if @convertidos_meta_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_thierre.to_f/@convertidos_meta_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+                <td><%='%.2f' %  (@convertidos_thierre.to_f - @convertidos_meta_thierre.to_f)%></td>
+                <td><%=@convertidos_ant_thierre%></td>
+                <%if @convertidos_ant_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_thierre.to_f/@convertidos_ant_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Iago</strong></td>
+                
+                <td><%=@convertidos_meta_iago%></td>
+                <td><%=@convertidos_iago%></td>
+                <%if @convertidos_meta_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_iago.to_f/@convertidos_meta_iago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td><%='%.2f' %  (@convertidos_iago.to_f - @convertidos_meta_iago.to_f)%></td>
+                <td><%=@convertidos_ant_iago%></td>
+                <%if @convertidos_ant_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_iago.to_f/@convertidos_ant_iago.to_f)*100)%>%</span></td>
                 <%end%>
 
               </tr>
@@ -284,6 +364,45 @@
                 <%end%>
 
               </tr>
+
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thierre</strong></td>
+                <td>R$ <%=@ticket_medio_meta_thierre%></td>
+                <td>R$ <%=@ticket_medio_thierre%></td>
+                <%if @ticket_medio_meta_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_thierre.to_f/@ticket_medio_meta_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@ticket_medio_thierre.to_f - @ticket_medio_meta_thierre.to_f)%></td>
+                <td>R$ <%=@ticket_medio_ant_thierre%></td>
+                <%if @ticket_medio_ant_thierre.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_thierre.to_f/@ticket_medio_ant_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Iago</strong></td>
+                <td>R$ <%=@ticket_medio_meta_iago%></td>
+                <td>R$ <%=@ticket_medio_iago%></td>
+                <%if @ticket_medio_meta_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_iago.to_f/@ticket_medio_meta_iago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@ticket_medio_iago.to_f - @ticket_medio_meta_iago.to_f)%></td>
+                <td>R$ <%=@ticket_medio_ant_iago%></td>
+                <%if @ticket_medio_ant_iago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_iago.to_f/@ticket_medio_ant_iago.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
+
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>Solicitaçoes Atendidas no Prazo (%)</strong></td>
                 
