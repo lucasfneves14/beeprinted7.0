@@ -209,6 +209,8 @@ class SystemController < ApplicationController
 
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Iago")}
 
+		@atendimentos_iago = planilha.count
+
 		if planilha.count == 0
 			@propostas_iago = 0
 			@atrasados_iago = 0
@@ -227,6 +229,8 @@ class SystemController < ApplicationController
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Thierre")}
+
+		@atendimentos_thierre = planilha.count
 
 		if planilha.count == 0
 			@propostas_thierre = 0
@@ -289,6 +293,8 @@ class SystemController < ApplicationController
 
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Iago")}
 
+		@atendimentos_ant_iago = planilha.count
+
 		if planilha.count == 0
 			@propostas_iago_ant = 0
 			@atrasados_iago_ant = 0
@@ -307,6 +313,8 @@ class SystemController < ApplicationController
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Thierre")}
+
+		@atendimentos_ant_thierre = planilha.count
 
 		if planilha.count == 0
 			@propostas_thierre_ant = 0
@@ -333,6 +341,8 @@ class SystemController < ApplicationController
 		@atrasados_thierre_meta = 70
 		@vendidos_meta_iago = 15000
 		@vendidos_meta_thierre = 10000
+		@atendimentos_meta_iago = 150
+		@atendimentos_meta_thierre = 110
 
 
 		@atendimentos_meta = 360
