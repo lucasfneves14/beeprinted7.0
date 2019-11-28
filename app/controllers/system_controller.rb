@@ -218,6 +218,13 @@ class SystemController < ApplicationController
 			@atrasados_iago = '%.2f' % ((Float(@atrasados_iago)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
 
+		@vendidos_iago = 0.0
+
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
+			@vendidos_iago = @vendidos_iago + planilha.valor + planilha.frete
+		end
+
+
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Thierre")}
 
@@ -228,6 +235,12 @@ class SystemController < ApplicationController
 			@propostas_thierre = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / planilha.count) * 100)
 			@atrasados_thierre = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_thierre = '%.2f' % ((Float(@atrasados_thierre)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
+		end
+
+		@vendidos_thierre = 0.0
+
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
+			@vendidos_thierre = @vendidos_thierre + planilha.valor + planilha.frete
 		end
 
 
@@ -285,6 +298,13 @@ class SystemController < ApplicationController
 			@atrasados_iago_ant = '%.2f' % ((Float(@atrasados_iago_ant)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
 
+		@vendidos_ant_iago = 0.0
+
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
+			@vendidos_ant_iago = @vendidos_ant_iago + planilha.valor + planilha.frete
+		end
+
+
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		planilha = planilha.select{|orcamento| (orcamento.responsavel == "Thierre")}
 
@@ -297,6 +317,12 @@ class SystemController < ApplicationController
 			@atrasados_thierre_ant = '%.2f' % ((Float(@atrasados_thierre_ant)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
 
+		@vendidos_ant_thierre = 0.0
+
+		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
+			@vendidos_ant_thierre = @vendidos_ant_thierre + planilha.valor + planilha.frete
+		end
+
 ##########################################################################################################################
 		
 		########### METAS ##############
@@ -305,6 +331,8 @@ class SystemController < ApplicationController
 		@propostas_thierre_meta = 80
 		@atrasados_iago_meta = 85
 		@atrasados_thierre_meta = 70
+		@vendidos_meta_iago = 15000
+		@vendidos_meta_thierre = 10000
 
 
 		@atendimentos_meta = 360

@@ -182,6 +182,44 @@
                 <%end%>
               </tr>
 
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thierre</strong></td>
+                <td>R$ <%=@vendidos_meta_thierre%></td>
+                <td>R$ <%=@vendidos_thierre%></td>
+                <%if @vendidos_meta_thierre.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@vendidos_thierre.to_f/@vendidos_meta_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@vendidos_thierre.to_f - @vendidos_meta_thierre.to_f)%></td>
+                <td><%=@vendidos_ant_thierre%></td>
+                <%if @vendidos_ant_thierre.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@vendidos_thierre.to_f/@vendidos_ant_thierre.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Iago</strong></td>
+                <td>R$ <%=@vendidos_meta_iago%></td>
+                <td>R$ <%=@vendidos_iago%></td>
+                <%if @vendidos_meta_iago.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@vendidos_iago.to_f/@vendidos_meta_iago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@vendidos_iago.to_f - @vendidos_meta_iago.to_f)%></td>
+                <td><%=@vendidos_ant_iago%></td>
+                <%if @vendidos_ant_iago.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@vendidos_iago.to_f/@vendidos_ant_iago.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
               <tr>
                 <td style='background-color:#009fab;color:white'><strong>Ticket Médio</strong></td>
                 <td>R$ <%=@ticket_medio_meta%></td>
