@@ -548,11 +548,6 @@ class SystemController < ApplicationController
 			@orcamento.proposta_enviada = true
 		end
 		fechado = @orcamento.status
-		puts "BBBBBBBBBBBBBBBBBBBBB"
-		#params[:items_attributes]["0"][:id] = 70
-		puts params[:items_attributes][-1]
-		puts "AAAAAAAAAAAAAAAAAAAAAA"
-		puts params
 	    if @orcamento.update(params)
 		  	if @orcamento.status == "Fechado"
 		  		if @orcamento.prazo_final == ""
