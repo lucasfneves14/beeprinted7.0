@@ -188,10 +188,10 @@ body{
                                     <%= render 'servico_fields', f: servico %>
                                 <% end %>
                                 <div class="links">
-                                    <%= link_to_add_association 'Adicionar Item', f, :servicos %>
+                                    <%= link_to_add_association 'Adicionar Item', f, :servicos, style:'', id:'funciona'%>
                                 </div>
                     </div>
-                    <p style='font-size: 13px; color:black'>*O valor TT do serviço "Impressao 3D" nao é considerado no cálculo do orçamento final.</p>
+                    <p class='clique' style='font-size: 13px; color:black'>*O valor TT do serviço "Impressao 3D" nao é considerado no cálculo do orçamento final.</p>
                     <hr>
                 </div>
 
@@ -359,6 +359,16 @@ $('#gerar_documento').click(function() {
         location.reload();
     }, 3000);
 });
+
+
+$(document).ready(function() { 
+    console.log("puta");
+    $(".add_fields").click();
+
+  });
+
+
+
 </script>
 
 
