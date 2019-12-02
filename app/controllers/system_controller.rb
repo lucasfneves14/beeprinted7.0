@@ -108,7 +108,7 @@ class SystemController < ApplicationController
 			fechados = @planilha.select{|orcamento| (orcamento.estado == nome)&&((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))}
 			estado.faturamento = 0
 			fechados.each do |fechado|
-				estado.faturamento = estado.faturamento + fechado.valor + fechado.frete
+				estado.faturamento = estado.faturamento + fechado.valor
 			end
 			estado.faturamento = '%.2f' % estado.faturamento
 			estado.fechado = fechados.count
@@ -192,7 +192,7 @@ class SystemController < ApplicationController
 		@vendidos = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos = @vendidos + planilha.valor + planilha.frete
+			@vendidos = @vendidos + planilha.valor
 		end
 
 		if @convertidos == 0
@@ -227,7 +227,7 @@ class SystemController < ApplicationController
 		@vendidos_iago = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos_iago = @vendidos_iago + planilha.valor + planilha.frete
+			@vendidos_iago = @vendidos_iago + planilha.valor
 		end
 
 		if @convertidos_iago == 0
@@ -262,7 +262,7 @@ class SystemController < ApplicationController
 		@vendidos_thierre = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos_thierre = @vendidos_thierre + planilha.valor + planilha.frete
+			@vendidos_thierre = @vendidos_thierre + planilha.valor
 		end
 
 		if @convertidos_thierre == 0
@@ -301,7 +301,7 @@ class SystemController < ApplicationController
 		@vendidos_ant = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos_ant = @vendidos_ant + planilha.valor + planilha.frete
+			@vendidos_ant = @vendidos_ant + planilha.valor
 		end
 
 		if @convertidos_ant == 0
@@ -336,7 +336,7 @@ class SystemController < ApplicationController
 		@vendidos_ant_iago = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos_ant_iago = @vendidos_ant_iago + planilha.valor + planilha.frete
+			@vendidos_ant_iago = @vendidos_ant_iago + planilha.valor
 		end
 
 		if @convertidos_ant_iago == 0
@@ -369,7 +369,7 @@ class SystemController < ApplicationController
 		@vendidos_ant_thierre = 0.0
 
 		planilha.select{|orcamento| ((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))&&(orcamento.valor!=nil)}.each do |planilha|
-			@vendidos_ant_thierre = @vendidos_ant_thierre + planilha.valor + planilha.frete
+			@vendidos_ant_thierre = @vendidos_ant_thierre + planilha.valor
 		end
 
 
@@ -548,6 +548,11 @@ class SystemController < ApplicationController
 			@orcamento.proposta_enviada = true
 		end
 		fechado = @orcamento.status
+		#puts "BBBBBBBBBBBBBBBBBBBBB"
+		#params[:items_attributes]["0"][:id] = 70
+		#puts params[:items_attributes][-1]
+		#puts "AAAAAAAAAAAAAAAAAAAAAA"
+		#puts params
 	    if @orcamento.update(params)
 		  	if @orcamento.status == "Fechado"
 		  		if @orcamento.prazo_final == ""
