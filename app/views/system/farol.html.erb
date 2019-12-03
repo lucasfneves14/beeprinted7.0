@@ -6,6 +6,7 @@
 }
 .pessoa{
   background-color: #a2a2a2;
+  display:none;
 }
 .pessoa td {
   padding: 0.3em 2.75em !important;
@@ -56,7 +57,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Atendimentos</strong></td>
                 <td><%=@atendimentos_meta%></td>
                 <td><%=@atendimentos%></td>
@@ -114,7 +115,7 @@
               </tr>
 
 
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Propostas Enviadas</strong></td>
                 <td><%=@propostas_meta%>%</td>
                 <td><%=@propostas%>%</td>
@@ -168,7 +169,7 @@
                 <%end%>
 
               </tr>
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Propostas Convertidas (%)</strong></td>
                 <td><%=@propostas_por_meta%>%</td>
                 <td><%=@propostas_por%>%</td>
@@ -229,7 +230,7 @@
               </tr>
 
 
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Propostas Convertidas (N°)</strong></td>
                 
                 <td><%=@convertidos_meta%></td>
@@ -290,7 +291,7 @@
 
 
 
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Vendidos</strong></td>
                 <td>R$ <%=@vendidos_meta%></td>
                 <td>R$ <%=@vendidos%></td>
@@ -346,7 +347,7 @@
 
               </tr>
 
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Ticket Médio</strong></td>
                 <td>R$ <%=@ticket_medio_meta%></td>
                 <td>R$ <%=@ticket_medio%></td>
@@ -403,7 +404,7 @@
               </tr>
 
 
-              <tr>
+              <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Solicitaçoes Atendidas no Prazo (%)</strong></td>
                 
                 <td><%=@atrasados_meta%>%</td>
@@ -482,6 +483,20 @@ $( document ).ready(function() {
       $(this).css('color', 'green');
     }
     
+  });
+
+  $(".integral").click(function(){
+    parcial = $(this).next();
+    console.log(parcial)
+    if (parcial.is(":visible")){
+      parcial.fadeOut();
+      parcial.next().fadeOut();
+    }
+    else{
+      parcial.fadeIn();
+      parcial.next().fadeIn();
+
+    }
   });
 
 
