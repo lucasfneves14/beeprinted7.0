@@ -949,6 +949,22 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 
 <%end%>
 <%end%>
+ <tr  style='height:18pt;'>
+  <td class = 'flx0' style = 'border-right:1px none black;'></td>
+<td class = 'flx0' style = 'border-left:1px solid black;border-right:1px none black;'></td>
+
+  <td class='flx12' style ='border-left:1px solid black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'></td>
+  <td class='flx13' style ='border-top:1px none black;border-bottom:1px solid black;'></td>
+  <td class='flx13' style ='text-align:right;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><strong>Total </strong></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%='%.2f' % (@orcamento.valor - @orcamento.frete)%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%prazo = 0%><%@orcamento.servicos.each_with_index do |servico,index|%><%prazo = prazo + servico.prazo%><%end%><%=prazo%></td>
+  <td class = 'flx1' style = 'border-left:1px none black;'></td>
+<td class = 'flx1'></td>
+<td class = 'flx1'></td>
+<td class = 'flx1'></td>
+<td class = 'flx0' style = 'border-right:1px solid black;'></td>
+
+</tr>
 <%end%>
  <tr  style='height:18pt;'>
   <td class = 'flx0' style = 'border-right:1px none black;'></td>
@@ -1002,7 +1018,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class = 'flx11' style = 'border-left:1px none black;border-right:1px solid black;'></td>
 
 </tr>
-<%@orcamento.items.each_with_index do |item,index|%>
+<%@orcamento.items.order('created_at').each_with_index do |item,index|%>
   <%if (index%2) == 0%>
    <tr  style='height:18pt;'>
     <td class = 'flx0' style = 'border-right:1px none black;'></td>
