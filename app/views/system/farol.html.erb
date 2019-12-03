@@ -124,7 +124,7 @@
                   <td><span class='cor'><%='%.2f' %  ((@propostas.to_f/@propostas_meta.to_f)*100)%>%</span></td>
                 <%end%>
                 <td><%='%.2f' %  (@propostas.to_f - @propostas_meta.to_f)%>%</td>
-                <td><%=@propostas_ant%></td>
+                <td><%=@propostas_ant%>%</td>
                 <%if @propostas_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
                 <%else%>
