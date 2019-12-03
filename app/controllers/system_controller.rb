@@ -286,7 +286,7 @@ class SystemController < ApplicationController
 
 		@atendimentos_ant = planilha.count
 		
-		if @atendimentos_ant
+		if @atendimentos_ant == 0
 			@propostas_ant = 0
 			@propostas_por_ant = 0
 			@atrasados_ant = 0
