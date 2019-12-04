@@ -30,7 +30,7 @@
 
 	<h3 style='text-align:center; margin-top:0px'>Info das peças:</h3>
 	<%@orcamento.arquivos.each_with_index do |arquivo, index|%>
-	    <p>Link: <%=arquivo.attachment.url%></p>
+	    <p><%=index + 1%>: <%=arquivo.attachment.url%></p>
 
 	<%end%>
 
