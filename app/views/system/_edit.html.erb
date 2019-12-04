@@ -318,15 +318,19 @@ body{
                         <div class="col-12 col-md-4">
                             <%= f.input :prazo_desejado, label: false%>
                         </div>
-                        <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'><strong>VALOR DO ORÇAMENTO</strong></label></div>
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right;'>Desconto (%)</label></div>
                         <div class="col-12 col-md-4">
-                            <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2", class:'valor_orcamento'}%>
+                            <%= f.input :desconto, label: false, :input_html =>{ id:'desconto'}%>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-2"><label class=" form-control-label">Prazo Total (dias úteis)</label></div>
                         <div class="col-12 col-md-4">
                             <%= f.input :tempo_execucao, label: false, :input_html =>{class:'tempo_execucao'}%>
+                        </div>
+                        <div class="col col-md-2"><label class=" form-control-label" style='float:right; color:green'><strong>VALOR DO ORÇAMENTO</strong></label></div>
+                        <div class="col-12 col-md-4">
+                            <%= f.input :valor, label: false, :input_html =>{style:"background-color:#e2e2e2", class:'valor_orcamento'}%>
                         </div>
                     </div>
                 </div>
@@ -372,7 +376,7 @@ $('#gerar_documento').click(function() {
 
   });
 
-  $('.servico_quant, .servico_unit').change(function(){
+  $('.servico_quant, .servico_unit, #desconto').change(function(){
     valor_unit = $(this).closest(".row").find('.servico_unit').val();
     quantidade = $(this).closest(".row").find('.servico_quant').val();
     valor = (valor_unit*quantidade).toFixed(2);
@@ -443,10 +447,8 @@ $('#gerar_documento').click(function() {
        items_valor = 0;
     $('.item_valor').each(function(){
         if($(this).closest(".nested-fields").css('display') != 'none'){
-            console.log("puta");
         if(!isNaN(parseFloat(this.value))) {
             items_valor += parseFloat(this.value);
-            console.log(parseFloat(this.value));
         }
         }
     });
@@ -469,7 +471,11 @@ $('#gerar_documento').click(function() {
         frete = 0;
     }
 
-    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
+    desconto = $('#desconto').val();
+
+    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete))
+    valor_orcamento = ((100 - desconto)/100)*valor_orcamento;
+    valor_orcamento = valor_orcamento.toFixed(2);
 
     if((valor_orcamento-frete) < 25){
         valor_orcamento = 25+parseFloat(frete);

@@ -956,7 +956,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx12' style ='border-left:1px solid black;border-top:1px none black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'></td>
   <td class='flx13' style ='border-top:1px none black;border-bottom:1px solid black;'></td>
   <td class='flx13' style ='text-align:right;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><strong>Total </strong></td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%='%.2f' % (@orcamento.valor - @orcamento.frete)%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'>R$ <%='%.2f' % ((@orcamento.valor - @orcamento.frete)*100/(100 - @orcamento.desconto))%></td>
   <td class='flx13' style ='border-left:1px none black;border-top:1px none black;border-right:1px solid black;border-bottom:1px solid black;'><%prazo = 0%><%@orcamento.servicos.each_with_index do |servico,index|%><%prazo = prazo + servico.prazo%><%end%><%=prazo%></td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 <td class = 'flx1'></td>
@@ -1083,8 +1083,12 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx12' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;'>VALOR FRETE</td>
   <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'>R$ <%='%.2f' % @orcamento.frete%></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
-<td class = 'flx0'></td>
-<td class = 'flx0'></td>
+<%if @orcamento.desconto != 0%>
+  <td class='flx10' style ='border-bottom:1px solid black;' colspan = '2' rowspan ='1'>VALOR DO OR&Ccedil;AMENTO &nbsp;</td>
+<%else%>
+  <td class = 'flx0'></td>
+  <td class = 'flx0'></td>
+<%end%>
 <td class = 'flx0'></td>
 <td class = 'flx0' style = 'border-right:1px solid black;'></td>
 
@@ -1101,7 +1105,14 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx13' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='1'><%=@orcamento.prazo_orc%> dias &uacute;teis</td>
   <td class = 'flx1' style = 'border-left:1px none black;'></td>
 
+<%if @orcamento.desconto != 0%>
+  <td class='flx12' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;font-size:10.5pt'> Desconto (<%=@orcamento.desconto%>%)</td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;font-size:10.5pt;color:red'>- R$ <%='%.2f' % ((@orcamento.valor - @orcamento.frete)*100/(100 - @orcamento.desconto) - @orcamento.valor)%></td>
+<%else%>
   <td class='flx10' style ='border-bottom:1px solid black;' colspan = '2' rowspan ='1'>VALOR DO OR&Ccedil;AMENTO &nbsp;</td>
+<%end%>
+
+
   <td class = 'flx0'></td>
 <td class = 'flx0' style = 'border-right:1px solid black;'></td>
 
@@ -1117,7 +1128,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
   <td class='flx3' style ='border-top:1px none black;'>0.05</td>
   <td class='flx19' style ='border-top:1px none black;text-align:right;'>0</td>
   <td class='flx19' style ='border-right:1px none black;text-align:right;'>7</td>
-  <td class='flx20' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;'>R$ <%='%.2f' % @orcamento.valor%></span></td>
+  <td class='flx20' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;' colspan = '2' rowspan ='2'><span class='flx20' style ='height:30.58pt;color:green'><strong>R$ <%='%.2f' % @orcamento.valor%></strong></span></td>
   <td class = 'flx0' style = 'border-left:1px none black;'></td>
 <td class = 'flx0' style = 'border-right:1px solid black;'></td>
 
