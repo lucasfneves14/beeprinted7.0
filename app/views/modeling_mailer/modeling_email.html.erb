@@ -33,7 +33,7 @@
 
 
 	<%@modeling.references.each_with_index do |reference, index|%>
-	    <p>Link: <%=reference.attachment.url%></p>
+	    <p><%=index +1%>: <%=reference.attachment.url%></p>
 
 	<%end%>
 
