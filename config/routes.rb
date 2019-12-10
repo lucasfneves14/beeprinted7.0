@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'orcamentos/sucesso', to: 'orcamentos#sucesso', as: :orcamento_sucesso
   get 'modelagem/sucesso', to: 'modelings#sucesso', as: :modeling_sucesso
   get 'contato/sucesso', to: 'contatos#sucesso', as: :contato_sucesso
+  get 'orcamentos/tipo', to: 'orcamentos#tipo', as: :tipo_orcamento
   resources :orcamentos
   resources :modelings
   mount Ckeditor::Engine => '/ckeditor'

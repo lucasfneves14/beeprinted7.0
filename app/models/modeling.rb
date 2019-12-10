@@ -14,6 +14,7 @@ class Modeling < ApplicationRecord
 	validates :sobrenome, presence: true
 	validates :estado, presence: true
 	validates :email, presence: true
+	validates :empresa, presence: true, on: :create
 	validates_format_of :email,:with => Devise::email_regexp
 	validates :cep, presence: true, if: :fora_de_brasilia?
 

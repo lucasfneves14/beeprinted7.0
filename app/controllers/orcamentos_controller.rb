@@ -18,6 +18,9 @@ class OrcamentosController < ApplicationController
   def show
   end
 
+  def tipo
+  end
+
   # GET /orcamentos/new
   def new
     @orcamento = Orcamento.new

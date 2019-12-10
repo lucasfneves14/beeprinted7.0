@@ -1,0 +1,66 @@
+<style>
+#cta p {
+	color:#616161;
+}
+a:hover{
+    text-decoration: none;
+}
+
+.col-md-6 {
+	margin-top:15px;
+}
+
+@media (min-width: 992px){
+.col-md-6 {
+    padding-left:5px;
+    margin-top: 0px;
+}
+
+#cta{
+	min-height:60vh;
+}
+
+.container-bee{
+	margin-top:80px;
+}
+
+}
+
+
+</style>
+
+
+<br>
+<br>
+<br>
+<br>
+<section id='cta' style='margin-left:10px;margin-right:10px;'>
+  <div class='container container-bee w3-center' style='margin-bottom:80px;'>
+	<div class='row'> 
+	<div class='col-md-6'>
+		<a href=<%=new_orcamento_path%>>
+		<div class='card' style='width:100%;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);background-color:white;'>
+			<i class="fa fa-cloud-upload iconBig" style='font-size:60px;color:#009FAB;'></i>
+			<h3 style='color:#009fab'><strong>Enviar Arquivo</strong></h3>
+			<p><strong>Envie o arquivo em formato STL ou OBJ para impressão</strong></p>
+			<p>Necessário o envio de arquivos em formato correto para impressão</p> 
+	        <br>
+		    <br>
+		</div>
+		</a>
+	</div>
+	<div class='col-md-6'>
+		<a href=<%=new_modeling_path%>>
+		<div class='card' style='box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);background-color:white;'>
+		    <i class="fa fa-suitcase iconBig" style='font-size:60px;color:#009FAB;'></i>
+					<h3 style='color:#009fab'><strong>Venda Corporativa</strong></h3>
+					<p><strong>Atendimento exclusivo para empresas</strong></p>
+					<p>Processo envolvendo Design 3D, Modelagem, Impressão e Acabamento</p>
+		      <br>
+		      <br>
+		</div>
+		</a>
+	</div>
+	</div>
+  </div>
+</section>

@@ -1,6 +1,18 @@
 class ModelingsController < ApplicationController
 	#before_action :authenticate_user!, raise: false, only:[:create]
 
+  def new
+    @modeling = Modeling.new
+    @reference = Reference.new
+    if current_user
+      @modeling.name = "#{current_user.name}"
+      @modeling.sobrenome = "#{current_user.sobrenome}"
+      @modeling.email = current_user.email
+    end
+
+  end
+
+
   def sucesso
   end
 
@@ -42,7 +54,7 @@ class ModelingsController < ApplicationController
       @arquivo = Arquivo.new
       @orcamento = Orcamento.new
       @modelagem_check =1
-      render 'orcamentos/new'
+      render 'modelings/new'
     end
   end
 

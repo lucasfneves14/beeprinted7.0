@@ -28,50 +28,19 @@
     background: no-repeat #f9f9f9;
  }
 </style>
-<section id=cta class="padding-top-bottom color-bg light-typo" style='padding:20px;background-color:white; border-bottom: 1px solid rgba(0, 0, 18, 0.13);box-shadow: 0 0 10px 3px rgba(0,0,0,0.1);'>
-<div class="container" style='margin-top:60px'>
-  <div class="header">
-    <a href=<%=tipo_orcamento_path%> style='color:#009fab'><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
-    <h4 class="text-muted"><strong style='color:#009fab'>1.</strong> Você já possui os arquivos em 3D nas extensões STL ou OBJ?</h4>
-  </div> 
-
-  <div style='display: flex;justify-content: flex-start; padding-top: 1.5rem; margin-bottom:20px'>
-  <button class='selector__button text-muted' style='margin-right:5px' onClick='$(".modelagem").hide();$(".orcamento").fadeIn();'>
-      <span>Sim! Eu já possuo os arquivos em formato .STL ou .OBJ.</span>
-      <span class='orcamento' style='float:right;color:#009fab;<%unless @orcamento_check%>display:none<%end%>'>
-        <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
-      </span>
-    </button>
-
-    <button class='selector__button text-muted' style='margin-left:5px' onClick='$(".orcamento").hide();$(".modelagem").fadeIn();'>
-      <span>Ainda não! Não possuo os arquivos ou estão em outro formato.</span>
-      <span class='modelagem' style='float:right;color:#009fab;<%unless @modelagem_check%>display:none<%end%>'>
-        <i class="fa fa-check" aria-hidden="true" style='font-size:22px'></i>
-      </span>
-    </button>
-  
-  </div>
-</div>
-</section>
-
-
-
 
 <section style='min-height:600px'>
 
-<div class="container orcamento" style='margin-top:40px; margin-bottom:20px;<%unless @orcamento_check%>display:none<%end%>'>
+
+<div class="container modelagem" style='margin-top:40px; margin-bottom:20px;'>
 
   <div class="header" style='margin-bottom:30px'>
-    <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos e descreva seu projeto</h4>
-    <p style='color:#777'>Caso seus arquivos estejam compactados em .zip ou .rar, favor descompactar antes de enviar.</p>
-  </div> 
-  <div class="alert alert-danger" style='display:none' id='error_alert'>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <span id='messagem_erro'>Login efetuado com sucesso!</span>
-</div>
-  <%= form_for(@arquivo, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
+    <a href=<%=tipo_orcamento_path%> style='color:#009fab'><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
+    <h4 class="text-muted"><strong style='color:#009fab'>1.</strong> Faça o upload de arquivos de referência (opcional)</h4>
+  </div>
+  <%= form_for(@reference, html: { multipart: true, novalidate:false, class: "dropzone", style:'border-radius:20px; border: 0px solid #009fab;box-shadow: 2px 2px #d2d2d2'}, remote:true) do |f|  %>
     <div class="dz-default dz-message" style='color:#009fab'><p><i class="fa fa-cloud-upload" style='font-size:64px'></i></p>
-      <p><span><strong>Selecione ou arraste e solte arquivos STL ou OBJ para o seu projeto aqui</strong></span></p>
+      <p><span><strong>Selecione ou arraste e solte arquivos de referência para o seu projeto aqui</strong></span></p>
     </div>
 
     <div class="fallback", style='display:none'>
@@ -79,21 +48,22 @@
       <%= f.submit "Upload" %>
     </div>
   <% end %>
-  <%if @orcamento.arquivos.any?%>
+
+  <%if @modeling.references.any?%>
     <div class='dropzone' style='background-color:transparent;padding:0px;border:0px'>
-      <%@orcamento.arquivos.each do |arquivo| %>
-       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=arquivo.id%>">
+      <%@modeling.references.each do |reference| %>
+       <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete" id="deletar-<%=reference.id%>">
         <div class="dz-image">
             <img data-dz-thumbnail="">
           </div>
           <div class="dz-details">
             <div class="dz-size">
               <span data-dz-size="">
-                <strong><%='%.1f' % (arquivo.attachment.file.size/1000).round(1)%></strong> KB
+                <strong><%='%.1f' % (reference.attachment.file.size/1000).round(1)%></strong> KB
               </span>
             </div>
             <div class="dz-filename">
-              <span data-dz-name=""><%=File.basename(arquivo.attachment.path)%></span>
+              <span data-dz-name=""><%=File.basename(reference.attachment.path)%></span>
             </div>  
           </div>
           <div class="dz-progress">
@@ -102,35 +72,41 @@
           <div class="dz-error-message">
             <span data-dz-errormessage=""></span>
           </div>  
-          <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=arquivo.id%>">Remover arquivo</a></div>
+          <a class="dz-remove deletar-fora" href="javascript:undefined;" data-dz-remove="" id="<%=reference.id%>">Remover arquivo</a></div>
       <%end%>
-      </div>
+    </div>
   <%end%>
 
-
-  <%= simple_form_for @orcamento, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
+  <%= simple_form_for @modeling, html: { multipart: true, class:'' },style:'color:#616161' do |f| %>
     <%= f.error_notification%>
-    <!--<div class="" style='margin-top:40px'>
-      <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Escolha o Material de cada peça</h4>
-    </div>-->
-    <div id='pecas'>
+    <div class=w3-center>
+      <%= f.input :array, label: false,input_html:{style:'display:none'} %>
     </div>
-    <div class=w3-center><%= f.input :array, label: false,input_html:{style:'display:none'} %>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:0px'>
+      <div class="header" style='margin-top:30px'>
+        <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> O que é o seu projeto?</h4>
+      </div>
+      <%= f.input :tipo, label:false, prompt:"O que é o projeto", :collection => ["Protótipo", "Brindes", "Troféus","Maquete", "Mascote", "Reprodução de Peças","Jóias", "Outros"],:input_html=>{style:'width:80%;color:#777'} %>
     </div>
+    <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:20px'>
+      <div class="header" style='margin-top:30px'>
+        <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Para quando você precisa desse serviço?</h4>
+      </div>
 
+      <%= f.input :prazo, prompt:"Prazo para produção", label:false, :collection => ["Hoje ou nos próximos dias", "Nos próximos 30 dias", "Nos próximos 3 meses", "Ainda não tenho previsão"],:input_html=>{style:'width:80%;color:#777'} %>
+    </div>
+    
     <div class="" style='margin-top:40px'>
-      <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Descreva o seu projeto</h4>
+      <h4 class="text-muted"><strong style='color:#009fab'>4.</strong> Descreva o seu projeto</h4>
     </div>
-
 
     <div id='antesdoupload' style=''>
         <div class="form-group text-center" id="formgroup2">
           <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
         </div>
     </div>
-
     <div class="" style='margin-top:40px'>
-      <h4 class="text-muted"><strong style='color:#009fab'>4.</strong>  Passe suas informações</h4>
+      <h4 class="text-muted"><strong style='color:#009fab'>5.</strong>  Passe suas informações</h4>
     </div>
     <div class='row', style='margin:0px'>
       <div class="col-md-8 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:0px; padding-right:10px; color:#777; border-right:3px solid #ddd'>
@@ -141,7 +117,7 @@
             <%= f.input :sobrenome, label:false, placeholder:"Sobrenome",:input_html=>{style:'color:#777;'} %>
         </div>
         <div class="no-padding" style='float:left;width:100%;color:#777;padding-right:10px;'>
-            <%= f.input :email, placeholder:"Email", label:false,:input_html=>{type:"email", style:'color:#777'} %>
+            <%= f.input :email, placeholder:"Email", label:false,:input_html=>{style:'color:#777'} %>
         </div>
         <div class="col-md-8 col-sm-12 no-padding" style='float:left;padding-left:0px;color:#999;padding-right:10px;'>
           <%= f.input :estado, prompt:"Estado", :collection => ["Acre", "Alagoas", "Amapá","Amazonas", "Bahia", "Ceará","Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte","Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Segipe", "Tocantins"],label:false,:input_html=>{style:'color:#999;margin-bottom:0px'} %>
@@ -154,7 +130,7 @@
           <%= f.input :telefone, placeholder:"Telefone (opcional)", label:false,:input_html=>{style:'color:#777'} %>
         </div>
         <div class="col-md-8 col-sm-12 no-padding" style='float:left;padding-left:0px;color:#777;'>
-          <%= f.input :empresa, placeholder:"Empresa (opcional)", label:false,:input_html=>{style:'color:#777'} %>
+          <%= f.input :empresa, placeholder:"Empresa", label:false,:input_html=>{style:'color:#777'} %>
         </div>
       </div>
       <div class="col-md-4 col-sm-12 no-padding text-center" style='float:left;padding:0px;padding:auto; padding-top:50px; color:#777; height:100%'>
@@ -169,36 +145,6 @@
       <br>
   <%end%>
 </div>
-
-
-
-
-
-
-
-<div class="container modelagem" style='margin-top:40px; margin-bottom:20px;<%unless @modelagem_check%>display:none<%end%>'>
-<p style='color:#777'>Existem vários sites em que você pode encontrar modelos já prontos. Os principais são:</p>
-
-<div class='row' style='padding-top:30px;padding-bottom:40px'>
-  <div class='col-md-3 text-center'>
-    <a href='https://www.thingiverse.com/'><img src="https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/thingiverse-logo-2015.png" alt="beeprinted-impressão-3d" height="55" title='Thingiverse' style='padding-top:20px'></a>
-  </div>
-  <div class='col-md-3 text-center'>
-    <a href='https://www.myminifactory.com/'><img src="https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/logo-small.png" alt="beeprinted-impressão-3d" title='MyMiniFactory' style='width:100%;padding-top:25px'></a>
-  </div>
-  <div class='col-md-3 text-center'>
-    <a href='https://cults3d.com/'><img src="https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/2.-Logo-Cults_horizontal.png" alt="beeprinted-impressão-3d" height="55" title='Cults 3D' style='padding-top:20px'></a>
-  </div>
-  <div class='col-md-3 text-center'>
-    <a href='https://www.yeggi.com/'><img src="https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/logo-yeggi.gif" alt="beeprinted-impressão-3d" height="55" title='Yeggi' style='padding-top:20px'></a>
-  </div>
-
-</div>
-
-
-<p style='color:#777'>Caso queira um modelo personalizado, existem Softwares destinados a isso. SolidWorks, Fusion 360, ZBrush, Blender, SketchUp, são exemplos de alguns.</p>
-
-<p style='color:#777'>Qualquer dúvida, entre em contato conosco em contato@beeprinted.com.br.</p>
 </section>
 
 
@@ -216,20 +162,21 @@
 
 <%= content_for(:javascript) do %>
 <script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>
+
 <script>
 $(document).ready(function(){
-  val = $('#orcamento_array').val();
+  val = $('#modeling_array').val();
   Dropzone.autoDiscover = false;
   var ids = [];
-  <%if @orcamento.arquivos.any?%>
-    <%@orcamento.arquivos.each do |arquivo| %>
-      ids.push(<%=arquivo.id%>);
+  <%if @modeling.references.any?%>
+    <%@modeling.references.each do |reference| %>
+      ids.push(<%=reference.id%>);
     <%end%>
   <%end%>
-  $('#orcamento_array').val(ids);
+  $('#modeling_array').val(ids);
 
   console.log("ASNAKD");
-  console.log($('#orcamento_array').val());
+  console.log($('#modeling_array').val());
 
   $('.deletar-fora').click(function(){ 
 
@@ -240,12 +187,12 @@ $(document).ready(function(){
           'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       },
         type: 'DELETE',
-        url: '/arquivo/' + iddeletar,
+        url: '/reference/' + iddeletar,
         success: function(data){
           deletarID = 'deletar-' + iddeletar;
           $('#'+deletarID).hide();
           ids.splice( $.inArray(iddeletar,ids) ,1 );
-          $('#orcamento_array').val(ids);
+          $('#modeling_array').val(ids);
         }
       });
   });
@@ -257,14 +204,13 @@ $(document).ready(function(){
       }
   };
   // grap our upload form by its id
-  $("#new_arquivo").dropzone({
+  $("#new_reference").dropzone({
     // restrict image size to a maximum 1MB
     maxFilesize: 60,
     timeout: 0,
-    acceptedFiles: ".stl, .STL, .obj, .OBJ",
     // changed the passed param to one accepted by
     // our rails app
-    paramName: "arquivo[attachment]",
+    paramName: "reference[attachment]",
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
@@ -280,22 +226,9 @@ $(document).ready(function(){
             $('#button-orcamento').hide();
             $('#antesdoupload').fadeIn();
             console.log("Adicionado");
-            console.log(file);
-        });
-        this.on("error", function (file, errorMessage) {
-            file.previewElement.innerHTML = "";
-            var extensao = file.name.split('.').pop();
-            if ((extensao != 'stl')&&((extensao != 'STL'))&&((extensao != 'OBJ'))&&(extensao != 'obj')){
-              $('#messagem_erro').text("Arquivos "+extensao+" não são suportados. Faça o upload em um dos seguintes formatos: STL ou OBJ. Caso não possua, altere a opção na etapa 1.");
-              $('#error_alert').show();
-            }
-            else{
-              $('#messagem_erro').text("Algum erro ocorreu no envio deste arquivo. Por favor tente novamente ou entre em contato em contato@beeprinted.com.br");
-              $('#error_alert').show();
-            }
         });
       },
-    // if the upload was successfu
+    // if the upload was successful
     success: function(file, response){
       // find the remove button link of the uploaded file and give it an id
       // based of the fileID response from the server
@@ -303,7 +236,8 @@ $(document).ready(function(){
       deletarId = 'deletar-' + response.fileID;
       $(file.previewTemplate).find('.dz-image').parent().attr('id', deletarId);
       ids.push(response.fileID);
-      $('#orcamento_array').val(ids);
+      $('#modeling_array').val(ids);
+      console.log($('#modeling_array').val());
       // add the dz-success class (the green tick sign)
       $(file.previewElement).addClass("dz-success");
     },
@@ -313,11 +247,11 @@ $(document).ready(function(){
       var id = parseInt($(file.previewTemplate).find('.dz-remove').attr('id'));
       // make a DELETE ajax request to delete the file
       $.ajax({
-      	headers: {
-        	'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-    	},
+        headers: {
+          'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
         type: 'DELETE',
-        url: '/arquivo/' + id,
+        url: '/reference/' + id,
         success: function(data){
           console.log(data.message);
           deletarID = 'deletar-' + id;
@@ -325,7 +259,7 @@ $(document).ready(function(){
           console.log(ids);
           console.log(id);
           ids.splice( $.inArray(id,ids) ,1 );
-          $('#orcamento_array').val(ids);
+          $('#reference_array').val(ids);
         }
       });
     }
