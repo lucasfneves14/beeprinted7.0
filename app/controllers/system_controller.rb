@@ -69,7 +69,7 @@ class SystemController < ApplicationController
 
 		respond_to do |format|
 		  format.html
-		  format.xls
+		  format.xls { headers["Content-Disposition"] = "attachment; filename=\"relatorio_system_#{@mes_num}.xls\"" }
 		end
 
 
