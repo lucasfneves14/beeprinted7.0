@@ -10,25 +10,46 @@
 
 <div class="content">
   <h3>Localização dos pedidos de orçamento</h3>
-  <div class="dropdown">
-    <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
-    </a>
-    <div class="user-menu dropdown-menu">
-      <a class="nav-link" href="<%=request.path%>?mes=1">Janeiro</a>
-      <a class="nav-link" href="<%=request.path%>?mes=2">Fevereiro</a>
-      <a class="nav-link" href="<%=request.path%>?mes=3">Março</a>
-      <a class="nav-link" href="<%=request.path%>?mes=4">Abril</a>
-      <a class="nav-link" href="<%=request.path%>?mes=5">Maio</a>
-      <a class="nav-link" href="<%=request.path%>?mes=6">Junho</a>
-      <a class="nav-link" href="<%=request.path%>?mes=7">Julho</a>
-      <a class="nav-link" href="<%=request.path%>?mes=8">Agosto</a>
-      <a class="nav-link" href="<%=request.path%>?mes=9">Setembro</a>
-      <a class="nav-link" href="<%=request.path%>?mes=10">Outubro</a>
-      <a class="nav-link" href="<%=request.path%>?mes=11">Novembro</a>
-      <a class="nav-link" href="<%=request.path%>?mes=12">Dezembro</a>
-    </div>
-  </div> 
+  <div class="row" style='margin:0px'>
+            <div class="dropdown" style='float:left'>
+                <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%=@mes%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </a>
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="<%=request.path%>?mes=1&ano=<%=@ano%>">Janeiro</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=2&ano=<%=@ano%>">Fevereiro</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=3&ano=<%=@ano%>">Março</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=4&ano=<%=@ano%>">Abril</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=5&ano=<%=@ano%>">Maio</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=6&ano=<%=@ano%>">Junho</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=7&ano=<%=@ano%>">Julho</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=8&ano=<%=@ano%>">Agosto</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=9&ano=<%=@ano%>">Setembro</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=10&ano=<%=@ano%>">Outubro</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=11&ano=<%=@ano%>">Novembro</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=12&ano=<%=@ano%>">Dezembro</a>
+                </div>
+            </div> 
+            <div class="dropdown" style='float:left; margin-left:10px'>
+                <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%=@ano%> <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </a>
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2019">2019</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2020">2020</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2021">2021</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2022">2022</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2023">2023</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2024">2024</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2025">2025</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2026">2026</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2027">2027</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2028">2028</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2029">2029</a>
+                    <a class="nav-link" href="<%=request.path%>?mes=<%=@mes_num%>&ano=2030">2030</a>
+                </div> 
+            </div>
+            </div> 
   <hr>
   <a href=<%=system_localizacao_path(mes: @mes_num)%>><button type="button" class="btn <%if @fechado || @conversao || @faturamento%>btn-outline-secondary<%else%>btn-outline-link<%end%>">Pedidos</button></a>
   <a href=<%=system_localizacao_path(mes: @mes_num,fechado: true)%>><button type="button" class="btn <%if @fechado%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Fechado</button></a>

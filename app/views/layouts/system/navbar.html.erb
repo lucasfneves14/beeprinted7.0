@@ -113,7 +113,7 @@
                             <i class="menu-icon fa fa-bar-chart"></i>Análise 
                         </a>
                         <ul class="sub-menu children dropdown-menu">           
-                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href=<%=system_localizacao_path(mes: Date.today.strftime("%m"))%>>Localização</a></li>
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href=<%=system_localizacao_path(mes: Date.today.strftime("%m"),ano: Date.today.strftime("%Y"))%>>Localização</a></li>
                             <li><i class="fa fa-user" aria-hidden="true"></i><a href=<%=system_usuarios_path%>>Usuários</a></li>
                         </ul>
                     </li>
@@ -122,7 +122,7 @@
                             <i class="menu-icon fa fa-lightbulb-o"></i>Farol 
                         </a>
                         <ul class="sub-menu children dropdown-menu">           
-                            <li><i class="fa fa-bar-chart"></i><a href=<%=system_farol_path(mes: Date.today.strftime("%m"))%>>Atendimento</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href=<%=system_farol_path(mes: Date.today.strftime("%m"),ano: Date.today.strftime("%Y"))%>>Atendimento</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -5,8 +5,10 @@ class SystemController < ApplicationController
 	def index
 		if params[:mes]
 			@mes = params[:mes]
+			@ano = params[:ano]
 		else
 			@mes = Date.today.strftime("%m")
+			@ano = Date.today.strftime("%Y")
 		end 
 
 		if params[:email]
@@ -28,16 +30,13 @@ class SystemController < ApplicationController
 			@modelagens = Modeling.where("'#' || identificador || ' ' || email || ' ' || name || ' ' || sobrenome ILIKE ?", "%#{query}%")
 			@adicionados = Adicionado.where("'#' || identificador || ' ' || email || ' ' || name || ' ' ILIKE ?", "%#{query}%")
 		else
-
-			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+			@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
+			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
+			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
 		end
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 		
-
-		@contatos = Contato.where('extract(month  from created_at) = ?', @mes)
 		@adicionado = Adicionado.new
 		
 		@mes_num = @mes
@@ -81,15 +80,16 @@ class SystemController < ApplicationController
 	def localizacao
 
 		@mes = params[:mes]
+		@ano = params[:ano]
 
 		@estados = Array.new
 
 		@fechado = params[:fechado]
 		@conversao = params[:conversao]
 		@faturamento = params[:faturamento]
-		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
-		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
-		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		@orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+		@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+		@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 		estados_nomes = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", 
@@ -168,10 +168,11 @@ class SystemController < ApplicationController
 		######### GERAL (ATUAL) #########
 
 		@mes = params[:mes].to_i
+		@ano = params[:ano].to_i
 
-		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
-		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
-		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where.not(status: 'Cancelado')
+		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
@@ -277,10 +278,16 @@ class SystemController < ApplicationController
 ######################################################################################################################################
 		
 		######### GERAL (ANTERIOR) #########
+		if @mes == 1
+			orcamentos = Orcamento.where('extract(month  from created_at) = ?', 12).where('extract(YEAR  from created_at) = ?', @ano-1).where.not(status: 'Cancelado')
+			modelagens = Modeling.where('extract(month  from created_at) = ?', 12).where('extract(YEAR  from created_at) = ?', @ano-1).where.not(status: 'Cancelado')
+			adicionados = Adicionado.where('extract(month  from created_at) = ?', 12).where('extract(YEAR  from created_at) = ?', @ano-1).where.not(status: 'Cancelado')
+		else
+			orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+			modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
+			adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1).where('extract(YEAR  from created_at) = ?', @ano).where.not(status: 'Cancelado')
 
-		orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
-		modelagens = Modeling.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
-		adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes-1).where.not(status: 'Cancelado')
+		end
 
 		planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
