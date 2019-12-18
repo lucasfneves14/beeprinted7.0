@@ -1,31 +1,151 @@
-<div class="content">
+<style>
+.Product-List__wrapper::after {
+    content: '';
+    height: 0;
+    display: inline-block;
+    width: 100%;
+}
+.Product-List {
+    list-style: none;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+
+.Product-List__item {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+    display: block;
+    padding: 10px 10px 0;
+    border-bottom: 1px solid #f4f2f0;
+    margin-top:10px;
+}
+.Product-List__wrapper {
+    text-align: justify !important;
+    text-justify: distribute;
+    font-size: 0;
+    margin-bottom: 10px;
+}
+.Product-List__column {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Product-List__image-background {
+    display: inline-block;
+    background: #f4f2f0;
+    border-radius: 3px;
+}
+.Product-List__image-background img {
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.Product-List__image--profile-thumb {
+    width: 90px;
+    height: 95px;
+}
+.Product-List__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 107px;
+    border-radius: 3px;
+}
+.Product-List__content {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+.Product-List__content__date {
+    margin: 0 0 8px;
+    font: 400 14px/16px "Proxima Nova", sans-serif;
+    color: #a6a39f;
+}
+.Product-List__content__title {
+    max-width: 280px;
+    margin: 0 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: 600 16px/22px "Proxima Nova", sans-serif;
+    color: #5b5855;
+}
+.Product-List__content__title:last-child {
+    margin-bottom: 0;
+}
+
+.Product-List__content__title {
+    max-width: 280px;
+    margin: 0 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: 600 16px/22px "Proxima Nova", sans-serif;
+    color: #5b5855;
+}
+.Product-List__status {
+    display: inline-block;
+    width: 185px;
+    vertical-align: middle;
+    margin-right: 15px;
+    font: 400 14px "Proxima Nova", sans-serif;
+    color: #7d7a77;
+    text-align: left;
+}
+.Product-List__status__label {
+    display: inline-block;
+    width: calc(100% - 39px);
+    vertical-align: middle;
+}
+
+
+</style>
+<div class="content" style='text-align: justify;'>
   <h3>Produção</h3>
   <hr>
-  <div class="animated fadeIn w3-center">
-    <div class="row justify-content-md-center">
-    	<%@producao.each do |producao|%>
-    	<div class='col-lg-4 col-md-6'>
-    	<a href="<%=system_producao_show_path(producao.identificador)%>">
-    	<div class="card">
-    		<div class="row stat-widget-five">
-				<div class='col-lg-4 col-md-4 card-body' style='background-color:#009fab;color:white'><strong>
-				#<%=producao.identificador%></strong>
-				</div>
-				<div class='col-lg-2 col-md-2 card-body'>
-				<%=producao.items.count%>
-				</div>
-				<div class='col-lg-2 col-md-2 card-body'>
-				<%=producao.tempo_impressao%>h
-				</div>
-				<div class='col-lg-4 col-md-4 card-body'>
-				<%=producao.prazo_final%>
-				</div>
-			</div>
-    	</div>
-    	</a>
-    	</div>
-    	<%end%>
+  <div class="animated fadeIn w3-center" style='text-align: justify;'>
+    <ul class="Product-List js-ui-infinite-scroll" data-infinite-scroll-auto-init="false"> 
+    <%@producao.each do |producao|%>
+    <li class="Product-List__item card" data-kind="unit" data-id="23837144" data-url-details="/perfil/minha-lojinha/vendidos/detalhes/23837144"> 
+    	<div class="Product-List__wrapper"> 
+    		<div class="Product-List__column Product-List__column--product"> 
+    			<a class="Product-List__image-background" href="/p/drogon-3d-game-of-thrones-20213901"> 
+    				<img class="Product-List__image Product-List__image--profile-thumb" src="https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/3dicon.png" alt="Czm6ly9wag90b3muzw5qb2vplmnvbs5ici9wcm9kdwn0cy82nzexotewlzuxmdzlndriymu0odlkytu3owu4owjlyzdlymfkmzuwlmpwzw"> 
+    			</a> 
+    			<div class="Product-List__content"> 
+    				<p class="Product-List__content__date"> <%=producao.created_at.strftime("%d/%m/%Y")%> </p> 
+    				<p class="Product-List__content__title hl-lowercase" title="Drogon 3D Game of Thrones"> Pedido #<%=producao.identificador%> </p> 
+    				<p class="Product-List__content__title"> R$ <%=producao.valor%> </p> 
+    			</div> 
+    		</div>
+    		<div class="Product-List__column"> 
+    			<div class="Product-List__column Product-List__column--status"> 
+    				<div class="Product-List__status"> 
+    					<span class="Product-List__status__label"> <%=producao.tempo_impressao%>h de impressao </span> 
+    				</div> 
+    			</div> 
+    		</div>  
+    		<div class="Product-List__column"> 
+    			<div class="Product-List__column Product-List__column--status"> 
+    				<div class="Product-List__status"> 
+    					<span class="Product-List__status__label"> Prazo: <%=producao.prazo_final%> </span> 
+    				</div> 
+    			</div> 
+    		</div> 
+    		<div class="Product-List__column"> 
+    			<div class="Product-List__column Product-List__column--status"> 
+    				<div class="Product-List__status"> 
+    					<span class="Product-List__status__label"> Em Produçao </span> 
+    				</div> 
+    			</div> 
+    		</div> 
+    	</div> 
+    </li>
+    <%end%>
 
-    </div>
+    </ul>
   </div>
 </div>
