@@ -1,0 +1,31 @@
+<div class="content">
+  <h3>Produção</h3>
+  <hr>
+  <div class="animated fadeIn w3-center">
+    <div class="row justify-content-md-center">
+    	<%@producao.each do |producao|%>
+    	<div class='col-lg-4 col-md-6'>
+    	<a href="<%=system_producao_show_path(producao.identificador)%>">
+    	<div class="card">
+    		<div class="row stat-widget-five">
+				<div class='col-lg-4 col-md-4 card-body' style='background-color:#009fab;color:white'><strong>
+				#<%=producao.identificador%></strong>
+				</div>
+				<div class='col-lg-2 col-md-2 card-body'>
+				<%=producao.items.count%>
+				</div>
+				<div class='col-lg-2 col-md-2 card-body'>
+				<%=producao.tempo_impressao%>h
+				</div>
+				<div class='col-lg-4 col-md-4 card-body'>
+				<%=producao.prazo_final%>
+				</div>
+			</div>
+    	</div>
+    	</a>
+    	</div>
+    	<%end%>
+
+    </div>
+  </div>
+</div>

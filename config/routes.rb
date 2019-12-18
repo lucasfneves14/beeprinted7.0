@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'system/avaliacao', to: 'avaliacoes#show', as: :avaliacao
   patch 'system/avaliacao/:id', to: 'avaliacoes#update', as: :avaliacao_update
   patch 'system/enviar-avaliacao/:id', to: 'system#enviar_avaliacao', as: :avaliacao_enviar
+  get 'system/producao', to: 'system#producao', as: :system_producao
+  get 'system/producao/:id', to: 'system#producao_show', as: :system_producao_show
 
 
 

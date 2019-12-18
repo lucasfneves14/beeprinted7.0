@@ -119,12 +119,21 @@
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                            <i class="menu-icon fa fa-lightbulb-o"></i>Farol 
+                            <i class="menu-icon fa fa-lightbulb-o"></i>Farol
                         </a>
                         <ul class="sub-menu children dropdown-menu">           
                             <li><i class="fa fa-bar-chart"></i><a href=<%=system_farol_path(mes: Date.today.strftime("%m"),ano: Date.today.strftime("%Y"))%>>Atendimento</a></li>
                         </ul>
                     </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon fa fa-cubes"></i>Produção
+                        </a>
+                        <ul class="sub-menu children dropdown-menu">           
+                            <li><i class="fa fa-cube"></i><a href=<%=system_producao_path%>>Em Aberto</a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

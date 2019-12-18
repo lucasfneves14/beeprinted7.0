@@ -583,7 +583,25 @@ class SystemController < ApplicationController
 	end
 
 
+	def producao
+		orcamentos = Orcamento.where(status: 'Fechado')
+		modelagens = Modeling.where(status: 'Fechado')
+		adicionados = Adicionado.where(status: 'Fechado')
 
+		@producao = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
+
+	end
+
+	def producao_show
+		orcamento = Orcamento.find_by(identificador: params[:id])
+		if orcamento != nil
+			orcamento = Modeling.find_by(identificador: params[:id])
+		end
+		if orcamento != nil
+			orcamento = Adicionado.find_by(identificador: params[:id])
+		end
+		
+	end
 
 
 
