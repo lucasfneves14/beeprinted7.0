@@ -1,0 +1,31 @@
+        <div class="content">
+        <h3>Jobs Disponíveis</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                  <%if @jobs.any?%>
+                  <%@jobs.each do |job|%>
+                    <%= render 'job_card', job: job %>
+                  <%end%>
+                  <%else%>
+                    <div class='content'><p>Não existe nenhuma oferta de Job para você no momento. Fique atento a novos Jobs</p></div>
+                  <%end%>
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        <div class="content">
+        <h3>Meus Jobs em Produção</h3>
+        <hr>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <%if @producao.any?%>
+                        <%@producao.each do |producao|%>
+                            <%= render 'job_card', job: producao %>
+                        <%end%>
+                    <%else%>
+                        <div class='content'><p>Você não possui nenhum Job em produção no momento. Fique atento a novos Jobs</p></div>
+                    <%end%>
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->

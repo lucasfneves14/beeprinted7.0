@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'system/avaliacao', to: 'avaliacoes#show', as: :avaliacao
   patch 'system/avaliacao/:id', to: 'avaliacoes#update', as: :avaliacao_update
   patch 'system/enviar-avaliacao/:id', to: 'system#enviar_avaliacao', as: :avaliacao_enviar
+  get 'system/jobs', to: 'system#jobs', as: :system_jobs
+  post 'system/jobs/:id/aceitar', to: 'system#aceitar_job', as: :system_jobs_aceitar
   get 'system/producao', to: 'system#producao', as: :system_producao
   get 'system/producao/:id', to: 'system#producao_show', as: :system_producao_show
 
@@ -53,11 +55,22 @@ Rails.application.routes.draw do
   resources :profiles
   resources :posts,:path => "projeto", :controller=>"posts"
   post 'images', to: 'images#create', as: :images
+
+
   post 'arquivos', to: 'arquivos#create', as: :arquivos
+  post 'items', to: 'items#create', as: :items
+
+
+
   post 'references', to: 'references#create', as: :references
   post 'contatos', to: 'contatos#create', as: :contatos
   delete 'image/:id', to: 'images#destroy', as: :image
+
+
   delete 'arquivo/:id', to: 'arquivos#destroy', as: :arquivo
+  delete 'item/:id', to: 'items#destroy', as: :item
+
+
   delete 'reference/:id', to: 'references#destroy', as: :reference
   get "test_exception_notifier" => "application#test_exception_notifier"
   get 'politica-de-privacidade', to: 'politicas#privacidade', as: :politica_privacidade

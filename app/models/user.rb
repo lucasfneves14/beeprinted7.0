@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :orcamentos, dependent: :destroy
   has_many :modelings, dependent: :destroy
+  has_many :adicionados, dependent: :destroy
 
   validates :sobrenome, presence: true
   validates :name, presence: true

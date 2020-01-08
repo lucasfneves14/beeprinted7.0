@@ -1,0 +1,33 @@
+<div class="col-sm-3">
+    <div class="card" style='color:#616161'>
+      <a href=<%=system_producao_show_path(job.identificador)%>>
+      <div class="card-body text-center" style='background-color:#009fab;color:white'>
+      <h2>#<%=job.identificador%></h2>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title mb-3" style='margin:0 !important'><%=job.name%></h4>
+      </div>
+      </a>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="fa fa-cubes"></i> N° peças<span class="pull-right"><%=job.items.count%></span>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-hourglass-start"></i> Tempo total <span class="pull-right"><%=job.tempo_impressao%>h</span>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-balance-scale"></i> Massa Total <span class="pull-right"><%massa = 0%><%job.items.each do |item|%><%massa = massa + item.massa%><%end%><%=massa%>g</span>
+        </li>
+        <li class="list-group-item" style='background-color:#3F315D;color:white'>
+          <i class="fa fa-clock-o"></i> Prazo <span class="pull-right"><strong><%=job.prazo_final%></strong></span>
+        </li>
+        <%if job.status == "Fechado"%>
+        <li class="list-group-item" style='padding:0px;'>
+          <%= simple_form_for job, :url => system_jobs_aceitar_path(job.identificador), :method => :post do |f|%>
+            <%= f.button :submit, "Aceitar Job", style:'background-color:#00c292; width:100%;color:white;font-weight:bold'%>
+          <%end%>
+        </li>
+        <%end%>
+      </ul>
+    </div>
+</div>

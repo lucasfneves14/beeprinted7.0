@@ -24,7 +24,7 @@ class OrcamentosController < ApplicationController
   # GET /orcamentos/new
   def new
     @orcamento = Orcamento.new
-    @arquivo = Arquivo.new
+    @item = Item.new
     @modeling = Modeling.new
     @reference = Reference.new
     if current_user
@@ -87,9 +87,9 @@ class OrcamentosController < ApplicationController
 
     array = @orcamento.array.split(",")
     array.each do |file|
-      if Arquivo.where(id: file).any?
-        arquivo = Arquivo.find(file)
-        @orcamento.arquivos << arquivo
+      if Item.where(id: file).any?
+        item = Item.find(file)
+        @orcamento.items << item
       end
     end
 
@@ -103,12 +103,12 @@ class OrcamentosController < ApplicationController
       flash[:success] = "Seu pedido de orçamento foi enviado! Em breve, responderemos por email."
       redirect_to orcamento_sucesso_path
     else
-      if @orcamento.arquivos.any?
+      if @orcamento.items.any?
         flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Por favor, cheque o formulário."
       else
         flash[:alert] = "Seu pedido de orçamento não pode ser salvo! Nenhum arquivo foi enviado ou houve um erro no envio dos arquivos."
       end
-      @arquivo = Arquivo.new
+      @item = Item.new
       @reference = Reference.new
       @modeling = Modeling.new
       @orcamento_check = 1

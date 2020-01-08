@@ -1,6 +1,33 @@
 <!-- COMENTÁRIO:
   Dentro da partial todo conteúdo deve estar dentro de uma div .nested-fields
 -->
+
+<style>
+
+.new-button {
+    display: inline-block;
+    padding: 6px 8px; 
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #009fab;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  top: 6px;
+  left: 0;
+  font-size: 15px;
+  color: rgb(153,153,153);
+}
+.button-wrap {
+  position: relative;
+}
+</style>
+
+
 <div class="nested-fields">
   <div class="field">
   <div class='row form-group' style="margin-bottom:0px">
@@ -37,6 +64,14 @@
     <div class="col text-center" style="padding:0px; padding-right:15px;color:red">
       <strong><%= link_to_remove_association "x", f %></strong>
     </div>
+  </div>
+  <div class='row form-group button-wrap' style="margin:0">
+  <%if f.object.attachment.url != nil%>
+  <%=f.label :attachment, "#{File.basename(f.object.attachment.url)}",class:"new-button"%>
+  <%else%>
+    <%=f.label :attachment, "Adicionar Arquivo",class:"new-button"%>
+  <%end%>
+  <%= f.input :attachment,label:false, :input_html =>{class:"custom-file-input"}%>
   </div>
   </div>
   <!-- COMENTÁRIO:
@@ -156,4 +191,17 @@
 
     $('.valor_orcamento').val(valor_orcamento);
   }
+</script>
+<script>
+$("[type=file]").on("change", function(){
+  // Name of file and placeholder
+  var file = this.files[0].name;
+  var dflt = $(this).attr("placeholder");
+  if($(this).val()!=""){
+    $(this).closest(".button-wrap").find('.new-button').text(file);
+  } else {
+    $(this).closest(".button-wrap").find('.new-button').text(dflt);
+  }
+});
+
 </script>

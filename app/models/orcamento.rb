@@ -2,15 +2,17 @@ class Orcamento < ApplicationRecord
 	require 'csv'
 	attr_accessor :array
 	has_many :arquivos, -> { order(:attachment => :asc) }, dependent: :destroy
-	has_many :items, inverse_of: :orcamento, dependent: :destroy
+	has_many :items, -> { order(:attachment => :asc) }, inverse_of: :orcamento, dependent: :destroy
 	accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
 	has_many :servicos, inverse_of: :orcamento, dependent: :destroy
 	accepts_nested_attributes_for :servicos, reject_if: :all_blank, allow_destroy: true
 
 
-	#belongs_to :user
+	belongs_to :user, optional:true
 
-	validates :arquivos, presence: true
+	has_many :job_notifications, dependent: :destroy
+
+	validates :items, presence: true
 	validates :name, presence: true
 	validates :sobrenome, presence: true
 	validates :estado, presence: true
