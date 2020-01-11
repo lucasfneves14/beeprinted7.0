@@ -67,7 +67,18 @@
 
   <div class="header" style='margin-bottom:30px'>
     <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> Faça o upload dos arquivos e descreva seu projeto</h4>
-    <p style='color:#777'>Caso seus arquivos estejam compactados em .zip ou .rar, favor descompactar antes de enviar.</p>
+
+    <div class='row'>
+      <div class='col-md-7'>  
+        <p style='color:#777; margin-bottom:0px'><strong>Tamanho Máximo:</strong> 60MB/arquivo</p>
+        <p style='color:#777'><strong>Dimensão Máxima:</strong> 280 x 280 x 380 mm</p>
+      </div>
+      <div class='col-md-5'>  
+        <p style='color:#777; margin-bottom:0px'><strong><span style='color:red'>*</span>Não envie arquivos compactados como .ZIP e .RAR.</strong></p>
+        <p style='color:#777; margin-bottom:0px'><strong><span style='color:red'>*</span>Envie peças diferentes em arquivos separados.</strong></p>
+        <p style='color:#777; margin-bottom:0px'><strong><span style='color:red'>*</span>Certifique-se que os arquivos estão na escala correta.</strong></p>
+      </div>
+    </div>
   </div> 
   <div class="alert alert-danger" style='display:none' id='error_alert'>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -199,7 +210,7 @@
 
     <div id='antesdoupload' style=''>
         <div class="form-group text-center" id="formgroup2">
-          <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
+          <%= f.input :description, label: false, placeholder: 'Preencha esse campo com detalhes do seu projeto para nos ajudar a realizar a cotação. Aproveite para informar caso tenha preferências de cor, material ou configurações técnicas.' , :input_html =>{:rows => "5"}%>
         </div>
     </div>
 
@@ -237,6 +248,25 @@
     </div>
       <br>
       <br>
+      <h2 class='text-center' style='color:#777'><strong>Dúvidas Frequentes</strong></h2>
+
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas1" ).is(":visible")){$( "#duvidas1" ).slideUp()}else{$( "#duvidas1" ).slideDown()}'>Qual programa devo usar para criar o 3D?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas1' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Você pode utilizar qualquer programa de modelamento tridimensional do tipo CAD, existem diversas alternativas e você poderá utilizar o que melhor lhe atende. Alguns exemplos: AutoCad, Blender, ZBrush, Rhyno, 3D Max, Modo, Cinema 4D, SolidWorks, Fusion 360 entre uma infinidade de outros.</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas2" ).is(":visible")){$( "#duvidas2" ).slideUp()}else{$( "#duvidas2" ).slideDown()}'>Possuo o 3D em outra extensao. Como obter um orçamento?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas2' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Infelizmente é necessário os arquivos na extensão .STL ou .OBJ para realizar o orçamento. Acontece que simulamos a impressão das peças através destes arquivos para obter o tempo de máquina e massa das peças.</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas3" ).is(":visible")){$( "#duvidas3" ).slideUp()}else{$( "#duvidas3" ).slideDown()}'>Como é calculado o preço e o prazo para minha peça?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas3' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>O cálculo base é de R$0,24/min + R$0,28/g. O tempo de impressão e massas são simulados à partir dos arquivos STL ou OBJ e são informados na cotação. Além disso, é aplicada uma escalonda de preço para maiores volumes, ou seja, quanto maior o tempo de impressão, mais barato o custo do minuto.</p> 
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>O prazo mínimo para produção é de 4 dias úteis contando à partir do dia seguinte ao fechamento do pedido, podendo variar de acordo com a fila de impressão e volume das peças. O prazo de envio é calculado pela plataforma dos correios de acordo com as preferências do cliente</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas4" ).is(":visible")){$( "#duvidas4" ).slideUp()}else{$( "#duvidas4" ).slideDown()}'>Quais sao as formas de pagamento disponíveis?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas4' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>O pagamento pode ser realizado via transferência bancária para o Banco do Brasil ou boleto e cartão de crédito através da plataforma do PagSeguro.</p>
+      </div>
       <br>
       <br>
       <br>
@@ -251,7 +281,23 @@
 
 
 <div class="container modelagem" style='margin-top:40px; margin-bottom:20px;<%unless @modelagem_check%>display:none<%end%>'>
-<p style='color:#777'>Existem vários sites em que você pode encontrar modelos já prontos. Os principais são:</p>
+  <p style='color:#777;font-size:18px'><strong>Atualmente não oferecemos serviços de Design para projetos de pessoa física, então é necessário possuir o arquivo 3D na extensão .STL ou .OBJ para utilizar os nossos serviços. Caso ainda não possua os arquivos 3D, você pode tomar um dos caminhos abaixo:</strong></p>
+
+  <h4 style='margin-top:30px;background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas21" ).is(":visible")){$( "#duvidas21" ).slideUp()}else{$( "#duvidas21" ).slideDown()}'>Pesquisar modelos 3D disponíveis online<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas21' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Alguns modeladores 3D disponibilizam os seus arquivos para download em sites como Thingverse, MyMiniFactory, Cults 3D e Yeggi. Geralmente os modelos mais complexos são pagos, mas é possível encontrar uma grande quantidade de modelos grátis nesses sites. </p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas22" ).is(":visible")){$( "#duvidas22" ).slideUp()}else{$( "#duvidas22" ).slideDown()}'>Contratar um modelador 3D<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas22' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Você pode encontrar modeladores 3D oferecendo seus serviços em redes sociais como Facebook e Instagram ou em plataformas de profissionais como o GetNinjas. Lembre de informar ao profissional que você que você deseja um modelo otimizado para impressão 3D!</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas23" ).is(":visible")){$( "#duvidas23" ).slideUp()}else{$( "#duvidas23" ).slideDown()}'>Modelar minhas próprias peças<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas23' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Você pode utilizar qualquer programa de modelamento tridimensional do tipo CAD, existem diversas alternativas e você poderá utilizar o que melhor lhe atende. Alguns exemplos: AutoCad, Blender, ZBrush, Rhyno, 3D Max, Modo, Cinema 4D, SolidWorks, Fusion 360 entre uma infinidade de outros.</p>
+      </div>
+
+
+
 
 <div class='row' style='padding-top:30px;padding-bottom:40px'>
   <div class='col-md-3 text-center'>
@@ -270,9 +316,8 @@
 </div>
 
 
-<p style='color:#777'>Caso queira um modelo personalizado, existem Softwares destinados a isso. SolidWorks, Fusion 360, ZBrush, Blender, SketchUp, são exemplos de alguns.</p>
+<p style='color:#777;font-size:18px'> <strong>Se ainda tiver dúvidas sobre como obter os seus arquivos 3D, entre em contato conosco no email contato@beeprinted.com.br e iremos te ajudar!</strong></p>
 
-<p style='color:#777'>Qualquer dúvida, entre em contato conosco em contato@beeprinted.com.br.</p>
 </section>
 
 
