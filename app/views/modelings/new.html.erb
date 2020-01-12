@@ -86,14 +86,14 @@
       <div class="header" style='margin-top:30px'>
         <h4 class="text-muted"><strong style='color:#009fab'>2.</strong> O que é o seu projeto?</h4>
       </div>
-      <%= f.input :tipo, label:false, prompt:"O que é o projeto", :collection => ["Protótipo", "Brindes", "Troféus","Maquete", "Mascote", "Reprodução de Peças","Jóias", "Outros"],:input_html=>{style:'width:80%;color:#777'} %>
+      <%= f.input :tipo, label:false, prompt:"O que é o seu projeto", :collection => ["Brinde corporativo", "Troféu","Projeto de engenharia (protótipo)", "Outros"],:input_html=>{style:'width:80%;color:#777'} %>
     </div>
     <div class="col-md-6 col-sm-12 no-padding" style='float:left;padding:0px;margin-bottom:20px'>
       <div class="header" style='margin-top:30px'>
         <h4 class="text-muted"><strong style='color:#009fab'>3.</strong> Para quando você precisa desse serviço?</h4>
       </div>
 
-      <%= f.input :prazo, prompt:"Prazo para produção", label:false, :collection => ["Hoje ou nos próximos dias", "Nos próximos 30 dias", "Nos próximos 3 meses", "Ainda não tenho previsão"],:input_html=>{style:'width:80%;color:#777'} %>
+      <%= f.input :prazo, prompt:"Prazo para produção", label:false,:input_html=>{style:'width:50%;color:#777'} %>
     </div>
     
     <div class="" style='margin-top:40px'>
@@ -102,7 +102,7 @@
 
     <div id='antesdoupload' style=''>
         <div class="form-group text-center" id="formgroup2">
-          <%= f.input :description, label: false, placeholder: 'Características, cor, tipo de material, preferências nas técnicas de prototipagem e/ou qualquer dúvida...' , :input_html =>{:rows => "5"}%>
+          <%= f.input :description, label: false, placeholder: 'Preencha esse campo com detalhes do seu projeto para nos ajudar a realizar a cotação. Aproveite para informar caso tenha preferências de cor, material ou configurações técnicas!' , :input_html =>{:rows => "5"}%>
         </div>
     </div>
     <div class="" style='margin-top:40px'>
@@ -139,6 +139,25 @@
     </div>
       <br>
       <br>
+      <h2 class='text-center' style='color:#777'><strong>Dúvidas Frequentes</strong></h2>
+
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas1" ).is(":visible")){$( "#duvidas1" ).slideUp()}else{$( "#duvidas1" ).slideDown()}'>Como é realizado o orçamento?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas1' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Caso já possua os arquivos 3D na extensão STL ou OBJ, basta nos enviar para realizarmos a simulação e obter o tempo de impressão e massa das peças. O cálculo base é de R$0,24/min + R$0,28/g. Além disso, é aplicada uma escalonada de preço para maiores volumes, ou seja, quanto maior o tempo de impressão, mais barato o custo do minuto.</p> 
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Caso necessite do serviço de modelagem, iremos ouvir atentamente e fazer várias perguntas que possam nos ajudar a melhor solução para sua demanda. Com isso, iremos preparar a cotação levando em consideração a complexidade da modelagem e a nossa estimativa para o tempo de impressão e massa das peças (seguindo o mesmo cálculo acima).</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas2" ).is(":visible")){$( "#duvidas2" ).slideUp()}else{$( "#duvidas2" ).slideDown()}'>É necessário um pedido mínimo?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas2' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Não é necessário um número mínimo de peças, por exemplo, mas possuímos um faturamento mínimo de R$200,00 por pedido. Ou seja, caso a cotação para a sua solicitação de orçamento tenha ficado abaixo desse valor, o valor cobrado para a execução do projeto será de R$200,00..</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas3" ).is(":visible")){$( "#duvidas3" ).slideUp()}else{$( "#duvidas3" ).slideDown()}'>Gostaria de ver como ficará meu projeto antes de produzí-lo. É possível?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas3' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Durante todo o processo de modelagem enviamos capturas de tela para que possa acompanhar e enviar seus feedbacks. A impressão só é autorizada após a aprovação do cliente.</p>
+      </div>
+      <h4 style='background-color:#c7d0d8; padding:10px;cursor:pointer' onclick='if ($( "#duvidas4" ).is(":visible")){$( "#duvidas4" ).slideUp()}else{$( "#duvidas4" ).slideDown()}'>A BEEPRINTED emite NF? Quais as condições de pagamento?<span style='float:right'><i class="fa fa-angle-down text-right" aria-hidden="true"></i></span></h4>
+      <div id='duvidas4' style='display:none;'>
+        <p style='color:#777;margin-top:20px;margin-bottom:20px;font-size:18px'>Sim! Basta enviar as informações cadastrais da empresa e enviamos a Nfe. O pagamento pode ser realizado via transferência bancária para o Banco do Brasil ou boleto e cartão de crédito através do PagSeguro.</p>
+      </div>
       <br>
       <br>
       <br>
@@ -162,6 +181,13 @@
 
 <%= content_for(:javascript) do %>
 <script src="https://s3.amazonaws.com/beeprinted-stls/Revisao_Bee7.0/Assets/JS/dropzone.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#modeling_prazo" ).datepicker({dateFormat: 'dd/mm/yy'});
+  } );
+</script>
 
 <script>
 $(document).ready(function(){
