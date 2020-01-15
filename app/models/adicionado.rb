@@ -9,6 +9,5 @@ class Adicionado < ApplicationRecord
 	has_many :job_notifications, dependent: :destroy
 
 	validates :name, presence: true
-	validates :email, presence: true
 	validates :responsavel, presence: true
 end
