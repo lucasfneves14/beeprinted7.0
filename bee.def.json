@@ -1,0 +1,145 @@
+{
+    "name": "Custom Beeprinted",
+    "version": 1,
+    "inherits": "fdmprinter",
+    "metadata": {
+        "visible": true,
+        "author": "Lucas Neves",
+        "manufacturer": "Beeprinted",
+        "file_formats": "text/x-gcode",
+        "preferred_quality_type": "draft"
+    },
+    "overrides":{
+        "layer_height":{
+            "default_value": 0.2
+        },
+        "layer_height_0":{
+            "default_value": 0.2
+        },
+        "support_enable":{
+            "default_value": true
+        },
+        "wall_line_count":{
+            "default_value":3
+        },
+        "top_layers":{
+            "default_value":3
+        },
+        "bottom_layers":{
+           "default_value":3 
+        },
+        "infill_line_distance":{
+            "default_value": 8
+        },
+        "infill_overlap_mm":{
+            "default_value": 0.1
+        },
+        "material_print_temperature":{
+            "default_value": 240
+        },
+        "material_diameter":{
+            "default_value":1.75
+        },
+        "material_initial_print_temperature":{
+            "default_value":230
+        },
+        "default_material_bed_temperature":{
+            "default_value": 110
+        },
+        "material_bed_temperature":{
+            "default_value":110
+        },
+        "material_bed_temperature_layer_0":{
+            "default_value": 100
+        },
+        "retraction_amount":{
+            "default_value":6
+        },
+        "retraction_retract_speed":{
+            "default_value":60
+        },
+        "speed_infill":{
+            "default_value":60
+        },
+        "jerk_enabled":{
+            "default_value":true
+        },
+        "travel_retract_before_outer_wall":{
+            "default_value":true
+        },
+        "retraction_hop_enabled":{
+            "default_value":true
+        },
+        "retraction_hop_only_when_collides":{
+            "default_value":true
+        },
+        "support_top_distance":{
+            "default_value":0.2
+        },
+        "support_bottom_distance":{
+            "default_value":0.2
+        },
+        "support_roof_enable":{
+            "default_value": true
+        },
+        "support_bottom_enable":{
+            "default_value":true
+        },
+        "support_roof_height":{
+            "default_value":0.4
+        },
+        "support_bottom_height":{
+            "default_value":0.4
+        },
+        "support_interface_skip_height":{
+            "default_value":0.2
+        },
+        "support_interface_skip_height":{
+            "default_value":0.2
+        },
+        "support_connect_zigzags":{
+            "default_value":false
+        },
+        "support_use_towers":{
+            "default_value":false
+        },
+        "support_wall_count":{
+            "default_value":0
+        },
+        "machine_width": {
+            "default_value": 300
+        },
+        "machine_height": {
+            "default_value": 400
+        },
+        "machine_depth": {
+            "default_value": 300
+        },
+        "machine_head_polygon": {
+            "default_value": [
+                [-30, 34],
+                [-30, -32],
+                [30, -32],
+                [30, 34]
+            ]
+        },
+        "machine_nozzle_size": {
+            "default_value": 0.4
+        },
+        "acceleration_travel":{
+            "default_value":500
+        },
+        "acceleration_wall_0":{
+            "default_value":500
+        },
+        "acceleration_wall_x":{
+            "default_value":500
+        },
+        "material_diameter":{
+            "default_value": 1.75
+        },
+        "infill_support_enabled":{
+            "default_value":true
+        }
+    }
+}
