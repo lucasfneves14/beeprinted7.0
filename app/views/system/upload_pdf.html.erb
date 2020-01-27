@@ -1107,7 +1107,7 @@ table td.flxHeading {background-color:#E7E7E7;text-align:center;border: 0px soli
 
 <%if @orcamento.desconto != 0%>
   <td class='flx12' style ='border-left:1px solid black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;font-size:10.5pt'> Desconto (<%=@orcamento.desconto%>%)</td>
-  <td class='flx13' style ='border-left:1px none black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;font-size:10.5pt;color:red'>- R$ <%='%.2f' % ((@orcamento.valor - @orcamento.frete)*100/(100 - @orcamento.desconto) - @orcamento.valor)%></td>
+  <td class='flx13' style ='border-left:1px none black;border-top:1px solid black;border-right:1px solid black;border-bottom:1px solid black;font-size:10.5pt;color:red'>- R$ <%='%.2f' % (@orcamento.valor*(1 + @orcamento.desconto/100.0) - @orcamento.valor)%></td>
 <%else%>
   <td class='flx10' style ='border-bottom:1px solid black;' colspan = '2' rowspan ='1'>VALOR DO OR&Ccedil;AMENTO &nbsp;</td>
 <%end%>
