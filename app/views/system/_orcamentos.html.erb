@@ -72,14 +72,9 @@
 
 
                                 <td>
-                                    <%if orcamento.class.name.demodulize == "Orcamento"%>
-                                        <a href=<%=system_upload_path(orcamento.id)%>>
-                                    <%elsif orcamento.class.name.demodulize == "Modeling"%>
-                                        <a href=<%=system_modelagem_path(orcamento.id)%>>
-                                    <%elsif orcamento.class.name.demodulize == "Adicionado"%>
-                                        <a href=<%=system_adicionado_path(orcamento.id)%>>
-                                    <%end%>
-                                    <span class='id'> #<%=orcamento.identificador%> </span>
+                                    <a href=<%=system_edit_path(orcamento.identificador)%>>
+                                        <span class='id'> #<%=orcamento.identificador%> </span>
+                                    </a>
                                 </td>
 
 

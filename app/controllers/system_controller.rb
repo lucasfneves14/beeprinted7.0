@@ -456,112 +456,55 @@ class SystemController < ApplicationController
 	end
 
 
-	def upload
-		@upload = Orcamento.includes(:arquivos).find(params[:id])
-		if @upload.frete == nil
-			@upload.frete = 0
-		end
-		if params[:format] != "pdf"
-			if !@upload.items.any?
-				@upload.arquivos.each do |arquivo|
-					@item = @upload.items.build
-					string = File.basename(arquivo.attachment.url)
-					@item.name = CGI.unescape(string)
-					#@item.remote_attachment_url = arquivo.attachment_url
-					#@item.save
-				end
+	def edit
+		@orcamento = Orcamento.includes(:arquivos).find_by(identificador: params[:id])
+		if @orcamento == nil
+			@orcamento = Modeling.find_by(identificador: params[:id])
+			if @orcamento == nil
+				@orcamento = Adicionado.find_by(identificador: params[:id])
 			end
 		end
-		@orcamento = @upload
+
+		if @orcamento.frete == nil
+			@orcamento.frete = 0
+		end
+		if params[:format] != "pdf"
+			if !@orcamento.items.any?
+				@item = @orcamento.items.build
+			end
+		end
 		respond_to do |format|
 		  format.html
 		  format.pdf do 
-		  	render pdf: "#{@upload.identificador}",
+		  	render pdf: "#{@orcamento.identificador}",
 		  	template: "system/upload_pdf.html.erb",
 		  	layout: false
 		  end
 		end
 	end
-
-	def modelagem
-		@modelagem = Modeling.find(params[:id])
-		if @modelagem.frete == nil
-			@modelagem.frete = 0
-		end
-		if params[:format] != "pdf"
-			if !@modelagem.items.any?
-				@item = @modelagem.items.build
-			end
-		end
-		@orcamento = @modelagem
-		respond_to do |format|
-		  format.html
-		  format.pdf do 
-		  	render pdf: "#{@modelagem.identificador}",
-		  	template: "system/upload_pdf.html.erb",
-		  	layout: false
-		  end
-		end
-	end
-
-
-	def adicionado
-    	@adicionado = Adicionado.find(params[:id])
-    	if @adicionado.frete == nil
-			@adicionado.frete = 0
-		end
-    	if params[:format] != "pdf"
-			if !@adicionado.items.any?
-				@item = @adicionado.items.build
-			end
-		end
-		@orcamento = @adicionado
-		respond_to do |format|
-		  format.html
-		  format.pdf do 
-		  	render pdf: "#{@adicionado.identificador}",
-		  	template: "system/upload_pdf.html.erb",
-		  	layout: false
-		  end
-		end
-  	end
-
-
-
-
 
 	def update
 		tipo = params[:tipo]
 		id = params[:id]
 		calculo = params[:calculo]
 		if tipo == "Orcamento"
-			@orcamento = Orcamento.find(params[:id])
+			@orcamento = Orcamento.find_by(identificador: id)
 			params = upload_params
-			path = system_upload_path(@orcamento)
-			path_pdf = system_upload_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Modeling"
-			@orcamento = Modeling.find(id)
+			@orcamento = Modeling.find_by(identificador: id)
 			params = modelagem_params
-			path = system_modelagem_path(@orcamento)
-			path_pdf = system_modelagem_path(@orcamento, format: "pdf")
 		end
 		if tipo == "Adicionado"
-			@orcamento = Adicionado.find(id)
+			@orcamento = Adicionado.find_by(identificador: id)
 			params = adicionado_params
-			path = system_adicionado_path(@orcamento)
-			path_pdf = system_adicionado_path(@orcamento, format: "pdf")
 		end
 
 		if @orcamento.status == "Proposta Env"
 			@orcamento.proposta_enviada = true
 		end
 		fechado = @orcamento.status
-		#puts "BBBBBBBBBBBBBBBBBBBBB"
-		#params[:items_attributes]["0"][:id] = 70
-		#puts params[:items_attributes][-1]
-		#puts "AAAAAAAAAAAAAAAAAAAAAA"
-		#puts params
+
 	    if @orcamento.update(params)
 		  	if @orcamento.status == "Fechado"
 		  		if @orcamento.prazo_final == ""
@@ -574,13 +517,13 @@ class SystemController < ApplicationController
 	      		flash[:success] = "Orçamento editado!"
 	      	end
 	      	if calculo
-	      		redirect_to(path_pdf)
+	      		redirect_to(system_edit_path(@orcamento.identificador, format: "pdf"))
 	      	else
-	      		redirect_to(path)
+	      		redirect_to(system_edit_path(@orcamento.identificador))
 	      	end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"
-	      render :upload
+	      render :edit
 	    end
 	end
 
@@ -654,13 +597,13 @@ class SystemController < ApplicationController
 		adicionado = Adicionado.find_by(identificador: identificador)
 		if orcamento
 			@pedido = orcamento
-			path = system_upload_path(@pedido)
+			path = system_edit_path(@pedido.identificador)
 		elsif modelagem
 			@pedido = modelagem
-			path = system_modelagem_path(@pedido)
+			path = system_edit_path(@pedido.identificador)
 		elsif orcamento
 			@pedido = adicionado
-			path = system_adicionado_path(@pedido)
+			path = system_edit_path(@pedido.identificador)
 		end
 		if @pedido.email
 			AvaliacaoMailer.avaliacao_email(@pedido).deliver

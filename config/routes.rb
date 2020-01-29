@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   get '/system', to:'system#index', as: :system
   post 'system/adicionados', to: 'adicionados#create', as: :adicionados
-  get 'system/uploads/:id', to:'system#upload', as: :system_upload
-  get 'system/modelagens/:id', to:'system#modelagem', as: :system_modelagem
-  get 'system/adicionados/:id', to:'system#adicionado', as: :system_adicionado
+  get 'system/orcamentos/:id', to:'system#edit', as: :system_edit
+  #get 'system/modelagens/:id', to:'system#modelagem', as: :system_modelagem
+  #get 'system/adicionados/:id', to:'system#adicionado', as: :system_adicionado
   patch 'system/orcamentos/:id', to: 'system#update', as: :system_update
   get 'system/localizacao', to:'system#localizacao', as: :system_localizacao
   get 'system/farol', to:'system#farol', as: :system_farol
