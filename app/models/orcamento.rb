@@ -1,5 +1,8 @@
 class Orcamento < ApplicationRecord
 	require 'csv'
+	default_scope {where("ativo = true")}
+
+
 	attr_accessor :array
 	has_many :arquivos, -> { order(:attachment => :asc) }, dependent: :destroy
 	has_many :items, -> { order(:attachment => :asc) }, inverse_of: :orcamento, dependent: :destroy
@@ -19,6 +22,11 @@ class Orcamento < ApplicationRecord
 	validates :email, presence: true
 	validates_format_of :email,:with => Devise::email_regexp
 	validates :cep, presence: true, if: :fora_de_brasilia?
+
+
+	amoeba do
+		enable
+	end
 
 
 	def fora_de_brasilia?

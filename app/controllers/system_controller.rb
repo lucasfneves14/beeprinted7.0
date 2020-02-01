@@ -465,6 +465,10 @@ class SystemController < ApplicationController
 			end
 		end
 
+		if params[:versao]
+			@orcamento = @orcamento.class.unscoped.where(identificador: @orcamento.identificador).find_by(versao: params[:versao])
+		end
+
 		if @orcamento.frete == nil
 			@orcamento.frete = 0
 		end

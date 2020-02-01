@@ -102,6 +102,29 @@ body{
         </div>
 
         <div class="card">
+            <div class="card-header" style=color:green>
+                <strong>Opções de Versão</strong>
+            </div>
+            <div class="card-body card-block form-inline">
+
+                <%@orcamento.class.unscoped.where(identificador: @orcamento.identificador).order('created_at').each do |orcamento|%>
+
+                    <%if orcamento.ativo%>
+                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="margin:5px;font-weight:bold;font-size:11px;" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
+                    <%else%>
+                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="background-color:white;margin:5px;font-weight:bold;font-size:11px;border:2px solid #e2e2e2;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
+                    <%end%>
+                <%end%>
+                <%= simple_form_for @orcamento, :url => system_version_path(@orcamento.identificador), :method => :post do |f|%>
+                            <%= f.button :submit, "Criar nova versão", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center"%>
+                <%end%>
+                    
+            </div>
+        </div>
+
+
+
+        <div class="card">
             <div class="card-header" style='color:green'>
                 <strong>Informações</strong> para Documento
             </div>
@@ -145,16 +168,6 @@ body{
                         </div>
                     </div>
                     <br>
-                    <hr>
-                </div>
-
-                <div class="card-body card-block" style='padding-top:0px'>
-                    <div class="row form-group">
-                        <div class="col col-md-2"><label class=" form-control-label">Versão</label></div>
-                        <div class="col-12 col-md-1">
-                            <%= f.input :versao, label: false%>
-                        </div>
-                    </div>
                     <hr>
                 </div>
 

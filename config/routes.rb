@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'version/create'
   get 'adicionados/create'
   get 'manual/index'
   class SubdomainConstraint
@@ -25,6 +26,8 @@ Rails.application.routes.draw do
   get 'system/producao', to: 'system#producao', as: :system_producao
   get 'system/producao/:id', to: 'system#producao_show', as: :system_producao_show
 
+
+  post 'system/versao/:id', to: 'version#create', as: :system_version
 
 
 
