@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
 
   post 'system/versao/:id', to: 'version#create', as: :system_version
+  post 'system/principal/:id', to: 'version#principal', as: :system_principal
 
 
 
