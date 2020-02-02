@@ -110,9 +110,9 @@ body{
                 <%@orcamento.class.unscoped.where(identificador: @orcamento.identificador).order('created_at').each do |orcamento|%>
 
                     <%if orcamento == @orcamento%>
-                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="<%if orcamento.ativo%>border:3px solid green;<%end%>margin:5px;font-weight:bold;font-size:11px;" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
+                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="margin:5px;font-weight:bold;font-size:11px;" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
                     <%else%>
-                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="background-color:white;margin:5px;font-weight:bold;font-size:11px;<%if orcamento.ativo%>border:3px solid green;<%end%>box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
+                        <a href=<%=system_edit_path(orcamento.identificador, versao:orcamento.versao)%>><button style="background-color:white;margin:5px;font-weight:bold;font-size:11px;border:2px solid #e2e2e2;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);" class="btn btn-default font-bold w3-center"><%=orcamento.versao%></button></a>
                     <%end%>
                 <%end%>
                 <%= simple_form_for @orcamento, :url => system_version_path(@orcamento.identificador), :method => :post do |f|%>
