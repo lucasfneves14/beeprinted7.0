@@ -1,0 +1,508 @@
+<style>
+
+.fotinha{
+  overflow:hidden;
+  height: 120px;
+  width:22%;
+  display: inline-block;
+  position:relative;
+  border:1px solid #bfbfbf;
+  background-color:white;
+}
+
+@media (max-width: 768px){
+  .mySlides{
+  height:auto !important;
+  overflow:hidden;
+  padding:5px !important;
+}
+}
+
+.mySlides{
+  height:600px;
+  overflow:auto;
+}
+li{
+    color:#878787;
+}
+
+
+
+
+</style>
+
+<style>
+
+.Wrapper--justified {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+}
+
+.C-User-Sales .Container {
+    overflow: visible;
+}
+
+
+.Sidebar, .User-Sidebar, .Filter-Sidebar {
+    position: relative;
+    vertical-align: top;
+}
+
+.Container--no-padding {
+    padding: 0;
+}
+
+
+.Container {
+    background: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.User-Sidebar__cover-container {
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+}
+
+.User-Sidebar__cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 100%;
+}
+
+img {
+    border: 0;
+}
+
+.Avatar--bordered {
+    box-shadow: 0 0 0 2px #ffffff;
+}
+
+
+.Avatar--xlarge {
+    width: 90px;
+    height: 90px;
+}
+
+.Avatar {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+    transition: box-shadow 0.1s ease 0s;
+}
+
+.User-Sidebar__avatar {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    margin-left: -45px;
+}
+
+.User-Sidebar__info {
+    padding: 40px 0 30px;
+    text-align: center;
+}
+
+.User-Sidebar__name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: 600 24px/20px "Proxima Nova", sans-serif;
+    color: #5b5855;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.User-Sidebar__since {
+    font: 400 14px "Proxima Nova", sans-serif;
+    color: #7d7a77;
+}
+
+
+.Button, .Pagination li a, .Bag-Button {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 15px;
+    height: 48px;
+    vertical-align: middle;
+    border-radius: 3px 3px 4px 4px;
+    background: #ffffff;
+    border: 1px solid #e4e1df;
+    border-bottom-width: 3px;
+    outline: 0;
+    color: #009fab;
+    line-height: 45px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: none;
+    transition: background 0.3s ease 0s, border-color 0.3s ease 0s, color 0.3s ease 0s, opacity 0.3s ease 0s;
+}
+
+.Top-Hat--justified {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+}
+
+.Top-Hat--with-tab {
+    line-height: 64px;
+}
+
+.Top-Hat {
+    height: 70px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    background: #ffffff;
+    border-radius: 3px;
+    line-height: 70px;
+}
+
+.Top-Hat__column--no-spaced {
+    padding: 0;
+}
+.Top-Hat__column {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Top-Hat__tab:first-child {
+    margin-left: 26px;
+}
+
+.Top-Hat__tab {
+    display: inline-block;
+    color: #7d7a77;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+}
+
+.Top-Hat__tab--stacked .Top-Hat__tab__link {
+    padding: 24px 26px;
+}
+
+.Top-Hat__tab--stacked .Top-Hat__tab__link {
+    padding: 24px 26px;
+}
+.Top-Hat__tab__link {
+    display: inline-block;
+    padding: 9px 26px 2px;
+    color: inherit;
+    transition: color 0.25s ease;
+}
+
+.Top-Hat__tab--stacked .Top-Hat__tab__title {
+    color: #5b5855;
+    padding: 24px 0;
+}
+.Top-Hat__tab--stacked .Top-Hat__tab__title {
+    color: #5b5855;
+    padding: 24px 0;
+}
+.Top-Hat__tab__title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-transform: lowercase;
+    transition: color 0.25s ease;
+}
+
+
+.Top-Hat__tab--stacked.is-active .Top-Hat__tab__title {
+    border-bottom: solid 2px #009fab;
+    color: #009fab;
+}
+
+
+
+
+
+
+.Container--no-padding {
+    padding: 0;
+}
+
+
+.Product-List {
+    list-style: none;
+}
+
+.Product-List__item {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+    display: block;
+    padding: 10px 10px 0;
+    border-bottom: 1px solid #f4f2f0;
+}
+
+.Product-List__wrapper {
+    text-align: justify;
+    text-justify: distribute;
+    font-size: 0;
+    margin-bottom: 10px;
+}
+
+
+.Product-List__column {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.Product-List__image-background {
+    display: inline-block;
+    background: #f4f2f0;
+    border-radius: 3px;
+}
+
+.Product-List__content {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.Product-List__content__date {
+    margin: 0 0 8px;
+    font: 400 14px/16px "Proxima Nova", sans-serif;
+    color: #a6a39f;
+}
+
+.Product-List__content__title {
+    max-width: 280px;
+    margin: 0 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: 600 16px/22px "Proxima Nova", sans-serif;
+    color: #5b5855;
+}
+
+.Product-List__content__title:last-child {
+    margin-bottom: 0;
+}
+
+.Product-List__content__title--highlight {
+    font-weight: 400;
+    color: #f05b78;
+}
+
+.Product-List__column {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Product-List__edit {
+    position: relative;
+}
+.Product-List__delete, .Product-List__edit {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+.Product-List__panel-button {
+    height: 38px;
+    margin-left: 10px;
+    margin-right: 20px;
+    padding: 0 10px;
+    line-height: 34px;
+}
+
+
+</style>
+
+
+  <div class="content">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class='col-lg-2'>
+          <nav class="User-Sidebar Container Container--no-padding"> 
+              <div class="User-Sidebar__cover-container"> 
+                <img class="User-Sidebar__cover js-sidebar-header-preview" src="https://photos.enjoei.com.br/beeprinted/276x70/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9oZWFkZXJzLzY3MTE5MTAvNTY5MGMxM2M1MmJlOTE2MDNhMTQ0ZDg0MWYyMzE0ZTkuanBn" alt="Czm6ly9wag90b3muzw5qb2vplmnvbs5ici9ozwfkzxjzlzy3mte5mtavnty5mgmxm2m1mmjlote2mdnhmtq0zdg0mwyymze0ztkuanbn"> 
+              </div> 
+              <img class="User-Sidebar__avatar Avatar Avatar--xlarge Avatar--bordered js-sidebar-avatar-preview" src="https://photos.enjoei.com.br/beeprinted/100x100/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9hdmF0YXJzLzY3MTE5MTAvMTJmYWE0ZmE5Yzg5OWU1NWIyMzI1MzI4ZWQ5NWViOWYuanBn" alt="Czm6ly9wag90b3muzw5qb2vplmnvbs5ici9hdmf0yxjzlzy3mte5mtavmtjmywe0zme5yzg5owu1nwiymzi1mzi4zwq5nwviowyuanbn"> 
+              <div class="User-Sidebar__info"> 
+                <h2 class="User-Sidebar__name"><%=@job.name%> <%=@job.sobrenome%></h2> 
+                <p class="User-Sidebar__since"> pedido criado em  </p> 
+                <button type="button" class="Button Button--action" data-toggle="modal" data-target="#ExemploModalCentralizado"> Ver Detalhes </button> 
+              </div> 
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item User-Sidebar__since">
+                <i class="fa fa-bell-o"></i> Job ID<span class="pull-right">#<%=@job.identificador%></span>
+              </li>
+              <li class="list-group-item User-Sidebar__since">
+                <i class="fa fa-cubes"></i> N° peças<span class="pull-right"><%=@job.items.count%></span>
+              </li>
+              <li class="list-group-item User-Sidebar__since">
+                  <i class="fa fa-hourglass-start"></i> Tempo total <span class="pull-right"><%=@job.tempo_impressao%>h</span>
+              </li>
+              <li class="list-group-item User-Sidebar__since">
+                <i class="fa fa-balance-scale"></i> Massa Total <span class="pull-right"><%massa = 0%><%@job.items.each do |item|%><%massa = massa + item.massa%><%end%><%=massa%>g</span>
+              </li>
+              <li class="list-group-item User-Sidebar__since">
+                <a href="#"> <i class="fa fa-money"></i> Valor <span class="pull-right" style='color:green'>R$<%=@job.valor%></span></a>
+              </li>
+              <li class="list-group-item User-Sidebar__since">
+                <a href="#"><i class="fa fa-clock-o"></i> DeadLine <span class="pull-right"><strong style='color:red'><%=@job.prazo_final%></strong></span></a>
+              </li>
+            </ul>
+             
+          </nav>
+          <!--<aside class="profile-nav alt">
+            <section class="card">
+              <div class="card-header">
+                <strong>Histórico</strong>
+              </div>
+              <div class="card-header user-header alt" style='background: #f1f2f7;'>
+
+                <%@job.job_notifications.each do |notification|%>
+                  <div class="media">
+                    <a href="#">
+
+                      <img class="align-self-center rounded-circle mr-3" style="width:50px; height:50px;" alt="" src="<%if notification.modeler.image.url(:thumb)%><%=notification.modeler.image.url(:thumb)%><%else%>https://beeprinted-stls.s3.amazonaws.com/Plataforma/Profile/user.jpg<%end%>">
+                    </a>
+                    <div class="media-body">
+                      <p><%=notification.message%></p>
+                    </div>
+                  </div>
+                  <div class='text-right' style='opacity:0.6'>
+                    <p><strong><%=time_ago_in_words notification.created_at%></strong></p>
+                  </div>
+                  <hr>
+                <%end%>
+              </div>
+
+            </section>
+          </aside>-->
+        </div>
+        <div class='col-lg-10' style='max-width:78%'>
+          <div class="card" style='width:100%'>
+            <div class='row'>
+              <div class="col-md-4">
+                <h2 class="User-Sidebar__name" style='color:#009fab;padding: 24px 26px;margin:0px'>Pedido #<%=@job.identificador%></h2>
+              </div>
+              <div class="col-md-8 text-right" style='float:right'>
+                <ul class="Top-Hat__column Top-Hat__column--no-spaced"> <li class="Top-Hat__tab Top-Hat__tab--stacked is-active"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/em-moderacao"> <span class="Top-Hat__tab__title"> Todos </span> </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/ativos" style='border-left:2px solid #f1f2f7;border-right:2px solid #f1f2f7'> <span class="Top-Hat__tab__title"> impressos </span>  </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/inativos"> <span class="Top-Hat__tab__title"> a imprimir </span> </a> </li> </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="Container Container--no-padding">
+            <ul class="Product-List">
+              <%@job.items.each do |item|%>
+              <li class="Product-List__item js-product-item-container" data-index="0"> 
+                <div class="js-product-item"> 
+                  <div class="Product-List__wrapper">
+                  <div class="row"> 
+                    <div class="Product-List__column col-md-6"> 
+                      <a class="Product-List__image-background" href="/p/drogon-impresso-em-3d-game-of-thrones-30844850"> 
+                        <img class="Product-List__image" src="https://photos.enjoei.com.br/public/90x108/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NzExOTEwL2Y1NWE4MmYwNTRhZDFjN2I3YjIwMWViZGRmOTYwOWU1LmpwZw" alt="Czm6ly9wag90b3muzw5qb2vplmnvbs5ici9wcm9kdwn0cy82nzexotewl2y1nwe4mmywntrhzdfjn2i3yjiwmwvizgrmotywowu1lmpwzw"> 
+                      </a> 
+                      <div class="Product-List__content"> 
+                        <p class="Product-List__content__title hl-lowercase"><%=File.basename(item.attachment.url)%></p>
+                        <p class="Product-List__content__date"> <%=item.massa%>g <%='%.2f' %  (item.tempo/60.0)%>h </p>
+                        <p class="Product-List__content__date"> <%=item.quantidade%> unidade(s) </p> 
+                        <p class="Product-List__content__title Product-List__content__title--highlight"> inativo </p> 
+
+                      </div> 
+                    </div> 
+                    <div class="Product-List__column col-md-6 text-right" style="line-height: 108px;"> 
+                      <ul class="Top-Hat__column Top-Hat__column--no-spaced"> <li class="Top-Hat__tab Top-Hat__tab--stacked is-active"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/em-moderacao"> <span class="Top-Hat__tab__title"> Todos </span> </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/ativos"> <span class="Top-Hat__tab__title"> impressos </span>  </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/inativos"> <span class="Top-Hat__tab__title"> a imprimir </span> </a> </li> </ul>
+                    </div>
+                  </div> 
+                  </div>   
+                </div> 
+              </li>
+              <%end%>
+
+
+
+            </ul>
+          </div>
+
+
+           <!--<div class="card" style='width:100%'>
+              <div class="table-stats order-table ov-h">
+                <table class="table ">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Quant.</th>
+                      <th>Material</th>
+                      <th>Tempo</th>
+                      <th>Massa</th>
+                      <th>Download</th>
+                      <th>Status</th>
+                      <th>Info</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%@job.items.each do |item|%>
+                      <tr>
+                        <td> #<%=item.id%> </td>
+                        <td><%=File.basename(item.attachment.url)%></td>
+                        <td><%=item.quantidade%></td>
+                        <td><%=item.material%></td>
+                        <td><%='%.2f' %  (item.tempo/60.0)%>h</td>
+                        <td><%=item.massa%>g</td>
+                        <td>
+                          <a href='<%=item.attachment.url%>' title='Download'><span class="badge badge-complete"><i class="fa fa-download" aria-hidden="true"></i></span></a>
+                        </td>
+                        <td>Produzindo</td>
+                        <td><button class="badge badge-complete" style='background-color:#3F315D;border:none' type='button' data-toggle="modal" data-target="#ExemploModalCentralizado"><strong>Mais Informações</strong></button></td>
+                      </tr>
+                    <%end%>
+                            
+                  </tbody>
+                </table>
+              </div>
+            </div>-->    
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>
+

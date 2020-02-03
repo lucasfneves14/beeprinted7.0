@@ -1,6 +1,6 @@
 <div class="col-sm-3">
     <div class="card" style='color:#616161'>
-      <a href=<%=system_producao_show_path(job.identificador)%>>
+      <a href=<%=producao_show_path(job.identificador)%>>
       <div class="card-body text-center" style='background-color:#009fab;color:white'>
       <h2>#<%=job.identificador%></h2>
       </div>
@@ -23,7 +23,7 @@
         </li>
         <%if job.status == "Fechado"%>
         <li class="list-group-item" style='padding:0px;'>
-          <%= simple_form_for job, :url => system_jobs_aceitar_path(job.identificador), :method => :post do |f|%>
+          <%= simple_form_for job, :url => producao_jobs_aceitar_path(job.identificador), :method => :post do |f|%>
             <%= f.button :submit, "Aceitar Job", style:'background-color:#00c292; width:100%;color:white;font-weight:bold'%>
           <%end%>
         </li>
