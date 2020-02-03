@@ -185,10 +185,6 @@ ul {
     margin: 0;
 }
 
-.Top-Hat__tab:first-child {
-    margin-left: 26px;
-}
-
 .Top-Hat__tab {
     display: inline-block;
     color: #7d7a77;
@@ -223,7 +219,6 @@ ul {
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
-    text-transform: lowercase;
     transition: color 0.25s ease;
 }
 
@@ -415,20 +410,54 @@ ul {
                 <div class="js-product-item"> 
                   <div class="Product-List__wrapper">
                   <div class="row"> 
-                    <div class="Product-List__column col-md-6"> 
+                    <div class="Product-List__column col-md-4"> 
                       <a class="Product-List__image-background" href="/p/drogon-impresso-em-3d-game-of-thrones-30844850"> 
                         <img class="Product-List__image" src="https://photos.enjoei.com.br/public/90x108/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NzExOTEwL2Y1NWE4MmYwNTRhZDFjN2I3YjIwMWViZGRmOTYwOWU1LmpwZw" alt="Czm6ly9wag90b3muzw5qb2vplmnvbs5ici9wcm9kdwn0cy82nzexotewl2y1nwe4mmywntrhzdfjn2i3yjiwmwvizgrmotywowu1lmpwzw"> 
                       </a> 
                       <div class="Product-List__content"> 
-                        <p class="Product-List__content__title hl-lowercase"><%=File.basename(item.attachment.url)%></p>
+                        <p class="Product-List__content__title hl-lowercase"><%=item.name%></p>
                         <p class="Product-List__content__date"> <%=item.massa%>g <%='%.2f' %  (item.tempo/60.0)%>h </p>
                         <p class="Product-List__content__date"> <%=item.quantidade%> unidade(s) </p> 
-                        <p class="Product-List__content__title Product-List__content__title--highlight"> inativo </p> 
+                        <p class="Product-List__content__title Product-List__content__title--highlight"> a imprimir </p> 
 
-                      </div> 
-                    </div> 
-                    <div class="Product-List__column col-md-6 text-right" style="line-height: 108px;"> 
-                      <ul class="Top-Hat__column Top-Hat__column--no-spaced"> <li class="Top-Hat__tab Top-Hat__tab--stacked is-active"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/em-moderacao"> <span class="Top-Hat__tab__title"> Todos </span> </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/ativos"> <span class="Top-Hat__tab__title"> impressos </span>  </a> </li> <li class="Top-Hat__tab Top-Hat__tab--stacked"> <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/inativos"> <span class="Top-Hat__tab__title"> a imprimir </span> </a> </li> </ul>
+                      </div>
+
+                    </div>
+
+                    <div class="Product-List__column col-md-6 text-left" style="line-height: 108px;"> 
+                      <ul class="Top-Hat__column Top-Hat__column--no-spaced">
+                        <li class="Top-Hat__tab Top-Hat__tab--stacked"> 
+                          <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/ativos"> 
+                            <span class="Top-Hat__tab__title"><strong>Qualidade <%=item.resolucao%></strong></span>  
+                          </a> 
+                        </li>
+                        <li class="Top-Hat__tab Top-Hat__tab--stacked"> 
+                          <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/inativos"> 
+                            <span class="Top-Hat__tab__title"><strong><%=item.infill%>% de Infill</strong></span> 
+                          </a> 
+                        </li>
+                        <li class="Top-Hat__tab Top-Hat__tab--stacked"> 
+                          <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/em-moderacao"> 
+                            <span class="Top-Hat__tab__title"><strong><%=item.material%></strong></span> 
+                          </a> 
+                        </li>   
+                      </ul>
+                    </div>
+
+
+                    <div class="Product-List__column col-md-2 text-right" style="line-height: 108px;"> 
+                      <ul class="Top-Hat__column Top-Hat__column--no-spaced"> 
+                        <li class="Top-Hat__tab Top-Hat__tab--stacked">
+                          <%= link_to item.attachment.url, download: "#{item.name}", id:'download_file', class:"Top-Hat__tab__link" do%> 
+                            <span class="Top-Hat__tab__title" style='color:#009fab;font-size:30px'> <i class="fa fa-cloud-download" aria-hidden="true"></i> </span>
+                          <%end%> 
+                        </li> 
+                        <li class="Top-Hat__tab Top-Hat__tab--stacked"> 
+                          <a class="Top-Hat__tab__link" href="/perfil/minha-lojinha/a-venda/ativos"> 
+                            <span class="Top-Hat__tab__title" style='color:#009fab;font-size:30px'> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </span>  
+                          </a> 
+                        </li> 
+                      </ul>
                     </div>
                   </div> 
                   </div>   
