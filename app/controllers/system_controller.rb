@@ -38,6 +38,7 @@ class SystemController < ApplicationController
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 		
 		@adicionado = Adicionado.new
+		puts @planilha
 		
 		@mes_num = @mes
 		if @mes=="01"
