@@ -492,16 +492,19 @@ class SystemController < ApplicationController
 		tipo = params[:tipo]
 		id = params[:id]
 		calculo = params[:calculo]
+		versao = params[:versao]
+
+
 		if tipo == "Orcamento"
-			@orcamento = Orcamento.find_by(identificador: id)
+			@orcamento = Orcamento.unscoped.where(identificador: id).find_by(versao: versao)
 			params = upload_params
 		end
 		if tipo == "Modeling"
-			@orcamento = Modeling.find_by(identificador: id)
+			@orcamento = Modeling.unscoped.where(identificador: id).find_by(versao: versao)
 			params = modelagem_params
 		end
 		if tipo == "Adicionado"
-			@orcamento = Adicionado.find_by(identificador: id)
+			@orcamento = Adicionado.unscoped.where(identificador: id).find_by(versao: versao)
 			params = adicionado_params
 		end
 
@@ -522,9 +525,9 @@ class SystemController < ApplicationController
 	      		flash[:success] = "Orçamento editado!"
 	      	end
 	      	if calculo
-	      		redirect_to(system_edit_path(@orcamento.identificador, format: "pdf"))
+	      		redirect_to(system_edit_path(@orcamento.identificador, format: "pdf", versao: versao))
 	      	else
-	      		redirect_to(system_edit_path(@orcamento.identificador))
+	      		redirect_to(system_edit_path(@orcamento.identificador, versao: versao))
 	      	end	
 	    else
 	      flash.now[:alert] = "Edição falhou! por favor cheque o formulário"

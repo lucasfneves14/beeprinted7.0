@@ -133,7 +133,7 @@ body{
             <div class="card-header" style='color:green'>
                 <strong>Informações</strong> para Documento
             </div>
-            <%=simple_form_for(@orcamento, :url => { :action => :update , :tipo => @orcamento.class.name.demodulize, calculo: true}) do |f|%>
+            <%=simple_form_for(@orcamento, :url => { :action => :update , :tipo => @orcamento.class.name.demodulize, calculo: true, versao:@orcamento.versao}) do |f|%>
 
 
 
