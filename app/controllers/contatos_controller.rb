@@ -20,8 +20,8 @@ class ContatosController < ApplicationController
 
 
 		@adicionado = Adicionado.new(name: @contato.name, email: @contato.email,estado: "-", description: @contato.mensagem, responsavel: "Iago", identificador: identificador, canal: "Contato")
-		puts 'AAAAAAAAAAAAAA'
-		puts @contato.name
+		puts @contato.captcha
+
 
 		if @contato.save && @adicionado.save(validate: false)
 			@adicionado.data = @contato.created_at.strftime("%d/%m/%Y")
@@ -37,7 +37,7 @@ class ContatosController < ApplicationController
 
 	private
 	def contato_params
-    	params.require(:contato).permit(:name, :email, :mensagem)
+    	params.require(:contato).permit(:name, :email, :mensagem, :captcha)
   	end
 
 
