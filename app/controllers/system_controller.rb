@@ -495,17 +495,21 @@ class SystemController < ApplicationController
 		versao = params[:versao]
 
 
-		if tipo == "Orcamento"
-			@orcamento = Orcamento.unscoped.where(identificador: id).find_by(versao: versao)
+		@orcamento = Orcamento.includes(:arquivos).find_by(identificador: id)
+		if @orcamento == nil
+			@orcamento = Modeling.find_by(identificador: id)
+			if @orcamento == nil
+				@orcamento = Adicionado.find_by(identificador: id)
+				params = adicionado_params
+			else
+				params = modelagem_params
+			end
+		else
 			params = upload_params
 		end
-		if tipo == "Modeling"
-			@orcamento = Modeling.unscoped.where(identificador: id).find_by(versao: versao)
-			params = modelagem_params
-		end
-		if tipo == "Adicionado"
-			@orcamento = Adicionado.unscoped.where(identificador: id).find_by(versao: versao)
-			params = adicionado_params
+
+		if versao
+			@orcamento = @orcamento.class.unscoped.where(identificador: @orcamento.identificador).find_by(versao: versao)
 		end
 
 		if @orcamento.status == "Proposta Env"
