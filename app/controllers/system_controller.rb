@@ -11,6 +11,8 @@ class SystemController < ApplicationController
 			@ano = Date.today.strftime("%Y")
 		end 
 
+		puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		puts request.original_url
 		if params[:email]
 			@sem_mes = true
 			email = params[:email]
@@ -34,6 +36,14 @@ class SystemController < ApplicationController
 			@modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
 			@adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
 		end
+
+		if params[:responsavel]
+			@orcamentos = @orcamentos.where(responsavel: params[:responsavel])
+			@modelagens = @modelagens.where(responsavel: params[:responsavel])
+			@adicionados = @adicionados.where(responsavel: params[:responsavel])
+		end
+
+
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 		

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 	end
 
 
+  root 'home#index'
+  get 'brindes-corporativos', to: 'home#brindes', as: :brindes
+
+
   get '/system', to:'system#index', as: :system
   post 'system/adicionados', to: 'adicionados#create', as: :adicionados
   get 'system/orcamentos/:id', to:'system#edit', as: :system_edit
@@ -55,7 +59,6 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => "callbacks" }, path_names:{ sign_in: 'login', sign_out: 'logout', sign_up:'signup'}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'home#index'
   resources :blogs,:path => "blog"
   resources :newsletters
   resources :profiles

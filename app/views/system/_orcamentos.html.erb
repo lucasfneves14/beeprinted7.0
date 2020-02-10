@@ -25,7 +25,19 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Canal</th>
-                        <th>Responsável</th>
+                        <th>
+                            <div class="dropdown text-center" style='float:left; margin-left:10px'>
+                                <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Responsável<i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </a>
+                                <div class="user-menu dropdown-menu">
+                                        <%= link_to "Iago", request.params.merge(:responsavel => "Iago"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Thierre", request.params.merge(:responsavel => "Thierre"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Thiago", request.params.merge(:responsavel => "Thiago"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Todos", request.params.merge(:responsavel => nil), style: "padding: .2rem 0.6rem;display:block"%>
+                                </div>
+                            </div>
+                        </th>
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Estado</th>
@@ -148,3 +160,48 @@
 </div><!-- .row -->
    <br>
     <br>
+
+<script>
+$(function() {
+    console.log("PUTA");
+            var dropdownMenu;
+            var dropdownButton;
+            $('#dropdown-button').hover(function(e) {
+                console.log("PUTA");
+            if (dropdownMenu) return;
+              dropdownMenu = $(e.target).siblings('.dropdown-content');
+                    dropdownButton = $(e.target);
+                // detach it and append it to the body
+                $('body').append(dropdownMenu.detach());
+ 
+                // grab the new offset position
+                var eOffset = $(e.target).offset();
+ 
+                // make sure to place it where it would normally go (this could be improved)
+                dropdownMenu.css({
+                    'display': 'block',
+                        'top': eOffset.top + $(e.target).outerHeight(),
+                        'left': eOffset.left
+                });
+            }, function(e) {
+              var children = dropdownMenu.find(e.relatedTarget);
+              if (children.length === 0) {
+                  $(e.target).parent().append(dropdownMenu.detach());
+                  dropdownMenu.hide();
+                  dropdownMenu = null;
+                  dropdownButton = null;
+              }
+            });
+            
+            $('.dropdown-content').mouseleave(function(e) {
+                if (e.relatedTarget.id !== 'dropdown-button') {
+                    dropdownButton.parent().append(dropdownMenu.detach());
+                    dropdownMenu.hide();
+                    dropdownMenu = null;
+                    dropdownButton = null;
+                }
+            });
+          });
+
+
+</script>
