@@ -44,7 +44,26 @@
                         <th>CEP</th>
                         <th>Empresa</th>
                         <th>Descricao</th>
-                        <th>Status</th>
+                        <th>
+                            <div class="dropdown text-center" style='float:left; margin-left:10px'>
+                                <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Status<i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                </a>
+                                <div class="user-menu dropdown-menu">
+                                        <%= link_to "New", request.params.merge(:status => "New"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Briefing", request.params.merge(:status => "Briefing"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Negociação", request.params.merge(:status => "Negociação"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Proposta Env", request.params.merge(:status => "Proposta Env"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Fechado", request.params.merge(:status => "Fechado"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Produzindo", request.params.merge(:status => "Produzindo"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Finalizado", request.params.merge(:status => "Finalizado"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Entregue", request.params.merge(:status => "Entregue"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "No bid", request.params.merge(:status => "No bid"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Recusado", request.params.merge(:status => "Recusado"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Cancelado", request.params.merge(:status => "Cancelado"), style: "padding: .2rem 0.6rem;display:block"%>
+                                </div>
+                            </div>
+                        </th>
                         <th>Alerta</th>
                         <th>Valor</th>
                         <th>Pag.</th>

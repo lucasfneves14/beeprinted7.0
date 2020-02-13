@@ -43,6 +43,12 @@ class SystemController < ApplicationController
 			@adicionados = @adicionados.where(responsavel: params[:responsavel])
 		end
 
+		if params[:status]
+			@orcamentos = @orcamentos.where(status: params[:status])
+			@modelagens = @modelagens.where(status: params[:status])
+			@adicionados = @adicionados.where(status: params[:status])
+		end
+
 
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
@@ -490,7 +496,9 @@ class SystemController < ApplicationController
 		end
 		respond_to do |format|
 		  format.html
-		  format.pdf do 
+		  format.pdf do
+		  	#@pdf = render_to_string :pdf => "#{@orcamento.identificador}", :template => "system/upload_pdf.html.erb",:layout => false
+		  	#send_data(@pdf, :filename => "#{@orcamento.identificador}#{@orcamento.versao}.pdf",  :type=>"application/pdf")
 		  	render pdf: "#{@orcamento.identificador}",
 		  	template: "system/upload_pdf.html.erb",
 		  	layout: false
