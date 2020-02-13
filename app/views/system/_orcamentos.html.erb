@@ -31,10 +31,10 @@
                                     Responsável<i class="fa fa-sort-desc" aria-hidden="true"></i>
                                 </a>
                                 <div class="user-menu dropdown-menu">
+                                        <%= link_to "Todos", request.params.merge(:responsavel => nil), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Iago", request.params.merge(:responsavel => "Iago"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Thierre", request.params.merge(:responsavel => "Thierre"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Thiago", request.params.merge(:responsavel => "Thiago"), style: "padding: .2rem 0.6rem;display:block"%>
-                                        <%= link_to "Todos", request.params.merge(:responsavel => nil), style: "padding: .2rem 0.6rem;display:block"%>
                                 </div>
                             </div>
                         </th>
@@ -50,6 +50,7 @@
                                     Status<i class="fa fa-sort-desc" aria-hidden="true"></i>
                                 </a>
                                 <div class="user-menu dropdown-menu">
+                                        <%= link_to "Todos", request.params.merge(:status => nil), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "New", request.params.merge(:status => "New"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Briefing", request.params.merge(:status => "Briefing"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Negociação", request.params.merge(:status => "Negociação"), style: "padding: .2rem 0.6rem;display:block"%>
