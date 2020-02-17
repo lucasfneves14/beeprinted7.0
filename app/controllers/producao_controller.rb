@@ -1,4 +1,6 @@
 class ProducaoController < ApplicationController
+	before_action :authenticate_user!, raise: false
+	before_action :admin
 	layout 'system/navbar'
 	def jobs
 		orcamentos = Orcamento.where(status: 'Fechado')
@@ -56,4 +58,12 @@ class ProducaoController < ApplicationController
 		redirect_to producao_show_path(@orcamento.identificador)
 
 	end
+
+	private
+	def admin
+    unless current_user.admin
+      flash[:alert] = "Acesso negado!"
+      redirect_to root_path
+    end
+  	end
 end
