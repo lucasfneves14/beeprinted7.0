@@ -112,17 +112,21 @@ class SystemController < ApplicationController
 		estados_nomes = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", 
 			"Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais",
 			"Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte",
-			"Rio Grande do Sul", "Rondônia", "Roraima",  "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+			"Rio Grande do Sul", "Rondônia", "Roraima",  "Santa Catarina", "São Paulo", "Sergipe", "Tocantins",""]
 
 		@siglas = ["BR-AC","BR-AL","BR-AP","BR-AM","BR-BA","BR-CE","BR-DF","BR-ES","BR-GO","BR-MA","BR-MT","BR-MS",
 			"BR-MG","BR-PA","BR-PB","BR-PR","BR-PE","BR-PI","BR-RJ","BR-RN","BR-RS","BR-RO","BR-RR","BR-SC",
-			"BR-SP","BR-SE","BR-TO"]
+			"BR-SP","BR-SE","BR-TO",""]
 
 
 		estados_nomes.each_with_index do |nome,index|
 			estado = Estado.new
-			estado.name = nome
-			fechados = @planilha.select{|orcamento| (orcamento.estado == nome)&&((orcamento.status == "Fechado")||(orcamento.status == "Entregue"))}
+			if nome == ""
+				estado.name = "|Sem Estado|"
+			else
+				estado.name = nome
+			end
+			fechados = @planilha.select{|orcamento| (orcamento.estado == nome)&&((orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Finalizado")||(orcamento.status == "Produzindo"))}
 			estado.faturamento = 0
 			fechados.each do |fechado|
 				estado.faturamento = estado.faturamento + fechado.valor
@@ -152,23 +156,23 @@ class SystemController < ApplicationController
 
 
 		@mes_num = @mes
-		if @mes=="1"
+		if @mes=="01"
 			@mes="Janeiro"
-		elsif @mes=="2"
+		elsif @mes=="02"
 			@mes="Fevereiro"
-		elsif @mes=="3"
+		elsif @mes=="03"
 			@mes="Março"
-		elsif @mes=="4"
+		elsif @mes=="04"
 			@mes="Abril"
-		elsif @mes=="5"
+		elsif @mes=="05"
 			@mes="Maio"
-		elsif @mes=="6"
+		elsif @mes=="06"
 			@mes="Junho"
-		elsif @mes=="7"
+		elsif @mes=="07"
 			@mes="Julho"
-		elsif @mes=="8"
+		elsif @mes=="08"
 			@mes="Agosto"
-		elsif @mes=="9"
+		elsif @mes=="09"
 			@mes="Setembro"
 		elsif @mes=="10"
 			@mes="Outubro"

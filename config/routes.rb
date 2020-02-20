@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'brindes-corporativos', to: 'home#brindes', as: :brindes
   get 'trofeus-personalizados', to: 'home#trofeus', as: :trofeus
+  get 'maquetes-impressao-3d', to: 'home#maquetes', as: :maquetes
 
 
   get '/system', to:'system#index', as: :system
