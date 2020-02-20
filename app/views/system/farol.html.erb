@@ -310,6 +310,26 @@
 
               </tr>
 
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thiago</strong></td>
+                
+                <td><%=@convertidos_meta_thiago%></td>
+                <td><%=@convertidos_thiago%></td>
+                <%if @convertidos_meta_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_thiago.to_f/@convertidos_meta_thiago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td><%='%.2f' %  (@convertidos_thiago.to_f - @convertidos_meta_thiago.to_f)%></td>
+                <td><%=@convertidos_ant_thiago%></td>
+                <%if @convertidos_ant_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@convertidos_thiago.to_f/@convertidos_ant_thiago.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
 
 
               <tr class='integral'>
@@ -368,6 +388,25 @@
 
               </tr>
 
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thiago</strong></td>
+                <td>R$ <%=@vendidos_meta_thiago%></td>
+                <td>R$ <%=@vendidos_thiago%></td>
+                <%if @vendidos_meta_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@vendidos_thiago.to_f/@vendidos_meta_thiago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@vendidos_thiago.to_f - @vendidos_meta_thiago.to_f)%></td>
+                <td><%=@vendidos_ant_thiago%></td>
+                <%if @vendidos_ant_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@vendidos_thiago.to_f/@vendidos_ant_thiago.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
               <tr class='integral'>
                 <td style='background-color:#009fab;color:white'><strong>Ticket Médio</strong></td>
                 <td>R$ <%=@ticket_medio_meta%></td>
@@ -420,6 +459,25 @@
                   <td><span>Infinito</span></td>
                 <%else%>
                   <td><span><%='%.2f' %  ((@ticket_medio_iago.to_f/@ticket_medio_ant_iago.to_f)*100)%>%</span></td>
+                <%end%>
+
+              </tr>
+
+              <tr class='pessoa'>
+                <td class='text-right'><strong>Thiago</strong></td>
+                <td>R$ <%=@ticket_medio_meta_thiago%></td>
+                <td>R$ <%=@ticket_medio_thiago%></td>
+                <%if @ticket_medio_meta_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_thiago.to_f/@ticket_medio_meta_thiago.to_f)*100)%>%</span></td>
+                <%end%>
+                <td>R$ <%='%.2f' %  (@ticket_medio_thiago.to_f - @ticket_medio_meta_thiago.to_f)%></td>
+                <td>R$ <%=@ticket_medio_ant_thiago%></td>
+                <%if @ticket_medio_ant_thiago.to_f == 0%>
+                  <td><span>Infinito</span></td>
+                <%else%>
+                  <td><span><%='%.2f' %  ((@ticket_medio_thiago.to_f/@ticket_medio_ant_thiago.to_f)*100)%>%</span></td>
                 <%end%>
 
               </tr>
@@ -512,10 +570,16 @@ $( document ).ready(function() {
     if (parcial.is(":visible")){
       parcial.fadeOut();
       parcial.next().fadeOut();
+      if ( parcial.next().next().hasClass( "pessoa" ) ) {
+        parcial.next().next().fadeOut();
+      }
     }
     else{
       parcial.fadeIn();
       parcial.next().fadeIn();
+      if ( parcial.next().next().hasClass( "pessoa" ) ) {
+        parcial.next().next().fadeIn();
+      }
 
     }
   });
