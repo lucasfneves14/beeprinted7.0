@@ -87,8 +87,7 @@ input[type="file"] {
 
   });
 
-
-  $('.servico_quant, .servico_unit').change(function(){
+  $('.servico_quant, .servico_unit, #desconto').change(function(){
     valor_unit = $(this).closest(".row").find('.servico_unit').val();
     quantidade = $(this).closest(".row").find('.servico_quant').val();
     valor = (valor_unit*quantidade).toFixed(2);
@@ -99,40 +98,6 @@ input[type="file"] {
   });
   $('.item_tempo, .item_massa, .item_quant').change(function(){
     $(this).closest(".row").find('.item_tempo').val(math.eval($(this).closest(".row").find('.item_tempo').val()));
-    var tempo_total = 0;
-    $('.item_tempo').each(function(){
-        tempo_total += parseFloat(this.value)*$(this).closest(".row").find('.item_quant').val();
-    });
-    var taxa = 0;
-    if(tempo_total > 1000){
-        taxa = 0.05
-        if (tempo_total > 2500){
-            taxa = 0.1
-            if(tempo_total > 5000){
-                taxa = 0.15
-                if (tempo_total > 10000){
-                    taxa = 0.3
-                    if (tempo_total > 15000){
-                        taxa = 0.4
-                    }
-                }
-            }
-        }
-    }
-
-    $('.item_valor_unit').each(function(){
-        tempo = $(this).closest(".row").find('.item_tempo').val();
-        massa = $(this).closest(".row").find('.item_massa').val();
-        quantidade = $(this).closest(".row").find('.item_quant').val();
-
-        valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
-        $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
-        valor = (valor_unit*quantidade).toFixed(2);
-        $(this).closest(".row").find('.item_valor').val(valor);
-
-    });
-
-    $(this).closest("form").find('.tempo_impressao').val((tempo_total/60).toFixed(1));
     Atualizar($(this));
 
   });
@@ -156,12 +121,53 @@ input[type="file"] {
 
 
   function Atualizar(p) {
+    var tempo_total = 0;
+    $('.item_tempo').each(function(){
+        if($(this).closest(".nested-fields").css('display') != 'none'){
+            if(!isNaN(parseFloat(this.value))) {
+                tempo_total += parseFloat(this.value)*$(this).closest(".row").find('.item_quant').val();
+            }
+        }
+    });
+
+
+    var taxa = 0;
+    if(tempo_total > 1000){
+        taxa = 0.05
+        if (tempo_total > 2500){
+            taxa = 0.1
+            if(tempo_total > 5000){
+                taxa = 0.15
+                if (tempo_total > 10000){
+                    taxa = 0.3
+                    if (tempo_total > 15000){
+                        taxa = 0.4
+                    }
+                }
+            }
+        }
+    }
+
+
+    $('.item_valor_unit').each(function(){
+        tempo = $(this).closest(".row").find('.item_tempo').val();
+        massa = $(this).closest(".row").find('.item_massa').val();
+        quantidade = $(this).closest(".row").find('.item_quant').val();
+
+        valor_unit = (tempo*0.24*(1-taxa) + massa*0.28).toFixed(2);
+        $(this).closest(".row").find('.item_valor_unit').val(valor_unit);
+        valor = (valor_unit*quantidade).toFixed(2);
+        $(this).closest(".row").find('.item_valor').val(valor);
+
+    });
+
+    p.closest("form").find('.tempo_impressao').val((tempo_total/60).toFixed(1));
+
        items_valor = 0;
     $('.item_valor').each(function(){
         if($(this).closest(".nested-fields").css('display') != 'none'){
         if(!isNaN(parseFloat(this.value))) {
             items_valor += parseFloat(this.value);
-            console.log(parseFloat(this.value));
         }
         }
     });
@@ -184,7 +190,11 @@ input[type="file"] {
         frete = 0;
     }
 
-    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete)).toFixed(2);
+    desconto = $('#desconto').val();
+
+    valor_orcamento = (items_valor + servicos_valor + parseFloat(frete))
+    valor_orcamento = ((100 - desconto)/100)*valor_orcamento;
+    valor_orcamento = valor_orcamento.toFixed(2);
 
     if((valor_orcamento-frete) < 25){
         valor_orcamento = 25+parseFloat(frete);
@@ -192,17 +202,4 @@ input[type="file"] {
 
     $('.valor_orcamento').val(valor_orcamento);
   }
-</script>
-<script>
-$("[type=file]").on("change", function(){
-  // Name of file and placeholder
-  var file = this.files[0].name;
-  var dflt = $(this).attr("placeholder");
-  if($(this).val()!=""){
-    $(this).closest(".button-wrap").find('.new-button').text(file);
-  } else {
-    $(this).closest(".button-wrap").find('.new-button').text(dflt);
-  }
-});
-
 </script>
