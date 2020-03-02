@@ -12,6 +12,7 @@ class VersionController < ApplicationController
   	@new.versao = (num + 97).chr
 
   	@orcamento.ativo = false
+  	@new.created_at = @orcamento.created_at
   	if @new.save
   		if @orcamento.save
   			redirect_to system_edit_path(@orcamento.identificador)
