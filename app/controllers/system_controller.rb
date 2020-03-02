@@ -11,8 +11,6 @@ class SystemController < ApplicationController
 			@ano = Date.today.strftime("%Y")
 		end 
 
-		puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-		puts request.original_url
 		if params[:email]
 			@sem_mes = true
 			email = params[:email]
@@ -54,7 +52,6 @@ class SystemController < ApplicationController
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 		
 		@adicionado = Adicionado.new
-		puts @planilha
 		
 		@mes_num = @mes
 		if @mes=="01"
