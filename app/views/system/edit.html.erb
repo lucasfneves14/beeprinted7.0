@@ -119,7 +119,7 @@ body{
                             <%= f.button :submit, "Criar nova versão", style:"font-weight:bold;font-size:11px;color:white;background-color:#009fab", class:"btn btn-default dropdown-toggle font-bold w3-center"%>
                 <%end%>
                 <%if !@orcamento.ativo%>
-                    <%= simple_form_for @orcamento, :url => system_principal_path(@orcamento.identificador), :method => :post do |f|%>
+                    <%= simple_form_for @orcamento, :url => system_principal_path(@orcamento.identificador, versao: @orcamento.versao), :method => :post do |f|%>
                         <%= f.button :submit, "Definir como versão principal", style:"font-weight:bold;font-size:11px;color:white;background-color:green;margin:5px;", class:"btn btn-default dropdown-toggle font-bold w3-center"%>
                     <%end%>
                 <%end%>

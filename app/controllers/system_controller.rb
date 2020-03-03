@@ -504,8 +504,8 @@ class SystemController < ApplicationController
 		@vendidos_meta_thiago = 2000
 		@atendimentos_meta_iago = 150
 		@atendimentos_meta_thierre = 110
-		@convertidos_meta_iago = 20
-		@convertidos_meta_thierre = 10
+		@convertidos_meta_iago = 10
+		@convertidos_meta_thierre = 20
 		@convertidos_meta_thiago = 5
 		@propostas_por_meta_iago = 10
 		@propostas_por_meta_thierre = 10
