@@ -229,6 +229,21 @@ class SystemController < ApplicationController
 
 		@vendidos = '%.2f' % @vendidos
 
+
+		############# Avaliacao ########################
+		avaliacao_total = 0
+		planilha.select{|orcamento| (orcamento.avaliacao != nil)}.each do |planilha|
+			avaliacao_total = avaliacao_total + orcamento.avaliacao
+		end
+		@avaliacao_count = planilha.select{|orcamento| (orcamento.avaliacao != nil)}.count
+		if @avaliacao_count == 0
+			@avaliacao_media = 0
+		else
+			@avaliacao_media = avaliacao_total/@avaliacao_count
+		end
+
+
+
 ##########################################################################################################################
 
 		######### THIERRE e IAGO (ATUAL) #########
@@ -373,6 +388,20 @@ class SystemController < ApplicationController
 
 
 		@vendidos_ant = '%.2f' % @vendidos_ant
+
+
+		############# Avaliacao ########################
+		avaliacao_total_ant = 0
+		planilha.select{|orcamento| (orcamento.avaliacao != nil)}.each do |planilha|
+			avaliacao_total_ant = avaliacao_total_ant + orcamento.avaliacao
+		end
+		@avaliacao_count_ant = planilha.select{|orcamento| (orcamento.avaliacao != nil)}.count
+		if @avaliacao_count_ant == 0
+			@avaliacao_media_ant = 0
+		else
+			@avaliacao_media_ant = avaliacao_total_ant/@avaliacao_count_ant
+		end
+
 		
 
 ##########################################################################################################################################
@@ -484,6 +513,9 @@ class SystemController < ApplicationController
 		@ticket_medio_meta_thierre = 500
 		@ticket_medio_meta_thiago = 500
 
+		@avaliacao_count_meta = 10
+		@avaliacao_media_meta = 8
+
 
 		@atendimentos_meta = 360
 		@propostas_meta = 60
@@ -492,6 +524,10 @@ class SystemController < ApplicationController
 		@vendidos_meta = 25000
 		@ticket_medio_meta = 850
 		@atrasados_meta = 80
+
+
+
+
 
 
 		@mes_num = @mes

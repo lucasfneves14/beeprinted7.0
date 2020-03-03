@@ -540,6 +540,44 @@
                 <%end%>
 
               </tr>
+              <tr class='integral'>
+                <td style='background-color:#009fab;color:white'><strong>Avaliações (N°)</strong></td>
+                
+                <td><%=@avaliacao_count_meta%></td>
+                <td><%=@avaliacao_count%></td>
+                <%if @avaliacao_count_meta.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@avaliacao_count.to_f/@avaliacao_count_meta.to_f)*100)%></span></td>
+                <%end%>
+                <td><%='%.2f' %  (@avaliacao_count.to_f - @avaliacao_count_meta.to_f)%></td>
+                <td><%=@avaliacao_count_ant%></td>
+                <%if @avaliacao_count_ant.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@avaliacao_count.to_f/@avaliacao_count_ant.to_f)*100)%></span></td>
+                <%end%>
+
+              </tr>
+              <tr class='integral'>
+                <td style='background-color:#009fab;color:white'><strong>Avaliações Média</strong></td>
+                
+                <td><%=@avaliacao_media_meta%></td>
+                <td><%=@avaliacao_media%></td>
+                <%if @avaliacao_media_meta.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@avaliacao_media.to_f/@avaliacao_media_meta.to_f)*100)%></span></td>
+                <%end%>
+                <td><%='%.2f' %  (@avaliacao_media.to_f - @avaliacao_media_meta.to_f)%></td>
+                <td><%=@avaliacao_media_ant%></td>
+                <%if @avaliacao_media_ant.to_f == 0%>
+                  <td><span class='cor'>Infinito</span></td>
+                <%else%>
+                  <td><span class='cor'><%='%.2f' %  ((@avaliacao_media.to_f/@avaliacao_media_ant.to_f)*100)%></span></td>
+                <%end%>
+
+              </tr>
             </tbody>
           </table>
         </div>
