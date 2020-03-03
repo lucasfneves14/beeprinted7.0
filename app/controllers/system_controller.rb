@@ -637,6 +637,8 @@ class SystemController < ApplicationController
 		  	if @orcamento.status == "Fechado"
 		  		if @orcamento.prazo_final == ""
 		  			flash[:alert] = "Rapaz, você bote o prazo!!"
+		  		else
+		  			flash[:success] = "Orçamento editado!"
 		  		end
 		  		if fechado != "Fechado"
 	      			FechadoMailer.fechado_email(@orcamento).deliver
@@ -647,6 +649,15 @@ class SystemController < ApplicationController
 	      	if calculo
 	      		redirect_to(system_edit_path(@orcamento.identificador, format: "pdf", versao: versao))
 	      	else
+	      		@orcamento.class.unscoped.where(identificador: @orcamento.identificador).each do |orcamento|
+	      			orcamento.status = @orcamento.status
+	      			orcamento.pag = @orcamento.pag
+	      			orcamento.dataretorno = @orcamento.dataretorno
+	      			orcamento.dataultimo = @orcamento.dataultimo
+	      			orcamento.prazo_final = @orcamento.prazo_final
+	      			orcamento.responsavel = @orcamento.responsavel
+	      			orcamento.save
+	      		end
 	      		redirect_to(system_edit_path(@orcamento.identificador, versao: versao))
 	      	end	
 	    else
