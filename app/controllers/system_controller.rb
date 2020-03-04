@@ -202,7 +202,7 @@ class SystemController < ApplicationController
 			@atrasados = 0
 		else
 			@propostas_por = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos) * 100)
-			@propostas = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / @atendimentos) * 100)
+			@propostas = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / @atendimentos) * 100)
 			@atrasados = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados = '%.2f' % ((Float(@atrasados)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
@@ -258,7 +258,7 @@ class SystemController < ApplicationController
 			@propostas_por_iago = 0
 		else
 			@propostas_por_iago = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos_iago) * 100)
-			@propostas_iago = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / planilha.count) * 100)
+			@propostas_iago = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / planilha.count) * 100)
 			@atrasados_iago = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_iago = '%.2f' % ((Float(@atrasados_iago)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
@@ -300,7 +300,7 @@ class SystemController < ApplicationController
 			@propostas_por_thierre = 0
 		else
 			@propostas_por_thierre = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos_thierre) * 100)
-			@propostas_thierre = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / planilha.count) * 100)
+			@propostas_thierre = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / planilha.count) * 100)
 			@atrasados_thierre = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_thierre = '%.2f' % ((Float(@atrasados_thierre)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
@@ -363,7 +363,7 @@ class SystemController < ApplicationController
 			@atrasados_ant = 0
 		else
 			@propostas_por_ant = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos_ant) * 100)
-			@propostas_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / @atendimentos_ant) * 100)
+			@propostas_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / @atendimentos_ant) * 100)
 			@atrasados_ant = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_ant = '%.2f' % ((Float(@atrasados_ant)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
@@ -418,7 +418,7 @@ class SystemController < ApplicationController
 			@propostas_por_ant_iago = 0
 		else
 			@propostas_por_ant_iago = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos_ant_iago) * 100)
-			@propostas_iago_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / planilha.count) * 100)
+			@propostas_iago_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / planilha.count) * 100)
 			@atrasados_iago_ant = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_iago_ant = '%.2f' % ((Float(@atrasados_iago_ant)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
@@ -455,7 +455,7 @@ class SystemController < ApplicationController
 			@propostas_por_ant_thierre = 0
 		else
 			@propostas_por_ant_thierre = '%.2f' %  ((Float(planilha.select{|orcamento| (orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")}.count) / @atendimentos_ant_thierre) * 100)
-			@propostas_thierre_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação")}.count) / planilha.count) * 100)
+			@propostas_thierre_ant = '%.2f' %  ((Float(planilha.select{|orcamento| ((orcamento.status == "No Bid")&&(orcamento.proposta_enviada))||(orcamento.status == "Fechado")||(orcamento.status == "Entregue")||(orcamento.status == "Produzindo")||(orcamento.status == "Finalizado")||(orcamento.status == "Proposta Env") || (orcamento.status == "Negociação") ||(orcamento.status == "Retargeting")}.count) / planilha.count) * 100)
 			@atrasados_thierre_ant = planilha.select{|orcamento| (orcamento.dataretorno!= "-")&&((DateTime.parse(orcamento.dataretorno).strftime('%a, %b %d %H:%M:%S %Z').to_time - orcamento.created_at) < 2.days)}.count
 			@atrasados_thierre_ant = '%.2f' % ((Float(@atrasados_thierre_ant)/planilha.select{|orcamento| (orcamento.status != 'New')}.count)*100)
 		end
