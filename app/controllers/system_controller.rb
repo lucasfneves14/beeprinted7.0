@@ -679,7 +679,7 @@ class SystemController < ApplicationController
 		elsif modelagem
 			@pedido = modelagem
 			path = system_edit_path(@pedido.identificador)
-		elsif orcamento
+		elsif adicionado
 			@pedido = adicionado
 			path = system_edit_path(@pedido.identificador)
 		end
