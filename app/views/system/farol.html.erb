@@ -341,7 +341,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@vendidos.to_f/@vendidos_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><span class='cor2'>R$ <%='%.2f' %  (@vendidos.to_f - @vendidos_meta.to_f)%></span></td>
+                <td><span class='cor2'><%='%.2f' %  (@vendidos.to_f - @vendidos_meta.to_f)%></span></td>
                 <td>R$ <%=@vendidos_ant%></td>
                 <%if @vendidos_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -416,7 +416,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><span class='cor2'>R$ <%='%.2f' %  (@ticket_medio.to_f - @ticket_medio_meta.to_f)%></span></td>
+                <td><span class='cor2'><%='%.2f' %  (@ticket_medio.to_f - @ticket_medio_meta.to_f)%></span></td>
                 <td>R$ <%=@ticket_medio_ant%></td>
                 <%if @ticket_medio_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
