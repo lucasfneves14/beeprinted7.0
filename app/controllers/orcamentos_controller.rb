@@ -51,9 +51,9 @@ class OrcamentosController < ApplicationController
     @mes = Date.today.strftime("%m")
     @ano = Date.today.strftime("%Y")
 
-    @orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes)
-    @modelagens = Modeling.where('extract(month  from created_at) = ?', @mes)
-    @adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes)
+    @orcamentos = Orcamento.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
+    @modelagens = Modeling.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
+    @adicionados = Adicionado.where('extract(month  from created_at) = ?', @mes).where('extract(YEAR  from created_at) = ?', @ano)
     @planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.created_at <=> b.created_at }
 
     identificador = (@ano.to_i*100 + @mes.to_i)*1000 + @planilha.count + 1
