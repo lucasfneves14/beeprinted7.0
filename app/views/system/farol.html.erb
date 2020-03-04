@@ -87,7 +87,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@atendimentos.to_f/@atendimentos_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><%='%.0f' %  (@atendimentos.to_f - @atendimentos_meta.to_f)%></td>
+                <td><span class='cor2'><%='%.0f' %  (@atendimentos.to_f - @atendimentos_meta.to_f)%></span></td>
                 <td><%=@atendimentos_ant%></td>
                 <%if @atendimentos_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -145,7 +145,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@propostas.to_f/@propostas_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><%='%.2f' %  (@propostas.to_f - @propostas_meta.to_f)%>%</td>
+                <td><span class='cor2'><%='%.2f' %  (@propostas.to_f - @propostas_meta.to_f)%>%</span></td>
                 <td><%=@propostas_ant%>%</td>
                 <%if @propostas_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -199,7 +199,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@propostas_por.to_f/@propostas_por_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><%='%.2f' %  (@propostas_por.to_f - @propostas_por_meta.to_f)%>%</td>
+                <td><span class='cor2'><%='%.2f' %  (@propostas_por.to_f - @propostas_por_meta.to_f)%>%</span></td>
                 <td><%=@propostas_por_ant%>%</td>
                 <%if @propostas_por_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -261,7 +261,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@convertidos.to_f/@convertidos_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><%='%.2f' %  (@convertidos.to_f - @convertidos_meta.to_f)%></td>
+                <td><span class='cor2'><%='%.2f' %  (@convertidos.to_f - @convertidos_meta.to_f)%></span></td>
                 <td><%=@convertidos_ant%></td>
                 <%if @convertidos_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -341,7 +341,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@vendidos.to_f/@vendidos_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td>R$ <%='%.2f' %  (@vendidos.to_f - @vendidos_meta.to_f)%></td>
+                <td><span class='cor2'>R$ <%='%.2f' %  (@vendidos.to_f - @vendidos_meta.to_f)%></span></td>
                 <td>R$ <%=@vendidos_ant%></td>
                 <%if @vendidos_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -416,7 +416,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@ticket_medio.to_f/@ticket_medio_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td>R$ <%='%.2f' %  (@ticket_medio.to_f - @ticket_medio_meta.to_f)%></td>
+                <td><span class='cor2'>R$ <%='%.2f' %  (@ticket_medio.to_f - @ticket_medio_meta.to_f)%></span></td>
                 <td>R$ <%=@ticket_medio_ant%></td>
                 <%if @ticket_medio_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -493,7 +493,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@atrasados.to_f/@atrasados_meta.to_f)*100)%>%</span></td>
                 <%end%>
-                <td><%='%.2f' %  (@atrasados.to_f - @atrasados_meta.to_f)%>%</td>
+                <td><span class='cor2'><%='%.2f' %  (@atrasados.to_f - @atrasados_meta.to_f)%>%</span></td>
                 <td><%=@atrasados_ant%>%</td>
                 <%if @atrasados_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -550,7 +550,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@avaliacao_count.to_f/@avaliacao_count_meta.to_f)*100)%></span></td>
                 <%end%>
-                <td><%='%.2f' %  (@avaliacao_count.to_f - @avaliacao_count_meta.to_f)%></td>
+                <td><span class='cor2'><%='%.2f' %  (@avaliacao_count.to_f - @avaliacao_count_meta.to_f)%></span></td>
                 <td><%=@avaliacao_count_ant%></td>
                 <%if @avaliacao_count_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -569,7 +569,7 @@
                 <%else%>
                   <td><span class='cor'><%='%.2f' %  ((@avaliacao_media.to_f/@avaliacao_media_meta.to_f)*100)%></span></td>
                 <%end%>
-                <td><%='%.2f' %  (@avaliacao_media.to_f - @avaliacao_media_meta.to_f)%></td>
+                <td><span class='cor2'><%='%.2f' %  (@avaliacao_media.to_f - @avaliacao_media_meta.to_f)%></span></td>
                 <td><%=@avaliacao_media_ant%></td>
                 <%if @avaliacao_media_ant.to_f == 0%>
                   <td><span class='cor'>Infinito</span></td>
@@ -594,6 +594,16 @@ $( document ).ready(function() {
   $('.cor').each(function(index, element) {
     console.log(parseFloat($(this).text()));
     if(parseFloat($(this).text()) < 100){
+      $(this).css('color', 'red');
+    }
+    else{
+      $(this).css('color', 'green');
+    }
+    
+  });
+  $('.cor2').each(function(index, element) {
+    console.log(parseFloat($(this).text()));
+    if(parseFloat($(this).text()) < 0){
       $(this).css('color', 'red');
     }
     else{
