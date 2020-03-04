@@ -7,7 +7,7 @@ class AvaliacoesController < ApplicationController
 			@pedido = orcamento
 		elsif modelagem
 			@pedido = modelagem
-		elsif orcamento
+		elsif adicionado
 			@pedido = adicionado
 		end
 		@pedido.avaliacao = 5
@@ -24,7 +24,7 @@ class AvaliacoesController < ApplicationController
 		elsif modelagem
 			@pedido = modelagem
 			params = modelagem_params
-		elsif orcamento
+		elsif adicionado
 			@pedido = adicionado
 			params = adicionado_params
 		end
