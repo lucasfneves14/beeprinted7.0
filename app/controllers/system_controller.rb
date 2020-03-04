@@ -233,7 +233,7 @@ class SystemController < ApplicationController
 		############# Avaliacao ########################
 		avaliacao_total = 0
 		planilha.select{|orcamento| (orcamento.avaliacao != nil)}.each do |planilha|
-			avaliacao_total = avaliacao_total + orcamento.avaliacao
+			avaliacao_total = avaliacao_total + planilha.avaliacao
 		end
 		@avaliacao_count = planilha.select{|orcamento| (orcamento.avaliacao != nil)}.count
 		if @avaliacao_count == 0
@@ -393,7 +393,7 @@ class SystemController < ApplicationController
 		############# Avaliacao ########################
 		avaliacao_total_ant = 0
 		planilha.select{|orcamento| (orcamento.avaliacao != nil)}.each do |planilha|
-			avaliacao_total_ant = avaliacao_total_ant + orcamento.avaliacao
+			avaliacao_total_ant = avaliacao_total_ant + planilha.avaliacao
 		end
 		@avaliacao_count_ant = planilha.select{|orcamento| (orcamento.avaliacao != nil)}.count
 		if @avaliacao_count_ant == 0
