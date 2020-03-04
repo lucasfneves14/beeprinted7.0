@@ -59,6 +59,7 @@
                                         <%= link_to "Produzindo", request.params.merge(:status => "Produzindo"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Finalizado", request.params.merge(:status => "Finalizado"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Entregue", request.params.merge(:status => "Entregue"), style: "padding: .2rem 0.6rem;display:block"%>
+                                        <%= link_to "Retargeting", request.params.merge(:status => "Retargeting"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "No bid", request.params.merge(:status => "No bid"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Recusado", request.params.merge(:status => "Recusado"), style: "padding: .2rem 0.6rem;display:block"%>
                                         <%= link_to "Cancelado", request.params.merge(:status => "Cancelado"), style: "padding: .2rem 0.6rem;display:block"%>
@@ -143,7 +144,7 @@
                                 <% end %>
                                 <%end%>
                                 </span></td>
-                                <td class='text-center' <%if orcamento.status=="New"%> style="color:white;background-color:red;"<%elsif orcamento.status=="Fechado"%> style="color:white;background-color:#00c292"<%elsif orcamento.status=="Produzindo"%> style="color:white;background-color:#03a9f3"<%elsif orcamento.status=="Finalizado"%> style="color:white;background-color:#d4af37"<%elsif orcamento.status=="Briefing"%> style="color:white;background-color:#fb9678"<%elsif orcamento.status=="Proposta Env"%> style="color:white;background-color:#ab8ce4"<%elsif orcamento.status=="Negociação"%> style="color:white;background-color:#5c6bc0"<%elsif orcamento.status=="Entregue"%> style="color:white;background-color:#009fab"<%elsif orcamento.status=="Recusado"%> style="color:white;background-color:gray"<%end%>>
+                                <td class='text-center' <%if orcamento.status=="New"%> style="color:white;background-color:red;"<%elsif orcamento.status=="Fechado"%> style="color:white;background-color:#00c292"<%elsif orcamento.status=="Produzindo"%> style="color:white;background-color:#03a9f3"<%elsif orcamento.status=="Finalizado"%> style="color:white;background-color:#d4af37"<%elsif orcamento.status=="Briefing"%> style="color:white;background-color:#fb9678"<%elsif orcamento.status=="Proposta Env"%> style="color:white;background-color:#ab8ce4"<%elsif orcamento.status=="Negociação"%> style="color:white;background-color:#5c6bc0"<%elsif orcamento.status=="Entregue"%> style="color:white;background-color:#009fab"<%elsif orcamento.status=="Retargeting"%> style="color:white;background-color:#ffc107"<%elsif orcamento.status=="Recusado"%> style="color:white;background-color:gray"<%end%>>
                                     <strong><%= orcamento.status%></strong>
                                 </td>
                                 <%if orcamento.status == "New" && orcamento.created_at < 1.days.ago%>
