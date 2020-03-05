@@ -47,13 +47,13 @@ class AvaliacoesController < ApplicationController
 	private
 
 	def upload_params
-    	params.require(:orcamento).permit(:avaliacao)
+    	params.require(:orcamento).permit(:avaliacao, :avaliacao_txt)
   	end
 
   	def modelagem_params
-    	params.require(:modeling).permit(:avaliacao)
+    	params.require(:modeling).permit(:avaliacao, :avaliacao_txt)
   	end
   	def adicionado_params
-    	params.require(:adicionado).permit(:avaliacao)
+    	params.require(:adicionado).permit(:avaliacao, :avaliacao_txt)
   	end
 end

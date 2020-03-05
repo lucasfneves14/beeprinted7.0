@@ -139,6 +139,10 @@
   list-style:none;float:left;width:50%;box-sizing:border-box
 }
 
+.form-control::placeholder {
+  color:black;
+ } 
+
 </style>
 <br>
 <br>
@@ -164,6 +168,10 @@
           <%end%>
         </div>
       </div>
+      <p>Opcional:</p>
+      <div class="form-group text-center" id="formgroup2">
+          <%= f.text_area :avaliacao_txt, label: false, placeholder: 'Escreva aqui comentários sobre sua experiência com a BEEPRINTED' ,style:"color:black",class: "form-control text optional", rows: "5"%>
+        </div>
       <br>
       <div class="" style='margin-top:30px;width:100%'>
         <%=f.submit "Enviar", style:"border-right:1px solid #ccc;color:white!important", class:"filtro-btn-azul degrade font-bold" %>
