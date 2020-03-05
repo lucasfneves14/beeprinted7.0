@@ -28,6 +28,10 @@ class Orcamento < ApplicationRecord
 		enable
 	end
 
+	def start_time
+		DateTime.parse(self.prazo_final)
+	end
+
 
 	def fora_de_brasilia?
 		estado != "Distrito Federal"

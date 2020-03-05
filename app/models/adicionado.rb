@@ -16,5 +16,9 @@ class Adicionado < ApplicationRecord
 		enable
 	end
 
+	def start_time
+		DateTime.parse(self.prazo_final)
+	end
+
 
 end

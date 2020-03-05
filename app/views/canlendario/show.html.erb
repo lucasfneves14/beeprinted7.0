@@ -1,0 +1,98 @@
+<style>
+
+/* line 2, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+
+.simple-calendar{
+	width:100%;
+}
+
+.simple-calendar table {
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+/* line 13, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar tr {
+  border-collapse: collapse;
+}
+/* line 17, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar th {
+  background-color:white;
+  padding: 6px;
+  border-bottom: 2px solid #dddddd;
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px none #333333;
+  box-sizing: border-box;
+  text-align: left;
+}
+/* line 28, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar td {
+  padding: 6px;
+  vertical-align: top;
+  width: 14%;
+  border: 1px solid #ddd;
+  border-top-color: #dddddd;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: #dddddd;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: #dddddd;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #dddddd;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+/* line 48, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .day {
+  height: 100px;
+  color:#616161;
+}
+/* line 60, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .today {
+  background: #009fab;
+  color:white;
+}
+/* line 69, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .prev-month {
+  background: #DDD;
+}
+/* line 72, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .next-month {
+  background: #DDD;
+}
+
+.calendar-heading{
+	margin-bottom: 40px;
+}
+.table-striped{
+	border:none !important;
+}
+.table{
+	margin-bottom:0 !important;
+}
+</style>
+
+<div class="content">
+	<h3>Calendário de Produção</h3>
+	<div class="animated fadeIn w3-center">
+		<div class="justify-content-md-center">
+			<%= month_calendar events: @planilha do |date, orcamentos| %>
+			  <%= date %>
+			  <% orcamentos.each do |orcamento| %>
+			    <div>
+			      <a href=<%=system_edit_path(orcamento.identificador)%> style='color:#009fab'><strong>#<%= orcamento.identificador %></strong></a>
+			    </div>
+			  <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
