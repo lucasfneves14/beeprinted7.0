@@ -22,6 +22,6 @@
 ENV['RAILS_ENV'] = "development"
 set :output, 'log/whenever.log'
 
-every 1.day, at: ['17:47'] do
+every 1.day, at: ['18:06'] do
 	rake "atraso:alerta"
 end
