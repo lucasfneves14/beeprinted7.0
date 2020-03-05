@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 set :output, 'log/whenever.log'
 
-every 1.day, at: ['19:09'] do
+every 1.day, at: ['22:09'] do
 	rake "atraso:alerta"
 end
