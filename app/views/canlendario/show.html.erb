@@ -89,7 +89,11 @@
 			  <%= date %>
 			  <% orcamentos.each do |orcamento| %>
 			    <div>
-			      <a href=<%=system_edit_path(orcamento.identificador)%> style='color:#009fab'><strong>#<%= orcamento.identificador %></strong></a>
+			    	<%if DateTime.parse(orcamento.prazo_final) - Date.today < 0.days%> 
+			      		<a href=<%=system_edit_path(orcamento.identificador)%> style='color:red'><strong>#<%= orcamento.identificador %></strong></a>
+			      	<%else%>
+			      		<a href=<%=system_edit_path(orcamento.identificador)%> style='color:#009fab'><strong>#<%= orcamento.identificador %></strong></a>
+			      	<%end%>
 			    </div>
 			  <% end %>
 			<% end %>
