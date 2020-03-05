@@ -3,9 +3,9 @@ class CanlendarioController < ApplicationController
 	before_action :admin
 	layout 'system/navbar'
 	def show
-		@orcamentos = Orcamento.where(status: "Fechado").where.not(prazo_final: nil)
-		@modelagens = Modeling.where(status: "Fechado").where.not(prazo_final: nil)
-		@adicionados = Adicionado.where(status: "Fechado").where.not(prazo_final: nil)
+		@orcamentos = Orcamento.where(status: "Fechado").where.not(prazo_final: "")
+		@modelagens = Modeling.where(status: "Fechado").where.not(prazo_final: "")
+		@adicionados = Adicionado.where(status: "Fechado").where.not(prazo_final: "")
 
 		@planilha = (@modelagens + @orcamentos + @adicionados).sort{|a,b| a.identificador <=> b.identificador }.reverse
 	end
