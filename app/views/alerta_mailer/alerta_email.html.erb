@@ -6,10 +6,12 @@
   <br>
   <br>
 	<h2 class="w3-center" style='text-align:center;'>Olá Thiago</h2>
-	<h3 class="w3-center" style='text-align:center;'>Cuidado! O Pedido precisa ser entregue amanha!!!</h3>
+	<h3 class="w3-center" style='text-align:center;'>Cuidado! O Pedido #<%=@orcamento.identificador%> precisa ser entregue amanha!!!</h3>
 	<div class="image-upload w3-center" style='text-align:center;'>
 		 <%= image_tag "https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/Email/logo-opt.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
 	</div>
+
+	<a href="https://beeprinted.com.br/system/orcamentos/<%=@orcamento.identificador%>" style='border-right:1px solid #ccc;color:white!important; background-color:#009fab;border:none;border-radius:5px;padding:10px 20px; font-weight:700!important'>Página no system</a>
 
 	<h3 style='text-align:center;'>A mensagem enviada foi: </h3>
 	<h3 style='text-align:center;'><i>"<%=@orcamento.description%>"</i></h3>
