@@ -1,0 +1,37 @@
+<body style="background-color: #f2f2f2";>
+<div style='margin:auto; width:80%; background-color:white;border: 1px solid #e3e3e3; text-align:center'> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+	<h2 class="w3-center" style='text-align:center;'>Olá Thiago</h2>
+	<h3 class="w3-center" style='text-align:center;'>Cuidado! O Pedido precisa ser entregue amanha!!!</h3>
+	<div class="image-upload w3-center" style='text-align:center;'>
+		 <%= image_tag "https://beeprinted-stls.s3.amazonaws.com/Revisao_Bee7.0/Assets/Imagens/Email/logo-opt.png",class: "imageperfil", style: 'height:106px;width:106px;position:relative; cursor:pointer', id:'image-preview' %>
+	</div>
+
+	<h3 style='text-align:center;'>A mensagem enviada foi: </h3>
+	<h3 style='text-align:center;'><i>"<%=@orcamento.description%>"</i></h3>
+
+	<h3 style='text-align:center; margin-bottom:0px'>Nome: <i><%=@orcamento.name%> <%=@orcamento.sobrenome%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Email: <i><%=@orcamento.email%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>CEP: <i><%=@orcamento.cep%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Estado: <i><%=@orcamento.estado%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Telefone: <i><%=@orcamento.telefone%></i></h3>
+	<h3 style='text-align:center; margin-top:0px'>Empresa: <i><%=@orcamento.empresa%></i></h3>
+
+	<h3 style='text-align:center;'>Muito Obrigado!</h3>
+
+	<div class="w3-center">
+			<img id="navlogo" src="https://beeprinted-stls.s3.amazonaws.com/uploads/diversas/MARCA-cinza2.png" alt="Logo-Beeprinted" height="40">
+		</div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</body>
