@@ -8,7 +8,8 @@ namespace :atraso do
   	planilha = (modelagens + orcamentos + adicionados).sort{|a,b| a.created_at <=> b.created_at }
   	@atrasados = planilha.select{|orcamento| (orcamento.prazo_final!= "")&&((DateTime.parse(orcamento.prazo_final) - Date.today) < 2)&&((DateTime.parse(orcamento.prazo_final) - Date.today) > 0.days)}
   	@atrasados.each do |atrasado|
-  		AlertaMailer.alerta_email(atrasado).deliver
+  		AlertaMailer.alerta_email(atrasado, "contato@beeprinted.com.br").deliver
+  		AlertaMailer.alerta_email(atrasado, "lucas@beeprinted.com.br").deliver
   		puts atrasado.identificador
   	end
   end
