@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
-
+gem 'whenever'
 gem "simple_calendar", "~> 2.0"
 gem 'amoeba'
 gem 'ruby-trello'
