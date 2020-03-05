@@ -58,7 +58,6 @@
 }
 /* line 60, /home/lucas/.rvm/gems/ruby-2.6.0/gems/simple_calendar-2.3.0/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .today {
-  color:white !important;
   background: #009fab;
   color:white;
 }
@@ -92,8 +91,10 @@
 			    <div>
 			    	<%if DateTime.parse(orcamento.prazo_final) - Date.today < 0.days%> 
 			      		<a href=<%=system_edit_path(orcamento.identificador)%> style='color:red'><strong>#<%= orcamento.identificador %></strong></a>
-			      	<%else%>
-			      		<a href=<%=system_edit_path(orcamento.identificador)%> style='color:#009fab'><strong>#<%= orcamento.identificador %></strong></a>
+			      	<%elsif DateTime.parse(orcamento.prazo_final) - Date.today == 0.days%>
+			      		<a href=<%=system_edit_path(orcamento.identificador)%> style='color:white'><strong>#<%= orcamento.identificador %></strong></a>
+              <%else%>
+                <a href=<%=system_edit_path(orcamento.identificador)%> style='color:#009fab'><strong>#<%= orcamento.identificador %></strong></a>
 			      	<%end%>
 			    </div>
 			  <% end %>
