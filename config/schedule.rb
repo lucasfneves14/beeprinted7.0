@@ -18,10 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-
-ENV['RAILS_ENV'] = "development"
 set :output, 'log/whenever.log'
 
-every 1.day, at: ['18:06'] do
+every 1.day, at: ['18:10'] do
 	rake "atraso:alerta"
 end
