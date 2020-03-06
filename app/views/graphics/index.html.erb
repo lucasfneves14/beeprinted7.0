@@ -8,13 +8,14 @@
     <div class="justify-content-md-center" style='background-color:white'>
 ​
       <% series = [
-        {name: "Atendimentos", data: @planilha}
+        {name: "Atendimentos", data: @planilha},
+        {name: "Iago", data: @iago},
+        {name: "Thierre", data: @thierre}
       ] %>
       ​
       <% options = {
         xtitle: 'Semana',
-        ytitle: 'Atendimentos',
-        stacked: true
+        ytitle: 'Atendimentos'
       } %>
       ​
       <%= line_chart(series, options) %>
