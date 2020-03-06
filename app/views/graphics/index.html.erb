@@ -1,15 +1,23 @@
-<h1>Gráficos</h1>
+<div class="content">
+  <h3>Gráficos de Análise</h3>
+  <div class="row" style='margin:0px'>
+    <p>Atendimentos</p>
+  </div>
+  <br>
+  <div class="animated fadeIn w3-center">
+    <div class="justify-content-md-center" style='background-color:white'>
 ​
-<% series = [
-  {name: "Atendimentos", data: @planilha}
-] %>
-​
-<% options = {
-  title: 'Quantidade de Atendimentos',
-  subtitle: 'Agrupados por Semana',
-  xtitle: 'Semana',
-  ytitle: 'Atendimentos',
-  stacked: true
-} %>
-​
-<%= line_chart(series, options) %>
+      <% series = [
+        {name: "Atendimentos", data: @planilha}
+      ] %>
+      ​
+      <% options = {
+        xtitle: 'Semana',
+        ytitle: 'Atendimentos',
+        stacked: true
+      } %>
+      ​
+      <%= line_chart(series, options) %>
+    </div>
+  </div>
+</div>
