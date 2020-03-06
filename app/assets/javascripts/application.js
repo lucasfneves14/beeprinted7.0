@@ -17,4 +17,5 @@
 // require activestorage
 // require turbolinks
 //= require ckeditor/init
+//= require 'apexcharts'
 // require_tree .

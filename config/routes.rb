@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'graphics/index'
   get 'version/create'
   get 'adicionados/create'
   get 'manual/index'
@@ -27,7 +28,8 @@ Rails.application.routes.draw do
   get 'system/avaliacao', to: 'avaliacoes#show', as: :avaliacao
   patch 'system/avaliacao/:id', to: 'avaliacoes#update', as: :avaliacao_update
   patch 'system/enviar-avaliacao/:id', to: 'system#enviar_avaliacao', as: :avaliacao_enviar
-  get 'system/calendario', to:'canlendario#show', as: :calendario 
+  get 'system/calendario', to:'canlendario#show', as: :calendario
+  get 'system/graficos', to: 'graphics#index', as: :graficos
 
   get 'jobs', to: 'producao#jobs', as: :producao_jobs
   post 'jobs/:id/aceitar', to: 'producao#aceitar_job', as: :producao_jobs_aceitar

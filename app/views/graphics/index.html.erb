@@ -1,0 +1,15 @@
+<h1>Gráficos</h1>
+​
+<% series = [
+  {name: "Atendimentos", data: @planilha}
+] %>
+​
+<% options = {
+  title: 'Quantidade de Atendimentos',
+  subtitle: 'Agrupados por Semana',
+  xtitle: 'Semana',
+  ytitle: 'Atendimentos',
+  stacked: true
+} %>
+​
+<%= line_chart(series, options) %>
