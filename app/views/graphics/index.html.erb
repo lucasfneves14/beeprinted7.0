@@ -1,11 +1,40 @@
+<style>
+.btn-outline-secondary{
+  background-color:white;
+  border:none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
+</style>
+
 <div class="content">
   <h3>Gráficos de Análise</h3>
   <div class="row" style='margin:0px'>
-    <p>Atendimentos</p>
+    <div class="dropdown" style='float:left'>
+        <a href="#" class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Atendimentos<i class="fa fa-sort-desc" aria-hidden="true" style='margin-left:5px'></i>
+        </a>
+        <div class="user-menu dropdown-menu">
+          <a class="nav-link" href="<%=request.path%>?mes=1&ano=<%=@ano%>">Atendimentos</a>
+          <a class="nav-link" href="<%=request.path%>?mes=2&ano=<%=@ano%>">Propostas Enviadas</a>
+          <a class="nav-link" href="<%=request.path%>?mes=3&ano=<%=@ano%>">Propostas Convertidas (%)</a>
+          <a class="nav-link" href="<%=request.path%>?mes=4&ano=<%=@ano%>">Propostas Convertidas (N°)</a>
+          <a class="nav-link" href="<%=request.path%>?mes=5&ano=<%=@ano%>">Vendidos</a>
+          <a class="nav-link" href="<%=request.path%>?mes=6&ano=<%=@ano%>">Ticket Médio</a>
+          <a class="nav-link" href="<%=request.path%>?mes=7&ano=<%=@ano%>">Solicitaçoes no Prazo (%)</a>
+          <a class="nav-link" href="<%=request.path%>?mes=8&ano=<%=@ano%>">Avaliações</a>
+          <a class="nav-link" href="<%=request.path%>?mes=9&ano=<%=@ano%>">Avaliações Média</a>
+        </div>
+    </div>
+
   </div>
   <br>
-  <div class="animated fadeIn w3-center">
-    <div class="justify-content-md-center" style='background-color:white'>
+  <%=link_to (request.params.merge(:group => "dia")) do %><button type="button" class="btn <%if @group == "dia" || @group == nil %>btn-outline-link<%else%>btn-outline-secondary<%end%>">Dia</button><%end%>
+  <%=link_to (request.params.merge(:group => "semana")) do %><button type="button" class="btn <%if @group == "semana"%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Semana</button><%end%>
+  <%=link_to (request.params.merge(:group => "mes")) do %><button type="button" class="btn <%if @group == "mes"%>btn-outline-link<%else%>btn-outline-secondary<%end%>">Mês</button><%end%>
+  <br>
+  <div class="animated fadeIn w3-center" style='margin-top:15px'>
+    <div class="justify-content-md-center card" style='background-color:white'>
 ​
       <% series = [
         {name: "Atendimentos", data: @planilha},

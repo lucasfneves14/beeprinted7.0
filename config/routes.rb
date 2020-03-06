@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'graphics/index'
   get 'version/create'
   get 'adicionados/create'
   get 'manual/index'
