@@ -14,6 +14,7 @@ namespace :atraso do
   			AlertaMailer.alerta_email(atrasado, "iago@beeprinted.com.br").deliver
   		end
   		AlertaMailer.alerta_email(atrasado, "thiago@beeprinted.com.br").deliver
+      AlertaMailer.alerta_email(atrasado, "alexandre.crepory@finatec.org.br").deliver
   	end
   end
 
