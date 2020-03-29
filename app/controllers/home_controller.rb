@@ -6,23 +6,20 @@ class HomeController < ApplicationController
     @contato = Contato.new
   end
 
-  def brindes
-    #@blog = Blog.includes(:user).all.order('created_at DESC').limit(4)
-    @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
-    @contato = Contato.new
-  end
+  #def brindes
+  #  @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
+  #  @contato = Contato.new
+  #end
 
-  def trofeus
-    #@blog = Blog.includes(:user).all.order('created_at DESC').limit(4)
-    @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
-    @contato = Contato.new
-  end
+  #def trofeus
+  #  @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
+  #  @contato = Contato.new
+  #end
 
-  def maquetes
-    #@blog = Blog.includes(:user).all.order('created_at DESC').limit(4)
-    @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
-    @contato = Contato.new
-  end
+  #def maquetes
+  #  @portfolio = Post.includes(:user, :services).all.order('created_at DESC').limit(9)
+  #  @contato = Contato.new
+  #end
 
 
 
